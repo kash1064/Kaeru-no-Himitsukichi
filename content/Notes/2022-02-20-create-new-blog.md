@@ -394,6 +394,13 @@ module.exports = {
 
 
 
+``` bash
+chmod 400 id_rsa
+GIT_SSH_COMMAND='ssh -i id_rsa' git push -u origin main
+```
+
+
+
 
 
 
