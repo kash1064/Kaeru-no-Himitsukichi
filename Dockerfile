@@ -1,5 +1,6 @@
 FROM ubuntu:20.04
 ENV TZ=Asia/Tokyo
+USER root
 
 RUN mkdir -p /app/blog
 ENV HOME=/app/
