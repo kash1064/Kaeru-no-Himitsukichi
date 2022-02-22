@@ -76,13 +76,13 @@ Windowsホスト上のTyporaでMarkdownを編集し、動作確認はGatsby環�
 FROM ubuntu:20.04
 ENV TZ=Asia/Tokyo
 
-RUN mkdir -p /app
-ENV HOME=/app
-WORKDIR $HOME
+RUN mkdir -p /app/blog
+ENV HOME=/app/
+WORKDIR /app
 
 RUN apt update && apt upgrade -y
 RUN apt install tzdata -y
-RUN apt install curl git wget -y
+RUN apt install curl git python wget -y
 RUN apt install nodejs npm -y
 RUN npm install n -g
 RUN n stable
@@ -94,7 +94,7 @@ RUN node -v
 RUN npm install -g gatsby-cli
 RUN npm install gh-pages --save-dev
 
-RUN mkdir -p $HOME/blog
+RUN chown root:root ./* -R
 WORKDIR $HOME/blog
 EXPOSE 8000
 ```
@@ -148,6 +148,20 @@ npm install
 ``` bash
 gatsby develop -H 0.0.0.0
 ```
+
+### トラブルシューティング：EACCES: permission denied, mkdir '/app/.npm/sentry-cli' が発生する場合
+
+再現条件が不定なので原因はよくわかっていないのですが、`npm install` を実行した際に`EACCES: permission denied, mkdir '/app/.npm/sentry-cli' `という権限エラーが発生する場合があります。
+
+Dockerのユーザはrootにしているので通常発生しないことが想定されるのですが、僕の環境では何度か発生しました。
+
+対処方としては、Dockerfileでエラーの発生するディレクトリに以下のように明示的に所有者をrootに設定してあげると解消されました。
+
+``` dockerfile
+RUN chown root:root ./* -R
+```
+
+エラーが発生しないときもあるので、原因は正直よくわかっていないです。。
 
 ### トラブルシューティング：socialImageのエラーが発生する場合
 
@@ -367,41 +381,46 @@ Gatsbyの場合`blog/static/media`配下の画像に対して`/media`でアク�
 
 ### パスの設定
 
-まずは`blog\gatsby-config.js`の`pathPrefix`に公開リポジトリの名前を設定します。
+今回はカスタムドメインを使用するので、`blog\gatsby-config.js`の`pathPrefix`に`/`を設定します。
 
 ``` javascript
 module.exports = {
   // pathPrefix: siteConfig.pathPrefix,
-  pathPrefix: "/reponame",
+  pathPrefix: "/",
 }
 ```
 
 これは、URLでアクセスする際に適切なパスを使えるようにするために必要な設定です。
 
+一方、カスタムドメインを指定しない場合は、`pathPrefix`にリポジトリ名を設定します。
+
 ### デプロイ用のカスタムスクリプトの作成
 
-`blog\package.json`
+次にデプロイ用のスクリプトを設定します。
+
+`blog\package.json`内の`scripts>deploy`を以下のように設定します。
 
 ``` javascript
 "scripts": {
     
-  "deploy": "gatsby build && gh-pages -d public -b main",
+  "deploy": "rm -rf node_modules/.cache/gh-pages && gatsby clean && gatsby build --prefix-paths && echo 'kashiwaba-yuki.com' > public/CNAME && gh-pages -d public -b pages",
 
 },
 ```
 
+`rm -rf node_modules/.cache/gh-pages`は、ビルド時にエラーが発生しないよう、過去のキャッシュを削除しています。
 
+`gatsby clean && gatsby build --prefix-paths`では、`gatsby`コマンドでコンテンツをビルドしています。
 
+変更内容を確実に反映させるために`gatsby clean`が必要です。
 
+`echo 'kashiwaba-yuki.com' > public/CNAME`は、カスタムドメインを使用するためのCNAMEファイルを公開ディレクトリに配置するための記述です。
 
-``` bash
-chmod 400 id_rsa
-GIT_SSH_COMMAND='ssh -i id_rsa' git push -u origin main
-```
+これが無いとデプロイするたびにカスタムドメインが解除されます。
 
+`gh-pages -d public -b pages`は`gh-pages`を使って`pages`ブランチにビルドしたコンテンツを配置しています。
 
-
-
+Gitリポジトリにプッシュするため、コンテナ内からリポジトリにプッシュできるようにしておく必要があります。
 
 
 
