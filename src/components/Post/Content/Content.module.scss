@@ -54,6 +54,10 @@
     }
 
     & li {
+      & ul {
+        @include margin-bottom(0.5);
+      }
+      
       & p {
         @include line-height(1);
         @include margin-bottom(0.5)
