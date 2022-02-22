@@ -19,5 +19,6 @@ RUN node -v
 RUN npm install -g gatsby-cli
 RUN npm install gh-pages --save-dev
 
+RUN chown root:root ./* -R
 WORKDIR $HOME/blog
 EXPOSE 8000
