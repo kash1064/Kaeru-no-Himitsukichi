@@ -11,7 +11,7 @@ develop:
 
 deploy:
 	make force_pull
-	docker run --rm -v `pwd`/:/app/blog -v ~/.ssh:/root/.ssh kashiwabayuki/gatsby-env npm run deploy
+	docker run --rm -v `pwd`/:/app/blog -v ~/.ssh:/root/.ssh kashiwabayuki/gatsby-env chown 1000:1000 /app -R && npm run deploy
 
 chown:
 	sudo chown ubuntu:ubuntu ./* -R
