@@ -2,6 +2,7 @@ FROM ubuntu:20.04
 ENV TZ=Asia/Tokyo
 
 RUN mkdir -p /app/blog
+ENV HOME=/app/blog
 WORKDIR /app
 
 RUN apt update && apt upgrade -y
@@ -18,5 +19,5 @@ RUN node -v
 RUN npm install -g gatsby-cli
 RUN npm install gh-pages --save-dev
 
-WORKDIR /app/blog
+WORKDIR $HOME
 EXPOSE 8000
