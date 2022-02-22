@@ -7,7 +7,7 @@ WORKDIR /app
 
 RUN apt update && apt upgrade -y
 RUN apt install tzdata -y
-RUN apt install curl git wget -y
+RUN apt install curl git python wget -y
 RUN apt install nodejs npm -y
 RUN npm install n -g
 RUN n stable
