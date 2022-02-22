@@ -6,4 +6,7 @@ npm-debug.log
 .gatsby-context.js
 .idea
 gatsby-starter-lumen.iml
+
+.bash_history
+.config/*
 id_rsa
