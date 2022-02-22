@@ -5,7 +5,8 @@ const postCssPlugins = require('./postcss-config.js');
 
 module.exports = {
   // pathPrefix: siteConfig.pathPrefix,
-  pathPrefix: "/Kaeru-no-Himitsukichi",
+  // pathPrefix: "/Kaeru-no-Himitsukichi",
+  pathPrefix: "/",
   siteMetadata: {
     url: siteConfig.url,
     title: siteConfig.title,
