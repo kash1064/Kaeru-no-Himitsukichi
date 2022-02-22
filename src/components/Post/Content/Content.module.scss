@@ -35,7 +35,6 @@
           @include margin-bottom(1);
           @include line-height(1.5)
         }
-
       }
 
     }
@@ -54,6 +53,12 @@
       max-width: 100%;
     }
 
+    & li {
+      & p {
+        @include line-height(1);
+        @include margin-bottom(0.5)
+      }
+    }
   }
 
 }
