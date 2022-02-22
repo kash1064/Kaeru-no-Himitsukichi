@@ -108,6 +108,12 @@ strong {
   font-weight: 600;
 }
 
+p {
+  @include line-height(1);
+  @include margin-bottom(1);
+}
+
+
 ul {
   list-style: square;
   @include margin-bottom(1);
@@ -115,13 +121,13 @@ ul {
   & li {
     padding: 0 5px;
     margin-bottom: 10px;
+
+    & p {
+      @include line-height(1);
+      @include margin-bottom(0);
+    }
   }
 
-}
-
-p {
-  @include line-height(1);
-  @include margin-bottom(1);
 }
 
 blockquote {
