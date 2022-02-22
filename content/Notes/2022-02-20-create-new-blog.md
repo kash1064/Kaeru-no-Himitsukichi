@@ -364,7 +364,7 @@ $color-gray-bg: lighten($color-base, 79%);
 
 Gatsbyは、`blog/src/cms/index.js`の定義に沿って`blog/content/`配下のファイルを探索し、指定された形式のページとして識別します。
 
-そのため、デフォルトではすべてのブログページは``blog/content/posts`配下に置かれている必要がありますが、ここに`notes`などのカスタムディレクトリを追加したい場合は、以下のように`CMS.registerPreviewTemplate`にてディレクトリ名とテンプレートを紐づける必要があります。
+そのため、デフォルトではすべてのブログページは`blog/content/posts`配下に置かれている必要がありますが、ここに`notes`などのカスタムディレクトリを追加したい場合は、以下のように`CMS.registerPreviewTemplate`にてディレクトリ名とテンプレートを紐づける必要があります。
 
 ``` javascript
 // @flow strict
