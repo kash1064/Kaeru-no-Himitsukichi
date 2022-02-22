@@ -122,10 +122,11 @@ ul {
     padding: 0 5px;
     margin-bottom: 10px;
 
-    & p {
-      @include line-height(1);
-      @include margin-bottom(0);
-    }
+  }
+
+  & p {
+    @include line-height(1);
+    @include margin-bottom(0);
   }
 
 }
