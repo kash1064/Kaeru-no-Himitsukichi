@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-4743704a0adc691cf11b.js"
+    "url": "webpack-runtime-92ce0d1ff853bc5ce49d.js"
   },
   {
     "url": "styles.a7dd3d4dfa78d94cc611.css"
@@ -42,17 +42,25 @@ self.__precacheManifest = [
     "url": "532a2f07-92db97c0addf07d5cb73.js"
   },
   {
-    "url": "dc6a8720040df98778fe970bf6c000a41750d3ae-2f1632cfbe4e141854e8.js"
+    "url": "dc6a8720040df98778fe970bf6c000a41750d3ae-cde920886c0f8788dd0b.js"
   },
   {
-    "url": "app-8c5f5f48d2fbd95aad83.js"
+    "url": "app-1184ade41e10683a0aab.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "acfd0cfa246c6b87d7080025363a5b04"
+    "revision": "e0487aa86b8e81cd935ac982e1378951"
   },
   {
     "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-fd4fb51a6fac1c18bdde.js"
+  },
+  {
+    "url": "page-data/offline-plugin-app-shell-fallback/page-data.json",
+    "revision": "f6081b83111aea4128c98944b7fafccc"
+  },
+  {
+    "url": "page-data/app-data.json",
+    "revision": "1a3e27c9f9f5e48818cdef3ba77dec5b"
   },
   {
     "url": "polyfill-299cfcade846097f4d4b.js"
@@ -63,7 +71,7 @@ self.__precacheManifest = [
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "08b733fc48e51aa57e8900ab81b55e2e"
+    "revision": "35b870fbda3b716ab92c9add26ede177"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
@@ -150,12 +158,12 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   lastNavigationRequest = event.request.url
 
   let { pathname } = new URL(event.request.url)
-  pathname = pathname.replace(new RegExp(`^`), ``)
+  pathname = pathname.replace(new RegExp(`^/Kaeru-no-Himitsukichi`), ``)
 
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/app-8c5f5f48d2fbd95aad83.js`))) {
+  if (!resources || !(await caches.match(`/Kaeru-no-Himitsukichi/app-1184ade41e10683a0aab.js`))) {
     return await fetch(event.request)
   }
 
@@ -168,7 +176,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
     }
   }
 
-  const offlineShell = `/offline-plugin-app-shell-fallback/index.html`
+  const offlineShell = `/Kaeru-no-Himitsukichi/offline-plugin-app-shell-fallback/index.html`
   const offlineShellWithKey = workbox.precaching.getCacheKeyForURL(offlineShell)
   return await caches.match(offlineShellWithKey)
 })

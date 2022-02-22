@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[かえるのひみつきち]]></title><description><![CDATA[かえるのひみつきち]]></description><link>https://kashiwaba-yuki.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 22 Feb 2022 12:43:56 GMT</lastBuildDate><item><title><![CDATA[Gatsbyで作成したSPAブログをGitHubPagesに公開する環境を作る備忘録]]></title><link>https://kashiwaba-yuki.com/Notes/note-how-to-deploy-gatsby-spa</link><guid isPermaLink="false">https://kashiwaba-yuki.com/Notes/note-how-to-deploy-gatsby-spa</guid><pubDate>Sun, 20 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;突然ですが、諸般の事情につきブログを移転することにしました。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[かえるのひみつきち]]></title><description><![CDATA[かえるのひみつきち]]></description><link>https://kashiwaba-yuki.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 22 Feb 2022 12:48:56 GMT</lastBuildDate><item><title><![CDATA[Gatsbyで作成したSPAブログをGitHubPagesに公開する環境を作る備忘録]]></title><link>https://kashiwaba-yuki.com/Notes/note-how-to-deploy-gatsby-spa</link><guid isPermaLink="false">https://kashiwaba-yuki.com/Notes/note-how-to-deploy-gatsby-spa</guid><pubDate>Sun, 20 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;突然ですが、諸般の事情につきブログを移転することにしました。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://yukituna.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;旧ブログ&lt;/a&gt;の記事は順次こちらのブログに移植していこうと思います（手動でやる必要があるので面倒ですが…。）&lt;/p&gt;
 &lt;p&gt;新しいブログですが、MITライセンスで公開されているGatsbyテンプレートの&lt;a href=&quot;https://github.com/alxshelepenok/gatsby-starter-lumen&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;gatsby-starter-lumen&lt;/a&gt;をベースに使用させてもらってます。&lt;/p&gt;
 &lt;p&gt;この記事では、新しいブログを公開するまでに実施した作業について備忘録としてまとめておきます。&lt;/p&gt;
@@ -238,7 +238,7 @@ $&lt;span class=&quot;token property&quot;&gt;color-gray-bg&lt;/span&gt;&lt;span
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/915fae9fa8c5853d16b68d568fce6fff/525d3/image-20220221222611109.png&quot;
+    href=&quot;/Kaeru-no-Himitsukichi/static/915fae9fa8c5853d16b68d568fce6fff/525d3/image-20220221222611109.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
@@ -249,24 +249,24 @@ $&lt;span class=&quot;token property&quot;&gt;color-gray-bg&lt;/span&gt;&lt;span
   &gt;&lt;/span&gt;
   &lt;picture&gt;
           &lt;source
-              srcset=&quot;/static/915fae9fa8c5853d16b68d568fce6fff/8ac56/image-20220221222611109.webp 240w,
-/static/915fae9fa8c5853d16b68d568fce6fff/d3be9/image-20220221222611109.webp 480w,
-/static/915fae9fa8c5853d16b68d568fce6fff/e46b2/image-20220221222611109.webp 960w,
-/static/915fae9fa8c5853d16b68d568fce6fff/36bbb/image-20220221222611109.webp 1090w&quot;
+              srcset=&quot;/Kaeru-no-Himitsukichi/static/915fae9fa8c5853d16b68d568fce6fff/8ac56/image-20220221222611109.webp 240w,
+/Kaeru-no-Himitsukichi/static/915fae9fa8c5853d16b68d568fce6fff/d3be9/image-20220221222611109.webp 480w,
+/Kaeru-no-Himitsukichi/static/915fae9fa8c5853d16b68d568fce6fff/e46b2/image-20220221222611109.webp 960w,
+/Kaeru-no-Himitsukichi/static/915fae9fa8c5853d16b68d568fce6fff/36bbb/image-20220221222611109.webp 1090w&quot;
               sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
               type=&quot;image/webp&quot;
             /&gt;
           &lt;source
-            srcset=&quot;/static/915fae9fa8c5853d16b68d568fce6fff/8ff5a/image-20220221222611109.png 240w,
-/static/915fae9fa8c5853d16b68d568fce6fff/e85cb/image-20220221222611109.png 480w,
-/static/915fae9fa8c5853d16b68d568fce6fff/d9199/image-20220221222611109.png 960w,
-/static/915fae9fa8c5853d16b68d568fce6fff/525d3/image-20220221222611109.png 1090w&quot;
+            srcset=&quot;/Kaeru-no-Himitsukichi/static/915fae9fa8c5853d16b68d568fce6fff/8ff5a/image-20220221222611109.png 240w,
+/Kaeru-no-Himitsukichi/static/915fae9fa8c5853d16b68d568fce6fff/e85cb/image-20220221222611109.png 480w,
+/Kaeru-no-Himitsukichi/static/915fae9fa8c5853d16b68d568fce6fff/d9199/image-20220221222611109.png 960w,
+/Kaeru-no-Himitsukichi/static/915fae9fa8c5853d16b68d568fce6fff/525d3/image-20220221222611109.png 1090w&quot;
             sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
             type=&quot;image/png&quot;
           /&gt;
           &lt;img
             class=&quot;gatsby-resp-image-image&quot;
-            src=&quot;/static/915fae9fa8c5853d16b68d568fce6fff/d9199/image-20220221222611109.png&quot;
+            src=&quot;/Kaeru-no-Himitsukichi/static/915fae9fa8c5853d16b68d568fce6fff/d9199/image-20220221222611109.png&quot;
             alt=&quot;image-20220221222611109&quot;
             title=&quot;image-20220221222611109&quot;
             loading=&quot;lazy&quot;
