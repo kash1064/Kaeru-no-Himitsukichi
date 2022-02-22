@@ -1,9 +1,10 @@
 FROM ubuntu:20.04
 ENV TZ=Asia/Tokyo
 
-RUN mkdir -p /app
-ENV HOME=/app
-WORKDIR $HOME
+RUN mkdir -p /app/pack
+RUN mkdir -p /app/blog
+ENV HOME=/app/
+WORKDIR $HOME/pack
 
 RUN apt update && apt upgrade -y
 RUN apt install tzdata -y
@@ -19,6 +20,5 @@ RUN node -v
 RUN npm install -g gatsby-cli
 RUN npm install gh-pages --save-dev
 
-RUN mkdir -p $HOME/blog
 WORKDIR $HOME/blog
 EXPOSE 8000
