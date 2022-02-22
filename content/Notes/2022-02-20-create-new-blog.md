@@ -9,7 +9,7 @@ tags:
   - "Blog"
   - "Gatsby"
   - "備忘録"
-description: ""
+description: "Gatsbyで作成したSPAブログをGithub Pagesに公開する手順についてまとめています。Gatsbyの開発環境はDockerコンテナ上に構築しています。"
 socialImage: "/media/cards/no-image.png"
 ---
 
