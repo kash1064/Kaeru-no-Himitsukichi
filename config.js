@@ -16,13 +16,17 @@ module.exports = {
       path: '/'
     },
     {
-      label: '自作OS',
-      path: '/category/os'
+      label: 'Windows',
+      path: '/tag/windows/'
     },
     {
-      label: '競プロ',
-      path: '/category/contest'
-    },
+      label: 'Unix',
+      path: '/tag/unix/'
+    }
+    // {
+    //   label: '競プロ',
+    //   path: '/category/contest'
+    // },
     // {
     //   label: 'HackTheBox',
     //   path: '/category/hack-the-box'
@@ -35,14 +39,14 @@ module.exports = {
     //   label: 'Security',
     //   path: '/tag/security'
     // },
-    {
-      label: 'Development',
-      path: '/tag/development'
-    },
-    {
-      label: 'Notes',
-      path: '/category/note'
-    }
+    // {
+    //   label: 'Development',
+    //   path: '/tag/development'
+    // },
+    // {
+    //   label: 'Notes',
+    //   path: '/category/note'
+    // }
   ],
   author: {
     name: 'かしわば',

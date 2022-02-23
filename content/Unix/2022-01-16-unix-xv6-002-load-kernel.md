@@ -9,6 +9,7 @@ tags:
   - "Unix"
   - "xv6"
   - "Kernel"
+  - "OS"
 description: "教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのカーネルのデバッグ環境を構築します。"
 socialImage: "/media/cards/unix-xv6-002-load-kernel.png"
 ---

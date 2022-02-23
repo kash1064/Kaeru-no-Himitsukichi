@@ -9,6 +9,7 @@ tags:
   - "Unix"
   - "xv6"
   - "Kernel"
+  - "OS"
 description: "教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのブートストラップを読み解きます。"
 socialImage: "/media/cards/unix-xv6-001-bootstrap.png"
 ---
