@@ -17,9 +17,7 @@ socialImage: "/media/cards/unix-xv6-009-kernel-main-06.png"
 
 UNIX V6自体はx86CPUでは動作しないため、基本的には、UNIXv6をX86アーキテクチャで動くようにした[xv6 OS](https://github.com/mit-pdos/xv6-public)のリポジトリをForkした[kash1064/xv6-public: xv6 OS](https://github.com/kash1064/xv6-public)のソースコードを読んでいくことにしました。
 
-[前回](https://yukituna.com/3919/)は`main`関数で実行される`seginit`関数を確認しました。
-
-https://yukituna.com/3919/
+[前回](/unix-xv6-008-kernel-main-05)は`main`関数で実行される`seginit`関数を確認しました。
 
 今回は`picinit`関数と`ioapicinit`関数の挙動を追っていきます。
 
@@ -143,7 +141,7 @@ struct ioapic {
 
 参考：[Memory Mapped Registers for Accessing IOAPIC Registers](http://web.archive.org/web/20161130153145/http://download.intel.com/design/chipsets/datashts/29056601.pdf)
 
-![https://yukituna.com/wp-content/uploads/2022/02/image-6.png](https://yukituna.com/wp-content/uploads/2022/02/image-6.png)
+![2022/02/image-6.png](../../static/media/2022-02-06-unix-xv6-009-kernel-main-06/image-6.png)
 
 参考画像：[Intel 9 Series Chipset Platform Controller Hub Datasheet](https://www.intel.com/content/dam/www/public/us/en/documents/datasheets/9-series-chipset-pch-datasheet.pdf)
 
@@ -183,7 +181,7 @@ IOAPICでは、`ioapic->reg`がインデックスレジスタとして使用さ�
 
 インデックスレジスタとレジスタの対応は以下の通りです。
 
-![https://yukituna.com/wp-content/uploads/2022/02/image-5.png](https://yukituna.com/wp-content/uploads/2022/02/image-5.png)
+![2022/02/image-5.png](../../static/media/2022-02-06-unix-xv6-009-kernel-main-06/image-5.png)
 
 参考画像：[Intel 9 Series Chipset Platform Controller Hub Datasheet](https://www.intel.com/content/dam/www/public/us/en/documents/datasheets/9-series-chipset-pch-datasheet.pdf)
 
@@ -203,7 +201,7 @@ $ x/5wx 0xfec00000
 
 ここで取得できる情報は割込み入力PINの数から1を引いた数になるみたいです。(おそらくこれが定義できる割込みの最大数に?)
 
-![https://yukituna.com/wp-content/uploads/2022/02/image-7.png](https://yukituna.com/wp-content/uploads/2022/02/image-7.png)
+![2022/02/image-7.png](../../static/media/2022-02-06-unix-xv6-009-kernel-main-06/image-7.png)
 
 参考画像：[Intel 9 Series Chipset Platform Controller Hub Datasheet](https://www.intel.com/content/dam/www/public/us/en/documents/datasheets/9-series-chipset-pch-datasheet.pdf)
 
@@ -211,13 +209,13 @@ $ x/5wx 0xfec00000
 
 これはIDレジスタの27:24bitの範囲の値でAPIC IDの値になります。(1つ目が0なのでたぶん初回実行時の値が0になっている?)
 
-![https://yukituna.com/wp-content/uploads/2022/02/image-8.png](https://yukituna.com/wp-content/uploads/2022/02/image-8.png)
+![2022/02/image-8.png](../../static/media/2022-02-06-unix-xv6-009-kernel-main-06/image-8.png)
 
 参考画像：[Intel 9 Series Chipset Platform Controller Hub Datasheet](https://www.intel.com/content/dam/www/public/us/en/documents/datasheets/9-series-chipset-pch-datasheet.pdf)
 
 この値が`ioapicid`と一致するかを検証しています。
 
-`ioapicid`は[マルチプロセッサ編](https://yukituna.com/3898/)で見た通り、MPコンフィグレーションテーブルから取得したAPICの番号でした。
+`ioapicid`は[マルチプロセッサ編](/unix-xv6-006-kernel-main-03)で見た通り、MPコンフィグレーションテーブルから取得したAPICの番号でした。
 
 ### Redirection Tableの初期化
 
@@ -246,7 +244,7 @@ static void ioapicwrite(int reg, uint data)
 
 これによって、17番目のbitに1をセットすることができます。
 
-![https://yukituna.com/wp-content/uploads/2022/02/image-9.png](https://yukituna.com/wp-content/uploads/2022/02/image-9.png)
+![2022/02/image-9.png](../../static/media/2022-02-06-unix-xv6-009-kernel-main-06/image-9.png)
 
 参考画像：[Intel 9 Series Chipset Platform Controller Hub Datasheet](https://www.intel.com/content/dam/www/public/us/en/documents/datasheets/9-series-chipset-pch-datasheet.pdf)
 

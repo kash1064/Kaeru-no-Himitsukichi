@@ -1,9 +1,9 @@
 ---
-title: 
+title: x86CPUのメモリ保護機構に関するメモ書き(GDTとLDT)
 date: "2022-02-20"
 template: "post"
 draft: true
-slug: ""
+slug: "linux-memory-protect-gdt-ldt"
 category: ""
 tags:
   - ""
