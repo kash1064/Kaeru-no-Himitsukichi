@@ -377,6 +377,35 @@ CMS.registerPreviewTemplate('posts', PostPreview);
 CMS.registerPreviewTemplate('notes', PostPreview);
 ```
 
+### 記事のURLからディレクトリ名を削除する
+
+デフォルトでは、記事のURLは以下の形式になります。
+
+``` bash
+https://<カスタムドメイン>/<記事の存在するディレクトリ名>/<記事のSlug>
+```
+
+URLに`<記事の存在するディレクトリ名>`が埋まっていると、今後Markdownファイルのディレクトリを変更するたびにURLが変わってしまうのでよろしくありません。
+
+そのため、URLに`<記事の存在するディレクトリ名>`が入らないように設定を変更します。
+
+`blog/gatsby/on-create-node.js`の`createNodeField`を以下のように書き換えます。
+
+``` javascript
+if (node.internal.type === 'MarkdownRemark') {
+  if (typeof node.frontmatter.slug !== 'undefined') {
+    const dirname = getNode(node.parent).relativeDirectory;
+    createNodeField({
+      node,
+      name: 'slug',
+      // value: `/${dirname}/${node.frontmatter.slug}`
+      value: `/${node.frontmatter.slug}`
+    });
+};
+```
+
+これでデプロイ時に生成されるURLからディレクトリ名を削除することができます。
+
 ## Typoraの設定をする
 
 僕が愛用しているTyporaというマークダウンエディタの非常に便利な機能の1つに、画像をコピペすると自動的に任意のローカルフォルダに保存してくれる機能があります。
