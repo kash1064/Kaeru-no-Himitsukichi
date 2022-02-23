@@ -9,6 +9,7 @@ import Pagination from '../components/Pagination';
 import { useSiteMetadata } from '../hooks';
 import type { PageContext, AllMarkdownRemark } from '../types';
 
+import styles from './Custom.module.scss';
 import LOGO_IMG from "../../static/icon2-logo2.png"
 
 type Props = {
