@@ -687,7 +687,7 @@ x86CPUでは、プロテクトモードを有効化するためにコントロ�
 
 GDT周りの機構については長くなったので別の記事にメモ書きとしてまとめました。
 
-参考：[x86CPUのメモリ保護機構に関するメモ書き(GDTとLDT)](https://kashiwaba-yuki/linux-got-plt)
+参考：[x86CPUのメモリ保護機構に関するメモ書き(GDTとLDT)](/linux-got-plt)
 
 ### lgdt gdtdesc
 

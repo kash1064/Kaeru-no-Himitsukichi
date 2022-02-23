@@ -1,16 +1,16 @@
 ---
-title: 
-date: "2022-02-20"
+title: xv6OSを真面目に読みこんでカーネルを完全に理解する -メモリ割り当て・排他制御 編-
+date: "2022-01-24"
 template: "post"
-draft: true
-slug: ""
-category: ""
+draft: false
+slug: "unix-xv6-004-kernel-main-01"
+category: "Unix"
 tags:
-  - ""
-  - ""
-  - ""
-description: ""
-socialImage: "/media/cards/no-image.png"
+  - "Unix"
+  - "xv6"
+  - "Kernel"
+description: "教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのカーネルをロードする挙動を読み解きます。"
+socialImage: "/media/cards/unix-xv6-002-load-kernel.png"
 ---
 
 [はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ](https://amzn.to/3q8TU3K)にインスパイアされて[xv6 OS](https://github.com/mit-pdos/xv6-public)を読んでます。
