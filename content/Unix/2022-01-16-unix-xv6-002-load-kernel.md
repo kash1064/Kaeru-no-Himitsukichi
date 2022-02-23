@@ -1,16 +1,16 @@
 ---
-title: 
-date: "2022-02-20"
+title: xv6OSを真面目に読みこんでカーネルを完全に理解する -リンカ・ページング編-
+date: "2022-01-16"
 template: "post"
-draft: true
-slug: ""
-category: ""
+draft: false
+slug: "unix-xv6-002-load-kernel"
+category: "Unix"
 tags:
-  - ""
-  - ""
-  - ""
-description: ""
-socialImage: "/media/cards/no-image.png"
+  - "Unix"
+  - "xv6"
+  - "Kernel"
+description: "教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのブートストラップを読み解きます。"
+socialImage: "/media/cards/unix-xv6-002-load-kernel.png"
 ---
 
 [はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ](https://amzn.to/3q8TU3K)にインスパイアされて[xv6 OS](https://github.com/mit-pdos/xv6-public)を読んでます。
@@ -21,9 +21,7 @@ socialImage: "/media/cards/no-image.png"
 
 ただ、UNIX V6自体はx86CPUでは動作しないため、基本的には、UNIXv6をX86アーキテクチャで動くようにした[xv6 OS](https://github.com/mit-pdos/xv6-public)のリポジトリをForkした[kash1064/xv6-public: xv6 OS](https://github.com/kash1064/xv6-public)のソースコードを読んでいくことにしました。
 
-[前回](https://yukituna.com/3850/)に引き続きxv6OSのソースコードを読んでいきます。
-
-https://yukituna.com/3850/
+[前回](https://kashiwaba-yuki.com/Unix/unix-xv6-001-bootstrap)に引き続きxv6OSのソースコードを読んでいきます。
 
 前回の記事では、xv6OSのブートストラップのコードを読んで、カーネル本体をロードする手前まで追っていきました。
 
