@@ -4,14 +4,12 @@ date: "2022-01-10"
 template: "post"
 draft: false
 slug: "unix-xv6-001-bootstrap"
-category: 
-  - "OS"
-  - "Unix"
+category: "Unix"
 tags:
   - "Unix"
   - "xv6"
   - "Kernel"
-description: ""
+description: "教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのブートストラップを読み解きます。"
 socialImage: "/media/cards/no-image.png"
 ---
 
