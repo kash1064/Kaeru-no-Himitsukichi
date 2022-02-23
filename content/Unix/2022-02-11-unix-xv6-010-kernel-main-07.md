@@ -1,25 +1,23 @@
 ---
-title: 
-date: "2022-02-20"
+title: xv6OSを真面目に読みこんでカーネルを完全に理解する -画面描画 編-
+date: "2022-02-11"
 template: "post"
-draft: true
-slug: ""
-category: ""
+draft: false
+slug: "unix-xv6-010-kernel-main-07"
+category: "Unix"
 tags:
-  - ""
-  - ""
-  - ""
-description: ""
-socialImage: "/media/cards/no-image.png"
+  - "Unix"
+  - "xv6"
+  - "Kernel"
+description: "教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのカーネルのmain関数の挙動を読み解きます。"
+socialImage: "/media/cards/unix-xv6-010-kernel-main-07.png"
 ---
 
 [はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ](https://amzn.to/3q8TU3K)にインスパイアされて[xv6 OS](https://github.com/mit-pdos/xv6-public)を読んでます。
 
 UNIX V6自体はx86CPUでは動作しないため、基本的には、UNIXv6をX86アーキテクチャで動くようにした[xv6 OS](https://github.com/mit-pdos/xv6-public)のリポジトリをForkした[kash1064/xv6-public: xv6 OS](https://github.com/kash1064/xv6-public)のソースコードを読んでいくことにしました。
 
-[前回](https://yukituna.com/3923/)は`main`関数で実行される`picinit`関数と`ioapicinit`関数の動きを確認しました。
-
-https://yukituna.com/3923/
+[前回](/unix-xv6-009-kernel-main-06)は`main`関数で実行される`picinit`関数と`ioapicinit`関数の動きを確認しました。
 
 今回は`consoleinit`関数の挙動を追っていきます。
 
@@ -51,7 +49,7 @@ void consoleinit(void)
 }
 ```
 
-まず1行目の`initlock(&cons.lock, "console");`ですが、これは[メモリ割り当て・排他制御 編](https://yukituna.com/3869/)で確認したメモリロックのために`spinlock`構造体を初期化する関数でした。
+まず1行目の`initlock(&cons.lock, "console");`ですが、これは[メモリ割り当て・排他制御 編](/unix-xv6-004-kernel-main-01)で確認したメモリロックのために`spinlock`構造体を初期化する関数でした。
 
 今回使用している`&cons.lock`は、以下のように定義されています。
 
@@ -360,7 +358,7 @@ pos |= inb(CRTPORT+1);
 
 上位8bitがカーソルの行の位置を指し、下位8bitが何文字目かを指しています。
 
-![https://yukituna.com/wp-content/uploads/2022/02/image-37.png](https://yukituna.com/wp-content/uploads/2022/02/image-37.png)
+![2022/02/image-37.png](../../static/media/2022-02-11-unix-xv6-010-kernel-main-07/image-37.png)
 
 以下の行は、改行文字が渡された場合の挙動です。
 
@@ -386,13 +384,13 @@ else if(c == BACKSPACE){
 
 また、下位8bitには表示する文字が指定されます。
 
-![https://yukituna.com/wp-content/uploads/2022/02/image-35.png](https://yukituna.com/wp-content/uploads/2022/02/image-35.png)
+![2022/02/image-35.png](../../static/media/2022-02-11-unix-xv6-010-kernel-main-07/image-35.png)
 
 参考画像：[3.-The Screen](http://www.jamesmolloy.co.uk/tutorial_html/3.-The%20Screen.html)
 
 実際にデバッガで確認してみると、この処理によってコンソールに文字が表示されていることを確認できます。
 
-![https://yukituna.com/wp-content/uploads/2022/02/image-34.png](https://yukituna.com/wp-content/uploads/2022/02/image-34.png)
+![2022/02/image-34.png](../../static/media/2022-02-11-unix-xv6-010-kernel-main-07/image-34.png)
 
 次の処理は非常にシンプルで、最大の行数である24行をオーバーした場合に、先頭行を削除してスクロールした上で、末尾の行を空行にしています。
 
@@ -506,7 +504,7 @@ struct {
 
 以下の画像は、コンソールに「l」という文字を打ち込んだ際の挙動をデバッガで確認したときのものです。
 
-![https://yukituna.com/wp-content/uploads/2022/02/image-38.png](https://yukituna.com/wp-content/uploads/2022/02/image-38.png)
+![2022/02/image-38.png](../../static/media/2022-02-11-unix-xv6-010-kernel-main-07/image-38.png)
 
 ユーザの入力値がどのように`input.buf`に格納されるかは、実際にシェルが使えるようになってから詳しく追っていこうと思います。
 
