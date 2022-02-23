@@ -10,7 +10,7 @@ tags:
   - "xv6"
   - "Kernel"
 description: "教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのブートストラップを読み解きます。"
-socialImage: "/media/cards/no-image.png"
+socialImage: "/media/cards/unix-xv6-001-bootstrap.png"
 ---
 
 [はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ](https://amzn.to/3q8TU3K)にインスパイアされて[xv6 OS](https://github.com/mit-pdos/xv6-public)を読んでます。
@@ -93,7 +93,7 @@ ddコマンドのブロックサイズ(`bs`)はデフォルトで512であるた
 
 これらのコマンドを見てわかる通り、`512*10^4`バイト(51.2MBバイト)の空のイメージファイルを生成した後、先頭512バイトにbootblockを配置し、さらにその後にkernelを配置しています。
 
-![https://yukituna.com/wp-content/uploads/2022/01/image-8.png](https://yukituna.com/wp-content/uploads/2022/01/image-8.png)
+![img](../../static/media/2022-01-10-unix-xv6-001-bootstrap/image-8.png)
 
 空になったままのスペースはシステムが使用します。
 
@@ -687,7 +687,7 @@ x86CPUでは、プロテクトモードを有効化するためにコントロ�
 
 GDT周りの機構については長くなったので別の記事にメモ書きとしてまとめました。
 
-https://yukituna.com/3847/
+参考：[x86CPUのメモリ保護機構に関するメモ書き(GDTとLDT)](https://kashiwaba-yuki/Linux/linux-got-plt)
 
 ### lgdt gdtdesc
 
@@ -1155,7 +1155,7 @@ void readsect(void *dst, uint offset)
 
 ここでなぜ`offset = (offset / SECTSIZE) + 1;`の行で、2番目のセクタ(セクタ1)からデータを読み込んでいるのかというと、Makefileの項で確認した通り、カーネルプログラムはイメージの先頭512バイトの位置に配置されているためです。
 
-![https://yukituna.com/wp-content/uploads/2022/01/image-8.png](https://yukituna.com/wp-content/uploads/2022/01/image-8.png)
+![img](../../static/media/2022-01-10-unix-xv6-001-bootstrap/image-8-16455921223972.png)
 
 xv6OSでは、`\#define SECTSIZE  512`とある通り、1セクタ分のサイズが512バイトと定義されています。
 
