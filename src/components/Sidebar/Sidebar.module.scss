@@ -10,8 +10,8 @@
 }
 
 .sidebar_headerimage {
-    max-height: 150px;
-    margin-bottom: 1.5rem;
+    max-height: 150px !important;
+    margin-bottom: 1.5rem !important;
 }
 
 @include breakpoint-sm {
