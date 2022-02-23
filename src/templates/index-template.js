@@ -33,7 +33,6 @@ const IndexTemplate = ({ data, pageContext }: Props) => {
   return (
     <Layout title={pageTitle} description={siteSubtitle}>
       <img src={LOGO_IMG} className="sidebar_headerimage" alt="logo"></img>
-      <p></p>
       <Sidebar isIndex />
       <Page>
         <Feed edges={edges} />
