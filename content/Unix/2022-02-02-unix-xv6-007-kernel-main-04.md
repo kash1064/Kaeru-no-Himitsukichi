@@ -97,7 +97,7 @@ void lapicinit(void)
 
 ### ローカルAPICレジスタ
 
-変数`lapic`は[前回](https://yukituna.com/3898/)確認したMPテーブルの取得の中でMPフローティングポインタ内の`lapicaddr`のアドレスが格納されていました。
+変数`lapic`は[前回](/unix-xv6-006-kernel-main-03)確認したMPテーブルの取得の中でMPフローティングポインタ内の`lapicaddr`のアドレスが格納されていました。
 
 実際にこのグローバル変数に格納されている値をデバッガで確認してみます。
 

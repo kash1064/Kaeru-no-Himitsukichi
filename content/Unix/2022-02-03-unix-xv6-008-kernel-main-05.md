@@ -1,25 +1,23 @@
 ---
-title: 
-date: "2022-02-20"
+title: xv6OSを真面目に読みこんでカーネルを完全に理解する -セグメントディスクリプタ初期化 編-
+date: "2022-02-03"
 template: "post"
-draft: true
-slug: ""
-category: ""
+draft: false
+slug: "unix-xv6-008-kernel-main-05"
+category: "Unix"
 tags:
-  - ""
-  - ""
-  - ""
-description: ""
-socialImage: "/media/cards/no-image.png"
+  - "Unix"
+  - "xv6"
+  - "Kernel"
+description: "教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのカーネルのmain関数の挙動を読み解きます。"
+socialImage: "/media/cards/unix-xv6-008-kernel-main-05.png"
 ---
 
 [はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ](https://amzn.to/3q8TU3K)にインスパイアされて[xv6 OS](https://github.com/mit-pdos/xv6-public)を読んでます。
 
 UNIX V6自体はx86CPUでは動作しないため、基本的には、UNIXv6をX86アーキテクチャで動くようにした[xv6 OS](https://github.com/mit-pdos/xv6-public)のリポジトリをForkした[kash1064/xv6-public: xv6 OS](https://github.com/kash1064/xv6-public)のソースコードを読んでいくことにしました。
 
-[前回](https://yukituna.com/3910/)は`main`関数で実行される`lapicinit`関数によるローカルAPICの設定を確認しました。
-
-https://yukituna.com/3910/
+[前回](/unix-xv6-007-kernel-main-04)は`main`関数で実行される`lapicinit`関数によるローカルAPICの設定を確認しました。
 
 今回は`seginit`関数の挙動を追っていきます。
 
@@ -81,7 +79,7 @@ struct cpu {
 
 `cpu`構造体は、配列`cpus`に格納されています。
 
-これは、[マルチプロセッサ 編](https://yukituna.com/3898/#processor-entry%E3%81%AE%E6%83%85%E5%A0%B1%E5%8F%96%E5%BE%97)で見た通り`param.h`で定義された`NCPU`に設定されている通り、最大8つのCPUをサポートする配列です。
+これは、[マルチプロセッサ 編](/unix-xv6-006-kernel-main-03)で見た通り`param.h`で定義された`NCPU`に設定されている通り、最大8つのCPUをサポートする配列です。
 
 ### cpus関数
 
@@ -141,7 +139,7 @@ int lapicid(void)
 }
 ```
 
-変数`lapic`には、[マルチプロセッサ 編](https://yukituna.com/3898/#processor-entry%E3%81%AE%E6%83%85%E5%A0%B1%E5%8F%96%E5%BE%97)で見た通り`mp.c`でローカルAPICのアドレスが格納されています。
+変数`lapic`には、[マルチプロセッサ 編](/unix-xv6-006-kernel-main-03)で見た通り`mp.c`でローカルAPICのアドレスが格納されています。
 
 Intelのマルチプロセッサ仕様書(5-1)によると、ローカルAPICはベースメモリアドレス`0x0FEE00000`に置かれ、ローカルAPICIDは0から始まるハードウェアに連続して割り当てされるようです。
 
@@ -219,7 +217,7 @@ struct segdesc {
 
 ここで定義されている`segdesc`構造体は、セグメントディスクリプタです。
 
-![https://yukituna.com/wp-content/uploads/2022/02/image-4.png](https://yukituna.com/wp-content/uploads/2022/02/image-4.png)
+![2022/02/image-4.png](../../static/media/2022-02-03-unix-xv6-008-kernel-main-05/image-4.png)
 
 参考画像：[Intel SDM vol3](http://flint.cs.yale.edu/cs422/doc/24547212.pdf)
 

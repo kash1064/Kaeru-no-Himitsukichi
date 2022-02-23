@@ -86,7 +86,7 @@ PDの先頭アドレスはCR3レジスタに格納されています。
 
 ## kvmalloc関数
 
-さて、[前回](https://yukituna.com/3869/)に引き続きカーネルの`main`関数の処理を追っていきます。
+さて、[前回](/unix-xv6-004-kernel-main-01)に引き続きカーネルの`main`関数の処理を追っていきます。
 
 ``` c
 // Bootstrap processor starts running C code here.
@@ -115,7 +115,7 @@ int main(void)
 }
 ```
 
-[前回](https://yukituna.com/3869/)は`kinit1`関数が終了するところまで進めたので、今回は`kvmalloc`関数から見ていきます。
+[前回](/unix-xv6-004-kernel-main-01)は`kinit1`関数が終了するところまで進めたので、今回は`kvmalloc`関数から見ていきます。
 
 `kvmalloc`関数は`vm.c`で以下のように定義されています。
 
@@ -260,7 +260,7 @@ char* kalloc(void)
 }
 ```
 
-[前回](https://yukituna.com/3869/)の記事で確認した通り、この時点ではまだロックは無効化されています。
+[前回](/unix-xv6-004-kernel-main-01)の記事で確認した通り、この時点ではまだロックは無効化されています。
 
 そのため`acquire`関数と`release`関数は無視します。
 
@@ -272,7 +272,7 @@ char* kalloc(void)
 
 これによって、次の行の`memset(pgdir, 0, PGSIZE);`で確保した1ページ分のメモリ領域を0で初期化することができます。
 
-`memset`関数の挙動も[前回](https://yukituna.com/3869/)の記事で確認したので割愛します。
+`memset`関数の挙動も[前回](/unix-xv6-004-kernel-main-01)の記事で確認したので割愛します。
 
 最後の行は`PHYSTOP`の値が`DEVSPACE`を超過していないかを検証しているだけなので割愛します。
 
