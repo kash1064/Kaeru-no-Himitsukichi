@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[かえるのひみつきち]]></title><description><![CDATA[かえるのひみつきち]]></description><link>https://kashiwaba-yuki.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 23 Feb 2022 05:02:24 GMT</lastBuildDate><item><title><![CDATA[Gatsbyで作成したSPAブログをGitHubPagesに公開する環境を作る備忘録]]></title><description><![CDATA[Gatsbyで作成したSPAブログをGithub Pagesに公開する手順についてまとめています。Gatsbyの開発環境はDockerコンテナ上に構築しています。]]></description><link>https://kashiwaba-yuki.com/Notes/note-how-to-deploy-gatsby-spa</link><guid isPermaLink="false">https://kashiwaba-yuki.com/Notes/note-how-to-deploy-gatsby-spa</guid><pubDate>Sun, 20 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;突然ですが、諸般の事情につきブログを移転することにしました。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[かえるのひみつきち]]></title><description><![CDATA[かえるのひみつきち]]></description><link>https://kashiwaba-yuki.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 23 Feb 2022 05:08:25 GMT</lastBuildDate><item><title><![CDATA[Gatsbyで作成したSPAブログをGitHubPagesに公開する環境を作る備忘録]]></title><description><![CDATA[Gatsbyで作成したSPAブログをGithub Pagesに公開する手順についてまとめています。Gatsbyの開発環境はDockerコンテナ上に構築しています。]]></description><link>https://kashiwaba-yuki.com/note-how-to-deploy-gatsby-spa</link><guid isPermaLink="false">https://kashiwaba-yuki.com/note-how-to-deploy-gatsby-spa</guid><pubDate>Sun, 20 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;突然ですが、諸般の事情につきブログを移転することにしました。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://yukituna.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;旧ブログ&lt;/a&gt;の記事は順次こちらのブログに移植していこうと思います（手動でやる必要があるので面倒ですが…。）&lt;/p&gt;
 &lt;p&gt;新しいブログですが、MITライセンスで公開されているGatsbyテンプレートの&lt;a href=&quot;https://github.com/alxshelepenok/gatsby-starter-lumen&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;gatsby-starter-lumen&lt;/a&gt;をベースに使用させてもらってます。&lt;/p&gt;
 &lt;p&gt;この記事では、新しいブログを公開するまでに実施した作業について備忘録としてまとめておきます。&lt;/p&gt;
@@ -401,7 +401,125 @@ $&lt;span class=&quot;token property&quot;&gt;color-gray-bg&lt;/span&gt;&lt;span
 &lt;p&gt;今回はCNAMEファイルも作成してカスタムドメインが有効になっているので、このドメインに接続すれば作成したブログを確認することができます。&lt;/p&gt;
 &lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
 &lt;p&gt;WordPressの旧ブログから順次こちらに移行していく予定です。&lt;/p&gt;
-&lt;p&gt;画像とか内部リンクとかの修正を手動でやる必要があるのでかなり手間がかかりそうです。。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[xv6OSを真面目に読みこんでカーネルを完全に理解する -リンカ・ページング編-]]></title><description><![CDATA[教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのブートストラップを読み解きます。]]></description><link>https://kashiwaba-yuki.com/Unix/unix-xv6-002-load-kernel</link><guid isPermaLink="false">https://kashiwaba-yuki.com/Unix/unix-xv6-002-load-kernel</guid><pubDate>Sun, 16 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://amzn.to/3q8TU3K&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ&lt;/a&gt;にインスパイアされて&lt;a href=&quot;https://github.com/mit-pdos/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 OS&lt;/a&gt;を読んでます。&lt;/p&gt;
+&lt;p&gt;画像とか内部リンクとかの修正を手動でやる必要があるのでかなり手間がかかりそうです。。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[xv6OSを真面目に読みこんでカーネルを完全に理解する -GDBデバッグ環境構築編-]]></title><description><![CDATA[教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのカーネルをロードする挙動を読み解きます。]]></description><link>https://kashiwaba-yuki.com/unix-xv6-003-setup-kernel-debug</link><guid isPermaLink="false">https://kashiwaba-yuki.com/unix-xv6-003-setup-kernel-debug</guid><pubDate>Mon, 24 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://amzn.to/3q8TU3K&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ&lt;/a&gt;にインスパイアされて&lt;a href=&quot;https://github.com/mit-pdos/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 OS&lt;/a&gt;を読んでます。&lt;/p&gt;
+&lt;p&gt;リバースエンジニアリングに強くなりたいのと、カーネルとかOSに詳しくなりたいと思っています。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://amzn.to/3I6fkVt&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;詳解 Linuxカーネル&lt;/a&gt;が結構重かったので、もう少し軽めのところから始めたいと思っていたところ、UNIX V6というOSがトータルで1万行くらいのコード量で、人類でもギリギリ理解できるということを知り、興味を持ちました。&lt;/p&gt;
+&lt;p&gt;ただ、UNIX V6自体はx86CPUでは動作しないため、基本的には、UNIXv6をX86アーキテクチャで動くようにした&lt;a href=&quot;https://github.com/mit-pdos/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 OS&lt;/a&gt;のリポジトリをForkした&lt;a href=&quot;https://github.com/kash1064/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;kash1064/xv6-public: xv6 OS&lt;/a&gt;のソースコードを読んでいくことにしました。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://kashiwaba-yuki.com/Unix/unix-xv6-002-load-kernel&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;前回&lt;/a&gt;まででxv6OSのビルドと起動プロセスまで読み進めました。&lt;/p&gt;
+&lt;p&gt;早速カーネル本体の動きを読み進めようと思ったのですが、コードを読むだけだとわからない箇所があったので、理解を深めるためにデバッグ環境を先に構成しようと思います。&lt;/p&gt;
+&lt;!-- omit in toc --&gt;
+&lt;h2 id=&quot;もくじ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%82%E3%81%8F%E3%81%98&quot; aria-label=&quot;もくじ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;もくじ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#xv6os%E3%82%92qemu-gdb%E3%81%A7%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%81%99%E3%82%8B&quot;&gt;xv6OSをQEMU-GDBでデバッグする&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E6%99%82%E3%81%AEqemu%E3%81%AE%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E5%BC%95%E6%95%B0&quot;&gt;デバッグ時のQEMUのオプション引数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%82%92%E8%A9%A6%E3%81%99&quot;&gt;デバッグを試す&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;xv6osをqemu-gdbでデバッグする&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#xv6os%E3%82%92qemu-gdb%E3%81%A7%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%81%99%E3%82%8B&quot; aria-label=&quot;xv6osをqemu gdbでデバッグする permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;xv6OSをQEMU-GDBでデバッグする&lt;/h2&gt;
+&lt;p&gt;基本的な手順は以下の記事が参考になりました。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://qiita.com/ksky/items/974ad1249cfb2dcf5437&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6のデバッグ環境をつくる - Qiita&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;僕の環境ではQEMUのコンソールはGUIの別ウィンドウで使用したかったので、上記の記事とは異なり、&lt;code class=&quot;language-text&quot;&gt;qemu-nox-gdb&lt;/code&gt;ではなく&lt;code class=&quot;language-text&quot;&gt;qemu-gdb&lt;/code&gt;を使用しています。&lt;/p&gt;
+&lt;p&gt;デバッガの接続方法は非常に簡単で、以下のコマンド実行するだけです。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Makefileと同じディレクトリで実行する&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;make&lt;/span&gt; qemu-gdb&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;続いて、別のターミナルを開き、以下のコマンドを入力するとデバッグが可能になります。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# gdbでkernelバイナリをデバッグ対象に指定&lt;/span&gt;
+gdb kernel
+
+&lt;span class=&quot;token comment&quot;&gt;# gdbでリモートデバッグ&lt;/span&gt;
+target remote localhost:26000&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;まず、&lt;code class=&quot;language-text&quot;&gt;make qemu-gdb&lt;/code&gt;は、xv6OSをビルドした上で&lt;code class=&quot;language-text&quot;&gt;qemu-system-i386 -serial mon:stdio -drive file=fs.img,index=1,media=disk,format=raw -drive file=xv6.img,index=0,media=disk,format=raw -smp 2 -m 512  -S -gdb tcp::26000&lt;/code&gt;を呼び出します。&lt;/p&gt;
+&lt;p&gt;QEMUのオプション引数については以下で順に見ていきます。&lt;/p&gt;
+&lt;h3 id=&quot;デバッグ時のqemuのオプション引数&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E6%99%82%E3%81%AEqemu%E3%81%AE%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E5%BC%95%E6%95%B0&quot; aria-label=&quot;デバッグ時のqemuのオプション引数 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;デバッグ時のQEMUのオプション引数&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;make qemu-gdb&lt;/code&gt;実行時に使用されるオプション引数は以下の通りです。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;center&quot;&gt;オプション引数&lt;/th&gt;
+&lt;th align=&quot;center&quot;&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;-serial &lt;dev&gt;&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;仮想シリアルデバイスをホストにリダイレクトする&lt;br /&gt;&lt;code class=&quot;language-text&quot;&gt;mon:stdio&lt;/code&gt;の設定ではターミナルにコンソールとQEMU monitorを表示させる&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;-drive &lt;options&gt;&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;ブロックデバイスやインターフェースなどの新しいデバイスを追加する&lt;br /&gt;今回は&lt;code class=&quot;language-text&quot;&gt;xv6.img&lt;/code&gt;と&lt;code class=&quot;language-text&quot;&gt;fs.img&lt;/code&gt;をそれぞれdiskとして読み込んでいる&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;-smp &lt;cpus&gt;&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;指定した数のCPUを使用してSMP(マルチプロセッサシステム)をエミュレーションする&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;-m &lt;MB or GB&gt;&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;仮想マシン起動時のメモリサイズを指定(デフォルト単位：MB)&lt;br /&gt;&lt;code class=&quot;language-text&quot;&gt;1G&lt;/code&gt;のように接頭辞を付けることでギガバイト単位に変更可能&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;-S&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;起動時にCPUを使用しない(=電源投入直後の時点で停止し、gdbの接続を待機させる)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;-gdb &amp;#x3C;tcp::port&gt;&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;GDB接続を指定のプロトコル、ポートで受け入れる&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://www.qemu.org/docs/master/system/invocation.html#hxtool-0&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Invocation — QEMU documentation&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://qiita.com/wataash/items/174b454d4478898a556b&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;カーネルデバッグで使うQEMUオプションチートシート - Qiita&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;デバッグを試す&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%82%92%E8%A9%A6%E3%81%99&quot; aria-label=&quot;デバッグを試す permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;デバッグを試す&lt;/h3&gt;
+&lt;p&gt;xv6カーネルのシンボル情報は、ビルド時に&lt;code class=&quot;language-text&quot;&gt;kernel.sym&lt;/code&gt;に格納されています。&lt;/p&gt;
+&lt;p&gt;実際にgdb側でシンボルのアドレスを検索してみても同等の結果になります。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ info address main
+Symbol &lt;span class=&quot;token string&quot;&gt;&quot;main&quot;&lt;/span&gt; is a &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; at address 0x80103040.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;main関数にブレークポイントを仕掛けます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ main
+$ c
+Continuing.
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;----------------------------------registers-----------------------------------&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+EAX: 0x80103040 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0xfb1e0ff3 
+EBX: 0x10094 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0x0 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0xf000ff53 
+ECX: 0x0 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0xf000ff53 
+EDX: 0x1f0 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0xf000ff53 
+ESI: 0x10094 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0x0 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0xf000ff53 
+EDI: 0x0 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0xf000ff53 
+EBP: 0x7bf8 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0x0 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0xf000ff53 
+ESP: 0x8010b5c0 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0x0 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0xf000ff53 
+EIP: 0x80103040 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0xfb1e0ff3
+EFLAGS: 0x86 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;carry PARITY adjust zero SIGN &lt;span class=&quot;token builtin class-name&quot;&gt;trap&lt;/span&gt; interrupt direction overflow&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;-------------------------------------code-------------------------------------&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+   0x80103034 &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;mpenter+2&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;0&lt;/span&gt;&gt;&lt;/span&gt;:	call   0x801027a0 &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;lapicinit&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+   0x80103039 &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;mpenter+2&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;5&lt;/span&gt;&gt;&lt;/span&gt;:	call   0x80102fe0 &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;mpmain&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+   0x8010303e:	xchg   ax,ax
+&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0x80103040 &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;main&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;:	endbr32 
+   0x80103044 &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;main+&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;4&lt;/span&gt;&gt;&lt;/span&gt;:	lea    ecx,&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;esp+0x4&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+   0x80103048 &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;main+&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;8&lt;/span&gt;&gt;&lt;/span&gt;:	and    esp,0xfffffff0
+   0x8010304b &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;main+1&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;1&lt;/span&gt;&gt;&lt;/span&gt;:	push   DWORD PTR &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;ecx-0x4&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+   0x8010304e &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;main+1&lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;4&lt;/span&gt;&gt;&lt;/span&gt;:	push   ebp
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;------------------------------------stack-------------------------------------&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+0000&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; 0x8010b5c0 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0x0 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0xf000ff53 
+0004&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; 0x8010b5c4 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0x0 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0xf000ff53 
+0008&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; 0x8010b5c8 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0x0 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0xf000ff53 
+0012&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; 0x8010b5cc --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0x0 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0xf000ff53 
+0016&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; 0x8010b5d0 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0x0 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0xf000ff53 
+0020&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; 0x8010b5d4 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0x0 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0xf000ff53 
+0024&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; 0x8010b5d8 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0x0 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0xf000ff53 
+0028&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; 0x8010b5dc --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0x0 --&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; 0xf000ff53 
+&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;------------------------------------------------------------------------------&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+Legend: code, data, rodata, value
+
+Thread &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; hit Breakpoint &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;, main &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; at main.c:19&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;僕の環境ではgdb-pedaを有効化しているので色々でてきました。&lt;/p&gt;
+&lt;p&gt;これでカーネルのデバッグができるようになりました。&lt;/p&gt;
+&lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;はじめはbochsでやろうと思ったのですが、トラシューが上手くいかなかったのでgdbを使ってデバッグすることにしました。&lt;/p&gt;
+&lt;p&gt;こっちの方が設定が簡単で使い慣れているので結果としてよかったです。&lt;/p&gt;
+&lt;p&gt;今度こそほんとのほんとにカーネル本体を読み進めます。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[xv6OSを真面目に読みこんでカーネルを完全に理解する -リンカ・ページング編-]]></title><description><![CDATA[教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのカーネルをロードする挙動を読み解きます。]]></description><link>https://kashiwaba-yuki.com/unix-xv6-002-load-kernel</link><guid isPermaLink="false">https://kashiwaba-yuki.com/unix-xv6-002-load-kernel</guid><pubDate>Sun, 16 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://amzn.to/3q8TU3K&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ&lt;/a&gt;にインスパイアされて&lt;a href=&quot;https://github.com/mit-pdos/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 OS&lt;/a&gt;を読んでます。&lt;/p&gt;
 &lt;p&gt;リバースエンジニアリングに強くなりたいのと、カーネルとかOSに詳しくなりたいと思っています。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://amzn.to/3I6fkVt&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;詳解 Linuxカーネル&lt;/a&gt;が結構重かったので、もう少し軽めのところから始めたいと思っていたところ、UNIX V6というOSがトータルで1万行くらいのコード量で、人類でもギリギリ理解できるということを知り、興味を持ちました。&lt;/p&gt;
 &lt;p&gt;ただ、UNIX V6自体はx86CPUでは動作しないため、基本的には、UNIXv6をX86アーキテクチャで動くようにした&lt;a href=&quot;https://github.com/mit-pdos/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 OS&lt;/a&gt;のリポジトリをForkした&lt;a href=&quot;https://github.com/kash1064/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;kash1064/xv6-public: xv6 OS&lt;/a&gt;のソースコードを読んでいくことにしました。&lt;/p&gt;
@@ -1079,7 +1197,7 @@ jmp &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&q
 &lt;li&gt;&lt;a href=&quot;https://amzn.to/3q8TU3K&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://amzn.to/3I6fkVt&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;詳解 Linuxカーネル&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://amzn.to/3JRUdI2&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;作って理解するOS x86系コンピュータを動かす理論と実装&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[xv6OSを真面目に読みこんでカーネルを完全に理解する -ブートストラップ編-]]></title><description><![CDATA[教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのブートストラップを読み解きます。]]></description><link>https://kashiwaba-yuki.com/Unix/unix-xv6-001-bootstrap</link><guid isPermaLink="false">https://kashiwaba-yuki.com/Unix/unix-xv6-001-bootstrap</guid><pubDate>Mon, 10 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://amzn.to/3q8TU3K&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ&lt;/a&gt;にインスパイアされて&lt;a href=&quot;https://github.com/mit-pdos/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 OS&lt;/a&gt;を読んでます。&lt;/p&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[xv6OSを真面目に読みこんでカーネルを完全に理解する -ブートストラップ編-]]></title><description><![CDATA[教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのブートストラップを読み解きます。]]></description><link>https://kashiwaba-yuki.com/unix-xv6-001-bootstrap</link><guid isPermaLink="false">https://kashiwaba-yuki.com/unix-xv6-001-bootstrap</guid><pubDate>Mon, 10 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://amzn.to/3q8TU3K&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ&lt;/a&gt;にインスパイアされて&lt;a href=&quot;https://github.com/mit-pdos/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 OS&lt;/a&gt;を読んでます。&lt;/p&gt;
 &lt;p&gt;リバースエンジニアリングに強くなりたいのと、カーネルとかOSに詳しくなりたいと思っています。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://amzn.to/3I6fkVt&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;詳解 Linuxカーネル&lt;/a&gt;が結構重かったので、もう少し軽めのところから始めたいと思っていたところ、UNIX V6というOSがトータルで1万行くらいのコード量で、人類でもギリギリ理解できるということを知り、興味を持ちました。&lt;/p&gt;
 &lt;p&gt;ただ、UNIX V6自体はx86CPUでは動作しないため、基本的には、UNIXv6をX86アーキテクチャで動くようにした&lt;a href=&quot;https://github.com/mit-pdos/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 OS&lt;/a&gt;のリポジトリをForkした&lt;a href=&quot;https://github.com/kash1064/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;kash1064/xv6-public: xv6 OS&lt;/a&gt;のソースコードを読んでいくことにしました。&lt;/p&gt;
