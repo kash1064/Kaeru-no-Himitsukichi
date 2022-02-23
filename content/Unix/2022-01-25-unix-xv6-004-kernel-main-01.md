@@ -1,6 +1,6 @@
 ---
 title: xv6OSを真面目に読みこんでカーネルを完全に理解する -メモリ割り当て・排他制御 編-
-date: "2022-01-24"
+date: "2022-01-25"
 template: "post"
 draft: false
 slug: "unix-xv6-004-kernel-main-01"

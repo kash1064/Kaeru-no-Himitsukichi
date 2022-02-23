@@ -1,25 +1,23 @@
 ---
-title: 
-date: "2022-02-20"
+title: xv6OSを真面目に読みこんでカーネルを完全に理解する -ページテーブル(PDT/PTD) 編-
+date: "2022-01-26"
 template: "post"
-draft: true
-slug: ""
-category: ""
+draft: false
+slug: "unix-xv6-005-kernel-main-02"
+category: "Unix"
 tags:
-  - ""
-  - ""
-  - ""
-description: ""
-socialImage: "/media/cards/no-image.png"
+  - "Unix"
+  - "xv6"
+  - "Kernel"
+description: "教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのカーネルのmain関数の挙動を読み解きます。"
+socialImage: "/media/cards/unix-xv6-005-kernel-main-02.png"
 ---
 
 [はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ](https://amzn.to/3q8TU3K)にインスパイアされて[xv6 OS](https://github.com/mit-pdos/xv6-public)を読んでます。
 
 UNIX V6自体はx86CPUでは動作しないため、基本的には、UNIXv6をX86アーキテクチャで動くようにした[xv6 OS](https://github.com/mit-pdos/xv6-public)のリポジトリをForkした[kash1064/xv6-public: xv6 OS](https://github.com/kash1064/xv6-public)のソースコードを読んでいくことにしました。
 
-[前回](https://yukituna.com/3869/)は`main`関数で初めに実行される`kinit1`関数による排他制御周りの挙動を確認しました。
-
-https://yukituna.com/3869/
+[前回](/unix-xv6-004-kernel-main-01)は`main`関数で初めに実行される`kinit1`関数による排他制御周りの挙動を確認しました。
 
 今回は`kvmalloc`関数によるxv6カーネルのページテーブルの初期化を追っていきます。
 
@@ -78,7 +76,7 @@ PTEは物理アドレスのベースアドレスを解決するため、仮想�
 
 詳細な流れは以下の図がわかりやすかったため引用しています。
 
-![https://yukituna.com/wp-content/uploads/2022/01/zu04.jpg](https://yukituna.com/wp-content/uploads/2022/01/zu04.jpg)
+![img](../../static/media/2022-01-26-unix-xv6-005-kernel-main-02/zu04.jpg)
 
 参照画像：[第6回 メモリー上のデータを見えなくする（前編） | 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20071107/286632/)
 
@@ -161,7 +159,7 @@ xv6OSだけでなく、WindowsやLinuxなどの32bitOS(x86アーキテクチャ)
 
 詳しくは以下の図が参考になります。
 
-![https://yukituna.com/wp-content/uploads/2022/01/image-20.png](https://yukituna.com/wp-content/uploads/2022/01/image-20.png)
+![img](../../static/media/2022-01-26-unix-xv6-005-kernel-main-02/image-20.png)
 
 参考画像：[P.31 xv6OS](https://pdos.csail.mit.edu/6.828/2018/xv6/book-rev11.pdf)
 
@@ -231,7 +229,7 @@ static struct kmap {
 
 初期化されているテーブルのマッピングは、先ほど貼った以下の画像のレイアウトと一致します。
 
-![https://yukituna.com/wp-content/uploads/2022/01/image-20.png](https://yukituna.com/wp-content/uploads/2022/01/image-20.png)
+![img](../../static/media/2022-01-26-unix-xv6-005-kernel-main-02/image-20-16455945916397.png)
 
 参考画像：[P.31 xv6OS](https://pdos.csail.mit.edu/6.828/2018/xv6/book-rev11.pdf)
 
@@ -319,7 +317,7 @@ if(mappages(pgdir, k->virt, k->phys_end - k->phys_start,(uint)k->phys_start, k->
 
 PTEはページに対応する物理アドレスの値とアクセス制御や属性に関する情報を保持します。
 
-![https://yukituna.com/wp-content/uploads/2022/01/zu03b.jpg](https://yukituna.com/wp-content/uploads/2022/01/zu03b.jpg)
+![img](../../static/media/2022-01-26-unix-xv6-005-kernel-main-02/zu03b.jpg)
 
 参考画像：[第6回 メモリー上のデータを見えなくする（前編） | 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20071107/286632/)
 
