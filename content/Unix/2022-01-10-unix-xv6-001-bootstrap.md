@@ -6,7 +6,7 @@ draft: false
 slug: "unix-xv6-001-bootstrap"
 category: 
   - "OS"
-  - "Unix
+  - "Unix"
 tags:
   - "Unix"
   - "xv6"
