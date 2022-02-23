@@ -188,7 +188,7 @@ module.exports = {
         background_color: '#FFF',
         theme_color: '#F7A046',
         display: 'standalone',
-        icon: 'static/logo.jpg'
+        icon: 'static/icon2.png'
       },
     },
     {
