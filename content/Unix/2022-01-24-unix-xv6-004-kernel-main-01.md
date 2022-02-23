@@ -9,23 +9,21 @@ tags:
   - "Unix"
   - "xv6"
   - "Kernel"
-description: "教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのカーネルをロードする挙動を読み解きます。"
-socialImage: "/media/cards/unix-xv6-002-load-kernel.png"
+description: "教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのカーネルのmain関数の挙動を読み解きます。"
+socialImage: "/media/cards/unix-xv6-004-kernel-main-01.png"
 ---
 
 [はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ](https://amzn.to/3q8TU3K)にインスパイアされて[xv6 OS](https://github.com/mit-pdos/xv6-public)を読んでます。
 
 UNIX V6自体はx86CPUでは動作しないため、基本的には、UNIXv6をX86アーキテクチャで動くようにした[xv6 OS](https://github.com/mit-pdos/xv6-public)のリポジトリをForkした[kash1064/xv6-public: xv6 OS](https://github.com/kash1064/xv6-public)のソースコードを読んでいくことにしました。
 
-[前回](https://yukituna.com/3855/)まででxv6OSのビルドと起動プロセスまで読み進めました。
-
-https://yukituna.com/3855/
+[前回](/unix-xv6-002-load-kernel)まででxv6OSのビルドと起動プロセスまで読み進めました。
 
 いよいよカーネルを読み進めていきます。
 
 まずは`main.c`から読んでいきます。
 
-基本的にはCのソースコードを読みつつ、必要に応じて`kernel.asm`と`kernel.sym`を参照してgdbデバッグを行う流れて処理を追っていきます。
+基本的にはCのソースコードを読みつつ、必要に応じて`kernel.asm`と`kernel.sym`を参照してgdbデバッグを行う流れで処理を追っていきます。
 
 <!-- omit in toc -->
 ## もくじ
@@ -46,7 +44,7 @@ https://yukituna.com/3855/
 
 ## main関数
 
-[前回](https://yukituna.com/3855/)の記事では、`main.c`のmain関数を呼び出すところまで見ていきました。
+[前回](/unix-xv6-002-load-kernel)の記事では、`main.c`のmain関数を呼び出すところまで見ていきました。
 
 ここからは、カーネル本体の動きを見ていきます。
 
@@ -751,7 +749,7 @@ $ continue
 
 最後の行に表示されているアドレスはリターンアドレスのスタックっぽいです。
 
-![https://yukituna.com/wp-content/uploads/2022/01/image-19.png](https://yukituna.com/wp-content/uploads/2022/01/image-19.png)
+![img](../../static/media/2022-01-24-unix-xv6-004-kernel-main-01/image-19.png)
 
 ## おまけ：memsetについて
 
