@@ -1,16 +1,16 @@
 ---
 title: x86CPUのメモリ保護機構に関するメモ書き(GDTとLDT)
-date: "2022-02-20"
+date: "2022-01-09"
 template: "post"
-draft: true
+draft: false
 slug: "linux-memory-protect-gdt-ldt"
-category: ""
+category: "Linux"
 tags:
-  - ""
-  - ""
-  - ""
-description: ""
-socialImage: "/media/cards/no-image.png"
+  - "Linux"
+  - "OS"
+  - "Kernel"
+description: "UNIXのソースコードを読む中で、起動時のプロテクトモードへの移行プロセスが気になったので調べたことをまとめました。"
+socialImage: "/media/cards/linux-memory-protect-gdt-ldt.png"
 ---
 
 UNIXのソースコードを読む中で、起動時のプロテクトモードへの移行プロセスが気になったので調べたことをまとめました。

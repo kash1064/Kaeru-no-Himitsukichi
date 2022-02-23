@@ -1,16 +1,17 @@
 ---
-title: 
-date: "2022-02-20"
+title: Ubuntu20.04にXRDP接続した際に起きた問題についてのまとめ
+date: "2021-11-30"
 template: "post"
-draft: true
-slug: ""
-category: ""
+draft: false
+slug: "linux-trouble-ubuntu-rdp"
+category: "Linux"
 tags:
-  - ""
-  - ""
-  - ""
-description: ""
-socialImage: "/media/cards/no-image.png"
+  - "Linux"
+  - "Ubuntu"
+  - "RDP"
+  - "トラブルシューティング"
+description: "この記事では、Ubuntuマシンに対してXRDP接続を行ったときに発生した問題についてまとめています。"
+socialImage: "/media/cards/linux-trouble-ubuntu-rdp.png"
 ---
 
 この記事では、Ubuntuマシンに対してXRDP接続を行ったときに発生した問題についてまとめていきます。
@@ -80,7 +81,7 @@ setxkbmap jp
 
 こちらが設定画面です。
 
-![https://yukituna.com/wp-content/uploads/2021/11/image-15.png](https://yukituna.com/wp-content/uploads/2021/11/image-15.png)
+![https://yukituna.com/wp-content/uploads/2021/11/image-15.png](../../static/media/2021-11-30-linux-trouble-ubuntu-rdp/image-15.png)
 
 これでOSを再起動すると、次回のアクセスからJIS配列が反映されるようになりました。
 

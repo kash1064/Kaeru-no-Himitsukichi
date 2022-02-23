@@ -1,15 +1,15 @@
 ---
-title: 
-date: "2022-01-05"
+title: GOT/PLTを経由したライブラリ関数呼び出しの流れを追う
+date: "2022-01-06"
 template: "post"
-draft: true
+draft: false
 slug: "linux-got-plt"
-category: ""
+category: "Linux"
 tags:
-  - ""
-  - ""
-  - ""
-description: ""
+  - "Linux"
+  - "OS"
+  - "Kernel"
+description: "GOTとPLTの概要についてまとめるとともに実際に検証してみた内容をまとめています。"
 socialImage: "/media/cards/linux-got-plt.png"
 ---
 
