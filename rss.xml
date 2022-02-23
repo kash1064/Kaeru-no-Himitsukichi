@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[かえるのひみつきち]]></title><description><![CDATA[かえるのひみつきち]]></description><link>https://kashiwaba-yuki.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 23 Feb 2022 05:59:03 GMT</lastBuildDate><item><title><![CDATA[Gatsbyで作成したSPAブログをGitHubPagesに公開する環境を作る備忘録]]></title><description><![CDATA[Gatsbyで作成したSPAブログをGithub Pagesに公開する手順についてまとめています。Gatsbyの開発環境はDockerコンテナ上に構築しています。]]></description><link>https://kashiwaba-yuki.com/note-how-to-deploy-gatsby-spa</link><guid isPermaLink="false">https://kashiwaba-yuki.com/note-how-to-deploy-gatsby-spa</guid><pubDate>Sun, 20 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;突然ですが、諸般の事情につきブログを移転することにしました。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[かえるのひみつきち]]></title><description><![CDATA[かえるのひみつきち]]></description><link>https://kashiwaba-yuki.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 23 Feb 2022 06:06:49 GMT</lastBuildDate><item><title><![CDATA[Gatsbyで作成したSPAブログをGitHubPagesに公開する環境を作る備忘録]]></title><description><![CDATA[Gatsbyで作成したSPAブログをGithub Pagesに公開する手順についてまとめています。Gatsbyの開発環境はDockerコンテナ上に構築しています。]]></description><link>https://kashiwaba-yuki.com/note-how-to-deploy-gatsby-spa</link><guid isPermaLink="false">https://kashiwaba-yuki.com/note-how-to-deploy-gatsby-spa</guid><pubDate>Sun, 20 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;突然ですが、諸般の事情につきブログを移転することにしました。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://yukituna.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;旧ブログ&lt;/a&gt;の記事は順次こちらのブログに移植していこうと思います（手動でやる必要があるので面倒ですが…。）&lt;/p&gt;
 &lt;p&gt;新しいブログですが、MITライセンスで公開されているGatsbyテンプレートの&lt;a href=&quot;https://github.com/alxshelepenok/gatsby-starter-lumen&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;gatsby-starter-lumen&lt;/a&gt;をベースに使用させてもらってます。&lt;/p&gt;
 &lt;p&gt;この記事では、新しいブログを公開するまでに実施した作業について備忘録としてまとめておきます。&lt;/p&gt;
@@ -401,7 +401,368 @@ $&lt;span class=&quot;token property&quot;&gt;color-gray-bg&lt;/span&gt;&lt;span
 &lt;p&gt;今回はCNAMEファイルも作成してカスタムドメインが有効になっているので、このドメインに接続すれば作成したブログを確認することができます。&lt;/p&gt;
 &lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
 &lt;p&gt;WordPressの旧ブログから順次こちらに移行していく予定です。&lt;/p&gt;
-&lt;p&gt;画像とか内部リンクとかの修正を手動でやる必要があるのでかなり手間がかかりそうです。。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[xv6OSを真面目に読みこんでカーネルを完全に理解する -セグメントディスクリプタ初期化 編-]]></title><description><![CDATA[教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのカーネルのmain関数の挙動を読み解きます。]]></description><link>https://kashiwaba-yuki.com/unix-xv6-008-kernel-main-05</link><guid isPermaLink="false">https://kashiwaba-yuki.com/unix-xv6-008-kernel-main-05</guid><pubDate>Thu, 03 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://amzn.to/3q8TU3K&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ&lt;/a&gt;にインスパイアされて&lt;a href=&quot;https://github.com/mit-pdos/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 OS&lt;/a&gt;を読んでます。&lt;/p&gt;
+&lt;p&gt;画像とか内部リンクとかの修正を手動でやる必要があるのでかなり手間がかかりそうです。。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[xv6OSを真面目に読みこんでカーネルを完全に理解する -IOAPIC 編-]]></title><description><![CDATA[教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのカーネルのmain関数の挙動を読み解きます。]]></description><link>https://kashiwaba-yuki.com/unix-xv6-009-kernel-main-06</link><guid isPermaLink="false">https://kashiwaba-yuki.com/unix-xv6-009-kernel-main-06</guid><pubDate>Sun, 06 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://amzn.to/3q8TU3K&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ&lt;/a&gt;にインスパイアされて&lt;a href=&quot;https://github.com/mit-pdos/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 OS&lt;/a&gt;を読んでます。&lt;/p&gt;
+&lt;p&gt;UNIX V6自体はx86CPUでは動作しないため、基本的には、UNIXv6をX86アーキテクチャで動くようにした&lt;a href=&quot;https://github.com/mit-pdos/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 OS&lt;/a&gt;のリポジトリをForkした&lt;a href=&quot;https://github.com/kash1064/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;kash1064/xv6-public: xv6 OS&lt;/a&gt;のソースコードを読んでいくことにしました。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/unix-xv6-008-kernel-main-05&quot;&gt;前回&lt;/a&gt;は&lt;code class=&quot;language-text&quot;&gt;main&lt;/code&gt;関数で実行される&lt;code class=&quot;language-text&quot;&gt;seginit&lt;/code&gt;関数を確認しました。&lt;/p&gt;
+&lt;p&gt;今回は&lt;code class=&quot;language-text&quot;&gt;picinit&lt;/code&gt;関数と&lt;code class=&quot;language-text&quot;&gt;ioapicinit&lt;/code&gt;関数の挙動を追っていきます。&lt;/p&gt;
+&lt;!-- omit in toc --&gt;
+&lt;h2 id=&quot;もくじ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%82%E3%81%8F%E3%81%98&quot; aria-label=&quot;もくじ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;もくじ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#picinit%E9%96%A2%E6%95%B0&quot;&gt;picinit関数&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#ioapicinit%E9%96%A2%E6%95%B0&quot;&gt;ioapicinit関数&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%A1%E3%83%A2%E3%83%AA%E3%83%9E%E3%83%83%E3%83%97%E3%81%95%E3%82%8C%E3%81%9Fioapic%E3%83%AC%E3%82%B8%E3%82%B9%E3%82%BF%E9%A0%98%E5%9F%9F%E3%81%AE%E5%8F%82%E7%85%A7&quot;&gt;メモリマップされたIOAPICレジスタ領域の参照&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#data%E3%83%AC%E3%82%B8%E3%82%B9%E3%82%BF%E7%B5%8C%E7%94%B1%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E6%9B%B8%E3%81%8D%E3%82%92%E8%A1%8C%E3%81%86&quot;&gt;Dataレジスタ経由でデータの読み書きを行う&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#redirection-table%E3%81%AE%E5%88%9D%E6%9C%9F%E5%8C%96&quot;&gt;Redirection Tableの初期化&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E5%8F%82%E8%80%83%E6%9B%B8%E7%B1%8D&quot;&gt;参考書籍&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;picinit関数&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#picinit%E9%96%A2%E6%95%B0&quot; aria-label=&quot;picinit関数 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;picinit関数&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;picinit&lt;/code&gt;関数は&lt;code class=&quot;language-text&quot;&gt;picirq.c&lt;/code&gt;で定義された関数です。&lt;/p&gt;
+&lt;p&gt;以下の通りかなり小さい関数です。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;types.h&quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;x86.h&quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;traps.h&quot;&lt;/span&gt;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// I/O Addresses of the two programmable interrupt controllers&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;IO_PIC1&lt;/span&gt;         &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;0x20&lt;/span&gt;    &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// Master (IRQs 0-7)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;IO_PIC2&lt;/span&gt;         &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;0xA0&lt;/span&gt;    &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// Slave (IRQs 8-15)&lt;/span&gt;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// Don&apos;t use the 8259A interrupt controllers.  Xv6 assumes SMP hardware.&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;picinit&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// mask all interrupts&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;outb&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;IO_PIC1&lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0xFF&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;outb&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;IO_PIC2&lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0xFF&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;//PAGEBREAK!&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// Blank page.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;outb&lt;/code&gt;は&lt;code class=&quot;language-text&quot;&gt;x86.h&lt;/code&gt;で定義された以下の関数です。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;inline&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;outb&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;ushort port&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; uchar data&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;asm&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;volatile&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;out %0,%1&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;a&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;data&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;d&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;port&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;任意のポートにデータを送信するアセンブリを発行します。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://stackoverflow.com/questions/8365746/what-does-outb-in-att-asm-mean&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;assembly - what does “outb” in AT&amp;#x26;T asm mean? - Stack Overflow&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ここでは、&lt;code class=&quot;language-text&quot;&gt;0x21&lt;/code&gt;と&lt;code class=&quot;language-text&quot;&gt;0xA1&lt;/code&gt;という&lt;code class=&quot;language-text&quot;&gt;8259 PIC&lt;/code&gt;に関連したポートをマスクしています。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;8259 PIC&lt;/code&gt;は、割込み要求を受け入れ、CPUに送信する割込みコントローラですが、SMPをサポートするxv6OSではAPICによる割込みを実装するため、無効化する必要があります。&lt;/p&gt;
+&lt;p&gt;ここで、&lt;code class=&quot;language-text&quot;&gt;0x21&lt;/code&gt;と&lt;code class=&quot;language-text&quot;&gt;0xA1&lt;/code&gt;は、どちらも&lt;code class=&quot;language-text&quot;&gt;8259 PIC&lt;/code&gt;のデータポートになります。&lt;/p&gt;
+&lt;p&gt;以下のOSDevのWikiにある通り、ローカルAPICとIOAPICによる割込みを実装する場合は、これらのデータポートに&lt;code class=&quot;language-text&quot;&gt;0xFF&lt;/code&gt;を設定して&lt;code class=&quot;language-text&quot;&gt;8259 PIC&lt;/code&gt;を無効化します。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://wiki.osdev.org/PIC&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;8259 PIC - OSDev Wiki&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://stackoverflow.com/questions/62329557/i-o-port-addressing&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;assembly - I/O Port Addressing - Stack Overflow&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;ioapicinit関数&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#ioapicinit%E9%96%A2%E6%95%B0&quot; aria-label=&quot;ioapicinit関数 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;ioapicinit関数&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;picinit&lt;/code&gt;関数の処理が完了し、PICが無効化されました。&lt;/p&gt;
+&lt;p&gt;続いて、&lt;code class=&quot;language-text&quot;&gt;ioapic.c&lt;/code&gt;で定義された&lt;code class=&quot;language-text&quot;&gt;ioapicinit&lt;/code&gt;関数が&lt;code class=&quot;language-text&quot;&gt;main&lt;/code&gt;関数から呼び出されます。&lt;/p&gt;
+&lt;p&gt;この関数では、IOAPICの初期化を行います。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;ioapicinit&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; i&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; id&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; maxintr&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  ioapic &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;volatile&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;ioapic&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;IOAPIC&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  maxintr &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;ioapicread&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;REG_VER&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0xFF&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  id &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;ioapicread&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;REG_ID&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;id &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; ioapicid&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;cprintf&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;ioapicinit: id isn&apos;t equal to ioapicid; not a MP\n&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// Mark all interrupts edge-triggered, active high, disabled,&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// and not routed to any CPUs.&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;i &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;&amp;lt;=&lt;/span&gt; maxintr&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;ioapicwrite&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;REG_TABLE&lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; INT_DISABLED &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;T_IRQ0 &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; i&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;ioapicwrite&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;REG_TABLE&lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;i&lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;コードを順番に見ていきます。&lt;/p&gt;
+&lt;h3 id=&quot;メモリマップされたioapicレジスタ領域の参照&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%A1%E3%83%A2%E3%83%AA%E3%83%9E%E3%83%83%E3%83%97%E3%81%95%E3%82%8C%E3%81%9Fioapic%E3%83%AC%E3%82%B8%E3%82%B9%E3%82%BF%E9%A0%98%E5%9F%9F%E3%81%AE%E5%8F%82%E7%85%A7&quot; aria-label=&quot;メモリマップされたioapicレジスタ領域の参照 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;メモリマップされたIOAPICレジスタ領域の参照&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;ioapic = (volatile struct ioapic*)IOAPIC;&lt;/code&gt;の行では変数&lt;code class=&quot;language-text&quot;&gt;ioapic&lt;/code&gt;に&lt;code class=&quot;language-text&quot;&gt;ioapic&lt;/code&gt;構造体を設定しています。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;IOAPIC&lt;/code&gt;は&lt;code class=&quot;language-text&quot;&gt;0xFEC00000&lt;/code&gt;として&lt;code class=&quot;language-text&quot;&gt;ioapic.c&lt;/code&gt;で定義されています。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// ioapic.c&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;IOAPIC&lt;/span&gt;  &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;0xFEC00000&lt;/span&gt;   &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// Default physical address of IO APIC&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;IOAPICのアドレスはデフォルトで&lt;code class=&quot;language-text&quot;&gt;0xFEC00000&lt;/code&gt;になることが保証されているため、このアドレスを固定値として指定しています。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://stackoverflow.com/questions/24828186/about-the-io-apic-82093aa&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;x86 - About the IO-APIC 82093AA - Stack Overflow&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;ioapic&lt;/code&gt;構造体は、以下のように非常にシンプルな構造になっています。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// IO APIC MMIO structure: write reg, then read or write data.&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;ioapic&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  uint reg&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  uint pad&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  uint data&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;参考：&lt;a href=&quot;http://web.archive.org/web/20161130153145/http://download.intel.com/design/chipsets/datashts/29056601.pdf&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Memory Mapped Registers for Accessing IOAPIC Registers&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/45b8bf0613c0fee518900e712948f7c0/0b533/image-6.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 17.916666666666668%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAARlAAAEZQAGA43XUAAAA4klEQVQY0y2O6W6DMBCE8/6PVvVX2uYCwhpiDJgz2E5KVX11aVdazcweo9kp6zCj51B07KXlTSwvl5rXtKGbFh4hMC+euwuEyBf3qwNTnIXwwHnP4v93EXfE+v5amYaep1+4mYaPrGToe9xyR+uKw1VzzDXGGKSy7JOS90xj+xFRJRfRtE3DOeJm+Hx+0nU90zyjRDgfj4gonHPYtsXoG6aKT5E/gkfyjLY2W3rJc86nE000lPz6Z7iuK9Za+phKKUWSJBRlyTiOW6qiKGKXGx+GARW1MfW2lxggTVOqqtrufgDVECrAWoI6dQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/45b8bf0613c0fee518900e712948f7c0/8ac56/image-6.webp 240w,
+/static/45b8bf0613c0fee518900e712948f7c0/d3be9/image-6.webp 480w,
+/static/45b8bf0613c0fee518900e712948f7c0/b0a15/image-6.webp 500w&quot;
+              sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/45b8bf0613c0fee518900e712948f7c0/8ff5a/image-6.png 240w,
+/static/45b8bf0613c0fee518900e712948f7c0/e85cb/image-6.png 480w,
+/static/45b8bf0613c0fee518900e712948f7c0/0b533/image-6.png 500w&quot;
+            sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/45b8bf0613c0fee518900e712948f7c0/0b533/image-6.png&quot;
+            alt=&quot;2022/02/image-6.png&quot;
+            title=&quot;2022/02/image-6.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;参考画像：&lt;a href=&quot;https://www.intel.com/content/dam/www/public/us/en/documents/datasheets/9-series-chipset-pch-datasheet.pdf&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Intel 9 Series Chipset Platform Controller Hub Datasheet&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;最初の&lt;code class=&quot;language-text&quot;&gt;reg&lt;/code&gt;がインデックスとして使用され、&lt;code class=&quot;language-text&quot;&gt;data&lt;/code&gt;の領域を利用して読み書きを行われます。&lt;/p&gt;
+&lt;p&gt;実際に起動時に&lt;code class=&quot;language-text&quot;&gt;ioapic&lt;/code&gt;の領域に格納される値がどうなっているのか気になったのでデバッガで確認してみました。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;0xFEC00000&lt;/code&gt;から20バイト分の領域を見てみましたが、この時点ではすべて0でした。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ x/5wx 0xfec00000
+0xfec00000:	0x00000000	0x00000000	0x00000000	0x00000000
+0xfec00010:	0x00000000&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;dataレジスタ経由でデータの読み書きを行う&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#data%E3%83%AC%E3%82%B8%E3%82%B9%E3%82%BF%E7%B5%8C%E7%94%B1%E3%81%A7%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E6%9B%B8%E3%81%8D%E3%82%92%E8%A1%8C%E3%81%86&quot; aria-label=&quot;dataレジスタ経由でデータの読み書きを行う permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Dataレジスタ経由でデータの読み書きを行う&lt;/h3&gt;
+&lt;p&gt;続いて以下のコードを見ます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;maxintr &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;ioapicread&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;REG_VER&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0xFF&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+id &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;ioapicread&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;REG_ID&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;id &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; ioapicid&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;cprintf&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;ioapicinit: id isn&apos;t equal to ioapicid; not a MP\n&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;ioapicread&lt;/code&gt;関数は、引数として受け取った値を&lt;code class=&quot;language-text&quot;&gt;ioapic&lt;/code&gt;の&lt;code class=&quot;language-text&quot;&gt;reb&lt;/code&gt;に書き込み、その後&lt;code class=&quot;language-text&quot;&gt;data&lt;/code&gt;の値を取得して返却する関数です。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;static&lt;/span&gt; uint &lt;span class=&quot;token function&quot;&gt;ioapicread&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; reg&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  ioapic&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;reg &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; reg&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; ioapic&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;data&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;IOAPICでは、&lt;code class=&quot;language-text&quot;&gt;ioapic-&gt;reg&lt;/code&gt;がインデックスレジスタとして使用され、間接的にデータの読み書きを行うことができます。&lt;/p&gt;
+&lt;p&gt;インデックスレジスタとレジスタの対応は以下の通りです。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/0f8fc332e216b95790c9d23b8ce7a518/0b533/image-5.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 32.08333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAARlAAAEZQAGA43XUAAABI0lEQVQY00VR226EIBD1/3/PPjTqpl5BEbnsimB1PR2IbUnICTDnMkMmrMdkA8waUDGFYlBoRo2PRqJkGtvmcRwHVsLZrFBPh80HfO87nNvwdB5+22DXDSEEZLjX+zwgpQSbJNzLouMCPZ/BOUfb1OjYSEYKvVAw9pVEGL19Vl+JVzU9tDHI3teVBEPYwRgDpz1NAmqRWOSMuq5RliWstVjJ6GkNjNbQ2qR6NvQYxxEjZ3SnkV234HmeEEKg6zoiWVRVhaZtk2Ce56geD4h5xk6teu8TxvqWaiIWZGpiwusvYaBkE2YiTeTYk3DX9RiGIRF+MSaNxIgp4d1VxGVZ/gXj4AUJDvSglEptRIOYoCgKcDpLIjianXP0MYTJ/A4RO4tGP9vhxMmussmZAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/0f8fc332e216b95790c9d23b8ce7a518/8ac56/image-5.webp 240w,
+/static/0f8fc332e216b95790c9d23b8ce7a518/d3be9/image-5.webp 480w,
+/static/0f8fc332e216b95790c9d23b8ce7a518/b0a15/image-5.webp 500w&quot;
+              sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/0f8fc332e216b95790c9d23b8ce7a518/8ff5a/image-5.png 240w,
+/static/0f8fc332e216b95790c9d23b8ce7a518/e85cb/image-5.png 480w,
+/static/0f8fc332e216b95790c9d23b8ce7a518/0b533/image-5.png 500w&quot;
+            sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/0f8fc332e216b95790c9d23b8ce7a518/0b533/image-5.png&quot;
+            alt=&quot;2022/02/image-5.png&quot;
+            title=&quot;2022/02/image-5.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;参考画像：&lt;a href=&quot;https://www.intel.com/content/dam/www/public/us/en/documents/datasheets/9-series-chipset-pch-datasheet.pdf&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Intel 9 Series Chipset Platform Controller Hub Datasheet&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://mmi.hatenablog.com/entry/2017/04/09/132708&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;I/O APICについて - 睡分不足&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;maxintr = (ioapicread(REG_VER) &gt;&gt; 16) &amp;amp; 0xFF;&lt;/code&gt;の行では、インデックスレジスタに1を指定してバージョン情報を取得しています。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ x/5wx 0xfec00000
+0xfec00000:	0x00000001	0x00000000	0x00000000	0x00000000
+0xfec00010:	0x00170020&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;maxintr&lt;/code&gt;には&lt;code class=&quot;language-text&quot;&gt;0x17&lt;/code&gt;が入ります。&lt;/p&gt;
+&lt;p&gt;これはバージョンレジスタの23:16bitの範囲にあるMREを取得しているようです。&lt;/p&gt;
+&lt;p&gt;ここで取得できる情報は割込み入力PINの数から1を引いた数になるみたいです。(おそらくこれが定義できる割込みの最大数に?)&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/32a6e216be2c56ffd4c31ca9ea42dd60/0b533/image-7.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 61.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAARlAAAEZQAGA43XUAAAB/klEQVQoz21T246qQBDk/z/Kl3UTox6NsnIVkIuACgLe1wdru1o9l+RM0umZpma6qmYwpn4ONy5hrUp4eQsn2WGRNTDTBvXxBo7H46HBcbvd0LYtrterRtd1OJ1Ov3FG4HsIlr7G9XJGliYoixzn0xH/G3VVYbkM9OCyLOC6Lo7HP1gjTRIkSYogCJCt1wJeIpZaGEaI41gjTVNEUaSxFgxrnK9WK81t2+FyuWgTYz6fySE+fN+H53lwHEdAK3jSmd19qUVhqBuXgmFjz3MVxzkzSXBvUZYiOQjRds8O9ONwOKgEBtfM/F43HZr2oN/fGGb6+V7zDCPJt0jXJQ5q7llpvw1n3L+/UbdHeFmFqNjrpr+DmHfe7/cwfLkU27bxazyGaZoqkfIpg5Isy1LP1lmGIs/VT/rInEkt0TuQixS5lVyYQVlVtcN0OpGYYj6bYT439XDbtjCZTNRL79XIlgb0lyToH2vOa14U4uH9flcPXNdRJqTdNC222y02m42ACux2O2WQC0PWy3KjazLl9+1GsLJm3ajqWumPRyN89Pv4/Oyj1+thMBhgJLXhcKiZDMjashZYLBY6Z5Ad17SGFhh8S/SKRW4iS8pg91qaMehN0zTK/qmg+SfeNSoxEn3Eofpnfn3pY6UMNf5l+POBPxtzTgz3xJI5pzX8/dj8B//bc+BEHWN+AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/32a6e216be2c56ffd4c31ca9ea42dd60/8ac56/image-7.webp 240w,
+/static/32a6e216be2c56ffd4c31ca9ea42dd60/d3be9/image-7.webp 480w,
+/static/32a6e216be2c56ffd4c31ca9ea42dd60/b0a15/image-7.webp 500w&quot;
+              sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/32a6e216be2c56ffd4c31ca9ea42dd60/8ff5a/image-7.png 240w,
+/static/32a6e216be2c56ffd4c31ca9ea42dd60/e85cb/image-7.png 480w,
+/static/32a6e216be2c56ffd4c31ca9ea42dd60/0b533/image-7.png 500w&quot;
+            sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/32a6e216be2c56ffd4c31ca9ea42dd60/0b533/image-7.png&quot;
+            alt=&quot;2022/02/image-7.png&quot;
+            title=&quot;2022/02/image-7.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;参考画像：&lt;a href=&quot;https://www.intel.com/content/dam/www/public/us/en/documents/datasheets/9-series-chipset-pch-datasheet.pdf&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Intel 9 Series Chipset Platform Controller Hub Datasheet&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;次の行では&lt;code class=&quot;language-text&quot;&gt;id&lt;/code&gt;として&lt;code class=&quot;language-text&quot;&gt;0x0&lt;/code&gt;を取得しました。&lt;/p&gt;
+&lt;p&gt;これはIDレジスタの27:24bitの範囲の値でAPIC IDの値になります。(1つ目が0なのでたぶん初回実行時の値が0になっている?)&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/f20954147f64329fe787e7a1456b66e2/0b533/image-8.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 42.91666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAARlAAAEZQAGA43XUAAABZUlEQVQoz5VS126DQBC8//+xSFHiJrkCphsw1TgugOzJzspO5Ic85KTRnrbM7A2YVVzhfZPgwynw6ewx2hawsi+M3BJvmz3srAXP7XbXOAwDLpcL+r5H110lf9P8/X5XGMuysFou0dQVDk0N27ZRliX+Ommaas8w9AiDAHlRvNQNi57nIQxDJEkC3/fhui52ux3yPFdkWYY4jkWokr7gcS8RRSF8mWW9EOK6rmE8GSaZ4ziqHIgqCdfrtUZXBhzbgr1ZI0sT8EUkfPZzGd6jKMLpdIYJ0lKZr9frK7pOYy8+JWWLjXgd5Y341qmHrJ3P5x8wx03NYrnCeDzGdDIRNV/VuTEjVWOBH4Swtz48icxp/vFsPpWoqkq3Ne52q2TT6fRBGCkhPWTkMO8k3qnIb65tW8XhcMDxeFQRw4+wmM8xm83UHyqxyKbnwF+gVU+wn/6bWJTUfAGf0EqhaRpt+A8owF/qG1VGoTvNDXmCAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/f20954147f64329fe787e7a1456b66e2/8ac56/image-8.webp 240w,
+/static/f20954147f64329fe787e7a1456b66e2/d3be9/image-8.webp 480w,
+/static/f20954147f64329fe787e7a1456b66e2/b0a15/image-8.webp 500w&quot;
+              sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/f20954147f64329fe787e7a1456b66e2/8ff5a/image-8.png 240w,
+/static/f20954147f64329fe787e7a1456b66e2/e85cb/image-8.png 480w,
+/static/f20954147f64329fe787e7a1456b66e2/0b533/image-8.png 500w&quot;
+            sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/f20954147f64329fe787e7a1456b66e2/0b533/image-8.png&quot;
+            alt=&quot;2022/02/image-8.png&quot;
+            title=&quot;2022/02/image-8.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;参考画像：&lt;a href=&quot;https://www.intel.com/content/dam/www/public/us/en/documents/datasheets/9-series-chipset-pch-datasheet.pdf&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Intel 9 Series Chipset Platform Controller Hub Datasheet&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;この値が&lt;code class=&quot;language-text&quot;&gt;ioapicid&lt;/code&gt;と一致するかを検証しています。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;ioapicid&lt;/code&gt;は&lt;a href=&quot;/unix-xv6-006-kernel-main-03&quot;&gt;マルチプロセッサ編&lt;/a&gt;で見た通り、MPコンフィグレーションテーブルから取得したAPICの番号でした。&lt;/p&gt;
+&lt;h3 id=&quot;redirection-tableの初期化&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#redirection-table%E3%81%AE%E5%88%9D%E6%9C%9F%E5%8C%96&quot; aria-label=&quot;redirection tableの初期化 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Redirection Tableの初期化&lt;/h3&gt;
+&lt;p&gt;最後に、&lt;code class=&quot;language-text&quot;&gt;ioapicwrite&lt;/code&gt;関数で全ての&lt;code class=&quot;language-text&quot;&gt;Redirection Table&lt;/code&gt;を無効化しています。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Mark all interrupts edge-triggered, active high, disabled,&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// and not routed to any CPUs.&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;i &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;&amp;lt;=&lt;/span&gt; maxintr&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;ioapicwrite&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;REG_TABLE&lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; INT_DISABLED &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;T_IRQ0 &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; i&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;ioapicwrite&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;REG_TABLE&lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;i&lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;ioapicwrite&lt;/code&gt;関数は以下のようにインデックスと書き込みデータを使用して書き込みを行う関数です。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;ioapicwrite&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; reg&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; uint data&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  ioapic&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;reg &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; reg&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  ioapic&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;data &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; data&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;INT_DISABLED&lt;/code&gt;は、&lt;code class=&quot;language-text&quot;&gt;0x00010000&lt;/code&gt;として定義されています。&lt;/p&gt;
+&lt;p&gt;これによって、17番目のbitに1をセットすることができます。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/fd74530a7bc6d1dd7ea4a28d709cede8/0b533/image-9.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 19.166666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAARlAAAEZQAGA43XUAAAAvElEQVQY0z1PXQ9EMBD0/38aolRFwmm158VXEF6Z2y3uYTI7M91mJ5inCUmSoCgKaK0xzzOGYcBEPmfMrMdx9PPL7xvWDNa8G5znScEIpRTiOIYxBoY+dtbBti1agnPOe6wt+Vo3/8zD3LyuK4LrurDvO6SUiKIIKs+RCgHxIGedpjQnDwvP7yxlhizLEIYhvl2H4DgOf7K1FnVd+9p8ZVVV0E1zg7wPZd7T1MBolGWJvu+xbRuWZfF1+cIfeiEh/Dp95tgAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/fd74530a7bc6d1dd7ea4a28d709cede8/8ac56/image-9.webp 240w,
+/static/fd74530a7bc6d1dd7ea4a28d709cede8/d3be9/image-9.webp 480w,
+/static/fd74530a7bc6d1dd7ea4a28d709cede8/b0a15/image-9.webp 500w&quot;
+              sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/fd74530a7bc6d1dd7ea4a28d709cede8/8ff5a/image-9.png 240w,
+/static/fd74530a7bc6d1dd7ea4a28d709cede8/e85cb/image-9.png 480w,
+/static/fd74530a7bc6d1dd7ea4a28d709cede8/0b533/image-9.png 500w&quot;
+            sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/fd74530a7bc6d1dd7ea4a28d709cede8/0b533/image-9.png&quot;
+            alt=&quot;2022/02/image-9.png&quot;
+            title=&quot;2022/02/image-9.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;参考画像：&lt;a href=&quot;https://www.intel.com/content/dam/www/public/us/en/documents/datasheets/9-series-chipset-pch-datasheet.pdf&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Intel 9 Series Chipset Platform Controller Hub Datasheet&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;このbitはMaskフラグになっており、セットされた場合割込みが送信されなくなります。&lt;/p&gt;
+&lt;p&gt;下位8bitに設定している値は割込みベクタです。&lt;/p&gt;
+&lt;p&gt;なんで初期化時に無効化してるんでしょうか。。&lt;/p&gt;
+&lt;p&gt;たぶん以降のコードを読めばわかると思うので引き続き進めていこうと思います。&lt;/p&gt;
+&lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;今回は&lt;code class=&quot;language-text&quot;&gt;picinit&lt;/code&gt;と&lt;code class=&quot;language-text&quot;&gt;ioapicinit&lt;/code&gt;まで読み進めました。&lt;/p&gt;
+&lt;p&gt;まだ読んでいない&lt;code class=&quot;language-text&quot;&gt;main&lt;/code&gt;関数で実行している関数も残り10個になり、折り返しに差し掛かってきました。&lt;/p&gt;
+&lt;p&gt;次回は&lt;code class=&quot;language-text&quot;&gt;consoleinit&lt;/code&gt;関数を読んでいきます。&lt;/p&gt;
+&lt;h2 id=&quot;参考書籍&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E5%8F%82%E8%80%83%E6%9B%B8%E7%B1%8D&quot; aria-label=&quot;参考書籍 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;参考書籍&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://amzn.to/3qZSCY7&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;30日でできる! OS自作入門&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://amzn.to/3qXYsZX&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;ゼロからのOS自作入門&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://amzn.to/3q8TU3K&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://amzn.to/3I6fkVt&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;詳解 Linuxカーネル&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://amzn.to/3JRUdI2&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;作って理解するOS x86系コンピュータを動かす理論と実装&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[xv6OSを真面目に読みこんでカーネルを完全に理解する -セグメントディスクリプタ初期化 編-]]></title><description><![CDATA[教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのカーネルのmain関数の挙動を読み解きます。]]></description><link>https://kashiwaba-yuki.com/unix-xv6-008-kernel-main-05</link><guid isPermaLink="false">https://kashiwaba-yuki.com/unix-xv6-008-kernel-main-05</guid><pubDate>Thu, 03 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://amzn.to/3q8TU3K&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ&lt;/a&gt;にインスパイアされて&lt;a href=&quot;https://github.com/mit-pdos/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 OS&lt;/a&gt;を読んでます。&lt;/p&gt;
 &lt;p&gt;UNIX V6自体はx86CPUでは動作しないため、基本的には、UNIXv6をX86アーキテクチャで動くようにした&lt;a href=&quot;https://github.com/mit-pdos/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 OS&lt;/a&gt;のリポジトリをForkした&lt;a href=&quot;https://github.com/kash1064/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;kash1064/xv6-public: xv6 OS&lt;/a&gt;のソースコードを読んでいくことにしました。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;/unix-xv6-007-kernel-main-04&quot;&gt;前回&lt;/a&gt;は&lt;code class=&quot;language-text&quot;&gt;main&lt;/code&gt;関数で実行される&lt;code class=&quot;language-text&quot;&gt;lapicinit&lt;/code&gt;関数によるローカルAPICの設定を確認しました。&lt;/p&gt;
 &lt;p&gt;今回は&lt;code class=&quot;language-text&quot;&gt;seginit&lt;/code&gt;関数の挙動を追っていきます。&lt;/p&gt;
@@ -584,11 +945,11 @@ c&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;gdt&lt;span clas
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;参考画像：&lt;a href=&quot;http://flint.cs.yale.edu/cs422/doc/24547212.pdf&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Intel SDM vol3&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;セグメントディスクリプタは、&lt;a href=&quot;https://yukituna.com/3847/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;x86CPUのメモリ保護機構に関するメモ書き(GDTとLDT)&lt;/a&gt;で軽く触れたGDTとLDTのエントリとなるデータ構造です。&lt;/p&gt;
+&lt;p&gt;セグメントディスクリプタは、&lt;a href=&quot;/linux-memory-protect-gdt-ldt&quot;&gt;x86CPUのメモリ保護機構に関するメモ書き(GDTとLDT)&lt;/a&gt;で軽く触れたGDTとLDTのエントリとなるデータ構造です。&lt;/p&gt;
 &lt;p&gt;セグメントディスクリプタは、CPUにセグメントのサイズやアドレス、またアクセス権限や状態を通知します。&lt;/p&gt;
 &lt;p&gt;x86CPUでは、この仕組みによってメモリ保護を実現していました。&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;SEG_KCODE&lt;/code&gt;などのセグメントセレクタと、割り当てしている権限についてはブートストラップを参照したときにも確認したので、この記事では割愛します。&lt;/p&gt;
-&lt;p&gt;参考：&lt;a href=&quot;https://yukituna.com/3850/#lgdt-gdtdesc&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6OSを真面目に読みこんでカーネルを完全に理解する -ブートストラップ編-｜かえるのほんだな&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;/unix-xv6-001-bootstrap&quot;&gt;xv6OSを真面目に読みこんでカーネルを完全に理解する -ブートストラップ編-&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
 &lt;p&gt;カーネル側でセグメントディスクリプタの初期化を行いました。&lt;/p&gt;
 &lt;p&gt;次回は&lt;code class=&quot;language-text&quot;&gt;picinit&lt;/code&gt;関数から。。。&lt;/p&gt;
