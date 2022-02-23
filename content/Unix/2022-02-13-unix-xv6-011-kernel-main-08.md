@@ -1,25 +1,23 @@
 ---
-title: 
-date: "2022-02-20"
+title: xv6OSを真面目に読みこんでカーネルを完全に理解する -シリアルポート 編-
+date: "2022-02-13"
 template: "post"
-draft: true
-slug: ""
-category: ""
+draft: false
+slug: "unix-xv6-011-kernel-main-08"
+category: "Unix"
 tags:
-  - ""
-  - ""
-  - ""
-description: ""
-socialImage: "/media/cards/no-image.png"
+  - "Unix"
+  - "xv6"
+  - "Kernel"
+description: "教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのカーネルのmain関数の挙動を読み解きます。"
+socialImage: "/media/cards/unix-xv6-011-kernel-main-08.png"
 ---
 
 [はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ](https://amzn.to/3q8TU3K)にインスパイアされて[xv6 OS](https://github.com/mit-pdos/xv6-public)を読んでます。
 
 UNIX V6自体はx86CPUでは動作しないため、基本的には、UNIXv6をX86アーキテクチャで動くようにした[xv6 OS](https://github.com/mit-pdos/xv6-public)のリポジトリをForkした[kash1064/xv6-public: xv6 OS](https://github.com/kash1064/xv6-public)のソースコードを読んでいくことにしました。
 
-[前回](https://yukituna.com/3970/)は`main`関数で実行される`consoleinit`関数の動きを確認しました。
-
-https://yukituna.com/3970/
+[前回](/unix-xv6-010-kernel-main-07)は`main`関数で実行される`consoleinit`関数の動きを確認しました。
 
 今回は`uartinit`関数の挙動を追っていきます。
 
@@ -126,7 +124,7 @@ outb(COM1+1, 0x01);    // Enable receive interrupts.
 
 これは、セットされたbitに応じて通信パラメータを変更します。
 
-![https://yukituna.com/wp-content/uploads/2022/02/image-54.png](https://yukituna.com/wp-content/uploads/2022/02/image-54.png)
+![2022/02/image-54.png](../../static/media/2022-02-13-unix-xv6-011-kernel-main-08/image-54.png)
 
 参考画像：[Serial UART, an in depth tutorial - Lammert Bies](https://www.lammertbies.nl/comm/info/serial-uart)
 
