@@ -7,7 +7,7 @@ import Menu from './Menu';
 import styles from './Sidebar.module.scss';
 import { useSiteMetadata } from '../../hooks';
 
-import LOGO_IMG from "../../../static/icon2-logo.png"
+// import LOGO_IMG from "../../../static/icon2-logo.png"
 
 type Props = {
   isIndex?: boolean,

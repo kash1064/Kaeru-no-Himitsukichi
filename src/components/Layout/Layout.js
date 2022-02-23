@@ -5,6 +5,8 @@ import type { Node as ReactNode } from 'react';
 import { useSiteMetadata } from '../../hooks';
 import styles from './Layout.module.scss';
 
+import LOGO_IMG from "../../../static/icon2-logo.png"
+
 type Props = {
   children: ReactNode,
   title: string,
@@ -25,7 +27,7 @@ const Layout = ({
   return (
     <div className={styles.layout}>
       <Helmet>
-        <html lang="en" />
+        <html lang="ja" />
         <title>{title}</title>
         <meta name="description" content={description} />
         <meta property="og:site_name" content={title} />
@@ -35,6 +37,8 @@ const Layout = ({
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={metaImageUrl} />
       </Helmet>
+      <img src={LOGO_IMG} className="sidebar_headerimage" alt="logo"></img>
+      <p></p>
       {children}
     </div>
   );
