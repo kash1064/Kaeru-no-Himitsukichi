@@ -21,7 +21,7 @@ socialImage: "/media/cards/unix-xv6-002-load-kernel.png"
 
 ただ、UNIX V6自体はx86CPUでは動作しないため、基本的には、UNIXv6をX86アーキテクチャで動くようにした[xv6 OS](https://github.com/mit-pdos/xv6-public)のリポジトリをForkした[kash1064/xv6-public: xv6 OS](https://github.com/kash1064/xv6-public)のソースコードを読んでいくことにしました。
 
-[前回](https://kashiwaba-yuki.com/Unix/unix-xv6-001-bootstrap)に引き続きxv6OSのソースコードを読んでいきます。
+[前回](https://kashiwaba-yuki.com/unix-xv6-001-bootstrap)に引き続きxv6OSのソースコードを読んでいきます。
 
 前回の記事では、xv6OSのブートストラップのコードを読んで、カーネル本体をロードする手前まで追っていきました。
 

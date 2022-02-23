@@ -21,7 +21,7 @@ socialImage: "/media/cards/unix-xv6-003-setup-kernel-debug.png"
 
 ただ、UNIX V6自体はx86CPUでは動作しないため、基本的には、UNIXv6をX86アーキテクチャで動くようにした[xv6 OS](https://github.com/mit-pdos/xv6-public)のリポジトリをForkした[kash1064/xv6-public: xv6 OS](https://github.com/kash1064/xv6-public)のソースコードを読んでいくことにしました。
 
-[前回](https://kashiwaba-yuki.com/Unix/unix-xv6-002-load-kernel)まででxv6OSのビルドと起動プロセスまで読み進めました。
+[前回](https://kashiwaba-yuki.com/unix-xv6-002-load-kernel)まででxv6OSのビルドと起動プロセスまで読み進めました。
 
 早速カーネル本体の動きを読み進めようと思ったのですが、コードを読むだけだとわからない箇所があったので、理解を深めるためにデバッグ環境を先に構成しようと思います。
 
