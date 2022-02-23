@@ -2,9 +2,10 @@
 title: xv6OSを真面目に読みこんでカーネルを完全に理解する -ブートストラップ編-
 date: "2022-01-10"
 template: "post"
-draft: true
+draft: false
 slug: "unix-xv6-001-bootstrap"
-category: "OS"
+categories: 
+  - "OS"
 tags:
   - "Unix"
   - "xv6"
