@@ -1,25 +1,23 @@
 ---
-title: 
-date: "2022-02-20"
+title: xv6OSを真面目に読みこんでカーネルを完全に理解する -ローカルAPIC 編-
+date: "2022-02-02"
 template: "post"
-draft: true
-slug: ""
-category: ""
+draft: false
+slug: "unix-xv6-007-kernel-main-04"
+category: "Unix"
 tags:
-  - ""
-  - ""
-  - ""
-description: ""
-socialImage: "/media/cards/no-image.png"
+  - "Unix"
+  - "xv6"
+  - "Kernel"
+description: "教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのカーネルのmain関数の挙動を読み解きます。"
+socialImage: "/media/cards/unix-xv6-007-kernel-main-04.png"
 ---
 
 [はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ](https://amzn.to/3q8TU3K)にインスパイアされて[xv6 OS](https://github.com/mit-pdos/xv6-public)を読んでます。
 
 UNIX V6自体はx86CPUでは動作しないため、基本的には、UNIXv6をX86アーキテクチャで動くようにした[xv6 OS](https://github.com/mit-pdos/xv6-public)のリポジトリをForkした[kash1064/xv6-public: xv6 OS](https://github.com/kash1064/xv6-public)のソースコードを読んでいくことにしました。
 
-[前回](https://yukituna.com/3898/)は`main`関数で実行される`mpinit`関数によるマルチプロセッサ構成でのCPU情報の取得を確認しました。
-
-https://yukituna.com/3898/
+[前回](/unix-xv6-006-kernel-main-03)は`main`関数で実行される`mpinit`関数によるマルチプロセッサ構成でのCPU情報の取得を確認しました。
 
 今回は`lapicinit`関数の挙動を追っていきます。
 
@@ -270,7 +268,7 @@ lapicw(TICR, 10000000);
 
 xv6OSでは、`Timer Divide Configuration`の値は`0x0000000B`に設定されます。
 
-![https://yukituna.com/wp-content/uploads/2022/02/image.png](https://yukituna.com/wp-content/uploads/2022/02/image.png)
+![2022/02/image.png](../../static/media/2022-02-02-unix-xv6-007-kernel-main-04/image.png)
 
 参考画像：[Intel SDM vol3](http://flint.cs.yale.edu/cs422/doc/24547212.pdf)
 
@@ -286,7 +284,7 @@ lapicw(TIMER, PERIODIC | (T_IRQ0 + IRQ_TIMER));
 
 LVTによって、ソフトウェアはローカル割込みがCPUに送信される方法を指定することができます。
 
-![https://yukituna.com/wp-content/uploads/2022/02/image-1.png](https://yukituna.com/wp-content/uploads/2022/02/image-1.png)
+![2022/02/image-1.png](../../static/media/2022-02-02-unix-xv6-007-kernel-main-04/image-1.png)
 
 参考画像：[Intel SDM vol3](http://flint.cs.yale.edu/cs422/doc/24547212.pdf)
 
@@ -369,7 +367,7 @@ ESRは`Error Status Register`の略で、エラーが発生したときにbitが
 
 対応は以下の図。
 
-![https://yukituna.com/wp-content/uploads/2022/02/image-2.png](https://yukituna.com/wp-content/uploads/2022/02/image-2.png)
+![2022/02/image-2.png](../../static/media/2022-02-02-unix-xv6-007-kernel-main-04/image-2.png)
 
 参考画像：[Intel SDM vol3](http://flint.cs.yale.edu/cs422/doc/24547212.pdf)
 
@@ -405,7 +403,7 @@ EOIレジスタには互換性のために0をセットしておく必要があ�
 
 ここでは、`INIT Level De-assert`によってシステム内のすべてのローカルAPICに同期メッセージを送信し、その`arbitration ID`をAPICに設定しています。
 
-![https://yukituna.com/wp-content/uploads/2022/02/image-3.png](https://yukituna.com/wp-content/uploads/2022/02/image-3.png)
+![2022/02/image-3.png](../../static/media/2022-02-02-unix-xv6-007-kernel-main-04/image-3.png)
 
 参考画像：[Intel SDM vol3](http://flint.cs.yale.edu/cs422/doc/24547212.pdf)
 
