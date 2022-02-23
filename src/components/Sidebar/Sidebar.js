@@ -7,6 +7,8 @@ import Menu from './Menu';
 import styles from './Sidebar.module.scss';
 import { useSiteMetadata } from '../../hooks';
 
+import LOGO_IMG from "../../static/icon2-logo.png"
+
 type Props = {
   isIndex?: boolean,
 };
@@ -17,6 +19,7 @@ const Sidebar = ({ isIndex }: Props) => {
   return (
     <div className={styles['sidebar']}>
       <div className={styles['sidebar__inner']}>
+        <img src={LOGO_IMG} className="" alt="logo"></img>
         <Author author={author} isIndex={isIndex} />
         <Menu menu={menu} />
         <Contacts contacts={author.contacts} />
