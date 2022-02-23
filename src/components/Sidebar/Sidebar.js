@@ -19,7 +19,7 @@ const Sidebar = ({ isIndex }: Props) => {
   return (
     <div className={styles['sidebar']}>
       <div className={styles['sidebar__inner']}>
-        <img src={LOGO_IMG} className="" alt="logo" style="max-height: 150px; margin-bottom: 1.5rem;"></img>
+        <img src={LOGO_IMG} className="sidebar_headerimage" alt="logo"></img>
         <Author author={author} isIndex={isIndex} />
         <Menu menu={menu} />
         <Contacts contacts={author.contacts} />

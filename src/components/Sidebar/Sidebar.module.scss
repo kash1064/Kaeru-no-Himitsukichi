@@ -9,6 +9,11 @@
     }
 }
 
+.sidebar_headerimage {
+    max-height: 150px;
+    margin-bottom: 1.5rem;
+}
+
 @include breakpoint-sm {
     .sidebar {
         lost-column: 5/12;
