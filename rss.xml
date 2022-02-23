@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[かえるのひみつきち]]></title><description><![CDATA[かえるのひみつきち]]></description><link>https://kashiwaba-yuki.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 23 Feb 2022 05:38:08 GMT</lastBuildDate><item><title><![CDATA[Gatsbyで作成したSPAブログをGitHubPagesに公開する環境を作る備忘録]]></title><description><![CDATA[Gatsbyで作成したSPAブログをGithub Pagesに公開する手順についてまとめています。Gatsbyの開発環境はDockerコンテナ上に構築しています。]]></description><link>https://kashiwaba-yuki.com/note-how-to-deploy-gatsby-spa</link><guid isPermaLink="false">https://kashiwaba-yuki.com/note-how-to-deploy-gatsby-spa</guid><pubDate>Sun, 20 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;突然ですが、諸般の事情につきブログを移転することにしました。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[かえるのひみつきち]]></title><description><![CDATA[かえるのひみつきち]]></description><link>https://kashiwaba-yuki.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 23 Feb 2022 05:43:08 GMT</lastBuildDate><item><title><![CDATA[Gatsbyで作成したSPAブログをGitHubPagesに公開する環境を作る備忘録]]></title><description><![CDATA[Gatsbyで作成したSPAブログをGithub Pagesに公開する手順についてまとめています。Gatsbyの開発環境はDockerコンテナ上に構築しています。]]></description><link>https://kashiwaba-yuki.com/note-how-to-deploy-gatsby-spa</link><guid isPermaLink="false">https://kashiwaba-yuki.com/note-how-to-deploy-gatsby-spa</guid><pubDate>Sun, 20 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;突然ですが、諸般の事情につきブログを移転することにしました。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://yukituna.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;旧ブログ&lt;/a&gt;の記事は順次こちらのブログに移植していこうと思います（手動でやる必要があるので面倒ですが…。）&lt;/p&gt;
 &lt;p&gt;新しいブログですが、MITライセンスで公開されているGatsbyテンプレートの&lt;a href=&quot;https://github.com/alxshelepenok/gatsby-starter-lumen&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;gatsby-starter-lumen&lt;/a&gt;をベースに使用させてもらってます。&lt;/p&gt;
 &lt;p&gt;この記事では、新しいブログを公開するまでに実施した作業について備忘録としてまとめておきます。&lt;/p&gt;
@@ -401,7 +401,802 @@ $&lt;span class=&quot;token property&quot;&gt;color-gray-bg&lt;/span&gt;&lt;span
 &lt;p&gt;今回はCNAMEファイルも作成してカスタムドメインが有効になっているので、このドメインに接続すれば作成したブログを確認することができます。&lt;/p&gt;
 &lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
 &lt;p&gt;WordPressの旧ブログから順次こちらに移行していく予定です。&lt;/p&gt;
-&lt;p&gt;画像とか内部リンクとかの修正を手動でやる必要があるのでかなり手間がかかりそうです。。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[xv6OSを真面目に読みこんでカーネルを完全に理解する -ページテーブル(PDT/PTD) 編-]]></title><description><![CDATA[教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのカーネルのmain関数の挙動を読み解きます。]]></description><link>https://kashiwaba-yuki.com/unix-xv6-005-kernel-main-02</link><guid isPermaLink="false">https://kashiwaba-yuki.com/unix-xv6-005-kernel-main-02</guid><pubDate>Wed, 26 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://amzn.to/3q8TU3K&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ&lt;/a&gt;にインスパイアされて&lt;a href=&quot;https://github.com/mit-pdos/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 OS&lt;/a&gt;を読んでます。&lt;/p&gt;
+&lt;p&gt;画像とか内部リンクとかの修正を手動でやる必要があるのでかなり手間がかかりそうです。。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[xv6OSを真面目に読みこんでカーネルを完全に理解する -マルチプロセッサ 編-]]></title><description><![CDATA[教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのカーネルのmain関数の挙動を読み解きます。]]></description><link>https://kashiwaba-yuki.com/unix-xv6-006-kernel-main-03</link><guid isPermaLink="false">https://kashiwaba-yuki.com/unix-xv6-006-kernel-main-03</guid><pubDate>Mon, 31 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://amzn.to/3q8TU3K&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ&lt;/a&gt;にインスパイアされて&lt;a href=&quot;https://github.com/mit-pdos/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 OS&lt;/a&gt;を読んでます。&lt;/p&gt;
+&lt;p&gt;UNIX V6自体はx86CPUでは動作しないため、基本的には、UNIXv6をX86アーキテクチャで動くようにした&lt;a href=&quot;https://github.com/mit-pdos/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 OS&lt;/a&gt;のリポジトリをForkした&lt;a href=&quot;https://github.com/kash1064/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;kash1064/xv6-public: xv6 OS&lt;/a&gt;のソースコードを読んでいくことにしました。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/unix-xv6-005-kernel-main-02&quot;&gt;前回&lt;/a&gt;は&lt;code class=&quot;language-text&quot;&gt;main&lt;/code&gt;関数で実行される&lt;code class=&quot;language-text&quot;&gt;kvmalloc&lt;/code&gt;関数によるページテーブル割り当ての挙動を確認しました。&lt;/p&gt;
+&lt;p&gt;今回は&lt;code class=&quot;language-text&quot;&gt;mpinit&lt;/code&gt;関数の挙動を追っていきます。&lt;/p&gt;
+&lt;!-- omit in toc --&gt;
+&lt;h2 id=&quot;もくじ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%82%E3%81%8F%E3%81%98&quot; aria-label=&quot;もくじ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;もくじ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#mpinit%E9%96%A2%E6%95%B0&quot;&gt;mpinit関数&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E5%90%84%E7%A8%AE%E6%A7%8B%E9%80%A0%E4%BD%93%E5%A4%89%E6%95%B0%E3%81%AE%E5%AE%A3%E8%A8%80&quot;&gt;各種構造体変数の宣言&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#mp%E4%BB%95%E6%A7%98%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6&quot;&gt;MP仕様について&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#mp%E3%83%95%E3%83%AD%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%83%9D%E3%82%A4%E3%83%B3%E3%82%BF%E6%A7%8B%E9%80%A0%E4%BD%93%E3%81%AE%E5%8F%96%E5%BE%97&quot;&gt;MPフローティングポインタ構造体の取得&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#mp%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%B0%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AE%E5%8F%96%E5%BE%97&quot;&gt;MPコンフィグレーションテーブルの取得&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#mp%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%B0%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%8B%E3%82%89ioapic%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B&quot;&gt;MPコンフィグレーションテーブルからIOAPICを取得する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%97%E3%83%AD%E3%82%BB%E3%83%83%E3%82%B5%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B&quot;&gt;プロセッサの情報を取得する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#processor-entry%E3%81%AE%E6%83%85%E5%A0%B1%E5%8F%96%E5%BE%97&quot;&gt;Processor Entryの情報取得&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#ioapic%E3%81%AE%E6%83%85%E5%A0%B1%E5%8F%96%E5%BE%97&quot;&gt;IOAPICの情報取得&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#imcr%E3%81%AE%E5%A4%89%E6%9B%B4&quot;&gt;IMCRの変更&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E5%8F%82%E8%80%83%E6%9B%B8%E7%B1%8D&quot;&gt;参考書籍&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;mpinit関数&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#mpinit%E9%96%A2%E6%95%B0&quot; aria-label=&quot;mpinit関数 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;mpinit関数&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;mpinit&lt;/code&gt;関数は&lt;code class=&quot;language-text&quot;&gt;mp.c&lt;/code&gt;で定義されている以下の関数です。&lt;/p&gt;
+&lt;p&gt;「mp」はたぶんマルチプロセッサの意ですが、他のプロセッサを検出する役割を持つ関数が&lt;code class=&quot;language-text&quot;&gt;mpinit&lt;/code&gt;関数です。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;mpinit&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  uchar &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;p&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;e&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; ismp&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mp&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;mp&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpconf&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;conf&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpproc&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;proc&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpioapic&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;ioapic&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;conf &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;mpconfig&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt;mp&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;panic&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Expect to run on an SMP&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  ismp &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  lapic &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uint&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;conf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;lapicaddr&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;p&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;conf&lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; e&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;conf&lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;conf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;length&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; p&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;e&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;switch&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;p&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;case&lt;/span&gt; MPPROC&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+      proc &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpproc&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;p&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;ncpu &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; NCPU&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        cpus&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;ncpu&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;apicid &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; proc&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;apicid&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// apicid may differ from ncpu&lt;/span&gt;
+        ncpu&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+      p &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;sizeof&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpproc&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;case&lt;/span&gt; MPIOAPIC&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+      ioapic &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpioapic&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;p&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      ioapicid &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; ioapic&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;apicno&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      p &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;sizeof&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpioapic&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;case&lt;/span&gt; MPBUS&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;case&lt;/span&gt; MPIOINTR&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;case&lt;/span&gt; MPLINTR&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+      p &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+      ismp &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;ismp&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;panic&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Didn&apos;t find a suitable machine&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;mp&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;imcrp&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;// Bochs doesn&apos;t support IMCR, so this doesn&apos;t run on Bochs.&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;// But it would on real hardware.&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;outb&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x22&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0x70&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;   &lt;span class=&quot;token comment&quot;&gt;// Select IMCR&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;outb&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x23&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;inb&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x23&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// Mask external interrupts.&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;それではソースコードを順に読んでいきます。&lt;/p&gt;
+&lt;h3 id=&quot;各種構造体変数の宣言&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E5%90%84%E7%A8%AE%E6%A7%8B%E9%80%A0%E4%BD%93%E5%A4%89%E6%95%B0%E3%81%AE%E5%AE%A3%E8%A8%80&quot; aria-label=&quot;各種構造体変数の宣言 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;各種構造体変数の宣言&lt;/h3&gt;
+&lt;p&gt;関数呼び出し後、複数の構造体変数を宣言しています。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;uchar &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;p&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;e&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; ismp&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mp&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;mp&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpconf&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;conf&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpproc&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;proc&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpioapic&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;ioapic&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;これらはいずれも&lt;code class=&quot;language-text&quot;&gt;mp.h&lt;/code&gt;で定義されています。&lt;/p&gt;
+&lt;p&gt;構造体の定義は以下です。&lt;/p&gt;
+&lt;p&gt;詳細は実際に使用するソースコードを読む際に見ていくため、一旦割愛します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// See MultiProcessor Specification Version 1.[14]&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mp&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;             &lt;span class=&quot;token comment&quot;&gt;// floating pointer&lt;/span&gt;
+  uchar signature&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;           &lt;span class=&quot;token comment&quot;&gt;// &quot;_MP_&quot;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;physaddr&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;               &lt;span class=&quot;token comment&quot;&gt;// phys addr of MP config table&lt;/span&gt;
+  uchar length&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                 &lt;span class=&quot;token comment&quot;&gt;// 1&lt;/span&gt;
+  uchar specrev&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                &lt;span class=&quot;token comment&quot;&gt;// [14]&lt;/span&gt;
+  uchar checksum&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;               &lt;span class=&quot;token comment&quot;&gt;// all bytes must add up to 0&lt;/span&gt;
+  uchar type&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                   &lt;span class=&quot;token comment&quot;&gt;// MP system config type&lt;/span&gt;
+  uchar imcrp&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  uchar reserved&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpconf&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;         &lt;span class=&quot;token comment&quot;&gt;// configuration table header&lt;/span&gt;
+  uchar signature&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;           &lt;span class=&quot;token comment&quot;&gt;// &quot;PCMP&quot;&lt;/span&gt;
+  ushort length&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                &lt;span class=&quot;token comment&quot;&gt;// total table length&lt;/span&gt;
+  uchar version&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                &lt;span class=&quot;token comment&quot;&gt;// [14]&lt;/span&gt;
+  uchar checksum&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;               &lt;span class=&quot;token comment&quot;&gt;// all bytes must add up to 0&lt;/span&gt;
+  uchar product&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;            &lt;span class=&quot;token comment&quot;&gt;// product id&lt;/span&gt;
+  uint &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;oemtable&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;               &lt;span class=&quot;token comment&quot;&gt;// OEM table pointer&lt;/span&gt;
+  ushort oemlength&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;             &lt;span class=&quot;token comment&quot;&gt;// OEM table length&lt;/span&gt;
+  ushort entry&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                 &lt;span class=&quot;token comment&quot;&gt;// entry count&lt;/span&gt;
+  uint &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;lapicaddr&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;              &lt;span class=&quot;token comment&quot;&gt;// address of local APIC&lt;/span&gt;
+  ushort xlength&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;               &lt;span class=&quot;token comment&quot;&gt;// extended table length&lt;/span&gt;
+  uchar xchecksum&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;              &lt;span class=&quot;token comment&quot;&gt;// extended table checksum&lt;/span&gt;
+  uchar reserved&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpproc&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;         &lt;span class=&quot;token comment&quot;&gt;// processor table entry&lt;/span&gt;
+  uchar type&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                   &lt;span class=&quot;token comment&quot;&gt;// entry type (0)&lt;/span&gt;
+  uchar apicid&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                 &lt;span class=&quot;token comment&quot;&gt;// local APIC id&lt;/span&gt;
+  uchar version&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                &lt;span class=&quot;token comment&quot;&gt;// local APIC verison&lt;/span&gt;
+  uchar flags&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                  &lt;span class=&quot;token comment&quot;&gt;// CPU flags&lt;/span&gt;
+    &lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;MPBOOT&lt;/span&gt; &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;0x02&lt;/span&gt;           &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// This proc is the bootstrap processor.&lt;/span&gt;&lt;/span&gt;
+  uchar signature&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;           &lt;span class=&quot;token comment&quot;&gt;// CPU signature&lt;/span&gt;
+  uint feature&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                 &lt;span class=&quot;token comment&quot;&gt;// feature flags from CPUID instruction&lt;/span&gt;
+  uchar reserved&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpioapic&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;       &lt;span class=&quot;token comment&quot;&gt;// I/O APIC table entry&lt;/span&gt;
+  uchar type&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                   &lt;span class=&quot;token comment&quot;&gt;// entry type (2)&lt;/span&gt;
+  uchar apicno&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                 &lt;span class=&quot;token comment&quot;&gt;// I/O APIC id&lt;/span&gt;
+  uchar version&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                &lt;span class=&quot;token comment&quot;&gt;// I/O APIC version&lt;/span&gt;
+  uchar flags&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                  &lt;span class=&quot;token comment&quot;&gt;// I/O APIC flags&lt;/span&gt;
+  uint &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;addr&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                  &lt;span class=&quot;token comment&quot;&gt;// I/O APIC address&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;mp仕様について&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#mp%E4%BB%95%E6%A7%98%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6&quot; aria-label=&quot;mp仕様について permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;MP仕様について&lt;/h3&gt;
+&lt;p&gt;ソースコードを読む前に、MP仕様についてまとめておきます。&lt;/p&gt;
+&lt;p&gt;MPテーブルとは、x86CPUの持っているOSにマルチプロセッサの情報を取得させるための仕組みです。&lt;/p&gt;
+&lt;p&gt;MPテーブルにはx86CPUのMP仕様に関連した情報が格納されています。&lt;/p&gt;
+&lt;p&gt;以下は、Interlのドキュメントに記載されていたMP仕様のデータ構造の図です。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;FLOATING POINTER STRUCTURE&lt;/code&gt;から&lt;code class=&quot;language-text&quot;&gt;FIXED-LENGTH HEADER&lt;/code&gt;を参照しています。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/39dd9bb88a7189f5967b9d92bba7b4ba/0b533/image-29.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 86.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAARlAAAEZQAGA43XUAAAB7ElEQVQ4y2WUiY6CQBBE+f9vW40bz0QNuq4niqIg4NU7r9fGESfpMGdNdXUNQZ7nkmVZFcfjUXa7nSRJIpvNRrbbraRpKvv9Xk6nkySHg84d3Jc59p3PZ91TFIUEUmv3+70+JePxWJrNprRa3+5w/rZ2vV7fxsHj8RAL2uVyUabcBnu+MOr3+/Izmykb5gn6rNMMIzAga2ww+naoLEu53W7KhnnG9LmcvQaoDG3AAZppuo0iWSyXslgsZD6fayzdOM8L1W3m2DJGxw9AdIuijWr11WhoYSytenBZ5C5br9f69QE1ZR+dNAAjrSQ5aLV3Tj8OomPsxsUzfYCtum8MrWNf9AEUi2ANghQBYA6W2CkMQ5WD1IuirDACn65pCIgVJHdsGU+nU03T9xx7SNmsVgH6DNlU9xash8OhkyD+8CjZ+Fl+AGIFUlSmz5cAmyxLn0VJFQSmZycD/mRcAfroxN0JzkFYWWX/AbOqb15kTIEAN9t9aMiCsTJgWPvhW8guMpkCHwj6vFdEt0NxHGsxVquVGpm+WYbAUr51Xhq6Sv06C4STSVVFgioa4OoJ6L9nLnz7OfjUoQ2YvQA2YxlEf0Wia7aO+c1KyBP44hMsDAYDGY1GGp1OR9rttnS7XQ36vV5Pjc1e++NwFn3/AEu3IidA9NVQAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/39dd9bb88a7189f5967b9d92bba7b4ba/8ac56/image-29.webp 240w,
+/static/39dd9bb88a7189f5967b9d92bba7b4ba/d3be9/image-29.webp 480w,
+/static/39dd9bb88a7189f5967b9d92bba7b4ba/b0a15/image-29.webp 500w&quot;
+              sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/39dd9bb88a7189f5967b9d92bba7b4ba/8ff5a/image-29.png 240w,
+/static/39dd9bb88a7189f5967b9d92bba7b4ba/e85cb/image-29.png 480w,
+/static/39dd9bb88a7189f5967b9d92bba7b4ba/0b533/image-29.png 500w&quot;
+            sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/39dd9bb88a7189f5967b9d92bba7b4ba/0b533/image-29.png&quot;
+            alt=&quot;2022/01/image-29.png&quot;
+            title=&quot;2022/01/image-29.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;参考画像：&lt;a href=&quot;https://www.manualslib.com/manual/77733/Intel-Multiprocessor.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Intel MultiProcessor Specification  | ManualsLib&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;この&lt;code class=&quot;language-text&quot;&gt;FLOATING POINTER STRUCTURE&lt;/code&gt;は、MPフローティングポインタ構造体であり、xv6OSでは&lt;code class=&quot;language-text&quot;&gt;mp&lt;/code&gt;構造体として定義されていました。&lt;/p&gt;
+&lt;p&gt;システムにMPフローティングポインタ構造体が存在する場合、そのシステムはMP仕様に準拠していることを意味します。&lt;/p&gt;
+&lt;p&gt;MPフローティングポインタ構造体には以下の情報が含まれます。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;MPコンフィグレーションテーブルへのポインタ&lt;/li&gt;
+&lt;li&gt;その他のMP情報へのポインタ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;MPコンフィグレーションテーブルは、xv6OSで&lt;code class=&quot;language-text&quot;&gt;mpconf&lt;/code&gt;構造体として定義されています。&lt;/p&gt;
+&lt;p&gt;後述する&lt;code class=&quot;language-text&quot;&gt;mpconfig&lt;/code&gt;関数では、MPフローティングポインタ構造体を取得した後に、その情報からMPコンフィグレーションテーブルを取得する処理が定義されています。&lt;/p&gt;
+&lt;p&gt;では、OSはどうやってMPフローティングポインタ構造体を見つけるのかという点ですが、Interlの仕様書によると、MPフローティングポインタ構造体は以下のいずれかに存在するよう定義されているため、OSはこれらを検索してMPフローティングポインタ構造体の有無を確認することになります。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;拡張BIOSデータ領域（EBDA）の最初の1KiB以内の領域&lt;/li&gt;
+&lt;li&gt;システムベースメモリ領域の最後の1KiB以内の範囲&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;0x0F0000&lt;/code&gt;から&lt;code class=&quot;language-text&quot;&gt;0x0FFFFFF&lt;/code&gt;の間のBIOS ROMアドレス空間&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;xv6OSでも、&lt;code class=&quot;language-text&quot;&gt;mpsearch&lt;/code&gt;関数と&lt;code class=&quot;language-text&quot;&gt;mpsearch1&lt;/code&gt;関数によって、上記の領域の探索が行われます。&lt;/p&gt;
+&lt;p&gt;これらの関数については後述します。&lt;/p&gt;
+&lt;p&gt;次にMPコンフィグレーションテーブルですが、これは通常オプションの設定のようです。&lt;/p&gt;
+&lt;p&gt;システムがデフォルトの場合はMPコンフィグレーションテーブルの定義は不要ですが、CPUの数が変動する可能性のある場合などは必須になります。(実質的に汎用OSでは必須ってことでしょうか)&lt;/p&gt;
+&lt;p&gt;MPコンフィグレーションテーブルにはAPICやプロセッサ、バス、割込みに関する設定情報が含まれます。&lt;/p&gt;
+&lt;p&gt;また新しくAPICという単語がでてきましたが、これはIntelのマルチプロセッサCPUで使用される割込み制御の機構です。&lt;/p&gt;
+&lt;p&gt;APICについてはxv6OSで割込みコントローラを設定するときに詳しく見ていこうと思います。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://wiki.osdev.org/APIC&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;APIC - OSDev Wiki&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;MP仕様についてはWEBページや書籍からはあまり有益な情報が得られなかったので、詳しく知るにはIntelの仕様書を読むのが一番早いと思います。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://www.manualslib.com/manual/77733/Intel-Multiprocessor.html?page=37#manual&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Chapter 4 Mp Configuration Table; Mp Configuration Data Structures - Intel MultiProcessor Specification [Page 37] | ManualsLib&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;mpフローティングポインタ構造体の取得&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#mp%E3%83%95%E3%83%AD%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E3%83%9D%E3%82%A4%E3%83%B3%E3%82%BF%E6%A7%8B%E9%80%A0%E4%BD%93%E3%81%AE%E5%8F%96%E5%BE%97&quot; aria-label=&quot;mpフローティングポインタ構造体の取得 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;MPフローティングポインタ構造体の取得&lt;/h3&gt;
+&lt;p&gt;というわけでさっそく以下のコードを見ます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;conf &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;mpconfig&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt;mp&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;panic&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Expect to run on an SMP&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;mpconfig&lt;/code&gt;関数の引数として&lt;code class=&quot;language-text&quot;&gt;mp&lt;/code&gt;構造体を与え、戻り値を&lt;code class=&quot;language-text&quot;&gt;mpconf&lt;/code&gt;構造体の変数である&lt;code class=&quot;language-text&quot;&gt;conf&lt;/code&gt;に格納しています。&lt;/p&gt;
+&lt;p&gt;ここでは、&lt;code class=&quot;language-text&quot;&gt;mpconf&lt;/code&gt;構造体の変数&lt;code class=&quot;language-text&quot;&gt;conf&lt;/code&gt;を初期化するとともに、システムがSMPで動作しているかをチェックします。&lt;/p&gt;
+&lt;p&gt;SMPとは、&lt;code class=&quot;language-text&quot;&gt;Symmetric multiprocessing&lt;/code&gt;あるいは&lt;code class=&quot;language-text&quot;&gt;shared-memory multiprocessing&lt;/code&gt;の略称で、要するに複数のCPUがメモリリソースを共有するマルチプロセッサシステムを意味しています。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://en.wikipedia.org/wiki/Symmetric_multiprocessing&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Symmetric multiprocessing - Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://wiki.osdev.org/Symmetric_Multiprocessing&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Symmetric Multiprocessing - OSDev Wiki&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;一旦&lt;code class=&quot;language-text&quot;&gt;mpconfig&lt;/code&gt;関数のソースコードを見てみましょう。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;mpconfig&lt;/code&gt;関数は、&lt;code class=&quot;language-text&quot;&gt;mpinit&lt;/code&gt;関数で宣言した&lt;code class=&quot;language-text&quot;&gt;mp&lt;/code&gt;構造体オブジェクトのアドレスを引数として、&lt;code class=&quot;language-text&quot;&gt;mpconf&lt;/code&gt;構造体を戻り値とする関数です。&lt;/p&gt;
+&lt;p&gt;この関数によってMPテーブルが検索され、引数として受け取った&lt;code class=&quot;language-text&quot;&gt;mp&lt;/code&gt;構造体オブジェクトと戻り値の&lt;code class=&quot;language-text&quot;&gt;mpconf&lt;/code&gt;構造体の初期化が行われます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Search for an MP configuration table.  For now,&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// don&apos;t accept the default configurations (physaddr == 0).&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// Check for correct signature, calculate the checksum and,&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// if correct, check the version.&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// To do: check extended table checksum.&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpconf&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;mpconfig&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mp&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;pmp&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpconf&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;conf&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mp&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;mp&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;mp &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;mpsearch&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;||&lt;/span&gt; mp&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;physaddr &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  conf &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpconf&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;P2V&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uint&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; mp&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;physaddr&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;memcmp&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;conf&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;PCMP&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;conf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;version &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; conf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;version &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;conf&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; conf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;length&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;pmp &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; mp&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; conf&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;mp&lt;/code&gt;構造体は前述したMPフローティングポインタ構造体を指します。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;mpconfig&lt;/code&gt;関数が呼び出された時点ではまだシステムのMPフローティングポインタ構造体は取得できていないので、まずMPフローティングポインタ構造体を探索する必要があります。&lt;/p&gt;
+&lt;p&gt;このために呼び出されるのが&lt;code class=&quot;language-text&quot;&gt;mpsearch&lt;/code&gt;関数と&lt;code class=&quot;language-text&quot;&gt;mpsearch1&lt;/code&gt;関数です。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Look for an MP structure in the len bytes at addr.&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mp&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;mpsearch1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uint a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; len&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  uchar &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;e&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;p&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;addr&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  addr &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;P2V&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  e &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; addr&lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;len&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;p &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; addr&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; p &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; e&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; p &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;sizeof&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mp&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;memcmp&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;p&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;_MP_&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;p&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;sizeof&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mp&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mp&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;p&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// Search for the MP Floating Pointer Structure, which according to the&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// spec is in one of the following three locations:&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// 1) in the first KB of the EBDA;&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// 2) in the last KB of system base memory;&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// 3) in the BIOS ROM between 0xE0000 and 0xFFFFF.&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mp&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;mpsearch&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  uchar &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;bda&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  uint p&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mp&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;mp&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  bda &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uchar &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;P2V&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x400&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;p &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;bda&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x0F&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; bda&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x0E&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;mp &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;mpsearch1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;p&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1024&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; mp&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    p &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;bda&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x14&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt;bda&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x13&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1024&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;mp &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;mpsearch1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;p&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1024&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1024&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; mp&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;mpsearch1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0xF0000&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0x10000&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;前述した通り、MPフローティングポインタ構造体が存在する場合は、以下のいずれかに配置されています。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;拡張BIOSデータ領域（EBDA）の最初の1KiB以内の領域&lt;/li&gt;
+&lt;li&gt;システムベースメモリ領域の最後の1KiB以内の範囲&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;0x0F0000&lt;/code&gt;から&lt;code class=&quot;language-text&quot;&gt;0x0FFFFFF&lt;/code&gt;の間のBIOS ROMアドレス空間&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;これらの領域を検索してMPフローティングポインタ構造体が見つかった場合は&lt;code class=&quot;language-text&quot;&gt;mp&lt;/code&gt;に格納されます。&lt;/p&gt;
+&lt;p&gt;このとき、MPフローティングポインタ構造体が見つからない場合、もしくはMPフローティングポインタ構造体が持つMPコンフィグレーションテーブルのアドレスが空の場合はカーネルを終了します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;mp &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;mpsearch&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;||&lt;/span&gt; mp&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;physaddr &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;MPフローティングポインタ構造体は以下の構造になっています。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mp&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;             &lt;span class=&quot;token comment&quot;&gt;// floating pointer&lt;/span&gt;
+  uchar signature&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;           &lt;span class=&quot;token comment&quot;&gt;// &quot;_MP_&quot;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;physaddr&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;               &lt;span class=&quot;token comment&quot;&gt;// phys addr of MP config table&lt;/span&gt;
+  uchar length&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                 &lt;span class=&quot;token comment&quot;&gt;// 1&lt;/span&gt;
+  uchar specrev&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                &lt;span class=&quot;token comment&quot;&gt;// [14]&lt;/span&gt;
+  uchar checksum&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;               &lt;span class=&quot;token comment&quot;&gt;// all bytes must add up to 0&lt;/span&gt;
+  uchar type&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                   &lt;span class=&quot;token comment&quot;&gt;// MP system config type&lt;/span&gt;
+  uchar imcrp&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  uchar reserved&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;mp&lt;/code&gt;構造体の定義は上記ですが、Intel仕様書の図の方がイメージしやすいので一緒に貼っておきます。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/89053dbef9ccb06f6561234b34173eaa/0b533/image-30.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 56.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAARlAAAEZQAGA43XUAAABz0lEQVQoz01S2W7CQAzM/38TfQKJW4irhQINOYCEcARCQkiAqcewVVeyNvHaY4/HVhiG2O/3OBwOap7ngj5+n89nHI9HbLdbxHGsPsYGQYBot/vLiaJIYhMkSQLrdDrhdrupFUWhAJc0xf1+h23/oNPpoF5vwF+t1JfnOdIsQ/7OKcsSl8tFC/Hd4s//83g89IEnirZot9vo9XpI00x9z+dTC5sYnixLsfJ9uTNYpPU9naLRaGjyerPBUWjYtg3HcZQqi27E77mu0icr0nOWSx1PkrDDnRQqXx0SdDweYb1eazLnQjCCEpDUCLgS2juZHWNo8/lc/amMKJD7es1hsRLbJxXenAkLsJtAqvtCZTqZKJgrPt5F8Zq3OQRkp8xVQD7SjDCJADJRaXqedmr+WcTE/heFShflmzI7IzUOld9GzTAM0O/3MRwOhd5COyEAAQ0T5jOP47qJ3yJQnl8xm81U+r3MKJEg13WwWCw0mKtESiMB5jdFYUFPYry3upGIdZcNsagaRWAQK/q+p0qapeYSs7p5j+OXzyw+jUKxe5rF1inIQWSvVD7wOR7jS0Sg6tVqFYPBALVaDa1mU9eq1WqhLcve7XbUt3RczTfz/wUC5z2KzlmzsAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/89053dbef9ccb06f6561234b34173eaa/8ac56/image-30.webp 240w,
+/static/89053dbef9ccb06f6561234b34173eaa/d3be9/image-30.webp 480w,
+/static/89053dbef9ccb06f6561234b34173eaa/b0a15/image-30.webp 500w&quot;
+              sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/89053dbef9ccb06f6561234b34173eaa/8ff5a/image-30.png 240w,
+/static/89053dbef9ccb06f6561234b34173eaa/e85cb/image-30.png 480w,
+/static/89053dbef9ccb06f6561234b34173eaa/0b533/image-30.png 500w&quot;
+            sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/89053dbef9ccb06f6561234b34173eaa/0b533/image-30.png&quot;
+            alt=&quot;2022/01/image-30.png&quot;
+            title=&quot;2022/01/image-30.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;参考画像：&lt;a href=&quot;https://www.manualslib.com/manual/77733/Intel-Multiprocessor.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Intel MultiProcessor Specification  | ManualsLib&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;最初の4バイトの&lt;code class=&quot;language-text&quot;&gt;SIGNATURE&lt;/code&gt;には&lt;code class=&quot;language-text&quot;&gt;_MP_&lt;/code&gt;が格納されていることが期待されます。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;mpsearch&lt;/code&gt;関数と&lt;code class=&quot;language-text&quot;&gt;mpsearch1&lt;/code&gt;関数で探索を行う場合には、この&lt;code class=&quot;language-text&quot;&gt;SIGNATURE&lt;/code&gt;を探索しています。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;physaddr&lt;/code&gt;にはMPコンフィグレーションテーブルのアドレスが格納されており、ここからはこの情報を元にMPコンフィグレーションテーブルを取得していきます。&lt;/p&gt;
+&lt;h3 id=&quot;mpコンフィグレーションテーブルの取得&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#mp%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%B0%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%AE%E5%8F%96%E5%BE%97&quot; aria-label=&quot;mpコンフィグレーションテーブルの取得 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;MPコンフィグレーションテーブルの取得&lt;/h3&gt;
+&lt;p&gt;MPフローティングポインタ構造体を取得したら、MPコンフィグレーションテーブルの仮想アドレスを取得し、&lt;code class=&quot;language-text&quot;&gt;mpconf&lt;/code&gt;構造のポインタ変数&lt;code class=&quot;language-text&quot;&gt;conf&lt;/code&gt;として格納します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpconf&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;conf&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+conf &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpconf&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;P2V&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uint&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; mp&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;physaddr&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;memcmp&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;conf&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;PCMP&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;conf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;version &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; conf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;version &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;conf&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; conf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;length&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;MPコンフィグレーションテーブルは以下の構造になっています。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpconf&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;         &lt;span class=&quot;token comment&quot;&gt;// configuration table header&lt;/span&gt;
+  uchar signature&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;           &lt;span class=&quot;token comment&quot;&gt;// &quot;PCMP&quot;&lt;/span&gt;
+  ushort length&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                &lt;span class=&quot;token comment&quot;&gt;// total table length&lt;/span&gt;
+  uchar version&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                &lt;span class=&quot;token comment&quot;&gt;// [14]&lt;/span&gt;
+  uchar checksum&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;               &lt;span class=&quot;token comment&quot;&gt;// all bytes must add up to 0&lt;/span&gt;
+  uchar product&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;            &lt;span class=&quot;token comment&quot;&gt;// product id&lt;/span&gt;
+  uint &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;oemtable&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;               &lt;span class=&quot;token comment&quot;&gt;// OEM table pointer&lt;/span&gt;
+  ushort oemlength&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;             &lt;span class=&quot;token comment&quot;&gt;// OEM table length&lt;/span&gt;
+  ushort entry&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                 &lt;span class=&quot;token comment&quot;&gt;// entry count&lt;/span&gt;
+  uint &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;lapicaddr&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;              &lt;span class=&quot;token comment&quot;&gt;// address of local APIC&lt;/span&gt;
+  ushort xlength&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;               &lt;span class=&quot;token comment&quot;&gt;// extended table length&lt;/span&gt;
+  uchar xchecksum&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;              &lt;span class=&quot;token comment&quot;&gt;// extended table checksum&lt;/span&gt;
+  uchar reserved&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;以下はIntel仕様書から引用した構造図です。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 476px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/6dd866aa292a4e75103c8b5ea32eaf83/f2205/image-31.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 126.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAZCAYAAAAxFw7TAAAACXBIWXMAARlAAAEZQAGA43XUAAADeUlEQVQ4y2WV6XLaUAyF/f7Pkb5HM9P+SiYEwr4vjrENBAibAYOqTyCnae/MnbtpOTqS5WA2m8lisZD9fm/z/f1dBoOh3THTJNHzQD4+Puw9yzLdL2S9Xtv5cDjYebVaS57nEmy2W+l02vL09CSlUknG47Gslkv5/euXPDz8kFa7LbvdTjabjfS6XanX69Lv96Wr++FwKO1W297SJJY0nUmwWq0MQaPRkLYqp2kqW3VSLr/Kz8dH6fV6hiLTmShaIiAq9lEUyWQyEWx4lAHK5/NZfLRaLUOBdxyB2Jx1OmYsiqZmhL2Py+Vq1MznCwk+Pz+FSVhH5QfPTJCGYWgoMMo+jmO7Z87nc+MTPUCBkHMATEfohtI0MQUfhMzI87PxB8LRaGh7EmG6OFMqAgjFy+l0MjRhiPDIQjqrMM6QYT0ejwVCd344ZEWmDSFw2WDwer0WqPDcaNSleU8W2X57e5ODyjKQvVwupoezOJ5a2IZwqwj9EQfGp6Ihe2QU7qBgqeWEc2hC7qSGcMyZOkUn8GT0el0NI72jPZsBCpyBIwaZR5EzctNppHp9M4wdhiHc3wsXTzzAyW63ldLLizSbDSOfUnp+fi7ePRL0/GwGPSGDQd+yBB9M7kDJilKWHc1Afk8Uk8wSRZ5fviPk8IVsZ0jhw5OFDCt3TOfQI/JzgRCvXCDsWWOlATBQ0LzKWpN0PJ5M/mgOsgJZrHxG0+n3LwVFMsv5bxRk1873aHhHziMjAnduXwoeqXzqiD01tlotrTFw3llZ5bcC17OXGKvL36KQG0LPGBxuNl97ipVibt8bBmWFIUcFx8hhjPN/WZ79k2UQM5C5Xi8WqhczXMLh591QOBnr5xopQr2ADyY8ULiszgsr5UMU7DHKPZM9DZo39KEgyDSzE7VOaK/asaNpbKHUanWp6l2iDcC7EZzWqlWp6uxofyyXy9bWDKE2FZpLweFFifXyYbLP1VBXFSuVijUISoUWZh1cneIIVMgvlx92Dnik/vhfhOG7CZA16gokIKBN0SBAFcdJkd2p1l2z2bSOHd27eTC3/0Nqj/DHBz/SDk1/wxARhCrM6n9IX6nPJEmKTmQc+qfHCge3/0ZkCnynlM5Q/y0gIIszdUIDBrnLYoywcRp4QyV+SK7WakXHhjtaVqn0IuXXkr5X7I0EEiqUvGhHonZ9/AE7OWhVjDxa3AAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/6dd866aa292a4e75103c8b5ea32eaf83/8ac56/image-31.webp 240w,
+/static/6dd866aa292a4e75103c8b5ea32eaf83/cf53a/image-31.webp 476w&quot;
+              sizes=&quot;(max-width: 476px) 100vw, 476px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/6dd866aa292a4e75103c8b5ea32eaf83/8ff5a/image-31.png 240w,
+/static/6dd866aa292a4e75103c8b5ea32eaf83/f2205/image-31.png 476w&quot;
+            sizes=&quot;(max-width: 476px) 100vw, 476px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/6dd866aa292a4e75103c8b5ea32eaf83/f2205/image-31.png&quot;
+            alt=&quot;2022/01/image-31.png&quot;
+            title=&quot;2022/01/image-31.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;参考画像：&lt;a href=&quot;https://www.manualslib.com/manual/77733/Intel-Multiprocessor.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Intel MultiProcessor Specification  | ManualsLib&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;最初の4バイト分の領域に&lt;code class=&quot;language-text&quot;&gt;SIGNATURE&lt;/code&gt;が格納されていますが、これは&lt;code class=&quot;language-text&quot;&gt;PCMP&lt;/code&gt;になることが期待されます。&lt;/p&gt;
+&lt;p&gt;xv6OSでは、取得したMPコンフィグレーションテーブルの確認のため、&lt;code class=&quot;language-text&quot;&gt;memcmp&lt;/code&gt;関数にて先頭4バイトが&lt;code class=&quot;language-text&quot;&gt;PCMP&lt;/code&gt;に一致するかをチェックしています。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;memcmp&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;conf&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;PCMP&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;conf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;version &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; conf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;version &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;conf&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; conf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;length&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;また、バージョン情報が適切であるか、データサイズが実際のサイズと一致するかについてもチェックを行っています。&lt;/p&gt;
+&lt;p&gt;これで&lt;code class=&quot;language-text&quot;&gt;mpinit&lt;/code&gt;関数の以下の処理が終わり、MPフローティングポインタとMPコンフィグレーションテーブルを取得することができました。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;conf &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;mpconfig&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt;mp&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;panic&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Expect to run on an SMP&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;mpコンフィグレーションテーブルからioapicを取得する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#mp%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A3%E3%82%B0%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E3%81%8B%E3%82%89ioapic%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B&quot; aria-label=&quot;mpコンフィグレーションテーブルからioapicを取得する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;MPコンフィグレーションテーブルからIOAPICを取得する&lt;/h3&gt;
+&lt;p&gt;つづいて、&lt;code class=&quot;language-text&quot;&gt;mpioapic&lt;/code&gt;構造体の&lt;code class=&quot;language-text&quot;&gt;ioapic&lt;/code&gt;にMPコンフィグレーションテーブルの&lt;code class=&quot;language-text&quot;&gt;lapicaddr&lt;/code&gt;から取得したアドレスを格納します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; ismp&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpioapic&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;ioapic&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+ismp &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+lapic &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uint&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;conf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;lapicaddr&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;mpioapic&lt;/code&gt;構造体は以下の構造体です。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpioapic&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;       &lt;span class=&quot;token comment&quot;&gt;// I/O APIC table entry&lt;/span&gt;
+  uchar type&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                   &lt;span class=&quot;token comment&quot;&gt;// entry type (2)&lt;/span&gt;
+  uchar apicno&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                 &lt;span class=&quot;token comment&quot;&gt;// I/O APIC id&lt;/span&gt;
+  uchar version&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                &lt;span class=&quot;token comment&quot;&gt;// I/O APIC version&lt;/span&gt;
+  uchar flags&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                  &lt;span class=&quot;token comment&quot;&gt;// I/O APIC flags&lt;/span&gt;
+  uint &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;addr&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;                  &lt;span class=&quot;token comment&quot;&gt;// I/O APIC address&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Intel仕様書の図は以下です。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/aa0f5df371a8d16482b51da6fec26f48/0b533/image-32.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 68.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAARlAAAEZQAGA43XUAAACBUlEQVQ4y3VT2ZKiQBD0//9n9tEXn8YxQiZmFA9uEcFVQUNBQcytLGSXNXaJqOimKju7juzedrtFEARYryPEmw08z8d+v8dyaSHLMmzEx/9NFAlmrft2ZeznbockSZDnOc7nM3qHw0EdOwnQ4jhGmqbq830f4/EY0+lU/SRhjLjuSiyJ+SkhnVzbPQ8ej0fYtg3DGOPr6xuJVNLGiGtX2lYII6ngfr+jx0CbXdfo930PpmlisVgglkP/wjalR2Dr6rpuCF+NQGboOA5GoxGMz0/x/cmsa/SRMAxDyVAIr9erNrQoCjXu6WN5HBaBifSP+y6ui+XwWHZdP9CrqgplWf5lVXXXiXmeB9d1EclUSfyKo7Fvp9MJq9WqKZmEt9vtt7VAglgKgb4fqFS6mO6e2CROGsI2SGJaUVx1/PnlotqzLEu1ySnyADNime2eKwnbuA6FZVnLJULJIpPeUS40X/p2EeIso6xS1SIzTZ8YXmbbjiqAg1RCCncwGGA4HKLf72u/Rh8feHv7oRPmFIPA14mzfEcuJyEHQeG3Gmbs8RBhU2fD93d8TyaYz2Z6a1nenlO9dA41EsllukkS4yiEfKp78TFzVqJPr+nDQ/tBWwmRYRgqZrbCdR29bCLGJziV1TRnSsxeFs+VEqKvh5fvID2dz+eq/Oap7VQyLCkM19oSTv1/3y9w/hzqn7A9GwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/aa0f5df371a8d16482b51da6fec26f48/8ac56/image-32.webp 240w,
+/static/aa0f5df371a8d16482b51da6fec26f48/d3be9/image-32.webp 480w,
+/static/aa0f5df371a8d16482b51da6fec26f48/b0a15/image-32.webp 500w&quot;
+              sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/aa0f5df371a8d16482b51da6fec26f48/8ff5a/image-32.png 240w,
+/static/aa0f5df371a8d16482b51da6fec26f48/e85cb/image-32.png 480w,
+/static/aa0f5df371a8d16482b51da6fec26f48/0b533/image-32.png 500w&quot;
+            sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/aa0f5df371a8d16482b51da6fec26f48/0b533/image-32.png&quot;
+            alt=&quot;2022/01/image-32.png&quot;
+            title=&quot;2022/01/image-32.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;参考画像：&lt;a href=&quot;https://www.manualslib.com/manual/77733/Intel-Multiprocessor.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Intel MultiProcessor Specification  | ManualsLib&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;IOAPICは外部割込みを複数のCPUで分散するための機構です。&lt;/p&gt;
+&lt;p&gt;APICが外部割込みの機構であることは前述しましたが、APICにはローカルAPICとIOAPICの2種類があるようです。&lt;/p&gt;
+&lt;p&gt;xv6OSではローカルAPICについては&lt;code class=&quot;language-text&quot;&gt;lapic.c&lt;/code&gt;で、IOAPICについては&lt;code class=&quot;language-text&quot;&gt;ioapic.c&lt;/code&gt;で実装されています。&lt;/p&gt;
+&lt;p&gt;ローカルAPICはCPUに内臓された割込みで、IOAPICはI/Oデバイスから受けとった割込みを、リダイレクションテーブルの情報を元にCPUに通知します。&lt;/p&gt;
+&lt;p&gt;IOAPICはIOAPICテーブルを持っており、x86CPUは&lt;code class=&quot;language-text&quot;&gt;memory-mapped I/O&lt;/code&gt;を通してこのテーブルのエントリを定義できます。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;memory-mapped I/O&lt;/code&gt;は簡単に言うとCPUとI/Oデバイス間で入出力を行う方法の一つで、物理アドレス空間にI/Oデバイスの入出力のための空間を用意し、CPUのメモリの読み書きの機能を利用して入出力を行う方法です。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://mmi.hatenablog.com/entry/2017/04/09/132708&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;I/O APICについて - 睡分不足&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://ja.wikipedia.org/wiki/%E3%83%A1%E3%83%A2%E3%83%AA%E3%83%9E%E3%83%83%E3%83%97%E3%83%89I/O&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;メモリマップドI/O - Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;PCIをI/Oデバイスに持つ一般的なシステムの場合、IOAPICはPCIの割込み信号の変化を検知し、リダイレクションテーブルの情報を元にCPUに割込みメッセージを発行します。&lt;/p&gt;
+&lt;p&gt;この情報はCPU内部のローカルAPICが受け取り、割込みハンドラを呼び出して割込み処理を行った後、EOI(End of Interrupt)コマンドをIOAPICに返すことで、IOAPICに対して割込みの完了を通知します。&lt;/p&gt;
+&lt;p&gt;詳しくは実際に割込み処理を実装するところまで進んだらやります。たぶん。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://ja.wikipedia.org/wiki/APIC&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;APIC - Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://wiki.osdev.org/APIC&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;APIC - OSDev Wiki&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://wiki.osdev.org/IOAPIC&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;IOAPIC - OSDev Wiki&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://pdos.csail.mit.edu/6.828/2008/readings/ia32/ioapic.pdf&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;82093AA I/O ADVANCED PROGRAMMABLE INTERRUPT CONTROLLER (IOAPIC)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;APICの仕組みは、x86CPUとそのマザーボードのようなマルチプロセッサ環境での割込みを制御するための割込みコントローラが必要になったことで生まれました。&lt;/p&gt;
+&lt;p&gt;もともと実装されていたPICと呼ばれるシンプルな割込み機構では、マルチプロセッサ構成での割込み処理に対応できなかったようです。&lt;/p&gt;
+&lt;p&gt;xv6OSもマルチプロセッサ構成を前提としているので、PICからの割込みを無視してローカルAPICとIOAPICを使用した割込み処理を実装します。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://pdos.csail.mit.edu/6.828/2018/xv6/book-rev11.pdf&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;P45&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;xv6OSのコードでは&lt;code class=&quot;language-text&quot;&gt;mpioapic&lt;/code&gt;構造体の&lt;code class=&quot;language-text&quot;&gt;ioapic&lt;/code&gt;にMPコンフィグレーションテーブルの&lt;code class=&quot;language-text&quot;&gt;lapicaddr&lt;/code&gt;から取得したアドレスを格納しています。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;lapicaddr&lt;/code&gt;に格納されているのはメモリマップドされたローカルAPICのアドレスです。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;lapicaddr&lt;/code&gt;を格納する変数&lt;code class=&quot;language-text&quot;&gt;lapic&lt;/code&gt;は&lt;code class=&quot;language-text&quot;&gt;defs.h&lt;/code&gt;でグローバル変数として定義されています。&lt;/p&gt;
+&lt;p&gt;この関数の中では以降使用することはなく、&lt;code class=&quot;language-text&quot;&gt;lapic.c&lt;/code&gt;で使用することになります。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;volatile&lt;/span&gt; uint&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;    lapic&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;プロセッサの情報を取得する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%97%E3%83%AD%E3%82%BB%E3%83%83%E3%82%B5%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B&quot; aria-label=&quot;プロセッサの情報を取得する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;プロセッサの情報を取得する&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;lapicaddr&lt;/code&gt;の取得が完了した後のループを見てみます。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;conf&lt;/code&gt;には、先ほど取得したMPコンフィグレーションテーブルが格納されています。&lt;/p&gt;
+&lt;p&gt;Intelの仕様書より、MPコンフィグレーションテーブルエントリは、MPコンフィグレーションテーブルヘッダ(MPコンフィグレーションテーブルの先頭アドレス)から、可変数で続いていくことがわかります。&lt;/p&gt;
+&lt;p&gt;MPコンフィグレーションテーブルエントリは、先ほど例示した&lt;code class=&quot;language-text&quot;&gt;Processor Entries&lt;/code&gt;の他に、&lt;code class=&quot;language-text&quot;&gt;Bus Entry&lt;/code&gt;、&lt;code class=&quot;language-text&quot;&gt;I/O APIC Entry&lt;/code&gt;、&lt;code class=&quot;language-text&quot;&gt;I/O Interrupt Entry&lt;/code&gt;、&lt;code class=&quot;language-text&quot;&gt;Local Interrupt Entry&lt;/code&gt;などがあります。(他にも拡張エントリが存在します)&lt;/p&gt;
+&lt;p&gt;これらはいずれも先頭1バイトにユニークな&lt;code class=&quot;language-text&quot;&gt;Entry Point&lt;/code&gt;が定義されています。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Processor Entry&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/aa0f5df371a8d16482b51da6fec26f48/0b533/image-32-164559487926114.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 68.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAARlAAAEZQAGA43XUAAACBUlEQVQ4y3VT2ZKiQBD0//9n9tEXn8YxQiZmFA9uEcFVQUNBQcytLGSXNXaJqOimKju7juzedrtFEARYryPEmw08z8d+v8dyaSHLMmzEx/9NFAlmrft2ZeznbockSZDnOc7nM3qHw0EdOwnQ4jhGmqbq830f4/EY0+lU/SRhjLjuSiyJ+SkhnVzbPQ8ej0fYtg3DGOPr6xuJVNLGiGtX2lYII6ngfr+jx0CbXdfo930PpmlisVgglkP/wjalR2Dr6rpuCF+NQGboOA5GoxGMz0/x/cmsa/SRMAxDyVAIr9erNrQoCjXu6WN5HBaBifSP+y6ui+XwWHZdP9CrqgplWf5lVXXXiXmeB9d1EclUSfyKo7Fvp9MJq9WqKZmEt9vtt7VAglgKgb4fqFS6mO6e2CROGsI2SGJaUVx1/PnlotqzLEu1ySnyADNime2eKwnbuA6FZVnLJULJIpPeUS40X/p2EeIso6xS1SIzTZ8YXmbbjiqAg1RCCncwGGA4HKLf72u/Rh8feHv7oRPmFIPA14mzfEcuJyEHQeG3Gmbs8RBhU2fD93d8TyaYz2Z6a1nenlO9dA41EsllukkS4yiEfKp78TFzVqJPr+nDQ/tBWwmRYRgqZrbCdR29bCLGJziV1TRnSsxeFs+VEqKvh5fvID2dz+eq/Oap7VQyLCkM19oSTv1/3y9w/hzqn7A9GwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/aa0f5df371a8d16482b51da6fec26f48/8ac56/image-32-164559487926114.webp 240w,
+/static/aa0f5df371a8d16482b51da6fec26f48/d3be9/image-32-164559487926114.webp 480w,
+/static/aa0f5df371a8d16482b51da6fec26f48/b0a15/image-32-164559487926114.webp 500w&quot;
+              sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/aa0f5df371a8d16482b51da6fec26f48/8ff5a/image-32-164559487926114.png 240w,
+/static/aa0f5df371a8d16482b51da6fec26f48/e85cb/image-32-164559487926114.png 480w,
+/static/aa0f5df371a8d16482b51da6fec26f48/0b533/image-32-164559487926114.png 500w&quot;
+            sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/aa0f5df371a8d16482b51da6fec26f48/0b533/image-32-164559487926114.png&quot;
+            alt=&quot;2022/01/image-32.png&quot;
+            title=&quot;2022/01/image-32.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Bus Entry&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/ebb106502198c09c82ee7c65884af857/0b533/image-33.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 37.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAARlAAAEZQAGA43XUAAABSElEQVQoz3VRXXOCQAzk//+t+mZrHwUH5U6BooBw+FE4lW026oydaTOTyc0lu0k2wW63A70sSyyXMYyxqKoKdV1jv6+xWq1QFAXattWa7baAtRavuDzLtN65FsHlcoEfBjCSwHUdrtervPdKbEyihAR779H3vZLzPQiO8Xw+K6EXjuB2uykZI4tZMMrbGIM4jrFYRAijCPP5HIPk2Px0OuHVOEAimzTtY8LhMeHxeNRu3t8b0PhHAGPbOiXjhFYaJkmC9XqNL9mA+XEcEbx24nQE05ikk4AxDEOdmmuxKbU0yV2Ow+GApWxTVjWCTjRzzumntQZZliuAHekkoT7cgpJ0nUMqR/iWN+v4R72fMgQc/+k8ApOZAAjK81xXStMUm81Gr8tcLTVN0/zpv1Z+Go/xNpkgkmPQKfj7xwyfsxmm0yn6weM/+wHnhWCKxxlD3wAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/ebb106502198c09c82ee7c65884af857/8ac56/image-33.webp 240w,
+/static/ebb106502198c09c82ee7c65884af857/d3be9/image-33.webp 480w,
+/static/ebb106502198c09c82ee7c65884af857/b0a15/image-33.webp 500w&quot;
+              sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/ebb106502198c09c82ee7c65884af857/8ff5a/image-33.png 240w,
+/static/ebb106502198c09c82ee7c65884af857/e85cb/image-33.png 480w,
+/static/ebb106502198c09c82ee7c65884af857/0b533/image-33.png 500w&quot;
+            sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/ebb106502198c09c82ee7c65884af857/0b533/image-33.png&quot;
+            alt=&quot;2022/01/image-33.png&quot;
+            title=&quot;2022/01/image-33.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I/O APIC Entry&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/7ad98ae9eace37cd674ae886ea48e121/0b533/image-34.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 36.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAARlAAAEZQAGA43XUAAABTElEQVQozz1R7a6CMBTj/V9LE8UoinKjV0QQjIOBRr4EFOxdZ64/mmXL2tP2GOfzGVmW4Xq94na7wfM8fS/LQqGETBJEUYSiKJDnuUai3tI0/XKEELjf76jrGkZVVej7Hq/XC8MwIAxD7Pd7hEqE4qfTCcfjEa7ramEa4J9S8Yah19ymaRDHMerHAwZdPJ9PdF2nRcXlAt/3IaXUZCF4D7QYXfH9X5D/CTpjKgobJG02a2y3WyyXS7iHg447Go1gmiZyFbVrW2RKzA8CSHWSGAY+FgtL85iA1ZRlBYP5LcvCdDpVwg5Wq5VyIvHjOPCUOB1xOt1xOHsjHioe09Eda0vVv6ZpP4IEOyCZcZNEfgmfiJEunQvhKUSsB3AhBJfEJHop7I898CTe7zfWaxuTyQS2beN3t9MLmc1MjMdjzOdzFXXx7ZDdk9eqWog/BA8JmOWgzGAAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/7ad98ae9eace37cd674ae886ea48e121/8ac56/image-34.webp 240w,
+/static/7ad98ae9eace37cd674ae886ea48e121/d3be9/image-34.webp 480w,
+/static/7ad98ae9eace37cd674ae886ea48e121/b0a15/image-34.webp 500w&quot;
+              sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/7ad98ae9eace37cd674ae886ea48e121/8ff5a/image-34.png 240w,
+/static/7ad98ae9eace37cd674ae886ea48e121/e85cb/image-34.png 480w,
+/static/7ad98ae9eace37cd674ae886ea48e121/0b533/image-34.png 500w&quot;
+            sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/7ad98ae9eace37cd674ae886ea48e121/0b533/image-34.png&quot;
+            alt=&quot;2022/01/image-34.png&quot;
+            title=&quot;2022/01/image-34.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I/O Interrupt Entry&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/8edea3877268c6c4dd0f14c0f9fc9f24/0b533/image-35.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 39.166666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAARlAAAEZQAGA43XUAAABhUlEQVQoz21Sa2+CQBD0//8sbX010SpaRB4CBUQBkXfig+nOmX5peskFbu92ZnZnB0maoixLVFWFMAxhWhaKolCbcfdwgO/76v56vSLLMniei1Tyft9FkpckCfI8x8DY7aBtNlitVtjv9wp0o85rbLdbBEGgYtp6jZ2uwxLCy+WCXPaaMcmvm0YBP59PDD7mc8xmM0wnYwXcyOVG0zCZTLFcfiIVRV3XwrEtaBKnyrqu0cgej9+FfIu+73FwHGRCMrjf74J+hWmaWAnjcrFQ/7qoITPVJOezOlP18Rirsm1RakhFjgC5nictKfGgwsfjgSgKMRqNMByOYBgGclERfPsIwgiu6+J2u8HY6fLm7aVOiDLpIdvBXpLYse2XwjiOcTrF0mhPVHzBlouqqlVpfMwzv6yk6zq0bQPmNG2rjCJBmiYSb9FTIZvJCwboqmWZCtwTZVEU4SAuszQC0122g1UQtChKZQbJ6bByGX8WARfSRyZlWfoaJXOvpoBO0wROAUfpv/UDy39OoWydYDYAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/8edea3877268c6c4dd0f14c0f9fc9f24/8ac56/image-35.webp 240w,
+/static/8edea3877268c6c4dd0f14c0f9fc9f24/d3be9/image-35.webp 480w,
+/static/8edea3877268c6c4dd0f14c0f9fc9f24/b0a15/image-35.webp 500w&quot;
+              sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/8edea3877268c6c4dd0f14c0f9fc9f24/8ff5a/image-35.png 240w,
+/static/8edea3877268c6c4dd0f14c0f9fc9f24/e85cb/image-35.png 480w,
+/static/8edea3877268c6c4dd0f14c0f9fc9f24/0b533/image-35.png 500w&quot;
+            sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/8edea3877268c6c4dd0f14c0f9fc9f24/0b533/image-35.png&quot;
+            alt=&quot;2022/01/image-35.png&quot;
+            title=&quot;2022/01/image-35.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Local Interrupt Entry&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/3b0896cae18d6fa27616529c9db55817/0b533/image-36.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 39.583333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAARlAAAEZQAGA43XUAAABhUlEQVQoz11SyZKCQAzl/3/Gmpsnaxy8aImjIloKLqDstBubwOFNEqvmIFVNd9JJXt5La1EUoSxLFEWBsipxPB5xvV7fNvlVlsHzPDyfT/Hl+ROck6ap2Lz4fL/fUdc1NP9yQb/fx8/wG4PBAL7vY7NeY7k0sVgssN3tEMcxttstDMPAfr8Xu64rrExT4nIqmmUpgeXQGGEyGeOr15OE16vBzJjKeTweY2VZgp6mifiUUlDEoG0pbmZgOjXo3BFIJHEat6lUhp1t40R0OWm93uBwOAhVBmAJ3ncz8ed5gSDwYVOO67q4EEumzbJot9tNKs/nc6I9hD4aIQxDWVyEC2SZElBd1+EHgWj7eDwkhgux/d8hd8EJMQnt+4Hop9RV9GDEgDT1zmfq9IWu69A0DZIkkXuW6y1HCm6MYzT+MW3e27aF49gwSWyLCjuOQ7RdWNaKxF/KkHgQvP8So4xeAANUVU2rkk41fHzc+ul0kknyABg5JJpML6D9TN3yS2BmJRX5/P4AbOBPKN6XDQsAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/3b0896cae18d6fa27616529c9db55817/8ac56/image-36.webp 240w,
+/static/3b0896cae18d6fa27616529c9db55817/d3be9/image-36.webp 480w,
+/static/3b0896cae18d6fa27616529c9db55817/b0a15/image-36.webp 500w&quot;
+              sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/3b0896cae18d6fa27616529c9db55817/8ff5a/image-36.png 240w,
+/static/3b0896cae18d6fa27616529c9db55817/e85cb/image-36.png 480w,
+/static/3b0896cae18d6fa27616529c9db55817/0b533/image-36.png 500w&quot;
+            sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/3b0896cae18d6fa27616529c9db55817/0b533/image-36.png&quot;
+            alt=&quot;2022/01/image-36.png&quot;
+            title=&quot;2022/01/image-36.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;参考画像：&lt;a href=&quot;https://www.manualslib.com/manual/77733/Intel-Multiprocessor.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Intel MultiProcessor Specification  | ManualsLib&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;xv6OSの以下のコードでも、MPコンフィグレーションヘッダの先頭から各エントリをチェックしていき、先頭の&lt;code class=&quot;language-text&quot;&gt;Entry Type&lt;/code&gt;の値に応じて処理を分岐させています。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;p&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;conf&lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; e&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;conf&lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt;conf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;length&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; p&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;e&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;switch&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;p&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+          
+  &lt;span class=&quot;token keyword&quot;&gt;case&lt;/span&gt; MPPROC&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+    proc &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpproc&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;p&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;ncpu &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; NCPU&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      cpus&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;ncpu&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;apicid &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; proc&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;apicid&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// apicid may differ from ncpu&lt;/span&gt;
+      ncpu&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+    p &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;sizeof&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpproc&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+          
+  &lt;span class=&quot;token keyword&quot;&gt;case&lt;/span&gt; MPIOAPIC&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+    ioapic &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpioapic&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;p&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    ioapicid &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; ioapic&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;apicno&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    p &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;sizeof&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpioapic&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+          
+  &lt;span class=&quot;token keyword&quot;&gt;case&lt;/span&gt; MPBUS&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;case&lt;/span&gt; MPIOINTR&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;case&lt;/span&gt; MPLINTR&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+    p &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+          
+  &lt;span class=&quot;token keyword&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+    ismp &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;チェックしているエントリは以下のように定義されています。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Table entry types&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;MPPROC&lt;/span&gt;    &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;0x00&lt;/span&gt;  &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// One per processor&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;MPBUS&lt;/span&gt;     &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;0x01&lt;/span&gt;  &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// One per bus&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;MPIOAPIC&lt;/span&gt;  &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;0x02&lt;/span&gt;  &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// One per I/O APIC&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;MPIOINTR&lt;/span&gt;  &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;0x03&lt;/span&gt;  &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// One per bus interrupt source&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;MPLINTR&lt;/span&gt;   &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;0x04&lt;/span&gt;  &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// One per system interrupt source&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;processor-entryの情報取得&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#processor-entry%E3%81%AE%E6%83%85%E5%A0%B1%E5%8F%96%E5%BE%97&quot; aria-label=&quot;processor entryの情報取得 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Processor Entryの情報取得&lt;/h3&gt;
+&lt;p&gt;まずは&lt;code class=&quot;language-text&quot;&gt;Processor Entry&lt;/code&gt;の場合です。&lt;/p&gt;
+&lt;p&gt;ここでは&lt;code class=&quot;language-text&quot;&gt;mpproc&lt;/code&gt;構造体のオブジェクトとして&lt;code class=&quot;language-text&quot;&gt;Processor Entriy&lt;/code&gt;を取得し、&lt;code class=&quot;language-text&quot;&gt;Local APIC ID&lt;/code&gt;の値をすべての&lt;code class=&quot;language-text&quot;&gt;cpus&lt;/code&gt;配列に順に格納しています。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;case&lt;/span&gt; MPPROC&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+  proc &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpproc&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;p&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;ncpu &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; NCPU&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    cpus&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;ncpu&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;apicid &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; proc&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;apicid&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// apicid may differ from ncpu&lt;/span&gt;
+    ncpu&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  p &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;sizeof&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpproc&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;ちなみにここで使用されている&lt;code class=&quot;language-text&quot;&gt;NCPU&lt;/code&gt;は&lt;code class=&quot;language-text&quot;&gt;param.h&lt;/code&gt;で以下のように定数として定義されています。&lt;/p&gt;
+&lt;p&gt;xv6OSは最大で8CPUまでサポートしているようです。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;NCPU&lt;/span&gt;      &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;8&lt;/span&gt;  &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// maximum number of CPUs&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;ioapicの情報取得&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#ioapic%E3%81%AE%E6%83%85%E5%A0%B1%E5%8F%96%E5%BE%97&quot; aria-label=&quot;ioapicの情報取得 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;IOAPICの情報取得&lt;/h3&gt;
+&lt;p&gt;続いては&lt;code class=&quot;language-text&quot;&gt;IOAPIC&lt;/code&gt;の情報を取得します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;case&lt;/span&gt; MPIOAPIC&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+  ioapic &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpioapic&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;p&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  ioapicid &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; ioapic&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;apicno&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  p &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;sizeof&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;mpioapic&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;各構造体などについては前述したので割愛します。&lt;/p&gt;
+&lt;h3 id=&quot;imcrの変更&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#imcr%E3%81%AE%E5%A4%89%E6%9B%B4&quot; aria-label=&quot;imcrの変更 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;IMCRの変更&lt;/h3&gt;
+&lt;p&gt;これで&lt;code class=&quot;language-text&quot;&gt;mp.c&lt;/code&gt;の処理はほぼ完了しました。&lt;/p&gt;
+&lt;p&gt;最後に&lt;code class=&quot;language-text&quot;&gt;IMCR&lt;/code&gt;を無効化します。&lt;/p&gt;
+&lt;p&gt;IMCRは割り込みモード構成レジスタと呼ばれ、PICモードから変更するためには&lt;code class=&quot;language-text&quot;&gt;IMCR&lt;/code&gt;の変更が必要になるようです。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://reverseengineering.stackexchange.com/questions/26308/where-is-the-imcr-defined-in-the-docs&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;x86 - Where is the IMCR defined in the docs? - Reverse Engineering Stack Exchange&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://forum.osdev.org/viewtopic.php?f=1&amp;#x26;t=29102&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;OSDev.org • View topic - Set IMCR to 0x1 to mask external interrupts?&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://www.manualslib.com/manual/77733/Intel-Multiprocessor.html?page=31&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Default Configurations; Symmetric I/O Mode - Intel MultiProcessor Specification [Page 31] | ManualsLib&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;次回は&lt;code class=&quot;language-text&quot;&gt;lapicinit&lt;/code&gt;関数から始めます。&lt;/p&gt;
+&lt;p&gt;今回取得した情報を利用して割込みコントローラを実装するようです。&lt;/p&gt;
+&lt;p&gt;だんだん頭がついてこなくなってきたのでちょっと気合入れて頑張ろうと思います。&lt;/p&gt;
+&lt;h2 id=&quot;参考書籍&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E5%8F%82%E8%80%83%E6%9B%B8%E7%B1%8D&quot; aria-label=&quot;参考書籍 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;参考書籍&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://amzn.to/3qZSCY7&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;30日でできる! OS自作入門&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://amzn.to/3qXYsZX&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;ゼロからのOS自作入門&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://amzn.to/3q8TU3K&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://amzn.to/3I6fkVt&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;詳解 Linuxカーネル&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://amzn.to/3JRUdI2&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;作って理解するOS x86系コンピュータを動かす理論と実装&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[xv6OSを真面目に読みこんでカーネルを完全に理解する -ページテーブル(PDT/PTD) 編-]]></title><description><![CDATA[教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのカーネルのmain関数の挙動を読み解きます。]]></description><link>https://kashiwaba-yuki.com/unix-xv6-005-kernel-main-02</link><guid isPermaLink="false">https://kashiwaba-yuki.com/unix-xv6-005-kernel-main-02</guid><pubDate>Wed, 26 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://amzn.to/3q8TU3K&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ&lt;/a&gt;にインスパイアされて&lt;a href=&quot;https://github.com/mit-pdos/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 OS&lt;/a&gt;を読んでます。&lt;/p&gt;
 &lt;p&gt;UNIX V6自体はx86CPUでは動作しないため、基本的には、UNIXv6をX86アーキテクチャで動くようにした&lt;a href=&quot;https://github.com/mit-pdos/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 OS&lt;/a&gt;のリポジトリをForkした&lt;a href=&quot;https://github.com/kash1064/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;kash1064/xv6-public: xv6 OS&lt;/a&gt;のソースコードを読んでいくことにしました。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;/unix-xv6-004-kernel-main-01&quot;&gt;前回&lt;/a&gt;は&lt;code class=&quot;language-text&quot;&gt;main&lt;/code&gt;関数で初めに実行される&lt;code class=&quot;language-text&quot;&gt;kinit1&lt;/code&gt;関数による排他制御周りの挙動を確認しました。&lt;/p&gt;
 &lt;p&gt;今回は&lt;code class=&quot;language-text&quot;&gt;kvmalloc&lt;/code&gt;関数によるxv6カーネルのページテーブルの初期化を追っていきます。&lt;/p&gt;
