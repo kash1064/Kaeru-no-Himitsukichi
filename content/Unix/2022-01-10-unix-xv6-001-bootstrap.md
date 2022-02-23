@@ -4,12 +4,13 @@ date: "2022-01-10"
 template: "post"
 draft: false
 slug: "unix-xv6-001-bootstrap"
-categories: 
+category: 
   - "OS"
+  - "Unix
 tags:
   - "Unix"
   - "xv6"
-  - ""
+  - "Kernel"
 description: ""
 socialImage: "/media/cards/no-image.png"
 ---
