@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[かえるのひみつきち]]></title><description><![CDATA[かえるのひみつきち]]></description><link>https://kashiwaba-yuki.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 23 Feb 2022 04:57:30 GMT</lastBuildDate><item><title><![CDATA[Gatsbyで作成したSPAブログをGitHubPagesに公開する環境を作る備忘録]]></title><description><![CDATA[Gatsbyで作成したSPAブログをGithub Pagesに公開する手順についてまとめています。Gatsbyの開発環境はDockerコンテナ上に構築しています。]]></description><link>https://kashiwaba-yuki.com/Notes/note-how-to-deploy-gatsby-spa</link><guid isPermaLink="false">https://kashiwaba-yuki.com/Notes/note-how-to-deploy-gatsby-spa</guid><pubDate>Sun, 20 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;突然ですが、諸般の事情につきブログを移転することにしました。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[かえるのひみつきち]]></title><description><![CDATA[かえるのひみつきち]]></description><link>https://kashiwaba-yuki.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 23 Feb 2022 05:02:24 GMT</lastBuildDate><item><title><![CDATA[Gatsbyで作成したSPAブログをGitHubPagesに公開する環境を作る備忘録]]></title><description><![CDATA[Gatsbyで作成したSPAブログをGithub Pagesに公開する手順についてまとめています。Gatsbyの開発環境はDockerコンテナ上に構築しています。]]></description><link>https://kashiwaba-yuki.com/Notes/note-how-to-deploy-gatsby-spa</link><guid isPermaLink="false">https://kashiwaba-yuki.com/Notes/note-how-to-deploy-gatsby-spa</guid><pubDate>Sun, 20 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;突然ですが、諸般の事情につきブログを移転することにしました。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://yukituna.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;旧ブログ&lt;/a&gt;の記事は順次こちらのブログに移植していこうと思います（手動でやる必要があるので面倒ですが…。）&lt;/p&gt;
 &lt;p&gt;新しいブログですが、MITライセンスで公開されているGatsbyテンプレートの&lt;a href=&quot;https://github.com/alxshelepenok/gatsby-starter-lumen&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;gatsby-starter-lumen&lt;/a&gt;をベースに使用させてもらってます。&lt;/p&gt;
 &lt;p&gt;この記事では、新しいブログを公開するまでに実施した作業について備忘録としてまとめておきます。&lt;/p&gt;
@@ -401,7 +401,685 @@ $&lt;span class=&quot;token property&quot;&gt;color-gray-bg&lt;/span&gt;&lt;span
 &lt;p&gt;今回はCNAMEファイルも作成してカスタムドメインが有効になっているので、このドメインに接続すれば作成したブログを確認することができます。&lt;/p&gt;
 &lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
 &lt;p&gt;WordPressの旧ブログから順次こちらに移行していく予定です。&lt;/p&gt;
-&lt;p&gt;画像とか内部リンクとかの修正を手動でやる必要があるのでかなり手間がかかりそうです。。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[xv6OSを真面目に読みこんでカーネルを完全に理解する -ブートストラップ編-]]></title><description><![CDATA[教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのブートストラップを読み解きます。]]></description><link>https://kashiwaba-yuki.com/Unix/unix-xv6-001-bootstrap</link><guid isPermaLink="false">https://kashiwaba-yuki.com/Unix/unix-xv6-001-bootstrap</guid><pubDate>Mon, 10 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://amzn.to/3q8TU3K&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ&lt;/a&gt;にインスパイアされて&lt;a href=&quot;https://github.com/mit-pdos/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 OS&lt;/a&gt;を読んでます。&lt;/p&gt;
+&lt;p&gt;画像とか内部リンクとかの修正を手動でやる必要があるのでかなり手間がかかりそうです。。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[xv6OSを真面目に読みこんでカーネルを完全に理解する -リンカ・ページング編-]]></title><description><![CDATA[教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのブートストラップを読み解きます。]]></description><link>https://kashiwaba-yuki.com/Unix/unix-xv6-002-load-kernel</link><guid isPermaLink="false">https://kashiwaba-yuki.com/Unix/unix-xv6-002-load-kernel</guid><pubDate>Sun, 16 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://amzn.to/3q8TU3K&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ&lt;/a&gt;にインスパイアされて&lt;a href=&quot;https://github.com/mit-pdos/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 OS&lt;/a&gt;を読んでます。&lt;/p&gt;
+&lt;p&gt;リバースエンジニアリングに強くなりたいのと、カーネルとかOSに詳しくなりたいと思っています。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://amzn.to/3I6fkVt&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;詳解 Linuxカーネル&lt;/a&gt;が結構重かったので、もう少し軽めのところから始めたいと思っていたところ、UNIX V6というOSがトータルで1万行くらいのコード量で、人類でもギリギリ理解できるということを知り、興味を持ちました。&lt;/p&gt;
+&lt;p&gt;ただ、UNIX V6自体はx86CPUでは動作しないため、基本的には、UNIXv6をX86アーキテクチャで動くようにした&lt;a href=&quot;https://github.com/mit-pdos/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 OS&lt;/a&gt;のリポジトリをForkした&lt;a href=&quot;https://github.com/kash1064/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;kash1064/xv6-public: xv6 OS&lt;/a&gt;のソースコードを読んでいくことにしました。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://kashiwaba-yuki.com/Unix/unix-xv6-001-bootstrap&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;前回&lt;/a&gt;に引き続きxv6OSのソースコードを読んでいきます。&lt;/p&gt;
+&lt;p&gt;前回の記事では、xv6OSのブートストラップのコードを読んで、カーネル本体をロードする手前まで追っていきました。&lt;/p&gt;
+&lt;p&gt;今回は実際に読み込まれるカーネルの動きを追っていきます。&lt;/p&gt;
+&lt;!-- omit in toc --&gt;
+&lt;h2 id=&quot;もくじ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%82%E3%81%8F%E3%81%98&quot; aria-label=&quot;もくじ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;もくじ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89&quot;&gt;カーネルのロード&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%AE%E3%83%93%E3%83%AB%E3%83%89&quot;&gt;カーネルプログラムのビルド&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%AA%E3%83%B3%E3%82%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88&quot;&gt;リンカスクリプト&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%AA%E3%83%B3%E3%82%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%AE%E6%A7%8B%E9%80%A0&quot;&gt;リンカスクリプトの構造&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%82%A8%E3%83%B3%E3%83%88%E3%83%AA%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%AE%E5%AE%9A%E7%BE%A9&quot;&gt;エントリポイントの定義&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sectionstext%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E5%AE%9A%E7%BE%A9&quot;&gt;SECTIONS：textセクションの定義&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sectionsrodata%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E5%AE%9A%E7%BE%A9&quot;&gt;SECTIONS：rodataセクションの定義&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sectionsstabstabstr%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E5%AE%9A%E7%BE%A9&quot;&gt;SECTIONS：stab,stabstrセクションの定義&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sectionsdata%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E5%AE%9A%E7%BE%A9&quot;&gt;SECTIONS：dataセクションの定義&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sectionsbss%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E5%AE%9A%E7%BE%A9&quot;&gt;SECTIONS：bssセクションの定義&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sectionsdiscard&quot;&gt;SECTIONS：DISCARD&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%81%AE%E3%82%A8%E3%83%B3%E3%83%88%E3%83%AA%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88&quot;&gt;カーネルのエントリポイント&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%9E%E3%83%AB%E3%83%81%E3%83%96%E3%83%BC%E3%83%88%E3%83%98%E3%83%83%E3%83%80&quot;&gt;マルチブートヘッダ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%82%A8%E3%83%B3%E3%83%88%E3%83%AA%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%AE%E7%89%A9%E7%90%86%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%82%92%E5%AE%9A%E7%BE%A9&quot;&gt;エントリポイントの物理アドレスを定義&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%81%AE%E3%82%A8%E3%83%B3%E3%83%88%E3%83%AA%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89&quot;&gt;カーネルのエントリポイントのロード&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%9A%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E3%81%A8%E3%81%AF&quot;&gt;ページングとは&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%83%9D%E3%82%A4%E3%83%B3%E3%82%BF%E3%81%AE%E8%A8%AD%E5%AE%9A&quot;&gt;スタックポインタの設定&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#main%E9%96%A2%E6%95%B0%E3%81%AB%E7%A7%BB%E8%A1%8C&quot;&gt;main関数に移行&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E5%8F%82%E8%80%83%E6%9B%B8%E7%B1%8D&quot;&gt;参考書籍&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;カーネルのロード&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89&quot; aria-label=&quot;カーネルのロード permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;カーネルのロード&lt;/h2&gt;
+&lt;p&gt;ブートストラップの中でカーネルのロードを行っていた箇所を振り返っておきます。&lt;/p&gt;
+&lt;p&gt;カーネルの読み込みは、以下のようにメモリの&lt;code class=&quot;language-text&quot;&gt;0x10000&lt;/code&gt;番地に読み込まれました。&lt;/p&gt;
+&lt;p&gt;その後、プログラムヘッダがロードされ、&lt;code class=&quot;language-text&quot;&gt;entry()&lt;/code&gt;関数が呼び出されてカーネルに処理が移行します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;bootmain&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;elfhdr&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;elf&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;proghdr&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;ph&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;eph&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;entry&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; pa&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  elf &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;elfhdr&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x10000&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// scratch space&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// Read 1st page off disk&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;readseg&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;elf&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4096&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// Is this an ELF executable?&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;elf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;magic &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; ELF_MAGIC&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// let bootasm.S handle error&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// Load each program segment (ignores ph flags).&lt;/span&gt;
+  ph &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;proghdr&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;elf &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; elf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;phoff&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  eph &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; ph &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; elf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;phnum&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; ph &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; eph&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    pa &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;paddr&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;readseg&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pa&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;filesz&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;off&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;memsz &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;filesz&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;token function&quot;&gt;stosb&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pa &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;filesz&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;memsz &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;filesz&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// Call the entry point from the ELF header.&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// Does not return!&lt;/span&gt;
+  entry &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;elf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;entry&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;そのため、今回は&lt;code class=&quot;language-text&quot;&gt;entry()&lt;/code&gt;関数を探すところから始めていきたいと思います。&lt;/p&gt;
+&lt;h2 id=&quot;カーネルプログラムのビルド&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%AE%E3%83%93%E3%83%AB%E3%83%89&quot; aria-label=&quot;カーネルプログラムのビルド permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;カーネルプログラムのビルド&lt;/h2&gt;
+&lt;p&gt;カーネルプログラムのビルドの流れを追います。&lt;/p&gt;
+&lt;p&gt;最終的なイメージファイルである&lt;code class=&quot;language-text&quot;&gt;xv6.img&lt;/code&gt;は、以下のコマンドで生成されていました。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;0x10000&lt;/code&gt;の空領域に&lt;code class=&quot;language-text&quot;&gt;bootblock&lt;/code&gt;と&lt;code class=&quot;language-text&quot;&gt;kernel&lt;/code&gt;を埋め込んだものが&lt;code class=&quot;language-text&quot;&gt;xv6.img&lt;/code&gt;になります。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;xv6.img: bootblock kernel
+	&lt;span class=&quot;token function&quot;&gt;dd&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/dev/zero &lt;span class=&quot;token assign-left variable&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;xv6.img &lt;span class=&quot;token assign-left variable&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;10000&lt;/span&gt;
+	&lt;span class=&quot;token function&quot;&gt;dd&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;bootblock &lt;span class=&quot;token assign-left variable&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;xv6.img &lt;span class=&quot;token assign-left variable&quot;&gt;conv&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;notrunc
+	&lt;span class=&quot;token function&quot;&gt;dd&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;kernel &lt;span class=&quot;token assign-left variable&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;xv6.img &lt;span class=&quot;token assign-left variable&quot;&gt;seek&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;conv&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;notrunc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;bootblock&lt;/code&gt;については前回追ったので、今回は&lt;code class=&quot;language-text&quot;&gt;kernel&lt;/code&gt;を追っていきます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;kernel: &lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;OBJS&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt; entry.o entryother initcode kernel.ld
+	&lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;LD&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;LDFLAGS&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt; -T kernel.ld -o kernel entry.o &lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;OBJS&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt; -b binary initcode entryother
+	&lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;OBJDUMP&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt; -S kernel &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; kernel.asm
+	&lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;OBJDUMP&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt; -t kernel &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;1,/SYMBOL TABLE/d; s/ .* / /; /^$$/d&apos;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; kernel.sym&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;kernel&lt;/code&gt;の依存関係は&lt;code class=&quot;language-text&quot;&gt;$(OBJS) entry.o entryother initcode kernel.ld&lt;/code&gt;になってます。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;$(OBJS)&lt;/code&gt;の一覧は結構数が多いので割愛します。&lt;code class=&quot;language-text&quot;&gt;main.o&lt;/code&gt;など、カーネルのモジュールが含まれます。&lt;/p&gt;
+&lt;p&gt;下の2行はバイナリの逆アセンブル結果とシンボル情報を出力しているのみで、実際にバイナリを作成しているのは&lt;code class=&quot;language-text&quot;&gt;$(LD) $(LDFLAGS) -T kernel.ld -o kernel entry.o $(OBJS) -b binary initcode entryother&lt;/code&gt;の行です。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;LD&lt;/code&gt;は、前回説明した&lt;code class=&quot;language-text&quot;&gt;GCC&lt;/code&gt;と同じく&lt;code class=&quot;language-text&quot;&gt;$(TOOLPREFIX)ld&lt;/code&gt;の形式で使用されます。&lt;/p&gt;
+&lt;p&gt;今回はクロスコンパイルは行わないので、普通に&lt;code class=&quot;language-text&quot;&gt;ld&lt;/code&gt;コマンドが実行されます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;LD &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;TOOLPREFIX&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt;ld
+
+&lt;span class=&quot;token comment&quot;&gt;# FreeBSD ld wants ``elf_i386_fbsd&apos;&apos;&lt;/span&gt;
+LDFLAGS &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; -m &lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;shell &lt;span class=&quot;token punctuation&quot;&gt;$(&lt;/span&gt;LD&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; -V &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;grep&lt;/span&gt; elf_i386 &lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;2&lt;/span&gt;&gt;&lt;/span&gt;/dev/null &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;head&lt;/span&gt; -n &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;LDFLAGS&lt;/code&gt;は、&lt;code class=&quot;language-text&quot;&gt;ld -V&lt;/code&gt;の結果から&lt;code class=&quot;language-text&quot;&gt;elf_i386&lt;/code&gt;を抽出して&lt;code class=&quot;language-text&quot;&gt;-m elf_i386&lt;/code&gt;オプションとして表示させています。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;ld -V&lt;/code&gt;は、&lt;code class=&quot;language-text&quot;&gt;ld&lt;/code&gt;コマンドのバージョン確認コマンドのうち、サポートしているエミュレータの一覧を表示するオプション付きのコマンドです。&lt;/p&gt;
+&lt;p&gt;実際にビルド時に実行されるコマンドは以下のようになります。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;-T&lt;/code&gt;オプションは&lt;code class=&quot;language-text&quot;&gt;-c&lt;/code&gt;オプションと同じく、リンカスクリプト(&lt;code class=&quot;language-text&quot;&gt;kernel.ld&lt;/code&gt;)からリンクコマンドを読み込むオプションです。&lt;/p&gt;
+&lt;p&gt;また、&lt;code class=&quot;language-text&quot;&gt;-b&lt;/code&gt;オプションは以降にインプットするオブジェクトファイルのバイナリフォーマットを指定するコマンドで、今回は&lt;code class=&quot;language-text&quot;&gt;binary&lt;/code&gt;を指定しているようです。&lt;/p&gt;
+&lt;p&gt;以降に続く&lt;code class=&quot;language-text&quot;&gt;initcode&lt;/code&gt;と&lt;code class=&quot;language-text&quot;&gt;entryother&lt;/code&gt;はアセンブリファイルからアセンブルされたバイナリです。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;ld -m elf_i386 -T kernel.ld -o kernel &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+entry.o bio.o console.o exec.o file.o fs.o ide.o ioapic.o kalloc.o kbd.o lapic.o log.o main.o mp.o picirq.o pipe.o proc.o sleeplock.o spinlock.o string.o swtch.o syscall.o sysfile.o sysproc.o trapasm.o trap.o uart.o vectors.o vm.o  &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+-b binary initcode entryother&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_node/ld_3.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;LD、GNUリンカーの使用-オプション&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;次にリンカスクリプト&lt;code class=&quot;language-text&quot;&gt;kernel.ld&lt;/code&gt;の中身を見てみます。&lt;/p&gt;
+&lt;h3 id=&quot;リンカスクリプト&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%AA%E3%83%B3%E3%82%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88&quot; aria-label=&quot;リンカスクリプト permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;リンカスクリプト&lt;/h3&gt;
+&lt;p&gt;そもそもリンカスクリプトについてですが、リンカがオブジェクトファイルをリンクして実行形式を作成する際に、オブジェクトのメモリ配置を指定するためのファイルです。&lt;/p&gt;
+&lt;p&gt;通常は、リンカに内臓されているデフォルトのリンカスクリプトが使用されるため、明示的に指定する必要はありません。&lt;/p&gt;
+&lt;p&gt;ちなみに、リンカに内臓されているデフォルトのリンカスクリプトは&lt;code class=&quot;language-text&quot;&gt;ld&lt;/code&gt;コマンドに&lt;code class=&quot;language-text&quot;&gt;--verbose&lt;/code&gt;オプションを付けると出力できます。&lt;/p&gt;
+&lt;p&gt;ただし、OSなど組込み系のプログラムの場合は、汎用OSの管理機能が使えないため、リンカスクリプトを独自に設定する必要があります。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://sourceware.org/binutils/docs/ld/Scripts.html#Scripts&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Scripts (LD)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://sourceware.org/binutils/docs/ld/Basic-Script-Concepts.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Basic Script Concepts (LD)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://www.computex.co.jp/article/use_gcc_1.htm&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;GNU Cを使いこなそう | 株式会社コンピューテックス&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;xv6OSでカーネルのビルドに使用するリンカスクリプトの全文は以下です。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;/* Simple linker script for the JOS kernel.
+   See the GNU ld &apos;info&apos; manual (&quot;info ld&quot;) to learn the syntax. */&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;OUTPUT_FORMAT&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;elf32-i386&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;elf32-i386&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;elf32-i386&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;OUTPUT_ARCH&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;i386&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;ENTRY&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;_start&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+SECTIONS
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;token comment&quot;&gt;/* Link the kernel at this address: &quot;.&quot; means the current address */&lt;/span&gt;
+        &lt;span class=&quot;token comment&quot;&gt;/* Must be equal to KERNLINK */&lt;/span&gt;
+	&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0x80100000&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+	&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;text &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;AT&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x100000&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;text &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;stub &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;text&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;gnu&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;linkonce&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;t&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;token function&quot;&gt;PROVIDE&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;etext &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;	&lt;span class=&quot;token comment&quot;&gt;/* Define the &apos;etext&apos; symbol to this value */&lt;/span&gt;
+
+	&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;rodata &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;rodata &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;rodata&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;gnu&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;linkonce&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;r&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;token comment&quot;&gt;/* Include debugging information in kernel memory */&lt;/span&gt;
+	&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;stab &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;token function&quot;&gt;PROVIDE&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;__STAB_BEGIN__ &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;stab&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;token function&quot;&gt;PROVIDE&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;__STAB_END__ &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;stabstr &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;token function&quot;&gt;PROVIDE&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;__STABSTR_BEGIN__ &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;stabstr&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;token function&quot;&gt;PROVIDE&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;__STABSTR_END__ &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;token comment&quot;&gt;/* Adjust the address for the data segment to the next page */&lt;/span&gt;
+	&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;ALIGN&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x1000&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+	&lt;span class=&quot;token comment&quot;&gt;/* Conventionally, Unix linkers provide pseudo-symbols
+	 * etext, edata, and end, at the end of the text, data, and bss.
+	 * For the kernel mapping, we need the address at the beginning
+	 * of the data section, but that&apos;s not one of the conventional
+	 * symbols, because the convention started before there was a
+	 * read-only rodata section between text and data. */&lt;/span&gt;
+	&lt;span class=&quot;token function&quot;&gt;PROVIDE&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;data &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+	&lt;span class=&quot;token comment&quot;&gt;/* The data segment */&lt;/span&gt;
+	&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;data &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;data&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;token function&quot;&gt;PROVIDE&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;edata &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+	&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;bss &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;bss&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;token function&quot;&gt;PROVIDE&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;end &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+	&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;DISCARD&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;eh_frame &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;note&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;GNU&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;stack&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;リンカスクリプトの構造&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%AA%E3%83%B3%E3%82%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%81%AE%E6%A7%8B%E9%80%A0&quot; aria-label=&quot;リンカスクリプトの構造 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;リンカスクリプトの構造&lt;/h3&gt;
+&lt;p&gt;リンカスクリプトとして最低限必須となる記述は、&lt;code class=&quot;language-text&quot;&gt;SECTIONS&lt;/code&gt;要素です。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;MEMORY&lt;/code&gt;要素を定義する場合が多いですが、必須ではありません。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;SECTIONS&lt;/code&gt;要素ではセクションを定義し、任意のアドレスに配置します。&lt;/p&gt;
+&lt;p&gt;このアドレスは、物理アドレスと仮想アドレスのどちらも定義可能です。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://www.computex.co.jp/article/use_gcc_1.htm&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;GNU Cを使いこなそう | 株式会社コンピューテックス&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;http://blueeyes.sakura.ne.jp/2018/10/31/1676/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;リンカスクリプトの書き方&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;SECTIONS&lt;/code&gt;要素のみが定義された最も単純なリンカスクリプトは以下の例のようになります。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;SECTIONS
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0x10000&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;text &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;text&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0x8000000&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;data &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;data&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;bss &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;bss&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://sourceware.org/binutils/docs/ld/Simple-Example.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Simple Example (LD)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;xv6OSのリンカスクリプトでは、以下のセクションが定義されています。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;.text : 実行バイナリが配置される。通常は読み取り/実行権限のみ。&lt;/li&gt;
+&lt;li&gt;.rodata : 読み取り専用データが配置される。&lt;/li&gt;
+&lt;li&gt;.stab : スタブと呼ばれる固定長構造体の配列が配置される。&lt;/li&gt;
+&lt;li&gt;.stabstr : スタブから参照される可変長文字列が配置される。&lt;/li&gt;
+&lt;li&gt;.data : 読み書き可能なデータが配置される。&lt;/li&gt;
+&lt;li&gt;.bss : ブロック開始記号(宣言されているがまだ値が割り当てられていないオブジェクト)が配置される。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://opensource.apple.com/source/gdb/gdb-292/doc/stabs.html/stabs_13.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;STABS - Using Stabs in Their Own Sections&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://doc.ecoscentric.com/gnutools/doc/stabs/Stab-Section-Basics.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;STABS: Stab Section Basics&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://en.wikipedia.org/wiki/.bss&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;.bss - Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;リンカスクリプトの内容について順に見ていきます。&lt;/p&gt;
+&lt;h3 id=&quot;エントリポイントの定義&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%A8%E3%83%B3%E3%83%88%E3%83%AA%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%AE%E5%AE%9A%E7%BE%A9&quot; aria-label=&quot;エントリポイントの定義 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;エントリポイントの定義&lt;/h3&gt;
+&lt;p&gt;リンカスクリプトの先頭行を見ると、3つの定義がされています。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;/* Simple linker script for the JOS kernel.
+   See the GNU ld &apos;info&apos; manual (&quot;info ld&quot;) to learn the syntax. */&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;OUTPUT_FORMAT&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;elf32-i386&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;elf32-i386&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;elf32-i386&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;OUTPUT_ARCH&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;i386&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;ENTRY&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;_start&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;OUTPUT_FORMAT&lt;/code&gt;では、出力バイナリのフォーマットを定義しています。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;OUTPUT_ARCH&lt;/code&gt;では、出力されるバイナリがどのアーキテクチャに対応するかを指定しています。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;ENTRY&lt;/code&gt;では、一番初めに実行される関数のシンボル名を指定しています。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://sourceware.org/binutils/docs/ld/Entry-Point.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Entry Point (LD)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ここで指定されている&lt;code class=&quot;language-text&quot;&gt;_start&lt;/code&gt;は、&lt;code class=&quot;language-text&quot;&gt;entry.S&lt;/code&gt;の中で以下のように定義されています。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;assembly&quot;&gt;&lt;pre class=&quot;language-assembly&quot;&gt;&lt;code class=&quot;language-assembly&quot;&gt;# By convention, the _start symbol specifies the ELF entry point.
+# Since we haven&amp;#39;t set up virtual memory yet, our entry point is
+# the physical address of &amp;#39;entry&amp;#39;.
+.globl _start
+_start = V2P_WO(entry)
+
+# Entering xv6 on boot processor, with paging off.
+.globl entry
+entry:
+  # Turn on page size extension for 4Mbyte pages
+  movl    %cr4, %eax
+  orl     $(CR4_PSE), %eax
+  movl    %eax, %cr4
+  # Set page directory
+  movl    $(V2P_WO(entrypgdir)), %eax
+  movl    %eax, %cr3
+  # Turn on paging.
+  movl    %cr0, %eax
+  orl     $(CR0_PG|CR0_WP), %eax
+  movl    %eax, %cr0
+
+  # Set up the stack pointer.
+  movl $(stack + KSTACKSIZE), %esp
+
+  # Jump to main(), and switch to executing at
+  # high addresses. The indirect call is needed because
+  # the assembler produces a PC-relative instruction
+  # for a direct jump.
+  mov $main, %eax
+  jmp *%eax
+
+.comm stack, KSTACKSIZE&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;entry.S&lt;/code&gt;の詳細については後述します。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://yohei.codes/ja/post/xv6-memory-1/#kernelld&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6: OSはどうメモリを参照、管理するのか（前編） - yohei.codes&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;sectionstextセクションの定義&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#sectionstext%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E5%AE%9A%E7%BE%A9&quot; aria-label=&quot;sectionstextセクションの定義 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;SECTIONS：textセクションの定義&lt;/h3&gt;
+&lt;p&gt;まずはtextセクションの定義を行っている箇所を見ていきます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;/* Link the kernel at this address: &quot;.&quot; means the current address */&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;/* Must be equal to KERNLINK */&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0x80100000&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;text &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;AT&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x100000&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;text &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;stub &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;text&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;gnu&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;linkonce&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;t&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;PROVIDE&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;etext &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;	&lt;span class=&quot;token comment&quot;&gt;/* Define the &apos;etext&apos; symbol to this value */&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;最初の行で定義されている&lt;code class=&quot;language-text&quot;&gt;. = 0x80100000;&lt;/code&gt;では、特殊記号&lt;code class=&quot;language-text&quot;&gt;.&lt;/code&gt;の値を設定します。&lt;/p&gt;
+&lt;p&gt;これは、ロケーションカウンタとして使用されます。&lt;/p&gt;
+&lt;p&gt;以降に定義されたセクションは、ロケーションカウンタの指すアドレスから開始されます。&lt;/p&gt;
+&lt;p&gt;セクションが定義されると、ロケーションカウンタはそのサイズ分インクリメントされます。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://sourceware.org/binutils/docs/ld/Simple-Example.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Simple Example (LD)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;xv6OSでは、ロケーションカウンタの初期値として&lt;code class=&quot;language-text&quot;&gt;0x80100000&lt;/code&gt;が定義されています。&lt;/p&gt;
+&lt;p&gt;これによって、リンカによって出力されるバイナリの命令アドレスは&lt;code class=&quot;language-text&quot;&gt;0x80100000&lt;/code&gt;から開始されることになります。&lt;/p&gt;
+&lt;p&gt;セクションの定義は、以下の構造で行われます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;section &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;address&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;type&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;AT&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;lma&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;ALIGN&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;section_align&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; ALIGN_WITH_INPUT&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;SUBALIGN&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;subsection_align&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;constraint&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    output&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;section&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;command
+    output&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;section&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;command
+    …
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;region&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;AT&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;lma_region&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;phdr &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;phdr …&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;fillexp&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://sourceware.org/binutils/docs/ld/Output-Section-Description.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Output Section Description (LD)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;AT(0x100000)&lt;/code&gt;は、セクションのロードアドレスを&lt;code class=&quot;language-text&quot;&gt;0x100000&lt;/code&gt;と定義しています。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_node/ld_21.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Using LD, the GNU linker - Section Options&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;*(.text .stub .text.* .gnu.linkonce.t.*)&lt;/code&gt;の行は何をしているのか正直全くわからなかったのですが、セクションのコンテンツを定義している行のようです。&lt;/p&gt;
+&lt;p&gt;いくつか定義の方法がありますが、基本的には&lt;code class=&quot;language-text&quot;&gt;ファイル名(シンボル)&lt;/code&gt;の形式で定義されます。&lt;/p&gt;
+&lt;p&gt;複数行に渡って定義することが可能です。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;*()&lt;/code&gt;のように、ファイル名の代わりに&lt;code class=&quot;language-text&quot;&gt;*&lt;/code&gt;を使用した場合は、リンク時に与えられたオブジェクトファイルの全てが対象になります。&lt;/p&gt;
+&lt;p&gt;つまり、&lt;code class=&quot;language-text&quot;&gt;*(.text .stub .text.* .gnu.linkonce.t.*)&lt;/code&gt;の行は、入力されたオブジェクトファイルの持つ&lt;code class=&quot;language-text&quot;&gt;.text .stub .text.* .gnu.linkonce.t.*&lt;/code&gt;の各セクションのデータをリンカが作成する実行ファイルの&lt;code class=&quot;language-text&quot;&gt;.text.&lt;/code&gt;セクションに配置する、という命令です。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_node/ld_19.html#SEC19&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Using LD, the GNU linker - Section Placement&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;リンカの入力で与えられている&lt;code class=&quot;language-text&quot;&gt;entry.o&lt;/code&gt;や&lt;code class=&quot;language-text&quot;&gt;bio.o&lt;/code&gt;などのファイルは、いずれも32bitELF形式でコンパイルされているため、それぞれがヘッダや&lt;code class=&quot;language-text&quot;&gt;.text&lt;/code&gt;セクションを持っています。&lt;/p&gt;
+&lt;p&gt;これらを一つの実行ファイルとして統合するために上記のような定義がされているんですね。&lt;/p&gt;
+&lt;p&gt;続いて&lt;code class=&quot;language-text&quot;&gt;.text&lt;/code&gt;セクションの定義が完了したため、セグメントの終了を示す&lt;code class=&quot;language-text&quot;&gt;etext&lt;/code&gt;を定義する必要があります。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token function&quot;&gt;PROVIDE&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;etext &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;	&lt;span class=&quot;token comment&quot;&gt;/* Define the &apos;etext&apos; symbol to this value */&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://linuxjm.osdn.jp/html/LDP_man-pages/man3/end.3.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Man page of END&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ここでは、&lt;code class=&quot;language-text&quot;&gt;PROVIDE&lt;/code&gt;を使って、カレントロケーションに&lt;code class=&quot;language-text&quot;&gt;etext&lt;/code&gt;を設定しています。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;PROVIDE&lt;/code&gt;は、シンボルがコード上で未定義の場合にのみシンボルを作成する命令です。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://sourceware.org/binutils/docs/ld/PROVIDE.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;PROVIDE (LD)&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;sectionsrodataセクションの定義&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#sectionsrodata%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E5%AE%9A%E7%BE%A9&quot; aria-label=&quot;sectionsrodataセクションの定義 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;SECTIONS：rodataセクションの定義&lt;/h3&gt;
+&lt;p&gt;続いて&lt;code class=&quot;language-text&quot;&gt;.rodata&lt;/code&gt;セクションを定義します。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;rodata&lt;/code&gt;は&lt;code class=&quot;language-text&quot;&gt;Read Only Data&lt;/code&gt;の意味です。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;rodata &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;rodata &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;rodata&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;gnu&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;linkonce&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;r&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;リンカの定義は&lt;code class=&quot;language-text&quot;&gt;.text&lt;/code&gt;セクションと同じ記法なので割愛します。&lt;/p&gt;
+&lt;h3 id=&quot;sectionsstabstabstrセクションの定義&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#sectionsstabstabstr%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E5%AE%9A%E7%BE%A9&quot; aria-label=&quot;sectionsstabstabstrセクションの定義 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;SECTIONS：stab,stabstrセクションの定義&lt;/h3&gt;
+&lt;p&gt;続いて、デバッグ用の&lt;code class=&quot;language-text&quot;&gt;stab&lt;/code&gt;セクションが定義されます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;/* Include debugging information in kernel memory */&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;stab &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;token function&quot;&gt;PROVIDE&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;__STAB_BEGIN__ &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;stab&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;token function&quot;&gt;PROVIDE&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;__STAB_END__ &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;stabstr &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;token function&quot;&gt;PROVIDE&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;__STABSTR_BEGIN__ &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;stabstr&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;token function&quot;&gt;PROVIDE&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;__STABSTR_END__ &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;ld&lt;/code&gt;は、リンカスクリプトで定義されたコンテンツが空となるセクションは作成しません。&lt;/p&gt;
+&lt;p&gt;デフォルトのコードでは各バイナリは&lt;code class=&quot;language-text&quot;&gt;.stab&lt;/code&gt;セクションを持たないため、&lt;code class=&quot;language-text&quot;&gt;kerel&lt;/code&gt;にも&lt;code class=&quot;language-text&quot;&gt;.stab&lt;/code&gt;セクションは存在しませんでした。&lt;/p&gt;
+&lt;p&gt;しかし、Makefileで定義されたgccのコンパイルオプションに&lt;code class=&quot;language-text&quot;&gt;-gstabs&lt;/code&gt;を追加して&lt;code class=&quot;language-text&quot;&gt;.stab&lt;/code&gt;セクションを作成することで、リンクされた&lt;code class=&quot;language-text&quot;&gt;kernel&lt;/code&gt;にも&lt;code class=&quot;language-text&quot;&gt;.stab&lt;/code&gt;セクションが作成されることを確認しました。&lt;/p&gt;
+&lt;h3 id=&quot;sectionsdataセクションの定義&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#sectionsdata%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E5%AE%9A%E7%BE%A9&quot; aria-label=&quot;sectionsdataセクションの定義 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;SECTIONS：dataセクションの定義&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;.data&lt;/code&gt;セクションには読み書き可能なデータが格納されます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;/* Adjust the address for the data segment to the next page */&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;ALIGN&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x1000&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;/* Conventionally, Unix linkers provide pseudo-symbols
+	* etext, edata, and end, at the end of the text, data, and bss.
+	* For the kernel mapping, we need the address at the beginning
+	* of the data section, but that&apos;s not one of the conventional
+	* symbols, because the convention started before there was a
+	* read-only rodata section between text and data. */&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;PROVIDE&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;data &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;/* The data segment */&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;data &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;data&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;PROVIDE&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;edata &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;まずは&lt;code class=&quot;language-text&quot;&gt;. = ALIGN(0x1000);&lt;/code&gt;の行でカレントロケーションを&lt;code class=&quot;language-text&quot;&gt;0x1000&lt;/code&gt;の境界にアラインメントしてます。&lt;/p&gt;
+&lt;p&gt;この行は先ほどの&lt;code class=&quot;language-text&quot;&gt;. = 0x80100000;&lt;/code&gt;のように、ロケーションカウンタに特定のアドレスを割り当てているわけではありません。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;ALIGN&lt;/code&gt;を実行した時点のカレントロケーションをもとに、指定した値の境界にカレントロケーションをアラインメントしています。&lt;/p&gt;
+&lt;p&gt;実際に生成された&lt;code class=&quot;language-text&quot;&gt;kernel&lt;/code&gt;のバイナリを見ると、バイナリデータが&lt;code class=&quot;language-text&quot;&gt;0x80107aa9&lt;/code&gt;まで連続していたところから、&lt;code class=&quot;language-text&quot;&gt;.data&lt;/code&gt;セクションの先頭アドレスが&lt;code class=&quot;language-text&quot;&gt;0x80108000&lt;/code&gt;になっていることがわかります。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ objdump -D kernel &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;grep&lt;/span&gt; -5 &lt;span class=&quot;token string&quot;&gt;&quot;Disassembly of section .data:&quot;&lt;/span&gt;
+80107aa6:	&lt;span class=&quot;token number&quot;&gt;67&lt;/span&gt; 6e                	outsb  %ds:&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;%si&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;,&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;%dx&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+80107aa8:	&lt;span class=&quot;token number&quot;&gt;65&lt;/span&gt;                   	gs
+80107aa9:	&lt;span class=&quot;token number&quot;&gt;64&lt;/span&gt;                   	fs
+	&lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;.
+
+Disassembly of section .data:
+
+&lt;span class=&quot;token number&quot;&gt;80108000&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;ctlmap&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;:
+	&lt;span class=&quot;token punctuation&quot;&gt;..&lt;/span&gt;.
+&lt;span class=&quot;token number&quot;&gt;80108010&lt;/span&gt;:	&lt;span class=&quot;token number&quot;&gt;11&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;17&lt;/span&gt;                	adc    %edx,&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;%edi&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token number&quot;&gt;80108012&lt;/span&gt;:	05 &lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;14&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;19&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;15&lt;/span&gt;       	&lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt;    &lt;span class=&quot;token variable&quot;&gt;$0x15191412&lt;/span&gt;,%eax&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;これはカレントロケーションが&lt;code class=&quot;language-text&quot;&gt;0x80107aaa&lt;/code&gt;までインクリメントされていたところから&lt;code class=&quot;language-text&quot;&gt;0x1000&lt;/code&gt;の境界にアラインメントされた結果です。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_node/ld_14.html#IDX239&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Using LD, the GNU linker - Arithmetic Functions&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;以降の定義は、これまで紹介した内容と同一なので割愛します。&lt;/p&gt;
+&lt;h3 id=&quot;sectionsbssセクションの定義&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#sectionsbss%E3%82%BB%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E5%AE%9A%E7%BE%A9&quot; aria-label=&quot;sectionsbssセクションの定義 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;SECTIONS：bssセクションの定義&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;.bss&lt;/code&gt;セクションは以下のように定義します。&lt;/p&gt;
+&lt;p&gt;ここについてもこれまでと同様ですので割愛します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token function&quot;&gt;PROVIDE&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;edata &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;bss &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;bss&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;PROVIDE&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;end &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;sectionsdiscard&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#sectionsdiscard&quot; aria-label=&quot;sectionsdiscard permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;SECTIONS：DISCARD&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;/DISCARD/&lt;/code&gt;に記述されたセクションは生成オブジェクトにリンクされません。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;DISCARD&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;eh_frame &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;note&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;GNU&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;stack&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;.eh_frame&lt;/code&gt;はgccによって生成される、スタックバックトレースを取得するための情報が格納されるセクションです。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;.note.GNU-stack&lt;/code&gt;は、Linuxのオブジェクトファイルでスタック属性を宣言する際に使用されます。&lt;/p&gt;
+&lt;h2 id=&quot;カーネルのエントリポイント&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%81%AE%E3%82%A8%E3%83%B3%E3%83%88%E3%83%AA%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88&quot; aria-label=&quot;カーネルのエントリポイント permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;カーネルのエントリポイント&lt;/h2&gt;
+&lt;p&gt;続いて、リンク時にカーネルのエントリポイントとして定義されていた&lt;code class=&quot;language-text&quot;&gt;_start&lt;/code&gt;関数を見ていきます。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;_start&lt;/code&gt;関数が定義された&lt;code class=&quot;language-text&quot;&gt;entry.S&lt;/code&gt;は以下のコードです。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;assembly&quot;&gt;&lt;pre class=&quot;language-assembly&quot;&gt;&lt;code class=&quot;language-assembly&quot;&gt;# The xv6 kernel starts executing in this file. This file is linked with
+# the kernel C code, so it can refer to kernel symbols such as main().
+# The boot block (bootasm.S and bootmain.c) jumps to entry below.
+        
+# Multiboot header, for multiboot boot loaders like GNU Grub.
+# http://www.gnu.org/software/grub/manual/multiboot/multiboot.html
+#
+# Using GRUB 2, you can boot xv6 from a file stored in a
+# Linux file system by copying kernel or kernelmemfs to /boot
+# and then adding this menu entry:
+#
+# menuentry &amp;quot;xv6&amp;quot; {
+# 	insmod ext2
+# 	set root=&amp;#39;(hd0,msdos1)&amp;#39;
+# 	set kernel=&amp;#39;/boot/kernel&amp;#39;
+# 	echo &amp;quot;Loading ${kernel}...&amp;quot;
+# 	multiboot ${kernel} ${kernel}
+# 	boot
+# }
+
+#include &amp;quot;asm.h&amp;quot;
+#include &amp;quot;memlayout.h&amp;quot;
+#include &amp;quot;mmu.h&amp;quot;
+#include &amp;quot;param.h&amp;quot;
+
+# Multiboot header.  Data to direct multiboot loader.
+.p2align 2
+.text
+.globl multiboot_header
+multiboot_header:
+  #define magic 0x1badb002
+  #define flags 0
+  .long magic
+  .long flags
+  .long (-magic-flags)
+
+# By convention, the _start symbol specifies the ELF entry point.
+# Since we haven&amp;#39;t set up virtual memory yet, our entry point is
+# the physical address of &amp;#39;entry&amp;#39;.
+.globl _start
+_start = V2P_WO(entry)
+
+# Entering xv6 on boot processor, with paging off.
+.globl entry
+entry:
+  # Turn on page size extension for 4Mbyte pages
+  movl    %cr4, %eax
+  orl     $(CR4_PSE), %eax
+  movl    %eax, %cr4
+  # Set page directory
+  movl    $(V2P_WO(entrypgdir)), %eax
+  movl    %eax, %cr3
+  # Turn on paging.
+  movl    %cr0, %eax
+  orl     $(CR0_PG|CR0_WP), %eax
+  movl    %eax, %cr0
+
+  # Set up the stack pointer.
+  movl $(stack + KSTACKSIZE), %esp
+
+  # Jump to main(), and switch to executing at
+  # high addresses. The indirect call is needed because
+  # the assembler produces a PC-relative instruction
+  # for a direct jump.
+  mov $main, %eax
+  jmp *%eax
+
+.comm stack, KSTACKSIZE&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;マルチブートヘッダ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%9E%E3%83%AB%E3%83%81%E3%83%96%E3%83%BC%E3%83%88%E3%83%98%E3%83%83%E3%83%80&quot; aria-label=&quot;マルチブートヘッダ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;マルチブートヘッダ&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;entry.S&lt;/code&gt;の先頭行からコードを見ていくと、次のようなコードがありました。&lt;/p&gt;
+&lt;p&gt;まず先頭行、&lt;code class=&quot;language-text&quot;&gt;.p2align 2&lt;/code&gt;ではバイナリを4バイト境界にアラインメントしています。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://sourceware.org/binutils/docs/as/P2align.html#P2align&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;P2align (Using as)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://stackoverflow.com/questions/21546946/what-does-p2align-do-in-asm-code&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;gcc - What does .p2align do in asm code? - Stack Overflow&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;その後&lt;code class=&quot;language-text&quot;&gt;.text&lt;/code&gt;ディレクティブの直下に&lt;code class=&quot;language-text&quot;&gt;multiboot_header&lt;/code&gt;が定義されています。&lt;/p&gt;
+&lt;p&gt;ここでは、マルチブート仕様に対応するためのマルチブートヘッダの定義を行っています。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;assembly&quot;&gt;&lt;pre class=&quot;language-assembly&quot;&gt;&lt;code class=&quot;language-assembly&quot;&gt;# Multiboot header.  Data to direct multiboot loader.
+.p2align 2
+.text
+.globl multiboot_header
+multiboot_header:
+  #define magic 0x1badb002
+  #define flags 0
+  .long magic
+  .long flags
+  .long (-magic-flags)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;マルチブート仕様とは、ブートローダがx86オペレーティングシステムカーネルをロードする方法を標準化したものです。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://yukituna.com/3850/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;前回&lt;/a&gt;の記事では、xv6OSのブートローダのコードを見ていきましたが、例えばxv6OSのカーネルをGRUBでブートしたい場合には、このマルチブート仕様にカーネルを対応させる必要があります。&lt;/p&gt;
+&lt;p&gt;GRUBなどのブートローダは、Linuxシステムなどで標準的に採用されています。(通常はGRUB2を使用)&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://wiki2th.com/ja/Multiboot_Specification&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;マルチブート仕様&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://wocota.hatenadiary.org/entry/20090607/1244389534&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;GRUBでOSを起動する - OSのようなもの&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://inaz2.hatenablog.com/entry/2015/12/31/221319&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;GRUBで簡単なOSカーネルを動かしてみる - ももいろテクノロジー&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;実際にxv6OSをGRUBによる起動に対応させるのはカーネルの読解が一通り終わってからやろうと考えているので、コードの詳細は追わずに先に進みます。&lt;/p&gt;
+&lt;h3 id=&quot;エントリポイントの物理アドレスを定義&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%A8%E3%83%B3%E3%83%88%E3%83%AA%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%AE%E7%89%A9%E7%90%86%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%82%92%E5%AE%9A%E7%BE%A9&quot; aria-label=&quot;エントリポイントの物理アドレスを定義 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;エントリポイントの物理アドレスを定義&lt;/h3&gt;
+&lt;p&gt;続いてのコードは以下です。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;assembly&quot;&gt;&lt;pre class=&quot;language-assembly&quot;&gt;&lt;code class=&quot;language-assembly&quot;&gt;# By convention, the _start symbol specifies the ELF entry point.
+# Since we haven&amp;#39;t set up virtual memory yet, our entry point is
+# the physical address of &amp;#39;entry&amp;#39;.
+.globl _start
+_start = V2P_WO(entry)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;.globl&lt;/code&gt;ディレクティブは、シンボルをリンクされているすべてのファイルから参照可能にするための宣言です。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;_start&lt;/code&gt;はエントリポイントとしてリンカスクリプトなどから参照されていたシンボルですが、この宣言によって&lt;code class=&quot;language-text&quot;&gt;entry.S&lt;/code&gt;の外部からの呼び出しが可能になっています。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://www.google.com/search?q=.globl&amp;#x26;rlz=1C1GCEA_enJP959JP959&amp;#x26;oq=.globl&amp;#x26;aqs=chrome..69i57j0i512j0i10i512j0i10l7.483j0j7&amp;#x26;sourceid=chrome&amp;#x26;ie=UTF-8&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;.globl - Google Search&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;続いて、&lt;code class=&quot;language-text&quot;&gt;_start = V2P_WO(entry)&lt;/code&gt;の行を見てみます。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;V2P_WO&lt;/code&gt;は、&lt;code class=&quot;language-text&quot;&gt;memlayout.h&lt;/code&gt;で定義されている以下のマクロです。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;assembly&quot;&gt;&lt;pre class=&quot;language-assembly&quot;&gt;&lt;code class=&quot;language-assembly&quot;&gt;// Memory layout
+
+#define EXTMEM  0x100000            // Start of extended memory
+#define PHYSTOP 0xE000000           // Top physical memory
+#define DEVSPACE 0xFE000000         // Other devices are at high addresses
+
+// Key addresses for address space layout (see kmap in vm.c for layout)
+#define KERNBASE 0x80000000         // First kernel virtual address
+#define KERNLINK (KERNBASE+EXTMEM)  // Address where kernel is linked
+
+#define V2P(a) (((uint) (a)) - KERNBASE)
+#define P2V(a) ((void *)(((char *) (a)) + KERNBASE))
+
+#define V2P_WO(x) ((x) - KERNBASE)    // same as V2P, but without casts
+#define P2V_WO(x) ((x) + KERNBASE)    // same as P2V, but without casts&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;引数として受け取ったアドレスから&lt;code class=&quot;language-text&quot;&gt;KERNBASE&lt;/code&gt;として設定されている&lt;code class=&quot;language-text&quot;&gt;0x80000000&lt;/code&gt;を引いて返すだけのマクロのようです。&lt;/p&gt;
+&lt;p&gt;もともと、リンカではカーネルの&lt;code class=&quot;language-text&quot;&gt;.text&lt;/code&gt;セクションは&lt;code class=&quot;language-text&quot;&gt;0x80100000&lt;/code&gt;をベースにしてリンクされていました。&lt;/p&gt;
+&lt;p&gt;これはユーザモードとカーネルモードの仮想メモリ範囲を切り分けて、x86CPUのページング機構によってCPUがカーネルの仮想アドレスをロードするための仕組みです。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://yohei.codes/ja/post/xv6-memory-1/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6: OSはどうメモリを参照、管理するのか（前編） - yohei.codes&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;しかし、&lt;code class=&quot;language-text&quot;&gt;_start = V2P_WO(entry)&lt;/code&gt;が実行される段階では、カーネル側で仮想メモリの設定が行われていないため、エントリポイント&lt;code class=&quot;language-text&quot;&gt;_start&lt;/code&gt;を物理アドレスに割り当てるために、&lt;code class=&quot;language-text&quot;&gt;0x80100000&lt;/code&gt;の減算が行われています。&lt;/p&gt;
+&lt;h3 id=&quot;カーネルのエントリポイントのロード&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%81%AE%E3%82%A8%E3%83%B3%E3%83%88%E3%83%AA%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89&quot; aria-label=&quot;カーネルのエントリポイントのロード permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;カーネルのエントリポイントのロード&lt;/h3&gt;
+&lt;p&gt;残りの&lt;code class=&quot;language-text&quot;&gt;entry.S&lt;/code&gt;の処理を追っていきます。&lt;/p&gt;
+&lt;p&gt;まずは&lt;code class=&quot;language-text&quot;&gt;.globl entry&lt;/code&gt;で&lt;code class=&quot;language-text&quot;&gt;entry&lt;/code&gt;を外部から参照可能なシンボルとしています。&lt;/p&gt;
+&lt;p&gt;この&lt;code class=&quot;language-text&quot;&gt;entry&lt;/code&gt;で行っている処理は、簡単に言うとページングを利用してカーネルの仮想アドレスを読み込んでいます。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;entry&lt;/code&gt;ラベルが呼び出しされる時点では、まだページング機構は有効化されていないので、まずはこれを有効化していきます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;assembly&quot;&gt;&lt;pre class=&quot;language-assembly&quot;&gt;&lt;code class=&quot;language-assembly&quot;&gt;# Entering xv6 on boot processor, with paging off.
+.globl entry
+entry:
+  # Turn on page size extension for 4Mbyte pages
+  movl    %cr4, %eax
+  orl     $(CR4_PSE), %eax
+  movl    %eax, %cr4
+  # Set page directory
+  movl    $(V2P_WO(entrypgdir)), %eax
+  movl    %eax, %cr3
+  # Turn on paging.
+  movl    %cr0, %eax
+  orl     $(CR0_PG|CR0_WP), %eax
+  movl    %eax, %cr0
+
+  # Set up the stack pointer.
+  movl $(stack + KSTACKSIZE), %esp
+
+  # Jump to main(), and switch to executing at
+  # high addresses. The indirect call is needed because
+  # the assembler produces a PC-relative instruction
+  # for a direct jump.
+  mov $main, %eax
+  jmp *%eax
+
+.comm stack, KSTACKSIZE&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;ページングとは&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%9A%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0%E3%81%A8%E3%81%AF&quot; aria-label=&quot;ページングとは permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;ページングとは&lt;/h3&gt;
+&lt;p&gt;コードを追う前に、ページングについて簡単にまとめます。&lt;/p&gt;
+&lt;p&gt;ページングとは、メモリ領域を固定長のサイズ(ページ)に分割して管理する方法です。&lt;/p&gt;
+&lt;p&gt;これによって、分割されたメモリ領域をリニアなメモリ空間として扱うことができたり、SSDなどの補助記憶装置に仮想的なページ領域を確保することで、物理メモリの容量以上のメモリ領域を扱うことができます。&lt;/p&gt;
+&lt;p&gt;ページングにおいて、主記憶装置から補助記憶装置にページを書き出すことを「ページアウト」、逆に補助記憶装置から主記憶装置にページを書き戻すことを「ページイン」または「スワップイン」と呼びます。&lt;/p&gt;
+&lt;p&gt;ページング機構によって、使用されていないメモリ領域はページアウトによって補助記憶装置に保存されます。&lt;/p&gt;
+&lt;p&gt;次にそのメモリ領域が必要となる場合、OSは物理メモリ上に存在しないアドレスに対して「ページフォールト」という例外を発生させ、割込みによってスワップインを行い、物理メモリ上にページを書き戻すという挙動が発生します。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://babyron64.hatenablog.com/entry/2017/12/22/210124&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;x86_64アーキテクチャ - ばびろん’s すたっく メモリアクセス&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://babyron64.hatenablog.com/entry/2017/12/22/232423&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;x86_64アーキテクチャ - ばびろん’s すたっく メモリアクセス(続き)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://e-words.jp/w/%E3%83%9A%E3%83%BC%E3%82%B8%E3%83%B3%E3%82%B0.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;ページング（paging）とは - IT用語辞典 e-Words&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ページング機構を有効化するためには、x86CPUでは&lt;code class=&quot;language-text&quot;&gt;CR0(コントロールレジスタ0)&lt;/code&gt;のPGフラグを1にする必要があります。&lt;/p&gt;
+&lt;p&gt;実際にページングを有効化している箇所を見ます。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://yukituna.com/3850/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;前回の記事&lt;/a&gt;でプロテクトモード移行時に&lt;code class=&quot;language-text&quot;&gt;CR0(コントロールレジスタ0)&lt;/code&gt;のPEフラグをセットしましたが、この時とやり方はほぼ同じです。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;assembly&quot;&gt;&lt;pre class=&quot;language-assembly&quot;&gt;&lt;code class=&quot;language-assembly&quot;&gt;entry:
+  # Turn on page size extension for 4Mbyte pages
+  movl    %cr4, %eax
+  orl     $(CR4_PSE), %eax
+  movl    %eax, %cr4
+  # Set page directory
+  movl    $(V2P_WO(entrypgdir)), %eax
+  movl    %eax, %cr3
+  # Turn on paging.
+  movl    %cr0, %eax
+  orl     $(CR0_PG|CR0_WP), %eax
+  movl    %eax, %cr0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;最後の&lt;code class=&quot;language-text&quot;&gt;# Turn on paging.&lt;/code&gt;以降の処理が、&lt;code class=&quot;language-text&quot;&gt;CR0(コントロールレジスタ0)&lt;/code&gt;のPGフラグをセットしている箇所です。&lt;/p&gt;
+&lt;p&gt;各フラグの演算に使っている定数はそれぞれ以下のように定義されています。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Control Register flags&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;CR0_PE&lt;/span&gt;          &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;0x00000001&lt;/span&gt;      &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// Protection Enable&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;CR0_WP&lt;/span&gt;          &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;0x00010000&lt;/span&gt;      &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// Write Protect&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;CR0_PG&lt;/span&gt;          &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;0x80000000&lt;/span&gt;      &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// Paging&lt;/span&gt;&lt;/span&gt;
+
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;CR4_PSE&lt;/span&gt;         &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;0x00000010&lt;/span&gt;      &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// Page size extension&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;ここから、PGフラグだけでなく、WPフラグもセットしていることがわかります。&lt;/p&gt;
+&lt;p&gt;WPフラグがセットされると、CPUはリング0のスーパーバイザレベルのプロシージャが読み取り専用ページに時書き込みを行うことを禁止することができます。&lt;/p&gt;
+&lt;p&gt;これによってOSで新しいプロセスを作成する際のコピーオンライト方式の実装を容易にすることができます。&lt;/p&gt;
+&lt;p&gt;これについては今後の記事で書きます。&lt;/p&gt;
+&lt;p&gt;ただ、x86CPUではデフォルトでWPフラグがセットされているはずなので、なぜ明示的に設定しているのかは疑問に感じる点です。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://en.wikipedia.org/wiki/Control_register&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Control register - Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://stackoverflow.com/questions/15275059/whats-the-purpose-of-x86-cr0-wp-bit&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;assembly - whats the purpose of x86 cr0 WP bit? - Stack Overflow&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;次に、CR0の設定より少しさかのぼった以下の箇所を見ていきます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;assembly&quot;&gt;&lt;pre class=&quot;language-assembly&quot;&gt;&lt;code class=&quot;language-assembly&quot;&gt;# Turn on page size extension for 4Mbyte pages
+movl    %cr4, %eax
+orl     $(CR4_PSE), %eax
+movl    %eax, %cr4&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;ここでは&lt;code class=&quot;language-text&quot;&gt;CR4(コントロールレジスタ4)&lt;/code&gt;のPSEフラグをセットしています。&lt;/p&gt;
+&lt;p&gt;このフラグは、1ページのサイズをコントロールすることができます。&lt;/p&gt;
+&lt;p&gt;CR4のPSEフラグがセットされていない(デフォルト)場合、ページのサイズは4KiBになります。&lt;/p&gt;
+&lt;p&gt;逆にPSEフラグがセットされている場合、ページサイズは4MiBに拡張されます。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://en.wikipedia.org/wiki/Control_register&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Control register - Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ページサイズに2つのサイズが設定されている詳しい背景などは機会があれば別の記事にまとめます。&lt;/p&gt;
+&lt;p&gt;xv6OSでは、4MiBのページサイズが設定されていることまでわかりました。&lt;/p&gt;
+&lt;p&gt;最後は以下の箇所です。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;assembly&quot;&gt;&lt;pre class=&quot;language-assembly&quot;&gt;&lt;code class=&quot;language-assembly&quot;&gt;# Set page directory
+movl    $(V2P_WO(entrypgdir)), %eax
+movl    %eax, %cr3&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;xv6OSにおけるページング機構は、この次の行で有効化しているため、この時点ではまだページングが有効になっていません。&lt;/p&gt;
+&lt;p&gt;そのため、&lt;code class=&quot;language-text&quot;&gt;$(V2P_WO(entrypgdir))&lt;/code&gt;マクロによって&lt;code class=&quot;language-text&quot;&gt;entrypgdir&lt;/code&gt;のアドレスを物理アドレスに変換してからCR3に書き込んでいます。&lt;/p&gt;
+&lt;p&gt;CR3は、ページング機構が有効な場合に使用されるレジスタで、x86CPUがページディレクトリとページテーブルを参照し、リニアアドレスを物理アドレスに変換するために使用されます。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;entrypgdir&lt;/code&gt;は、&lt;code class=&quot;language-text&quot;&gt;main.c&lt;/code&gt;で定義されている構造体配列です。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// main.c&lt;/span&gt;
+&lt;span class=&quot;token class-name&quot;&gt;pde_t&lt;/span&gt; entrypgdir&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// For entry.S&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// The boot page table used in entry.S and entryother.S.&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// Page directories (and page tables) must start on page boundaries,&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// hence the __aligned__ attribute.&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// PTE_PS in a page directory entry enables 4Mbyte pages.&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;__attribute__&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;__aligned__&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;PGSIZE&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token class-name&quot;&gt;pde_t&lt;/span&gt; entrypgdir&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;NPDENTRIES&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// Map VA&apos;s [0, 4MB) to PA&apos;s [0, 4MB)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; PTE_P &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; PTE_W &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; PTE_PS&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+   
+  &lt;span class=&quot;token comment&quot;&gt;// Map VA&apos;s [KERNBASE, KERNBASE+4MB) to PA&apos;s [0, 4MB)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;KERNBASE&lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt;PDXSHIFT&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; PTE_P &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; PTE_W &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; PTE_PS&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;配列のサイズは&lt;code class=&quot;language-text&quot;&gt;NPDENTRIES&lt;/code&gt;ですが、これは&lt;code class=&quot;language-text&quot;&gt;mmu.h&lt;/code&gt;で以下の通り1024と定義されています。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Page directory and page table constants.&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;NPDENTRIES&lt;/span&gt;      &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;1024&lt;/span&gt;    &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// # directory entries per page directory&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;NPTENTRIES&lt;/span&gt;      &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;1024&lt;/span&gt;    &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// # PTEs per page table&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;PGSIZE&lt;/span&gt;          &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;4096&lt;/span&gt;    &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// bytes mapped by a page&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;entrypgdir&lt;/code&gt;には2つの要素があります。&lt;/p&gt;
+&lt;p&gt;正直何をしているのか雰囲気でしか理解していないですが、ここでは単にページディレクトリのエントリを初期化しているようです。&lt;/p&gt;
+&lt;p&gt;まず、2つの要素に共通している&lt;code class=&quot;language-text&quot;&gt;(0) | PTE_P | PTE_W | PTE_PS&lt;/code&gt;の行は、以下の定義を行っています。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;0&lt;/code&gt; - すべてのビットを0にする&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;PTE_P&lt;/code&gt; - present をセットする&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;PTE_W&lt;/code&gt; - read\write をセットする&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;PTE_PS&lt;/code&gt; - 4MiB page size bit をセットする&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;1つ目の要素&lt;code class=&quot;language-text&quot;&gt;[0] = (0) | PTE_P | PTE_W | PTE_PS,&lt;/code&gt;では、0番目の要素のページディレクトリエントリをこの値に初期化しています。&lt;/p&gt;
+&lt;p&gt;次の要素では、&lt;code class=&quot;language-text&quot;&gt;KERNBASE&gt;&gt;PDXSHIFT&lt;/code&gt; = &lt;code class=&quot;language-text&quot;&gt;0x80000000 &gt;&gt; 22&lt;/code&gt; = 512番目の要素のページディレクトリエントリをこの値に初期化しています。&lt;/p&gt;
+&lt;p&gt;この初期化は、次にページング機構を有効化してメイン関数に移行する際に使用するようです。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://yohei.codes/ja/post/xv6-memory-1/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6: OSはどうメモリを参照、管理するのか（前編） - yohei.codes&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://stackoverflow.com/questions/58576065/what-does-this-code-mean-in-xv6-entrypgdir&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;what does this code mean in xv6 entrypgdir? - Stack Overflow&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;スタックポインタの設定&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%83%9D%E3%82%A4%E3%83%B3%E3%82%BF%E3%81%AE%E8%A8%AD%E5%AE%9A&quot; aria-label=&quot;スタックポインタの設定 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;スタックポインタの設定&lt;/h3&gt;
+&lt;p&gt;最後にスタックポインタの設定を行って、main関数に移行します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;assembly&quot;&gt;&lt;pre class=&quot;language-assembly&quot;&gt;&lt;code class=&quot;language-assembly&quot;&gt;# Set up the stack pointer.
+movl $(stack + KSTACKSIZE), %esp&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;KSTACKSIZE&lt;/code&gt;は、&lt;code class=&quot;language-text&quot;&gt;param.h&lt;/code&gt;で4096と定義されています。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;NPROC&lt;/span&gt;        &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;64&lt;/span&gt;  &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// maximum number of processes&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;KSTACKSIZE&lt;/span&gt; &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;4096&lt;/span&gt;  &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// size of per-process kernel stack&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;NCPU&lt;/span&gt;          &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;8&lt;/span&gt;  &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// maximum number of CPUs&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;NOFILE&lt;/span&gt;       &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;16&lt;/span&gt;  &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// open files per process&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;NFILE&lt;/span&gt;       &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;100&lt;/span&gt;  &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// open files per system&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;NINODE&lt;/span&gt;       &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;50&lt;/span&gt;  &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// maximum number of active i-nodes&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;NDEV&lt;/span&gt;         &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;10&lt;/span&gt;  &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// maximum major device number&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;ROOTDEV&lt;/span&gt;       &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;  &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// device number of file system root disk&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;MAXARG&lt;/span&gt;       &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;32&lt;/span&gt;  &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// max exec arguments&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;MAXOPBLOCKS&lt;/span&gt;  &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;10&lt;/span&gt;  &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// max # of blocks any FS op writes&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;LOGSIZE&lt;/span&gt;      &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;MAXOPBLOCKS&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;  &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// max data blocks in on-disk log&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;NBUF&lt;/span&gt;         &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;MAXOPBLOCKS&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;  &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// size of disk block cache&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;FSSIZE&lt;/span&gt;       &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;1000&lt;/span&gt;  &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// size of file system in blocks&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Cのコードに移行するためにスタックポインタの設定が必要なのですが、ここは正直よくわかりませんでした。&lt;/p&gt;
+&lt;p&gt;というのも、変数&lt;code class=&quot;language-text&quot;&gt;stack&lt;/code&gt;は、&lt;code class=&quot;language-text&quot;&gt;main.c&lt;/code&gt;で定義されているものであり、この時点ではまだ値が格納されていません。&lt;/p&gt;
+&lt;p&gt;結果として&lt;code class=&quot;language-text&quot;&gt;.comm&lt;/code&gt;シンボルとして定義され、あとで再定義される想定とされているようです。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://stackoverflow.com/questions/29008035/assembly-mov-unitialized-variable&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;c - assembly - mov unitialized variable? - Stack Overflow&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;難解ですね。。&lt;/p&gt;
+&lt;h3 id=&quot;main関数に移行&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#main%E9%96%A2%E6%95%B0%E3%81%AB%E7%A7%BB%E8%A1%8C&quot; aria-label=&quot;main関数に移行 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;main関数に移行&lt;/h3&gt;
+&lt;p&gt;ブートストラップから続く一連の処理がようやく終わり、ここからカーネル本体となる&lt;code class=&quot;language-text&quot;&gt;main.c&lt;/code&gt;の関数に移行していきます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;token expression&quot;&gt;Jump to &lt;span class=&quot;token function&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; and &lt;span class=&quot;token keyword&quot;&gt;switch&lt;/span&gt; to executing at&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;token directive keyword&quot;&gt;high&lt;/span&gt; &lt;span class=&quot;token expression&quot;&gt;addresses&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt; The indirect call is needed because&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;token directive keyword&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;token expression&quot;&gt;assembler produces a PC&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;relative instruction&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;token directive keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token expression&quot;&gt;a direct jump&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+mov $main&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;eax
+jmp &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt;eax
+
+&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;comm stack&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; KSTACKSIZE&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;結構長くなってしまったので続きはまた次回の記事にて。&lt;/p&gt;
+&lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;今回はカーネルプログラムのビルドとリンカスクリプト、そしてエントリポイントの処理の流れを追っていきました。&lt;/p&gt;
+&lt;p&gt;次回は今度こそようやくカーネル本体の動きを追っていくことができそうです。&lt;/p&gt;
+&lt;h2 id=&quot;参考書籍&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E5%8F%82%E8%80%83%E6%9B%B8%E7%B1%8D&quot; aria-label=&quot;参考書籍 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;参考書籍&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://amzn.to/3qZSCY7&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;30日でできる! OS自作入門&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://amzn.to/3qXYsZX&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;ゼロからのOS自作入門&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://amzn.to/3q8TU3K&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://amzn.to/3I6fkVt&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;詳解 Linuxカーネル&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://amzn.to/3JRUdI2&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;作って理解するOS x86系コンピュータを動かす理論と実装&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[xv6OSを真面目に読みこんでカーネルを完全に理解する -ブートストラップ編-]]></title><description><![CDATA[教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのブートストラップを読み解きます。]]></description><link>https://kashiwaba-yuki.com/Unix/unix-xv6-001-bootstrap</link><guid isPermaLink="false">https://kashiwaba-yuki.com/Unix/unix-xv6-001-bootstrap</guid><pubDate>Mon, 10 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://amzn.to/3q8TU3K&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ&lt;/a&gt;にインスパイアされて&lt;a href=&quot;https://github.com/mit-pdos/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 OS&lt;/a&gt;を読んでます。&lt;/p&gt;
 &lt;p&gt;リバースエンジニアリングに強くなりたいのと、カーネルとかOSに詳しくなりたいと思っています。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://amzn.to/3I6fkVt&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;詳解 Linuxカーネル&lt;/a&gt;が結構重かったので、もう少し軽めのところから始めたいと思っていたところ、UNIX V6というOSがトータルで1万行くらいのコード量で、人類でもギリギリ理解できるということを知り、興味を持ちました。&lt;/p&gt;
 &lt;p&gt;ただ、UNIX V6自体はx86CPUでは動作しないため、基本的には、UNIXv6をX86アーキテクチャで動くようにした&lt;a href=&quot;https://github.com/mit-pdos/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 OS&lt;/a&gt;のリポジトリをForkした&lt;a href=&quot;https://github.com/kash1064/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;kash1064/xv6-public: xv6 OS&lt;/a&gt;のソースコードを読んでいくことにしました。&lt;/p&gt;
