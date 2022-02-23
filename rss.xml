@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[かえるのひみつきち]]></title><description><![CDATA[かえるのひみつきち]]></description><link>https://kashiwaba-yuki.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 22 Feb 2022 17:20:10 GMT</lastBuildDate><item><title><![CDATA[Gatsbyで作成したSPAブログをGitHubPagesに公開する環境を作る備忘録]]></title><description><![CDATA[Gatsbyで作成したSPAブログをGithub Pagesに公開する手順についてまとめています。Gatsbyの開発環境はDockerコンテナ上に構築しています。]]></description><link>https://kashiwaba-yuki.com/Notes/note-how-to-deploy-gatsby-spa</link><guid isPermaLink="false">https://kashiwaba-yuki.com/Notes/note-how-to-deploy-gatsby-spa</guid><pubDate>Sun, 20 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;突然ですが、諸般の事情につきブログを移転することにしました。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[かえるのひみつきち]]></title><description><![CDATA[かえるのひみつきち]]></description><link>https://kashiwaba-yuki.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 23 Feb 2022 04:57:30 GMT</lastBuildDate><item><title><![CDATA[Gatsbyで作成したSPAブログをGitHubPagesに公開する環境を作る備忘録]]></title><description><![CDATA[Gatsbyで作成したSPAブログをGithub Pagesに公開する手順についてまとめています。Gatsbyの開発環境はDockerコンテナ上に構築しています。]]></description><link>https://kashiwaba-yuki.com/Notes/note-how-to-deploy-gatsby-spa</link><guid isPermaLink="false">https://kashiwaba-yuki.com/Notes/note-how-to-deploy-gatsby-spa</guid><pubDate>Sun, 20 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;突然ですが、諸般の事情につきブログを移転することにしました。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://yukituna.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;旧ブログ&lt;/a&gt;の記事は順次こちらのブログに移植していこうと思います（手動でやる必要があるので面倒ですが…。）&lt;/p&gt;
 &lt;p&gt;新しいブログですが、MITライセンスで公開されているGatsbyテンプレートの&lt;a href=&quot;https://github.com/alxshelepenok/gatsby-starter-lumen&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;gatsby-starter-lumen&lt;/a&gt;をベースに使用させてもらってます。&lt;/p&gt;
 &lt;p&gt;この記事では、新しいブログを公開するまでに実施した作業について備忘録としてまとめておきます。&lt;/p&gt;
@@ -401,4 +401,1044 @@ $&lt;span class=&quot;token property&quot;&gt;color-gray-bg&lt;/span&gt;&lt;span
 &lt;p&gt;今回はCNAMEファイルも作成してカスタムドメインが有効になっているので、このドメインに接続すれば作成したブログを確認することができます。&lt;/p&gt;
 &lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
 &lt;p&gt;WordPressの旧ブログから順次こちらに移行していく予定です。&lt;/p&gt;
-&lt;p&gt;画像とか内部リンクとかの修正を手動でやる必要があるのでかなり手間がかかりそうです。。&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;p&gt;画像とか内部リンクとかの修正を手動でやる必要があるのでかなり手間がかかりそうです。。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[xv6OSを真面目に読みこんでカーネルを完全に理解する -ブートストラップ編-]]></title><description><![CDATA[教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのブートストラップを読み解きます。]]></description><link>https://kashiwaba-yuki.com/Unix/unix-xv6-001-bootstrap</link><guid isPermaLink="false">https://kashiwaba-yuki.com/Unix/unix-xv6-001-bootstrap</guid><pubDate>Mon, 10 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://amzn.to/3q8TU3K&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ&lt;/a&gt;にインスパイアされて&lt;a href=&quot;https://github.com/mit-pdos/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 OS&lt;/a&gt;を読んでます。&lt;/p&gt;
+&lt;p&gt;リバースエンジニアリングに強くなりたいのと、カーネルとかOSに詳しくなりたいと思っています。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://amzn.to/3I6fkVt&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;詳解 Linuxカーネル&lt;/a&gt;が結構重かったので、もう少し軽めのところから始めたいと思っていたところ、UNIX V6というOSがトータルで1万行くらいのコード量で、人類でもギリギリ理解できるということを知り、興味を持ちました。&lt;/p&gt;
+&lt;p&gt;ただ、UNIX V6自体はx86CPUでは動作しないため、基本的には、UNIXv6をX86アーキテクチャで動くようにした&lt;a href=&quot;https://github.com/mit-pdos/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 OS&lt;/a&gt;のリポジトリをForkした&lt;a href=&quot;https://github.com/kash1064/xv6-public&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;kash1064/xv6-public: xv6 OS&lt;/a&gt;のソースコードを読んでいくことにしました。&lt;/p&gt;
+&lt;p&gt;xv6は、もともとMITのOSの講義のために開発された教育用のOSです。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://pdos.csail.mit.edu/6.828/2012/xv6.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Xv6, a simple Unix-like teaching operating system&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;この講義で使用するテキストもオンラインで配布されています。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://pdos.csail.mit.edu/6.828/2012/xv6/book-rev7.pdf&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 a simple, Unix-like teaching operating system&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Fork元のリポジトリは現在メンテナンスされておらず、RISC-Vで動作するUNIXv6のメンテナンスが行われています。&lt;/p&gt;
+&lt;!-- omit in toc --&gt;
+&lt;h2 id=&quot;もくじ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%82%E3%81%8F%E3%81%98&quot; aria-label=&quot;もくじ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;もくじ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E6%A7%8B%E9%80%A0&quot;&gt;イメージファイルの構造&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#xv6img&quot;&gt;xv6.img&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#fsimg&quot;&gt;fs.img&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#bootblock%E3%82%92%E8%AA%AD%E3%82%80&quot;&gt;bootblockを読む&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%A9&quot;&gt;コンパイラ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%A1%E3%83%A2%E4%BD%8D%E7%BD%AE%E7%8B%AC%E7%AB%8B%E3%81%AA%E3%82%B3%E3%83%BC%E3%83%89pic&quot;&gt;メモ：位置独立なコード(PIC)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#bootmainc%E3%81%AE%E5%85%A8%E4%BD%93%E5%83%8F&quot;&gt;bootmain.cの全体像&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#bootblocko%E3%81%AE%E5%85%A8%E4%BD%93%E5%83%8F&quot;&gt;bootblock.oの全体像&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%96%E3%83%BC%E3%83%88%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%AE%E3%83%AA%E3%83%B3%E3%82%AF&quot;&gt;ブートプログラムのリンク&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%AA%E3%82%A2%E3%83%AB%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A8%E3%83%97%E3%83%AD%E3%83%86%E3%82%AF%E3%83%88%E3%83%A2%E3%83%BC%E3%83%89&quot;&gt;リアルモードとプロテクトモード&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%AA%E3%82%A2%E3%83%AB%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A7%E8%B5%B7%E5%8B%95%E3%81%99%E3%82%8B&quot;&gt;リアルモードで起動する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#cli%E3%81%A8sti%E3%81%A7cpu%E5%89%B2%E8%BE%BC%E3%81%BF%E3%82%92%E7%A6%81%E6%AD%A2&quot;&gt;cliとstiでCPU割込みを禁止&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88%E3%83%AC%E3%82%B8%E3%82%B9%E3%82%BF%E3%81%AE%E5%88%9D%E6%9C%9F%E5%8C%96&quot;&gt;セグメントレジスタの初期化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#a20-line%E3%81%AE%E6%9C%89%E5%8A%B9%E5%8C%96&quot;&gt;A20 Lineの有効化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%97%E3%83%AD%E3%83%86%E3%82%AF%E3%83%88%E3%83%A2%E3%83%BC%E3%83%89%E3%81%B8%E3%81%AE%E7%A7%BB%E8%A1%8C&quot;&gt;プロテクトモードへの移行&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%97%E3%83%AD%E3%83%86%E3%82%AF%E3%83%88%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A7%E3%81%AE%E3%83%A1%E3%83%A2%E3%83%AA%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E5%8F%82%E7%85%A7&quot;&gt;プロテクトモードでのメモリアドレス参照&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#lgdt-gdtdesc&quot;&gt;lgdt gdtdesc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#32bit%E3%83%A2%E3%83%BC%E3%83%89%E3%81%AE%E9%96%8B%E5%A7%8B&quot;&gt;32bitモードの開始&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%81%AA%E3%81%9Cljmp%E5%91%BD%E4%BB%A4%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B&quot;&gt;なぜljmp命令を使用するのか&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%97%E3%83%AD%E3%83%86%E3%82%AF%E3%83%88%E3%83%A2%E3%83%BC%E3%83%89%E7%A7%BB%E8%A1%8C%E5%BE%8C%E3%81%AE%E8%A8%AD%E5%AE%9A&quot;&gt;プロテクトモード移行後の設定&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88%E3%83%AC%E3%82%B8%E3%82%B9%E3%82%BF%E3%81%AE%E5%88%9D%E6%9C%9F%E5%8C%96-1&quot;&gt;セグメントレジスタの初期化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#bootmainc%E3%81%AE%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%97&quot;&gt;bootmain.cの呼び出し&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89&quot;&gt;カーネルのロード&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E3%81%8B%E3%82%89elf%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E3%82%92%E3%83%AD%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B&quot;&gt;ディスクからELFカーネルイメージをロードする&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E3%81%8B%E3%82%89%E3%82%BB%E3%82%AF%E3%82%BF%E3%82%92%E8%AA%AD%E3%81%BF%E5%8F%96%E3%82%8B&quot;&gt;ディスクからセクタを読み取る&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%93%E3%81%A0%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%81%AE%E7%A2%BA%E8%AA%8D&quot;&gt;読み込んだカーネルの確認&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%83%98%E3%83%83%E3%83%80%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF&quot;&gt;プログラムヘッダの読み込み&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E5%8F%82%E8%80%83%E6%9B%B8%E7%B1%8D&quot;&gt;参考書籍&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;イメージファイルの構造&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E6%A7%8B%E9%80%A0&quot; aria-label=&quot;イメージファイルの構造 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;イメージファイルの構造&lt;/h2&gt;
+&lt;p&gt;xv6は、&lt;code class=&quot;language-text&quot;&gt;xv6.img&lt;/code&gt;と&lt;code class=&quot;language-text&quot;&gt;fs.img&lt;/code&gt;という2つのイメージファイルを使用して起動します。&lt;/p&gt;
+&lt;h3 id=&quot;xv6img&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#xv6img&quot; aria-label=&quot;xv6img permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;xv6.img&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;xv6.img&lt;/code&gt;は、以下のような構造です。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Makefile&lt;/span&gt;
+xv6.img: bootblock kernel
+	&lt;span class=&quot;token function&quot;&gt;dd&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;/dev/zero &lt;span class=&quot;token assign-left variable&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;xv6.img &lt;span class=&quot;token assign-left variable&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;10000&lt;/span&gt;
+	&lt;span class=&quot;token function&quot;&gt;dd&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;bootblock &lt;span class=&quot;token assign-left variable&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;xv6.img &lt;span class=&quot;token assign-left variable&quot;&gt;conv&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;notrunc
+	&lt;span class=&quot;token function&quot;&gt;dd&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;kernel &lt;span class=&quot;token assign-left variable&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;xv6.img &lt;span class=&quot;token assign-left variable&quot;&gt;seek&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token assign-left variable&quot;&gt;conv&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;notrunc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;dd if=/dev/zero of=xv6.img count=10000&lt;/code&gt;は、&lt;code class=&quot;language-text&quot;&gt;512*10^4&lt;/code&gt;バイト(51.2MBバイト)を&lt;code class=&quot;language-text&quot;&gt;/dev/zero&lt;/code&gt;から読みだして&lt;code class=&quot;language-text&quot;&gt;xv6.img&lt;/code&gt;として保存します。&lt;/p&gt;
+&lt;p&gt;ddコマンドのブロックサイズ(&lt;code class=&quot;language-text&quot;&gt;bs&lt;/code&gt;)はデフォルトで512であるため、このような挙動になります。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;conv=notrunc&lt;/code&gt;は、元のファイルのサイズを維持したまま、指定したバイナリの書き込みを行うオプションです。&lt;/p&gt;
+&lt;p&gt;これによって、512バイトのbootblock が、&lt;code class=&quot;language-text&quot;&gt;xv6.img&lt;/code&gt;の先頭から書き込まれた際に、元の&lt;code class=&quot;language-text&quot;&gt;xv6.img&lt;/code&gt;のサイズが維持されます。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;seek=1&lt;/code&gt;は、ブロック単位で書き込み開始位置をスキップするオプションです。&lt;/p&gt;
+&lt;p&gt;ブロックサイズはデフォルトでは512であるため、&lt;code class=&quot;language-text&quot;&gt;dd if=kernel of=xv6.img seek=1 conv=notrunc&lt;/code&gt;は、先頭512バイト目からkernelを配置することを意味しています。&lt;/p&gt;
+&lt;p&gt;これらのコマンドを見てわかる通り、&lt;code class=&quot;language-text&quot;&gt;512*10^4&lt;/code&gt;バイト(51.2MBバイト)の空のイメージファイルを生成した後、先頭512バイトにbootblockを配置し、さらにその後にkernelを配置しています。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/0ee723f0df4390ef428db10febeb6cfd/0b533/image-8.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAARlAAAEZQAGA43XUAAABiElEQVQ4y8WU6XaCMBBGff8Hah+gdtGiApGqaCsgFgmgHDZ3viZxpaL1X3POPWFmwiXDVsF+bLdbRFFUII5jJEki4Me/65vNRpyb5/lBg0oQ+IjY4vVqhW9KQcwRNMsWEMNCo9dHUx+ADM1Tnq2xnAm2ZcLlcon1es12uIE9cVHTh3gfGJAGJl47AzxUa3h8qeNZ0yF9mixviDXDsYOcdXUhxNlwPAeNLxmyQRiqmMlIEygmQWufaw5lGI5ZLuTBIeGHFF0qo+8T6B5HFce7WN3nCHqeAtszWcsn4YGC0Ju5+JjI6LkEXVdlEKijBhRLOsacjsuEtCgstHwhpDshn+t6FW/dp13MZL0rwuMOC8LQFYt1ry1knL6vCQ4xr3WpgrFnYZ4tQKmLsW0jCKbgD7ggpNMJa1GCNm6hfaS5ZxfzGrElWK7BdpjfbjlOYqTzBOkiZSTlsHrG6mE4E6/bzZazbI57B/96zoWlO8yyrHC1a4hu+Nf1L8J7x13CNE3FveHzX1z72/wARuV7fAc3xmkAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/0ee723f0df4390ef428db10febeb6cfd/8ac56/image-8.webp 240w,
+/static/0ee723f0df4390ef428db10febeb6cfd/d3be9/image-8.webp 480w,
+/static/0ee723f0df4390ef428db10febeb6cfd/b0a15/image-8.webp 500w&quot;
+              sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/0ee723f0df4390ef428db10febeb6cfd/8ff5a/image-8.png 240w,
+/static/0ee723f0df4390ef428db10febeb6cfd/e85cb/image-8.png 480w,
+/static/0ee723f0df4390ef428db10febeb6cfd/0b533/image-8.png 500w&quot;
+            sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/0ee723f0df4390ef428db10febeb6cfd/0b533/image-8.png&quot;
+            alt=&quot;img&quot;
+            title=&quot;img&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;空になったままのスペースはシステムが使用します。&lt;/p&gt;
+&lt;h3 id=&quot;fsimg&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#fsimg&quot; aria-label=&quot;fsimg permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;fs.img&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;fs.img&lt;/code&gt;は以下のような構造です。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Makefile&lt;/span&gt;
+&lt;span class=&quot;token assign-left variable&quot;&gt;UPROGS&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+	_cat&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+	_echo&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+	_forktest&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+	_grep&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+	_init&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+	_kill&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+	_ln&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+	_ls&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+	_mkdir&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+	_rm&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+	_sh&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+	_stressfs&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+	_usertests&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+	_wc&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+	_zombie&lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+
+mkfs: mkfs.c fs.h
+	gcc -Werror -Wall -o &lt;span class=&quot;token function&quot;&gt;mkfs&lt;/span&gt; mkfs.c
+
+fs.img: &lt;span class=&quot;token function&quot;&gt;mkfs&lt;/span&gt; README &lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;UPROGS&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+	./mkfs fs.img README &lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;UPROGS&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;各種コマンドプログラムの本体やREADMEが格納されています。&lt;/p&gt;
+&lt;p&gt;ユーザが操作するディスクです。&lt;/p&gt;
+&lt;h2 id=&quot;bootblockを読む&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#bootblock%E3%82%92%E8%AA%AD%E3%82%80&quot; aria-label=&quot;bootblockを読む permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;bootblockを読む&lt;/h2&gt;
+&lt;p&gt;まずはbootblockについてです。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;bootblock: bootasm.S bootmain.c
+	&lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;CC&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;CFLAGS&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt; -fno-pic -O -nostdinc -I. -c bootmain.c
+	&lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;CC&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;CFLAGS&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt; -fno-pic -nostdinc -I. -c bootasm.S
+	&lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;LD&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;LDFLAGS&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt; -N -e start -Ttext 0x7C00 -o bootblock.o bootasm.o bootmain.o
+	&lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;OBJDUMP&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt; -S bootblock.o &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; bootblock.asm
+	&lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;OBJCOPY&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt; -S -O binary -j .text bootblock.o bootblock
+	./sign.pl bootblock&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;ビルドオプションから見ていきます。&lt;/p&gt;
+&lt;h3 id=&quot;コンパイラ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%A9&quot; aria-label=&quot;コンパイラ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;コンパイラ&lt;/h3&gt;
+&lt;p&gt;以下は、Makefileの中の&lt;code class=&quot;language-text&quot;&gt;$(CC)&lt;/code&gt;に関連した箇所です。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Cross-compiling (e.g., on Mac OS X)&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;# TOOLPREFIX = i386-jos-elf&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# Using native tools (e.g., on X86 Linux)&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;#TOOLPREFIX = &lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;# Try to infer the correct TOOLPREFIX if not set&lt;/span&gt;
+ifndef TOOLPREFIX
+TOOLPREFIX :&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;shell &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; i386-jos-elf-objdump -i &lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;2&lt;/span&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;&amp;amp;1&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;^elf32-i386$$&apos;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;/dev/null &lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;2&lt;/span&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;&amp;amp;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+	&lt;span class=&quot;token keyword&quot;&gt;then&lt;/span&gt; &lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;i386-jos-elf-&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+	&lt;span class=&quot;token keyword&quot;&gt;elif&lt;/span&gt; objdump -i &lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;2&lt;/span&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;&amp;amp;1&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;elf32-i386&apos;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;/dev/null &lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;2&lt;/span&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;&amp;amp;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+	&lt;span class=&quot;token keyword&quot;&gt;then&lt;/span&gt; &lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+	&lt;span class=&quot;token keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;***&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;1&lt;/span&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;&amp;amp;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+	&lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;*** Error: Couldn&apos;t find an i386-*-elf version of GCC/binutils.&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;1&lt;/span&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;&amp;amp;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+	&lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;*** Is the directory with i386-jos-elf-gcc in your PATH?&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;1&lt;/span&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;&amp;amp;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+	&lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;*** If your i386-*-elf toolchain is installed with a command&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;1&lt;/span&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;&amp;amp;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+	&lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;*** prefix other than &apos;i386-jos-elf-&apos;, set your TOOLPREFIX&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;1&lt;/span&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;&amp;amp;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+	&lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;*** environment variable to that prefix and run &apos;make&apos; again.&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;1&lt;/span&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;&amp;amp;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+	&lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;*** To turn off this error, run &apos;gmake TOOLPREFIX= ...&apos;.&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;1&lt;/span&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;&amp;amp;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;\&lt;/span&gt;
+	&lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;***&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;1&lt;/span&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;&amp;amp;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token builtin class-name&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;fi&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
+endif
+
+CC &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;TOOLPREFIX&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt;gcc&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;デフォルトでは&lt;code class=&quot;language-text&quot;&gt;gcc&lt;/code&gt;を使ってコンパイルします。&lt;/p&gt;
+&lt;p&gt;もしLinuxではなくMacOSなどの環境でビルドする場合は、&lt;code class=&quot;language-text&quot;&gt;TOOLPREFIX&lt;/code&gt;の設定を変更してクロスコンパイルする必要があります。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://qiita.com/maru-n@github/items/9cf83944403b3fbb8422&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;OS X Yosemiteでxv6をbuildして動かすまで - Qiita&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;続いて、以下は&lt;code class=&quot;language-text&quot;&gt;CFLAGS&lt;/code&gt;の箇所です。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;CFLAGS &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; -fno-pic -static -fno-builtin -fno-strict-aliasing -O2 -Wall -MD -ggdb -m32 -Werror -fno-omit-frame-pointer
+CFLAGS &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;shell &lt;span class=&quot;token punctuation&quot;&gt;$(&lt;/span&gt;CC&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; -fno-stack-protector -E -x c /dev/null &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;/dev/null &lt;span class=&quot;token operator&quot;&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;2&lt;/span&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token file-descriptor important&quot;&gt;&amp;amp;1&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token builtin class-name&quot;&gt;echo&lt;/span&gt; -fno-stack-protector&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;オプションの部分については割愛しますが、デフォルトの設定を追っていきます。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://linuxjm.osdn.jp/html/GNU_gcc/man1/gcc.1.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Man page of GCC&lt;/a&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;center&quot;&gt;オプション&lt;/th&gt;
+&lt;th align=&quot;center&quot;&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;-fno-pic&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;位置独立なコード(PIC)を生成しない&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;-static&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;プログラムを静的リンクでコンパイルする&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;-fno-builtin&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;コンパイラに組み込まれているビルドイン関数を利用しない&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;-fno-strict-aliasing&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;厳密なエイリアシングの無効化&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;-O2&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;サポートされているすべての最適化オプションを有効化&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;-Wall&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;すべてのコンパイラの警告メッセージを有効化&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;-MD&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;システムヘッダーファイルとユーザーヘッダーファイルの両方を一覧&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;-ggdb&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;gdbを対象としたデバッグ情報を生成&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;-m32&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;32bitオブジェクトとしてコンパイル&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;-Werror&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;未使用の関数引数があった場合、コンパイルエラーとする&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;-fno-omit-frame-pointer&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;フレームポインタを必要としない関数のレジスタにもフレームポインタを保持する&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&quot;メモ位置独立なコードpic&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%A1%E3%83%A2%E4%BD%8D%E7%BD%AE%E7%8B%AC%E7%AB%8B%E3%81%AA%E3%82%B3%E3%83%BC%E3%83%89pic&quot; aria-label=&quot;メモ位置独立なコードpic permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;メモ：位置独立なコード(PIC)&lt;/h3&gt;
+&lt;p&gt;位置独立なコード(PIC)または位置独立実行形式(PIE)とは、メモリのどこに配置されても正しく実行できる機械語を指します。&lt;/p&gt;
+&lt;p&gt;PICは主に共有ライブラリなどに利用されます。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://eli.thegreenplace.net/2011/11/03/position-independent-code-pic-in-shared-libraries/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Position Independent Code (PIC) in shared libraries - Eli Bendersky’s website&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;http://0xcc.net/blog/archives/000107.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Linux の共有ライブラリを作るとき PIC でコンパイルするのはなぜか - bkブログ&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;bootmaincの全体像&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#bootmainc%E3%81%AE%E5%85%A8%E4%BD%93%E5%83%8F&quot; aria-label=&quot;bootmaincの全体像 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;bootmain.cの全体像&lt;/h3&gt;
+&lt;p&gt;xv6のビルドを行う際、まず初めに以下の&lt;code class=&quot;language-text&quot;&gt;bootmain.o&lt;/code&gt;から、&lt;code class=&quot;language-text&quot;&gt;bootmain.o&lt;/code&gt;が生成されます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Boot loader.&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;//&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// Part of the boot block, along with bootasm.S, which calls bootmain().&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// bootasm.S has put the processor into protected 32-bit mode.&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// bootmain() loads an ELF kernel image from the disk starting at&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// sector 1 and then jumps to the kernel entry routine.&lt;/span&gt;
+
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;types.h&quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;elf.h&quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;x86.h&quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;memlayout.h&quot;&lt;/span&gt;&lt;/span&gt;
+
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;SECTSIZE&lt;/span&gt;  &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;512&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;readseg&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; uint&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; uint&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;bootmain&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;elfhdr&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;elf&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;proghdr&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;ph&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;eph&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;entry&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; pa&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  elf &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;elfhdr&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x10000&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// scratch space&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// Read 1st page off disk&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;readseg&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;elf&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4096&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// Is this an ELF executable?&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;elf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;magic &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; ELF_MAGIC&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// let bootasm.S handle error&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// Load each program segment (ignores ph flags).&lt;/span&gt;
+  ph &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;proghdr&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;elf &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; elf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;phoff&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  eph &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; ph &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; elf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;phnum&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; ph &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; eph&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    pa &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;paddr&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;readseg&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pa&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;filesz&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;off&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;memsz &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;filesz&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;token function&quot;&gt;stosb&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pa &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;filesz&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;memsz &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;filesz&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// Call the entry point from the ELF header.&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// Does not return!&lt;/span&gt;
+  entry &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;elf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;entry&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;waitdisk&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// Wait for disk ready.&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;inb&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x1F7&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0xC0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0x40&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// Read a single sector at offset into dst.&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;readsect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;dst&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; uint offset&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// Issue command.&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;waitdisk&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;outb&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x1F2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;   &lt;span class=&quot;token comment&quot;&gt;// count = 1&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;outb&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x1F3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; offset&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;outb&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x1F4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; offset &lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;outb&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x1F5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; offset &lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;outb&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x1F6&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;offset &lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0xE0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;outb&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x1F7&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0x20&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// cmd 0x20 - read sectors&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// Read data.&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;waitdisk&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;insl&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x1F0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; dst&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; SECTSIZE&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// Read &apos;count&apos; bytes at &apos;offset&apos; from kernel into physical address &apos;pa&apos;.&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// Might copy more than asked.&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;readseg&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; pa&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; uint count&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; uint offset&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; epa&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  epa &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; pa &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; count&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// Round down to sector boundary.&lt;/span&gt;
+  pa &lt;span class=&quot;token operator&quot;&gt;-=&lt;/span&gt; offset &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; SECTSIZE&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// Translate from bytes to sectors; kernel starts at sector 1.&lt;/span&gt;
+  offset &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;offset &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; SECTSIZE&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// If this is too slow, we could read lots of sectors at a time.&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// We&apos;d write more to memory than asked, but it doesn&apos;t matter --&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// we load in increasing order.&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; pa &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; epa&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; pa &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; SECTSIZE&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; offset&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;readsect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pa&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; offset&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;定義されている関数は以下の4つです。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;void bootmain(void)&lt;/li&gt;
+&lt;li&gt;void waitdisk(void)&lt;/li&gt;
+&lt;li&gt;void readsect(void *dst, uint offset)&lt;/li&gt;
+&lt;li&gt;void readsect(void *dst, uint offset)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;各関数の挙動については後で追っていきます。&lt;/p&gt;
+&lt;h3 id=&quot;bootblockoの全体像&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#bootblocko%E3%81%AE%E5%85%A8%E4%BD%93%E5%83%8F&quot; aria-label=&quot;bootblockoの全体像 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;bootblock.oの全体像&lt;/h3&gt;
+&lt;p&gt;続いて、&lt;code class=&quot;language-text&quot;&gt;bootasm.S&lt;/code&gt;から&lt;code class=&quot;language-text&quot;&gt;bootasm.o&lt;/code&gt;が生成され、先ほど生成した&lt;code class=&quot;language-text&quot;&gt;bootmain.o&lt;/code&gt;とリンクされて&lt;code class=&quot;language-text&quot;&gt;bootblock.o&lt;/code&gt;が生成されます。&lt;/p&gt;
+&lt;p&gt;以下は&lt;code class=&quot;language-text&quot;&gt;bootasm.S&lt;/code&gt;です。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;asm&quot;&gt;&lt;pre class=&quot;language-asm&quot;&gt;&lt;code class=&quot;language-asm&quot;&gt;#include &amp;quot;asm.h&amp;quot;
+#include &amp;quot;memlayout.h&amp;quot;
+#include &amp;quot;mmu.h&amp;quot;
+
+# Start the first CPU: switch to 32-bit protected mode, jump into C.
+# The BIOS loads this code from the first sector of the hard disk into
+# memory at physical address 0x7c00 and starts executing in real mode
+# with %cs=0 %ip=7c00.
+
+.code16                       # Assemble for 16-bit mode
+.globl start
+start:
+  cli                         # BIOS enabled interrupts; disable
+
+  # Zero data segment registers DS, ES, and SS.
+  xorw    %ax,%ax             # Set %ax to zero
+  movw    %ax,%ds             # -&amp;gt; Data Segment
+  movw    %ax,%es             # -&amp;gt; Extra Segment
+  movw    %ax,%ss             # -&amp;gt; Stack Segment
+
+  # Physical address line A20 is tied to zero so that the first PCs 
+  # with 2 MB would run software that assumed 1 MB.  Undo that.
+seta20.1:
+  inb     $0x64,%al               # Wait for not busy
+  testb   $0x2,%al
+  jnz     seta20.1
+
+  movb    $0xd1,%al               # 0xd1 -&amp;gt; port 0x64
+  outb    %al,$0x64
+
+seta20.2:
+  inb     $0x64,%al               # Wait for not busy
+  testb   $0x2,%al
+  jnz     seta20.2
+
+  movb    $0xdf,%al               # 0xdf -&amp;gt; port 0x60
+  outb    %al,$0x60
+
+  # Switch from real to protected mode.  Use a bootstrap GDT that makes
+  # virtual addresses map directly to physical addresses so that the
+  # effective memory map doesn&amp;#39;t change during the transition.
+  lgdt    gdtdesc
+  movl    %cr0, %eax
+  orl     $CR0_PE, %eax
+  movl    %eax, %cr0
+
+//PAGEBREAK!
+  # Complete the transition to 32-bit protected mode by using a long jmp
+  # to reload %cs and %eip.  The segment descriptors are set up with no
+  # translation, so that the mapping is still the identity mapping.
+  ljmp    $(SEG_KCODE&amp;lt;&amp;lt;3), $start32
+
+.code32  # Tell assembler to generate 32-bit code now.
+start32:
+  # Set up the protected-mode data segment registers
+  movw    $(SEG_KDATA&amp;lt;&amp;lt;3), %ax    # Our data segment selector
+  movw    %ax, %ds                # -&amp;gt; DS: Data Segment
+  movw    %ax, %es                # -&amp;gt; ES: Extra Segment
+  movw    %ax, %ss                # -&amp;gt; SS: Stack Segment
+  movw    $0, %ax                 # Zero segments not ready for use
+  movw    %ax, %fs                # -&amp;gt; FS
+  movw    %ax, %gs                # -&amp;gt; GS
+
+  # Set up the stack pointer and call into C.
+  movl    $start, %esp
+  call    bootmain
+
+  # If bootmain returns (it shouldn&amp;#39;t), trigger a Bochs
+  # breakpoint if running under Bochs, then loop.
+  movw    $0x8a00, %ax            # 0x8a00 -&amp;gt; port 0x8a00
+  movw    %ax, %dx
+  outw    %ax, %dx
+  movw    $0x8ae0, %ax            # 0x8ae0 -&amp;gt; port 0x8a00
+  outw    %ax, %dx
+spin:
+  jmp     spin
+
+# Bootstrap GDT
+.p2align 2                                # force 4 byte alignment
+gdt:
+  SEG_NULLASM                             # null seg
+  SEG_ASM(STA_X|STA_R, 0x0, 0xffffffff)   # code seg
+  SEG_ASM(STA_W, 0x0, 0xffffffff)         # data seg
+
+gdtdesc:
+  .word   (gdtdesc - gdt - 1)             # sizeof(gdt) - 1
+  .long   gdt                             # address gdt&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;中身を見る前に、ブートプログラムのリンクについて見てみます。&lt;/p&gt;
+&lt;h3 id=&quot;ブートプログラムのリンク&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%96%E3%83%BC%E3%83%88%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%AE%E3%83%AA%E3%83%B3%E3%82%AF&quot; aria-label=&quot;ブートプログラムのリンク permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;ブートプログラムのリンク&lt;/h3&gt;
+&lt;p&gt;リンクは以下のコマンドで実行します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;ld -m elf_i386 -N -e start -Ttext 0x7C00 -o bootblock.o bootasm.o bootmain.o&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;ld&lt;/code&gt;コマンドは、複数のバイナリを結合し、新たな実行プログラムをコンパイルすることができるコマンドです。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://kazmax.zpp.jp/cmd/l/ld.1.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;ld - コマンド (プログラム) の説明 - Linux コマンド集 一覧表&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;上記のコマンドでは、&lt;code class=&quot;language-text&quot;&gt;elf_i386&lt;/code&gt;バイナリとしてリンクされます。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://unix.stackexchange.com/questions/471056/gnu-linker-differences-between-the-different-32bit-emulation-modes?rq=1&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;x86 - GNU Linker differences between the different 32bit emulation modes? - Unix &amp;#x26; Linux Stack Exchange&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;-N&lt;/code&gt;オプションによってtextセクションとdataセクションは読み書き可能となり、&lt;code class=&quot;language-text&quot;&gt;start&lt;/code&gt;シンボルがエントリポイントとして扱われます。&lt;/p&gt;
+&lt;p&gt;また、エントリポイントの開始アドレスは&lt;code class=&quot;language-text&quot;&gt;0x7C00&lt;/code&gt;に定義されます。&lt;/p&gt;
+&lt;p&gt;これは、x86CPUの場合は、起動時にBIOSのPOST(Power On Self Test)が実行された後、MBRからブートプログラムを読み込んで&lt;code class=&quot;language-text&quot;&gt;0x7C00&lt;/code&gt;に展開し、ブートセクタとします。&lt;/p&gt;
+&lt;p&gt;なぜこの位置に展開されるのかについては、以下の神記事に非常に詳しく書いてありました。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://www.glamenv-septzen.net/view/614&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Assembler/なぜx86ではMBRが”0x7C00”にロードされるのか？(完全版) - Glamenv-Septzen.net&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;簡単にまとめると、ROM BIOSの必要とする最小メモリである32KBを開けておきたいというニーズと、0x0から0x3FFまでの範囲は割込みベクタとして予約されているため、結果としてブートセクタを32KBの末尾に置くことにしたとのことです。&lt;/p&gt;
+&lt;p&gt;そのため、ブートセクタの領域512Bと、MBRのbootstrap用のデータ/スタック領域として512Bを確保した結果、&lt;code class=&quot;language-text&quot;&gt;0x7C00(32KB - 1024B)&lt;/code&gt;がブートセクタの先頭アドレスになったそうです。&lt;/p&gt;
+&lt;p&gt;このあたりは過去に読んだ自作OS本にはあまり詳しく書いていなかった(気がする)のでとても参考になりました。&lt;/p&gt;
+&lt;p&gt;これでブートプログラムが出来上がったので、まずは中身を見ていこうと思います。&lt;/p&gt;
+&lt;h3 id=&quot;リアルモードとプロテクトモード&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%AA%E3%82%A2%E3%83%AB%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A8%E3%83%97%E3%83%AD%E3%83%86%E3%82%AF%E3%83%88%E3%83%A2%E3%83%BC%E3%83%89&quot; aria-label=&quot;リアルモードとプロテクトモード permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;リアルモードとプロテクトモード&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;x86CPU&lt;/code&gt;では、起動時に&lt;code class=&quot;language-text&quot;&gt;Intel 8086&lt;/code&gt;とソフトウェア互換のある「リアルモード」で起動します。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;Intel 8086&lt;/code&gt;は16bitです。&lt;/p&gt;
+&lt;p&gt;そのため、リアルモードは16bitで動作する状態になります。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://en.wikipedia.org/wiki/Intel_8086&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Intel 8086 - Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ここから、32bitに移行するための処理を追っていきます。&lt;/p&gt;
+&lt;p&gt;リアルモードで動作する処理は以下の部分です。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;assembly&quot;&gt;&lt;pre class=&quot;language-assembly&quot;&gt;&lt;code class=&quot;language-assembly&quot;&gt;#include &amp;quot;asm.h&amp;quot;
+#include &amp;quot;memlayout.h&amp;quot;
+#include &amp;quot;mmu.h&amp;quot;
+
+# Start the first CPU: switch to 32-bit protected mode, jump into C.
+# The BIOS loads this code from the first sector of the hard disk into
+# memory at physical address 0x7c00 and starts executing in real mode
+# with %cs=0 %ip=7c00.
+
+.code16                       # Assemble for 16-bit mode
+.globl start
+start:
+  cli                         # BIOS enabled interrupts; disable
+
+  # Zero data segment registers DS, ES, and SS.
+  xorw    %ax,%ax             # Set %ax to zero
+  movw    %ax,%ds             # -&amp;gt; Data Segment
+  movw    %ax,%es             # -&amp;gt; Extra Segment
+  movw    %ax,%ss             # -&amp;gt; Stack Segment
+
+  # Physical address line A20 is tied to zero so that the first PCs 
+  # with 2 MB would run software that assumed 1 MB.  Undo that.
+seta20.1:
+  inb     $0x64,%al               # Wait for not busy
+  testb   $0x2,%al
+  jnz     seta20.1
+
+  movb    $0xd1,%al               # 0xd1 -&amp;gt; port 0x64
+  outb    %al,$0x64
+
+seta20.2:
+  inb     $0x64,%al               # Wait for not busy
+  testb   $0x2,%al
+  jnz     seta20.2
+
+  movb    $0xdf,%al               # 0xdf -&amp;gt; port 0x60
+  outb    %al,$0x60
+
+  # Switch from real to protected mode.  Use a bootstrap GDT that makes
+  # virtual addresses map directly to physical addresses so that the
+  # effective memory map doesn&amp;#39;t change during the transition.
+  lgdt    gdtdesc
+  movl    %cr0, %eax
+  orl     $CR0_PE, %eax
+  movl    %eax, %cr0
+
+//PAGEBREAK!
+  # Complete the transition to 32-bit protected mode by using a long jmp
+  # to reload %cs and %eip.  The segment descriptors are set up with no
+  # translation, so that the mapping is still the identity mapping.
+  ljmp    $(SEG_KCODE&amp;lt;&amp;lt;3), $start32
+
+.code32  # Tell assembler to generate 32-bit code now.
+start32:
+{{ 省略 }}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;リアルモードで起動する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%AA%E3%82%A2%E3%83%AB%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A7%E8%B5%B7%E5%8B%95%E3%81%99%E3%82%8B&quot; aria-label=&quot;リアルモードで起動する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;リアルモードで起動する&lt;/h3&gt;
+&lt;p&gt;以下では、&lt;code class=&quot;language-text&quot;&gt;.code16&lt;/code&gt;を先頭に書くことで、コードが16bitで実行される想定となるようにアセンブラに指示をしています。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;start&lt;/code&gt;セクションは、先ほどエントリポイントとしてリンクされたシンボルです。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;assembly&quot;&gt;&lt;pre class=&quot;language-assembly&quot;&gt;&lt;code class=&quot;language-assembly&quot;&gt;.code16                       # Assemble for 16-bit mode
+.globl start
+start:
+  cli                         # BIOS enabled interrupts; disable
+
+  # Zero data segment registers DS, ES, and SS.
+  xorw    %ax,%ax             # Set %ax to zero
+  movw    %ax,%ds             # -&amp;gt; Data Segment
+  movw    %ax,%es             # -&amp;gt; Extra Segment
+  movw    %ax,%ss             # -&amp;gt; Stack Segment&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://stackoverflow.com/questions/32395542/objdump-of-code16-and-code32-x86-assembly&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Objdump of .code16 and .code32 x86 assembly - Stack Overflow&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;cliとstiでcpu割込みを禁止&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#cli%E3%81%A8sti%E3%81%A7cpu%E5%89%B2%E8%BE%BC%E3%81%BF%E3%82%92%E7%A6%81%E6%AD%A2&quot; aria-label=&quot;cliとstiでcpu割込みを禁止 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;cliとstiでCPU割込みを禁止&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;cli&lt;/code&gt;は、CPUの割込みを禁止する命令です。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;cli&lt;/code&gt;が呼び出されてから、&lt;code class=&quot;language-text&quot;&gt;sti&lt;/code&gt;命令が呼び出されるまでの区間の処理は、CPUの割込みが禁止されます。(正確にはCPUからの割込み要求は発生するが無視される)&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://c9x.me/x86/html/file_module_x86_id_31.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;CLI : Clear Interrupt Flag (x86 Instruction Set Reference)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;これは、BIOSに設定された割込みが有効化されたままだと、ブートプログラムの処理が正しく動作しなくなるためです。&lt;/p&gt;
+&lt;p&gt;そのため、ブートプログラム側でスタックポインタや割込み設定を行っている間は、割込みを無効化しておく必要があります。&lt;/p&gt;
+&lt;h3 id=&quot;セグメントレジスタの初期化&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88%E3%83%AC%E3%82%B8%E3%82%B9%E3%82%BF%E3%81%AE%E5%88%9D%E6%9C%9F%E5%8C%96&quot; aria-label=&quot;セグメントレジスタの初期化 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;セグメントレジスタの初期化&lt;/h3&gt;
+&lt;p&gt;次の4行では、AXレジスタ、DSレジスタ、ESレジスタ、SSレジスタをそれぞれ&lt;code class=&quot;language-text&quot;&gt;0x0000&lt;/code&gt;に初期化しています。&lt;/p&gt;
+&lt;p&gt;AXレジスタはアキュムレータですが、他の3つのレジスタはセグメントレジスタです。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://en.wikipedia.org/wiki/Intel_8086&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Intel 8086 - Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://qiita.com/timwata/items/e7b7a18cc80b31fd940a&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Intel 8086 CPU 基礎 - Qiita&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ここでは、BIOSに設定されたセグメントレジスタの値を初期化しています。&lt;/p&gt;
+&lt;p&gt;一応各セグメントレジスタの用途について簡単に書いておきます。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&quot;center&quot;&gt;レジスタ&lt;/th&gt;
+&lt;th align=&quot;center&quot;&gt;用途&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;DSレジスタ&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;データ用のデフォルトセグメントレジスタ&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;ESレジスタ&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;データ用のセグメントレジスタ&lt;br /&gt;通常はDSレジスタを使用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;SSレジスタ&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;スタック用のセグメントレジスタで、SPやBPによるメモリ参照時に使用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot;&gt;CSレジスタ&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;コード用のセグメントレジスタ&lt;br /&gt;命令ポインタ(IP)はCSレジスタを使用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;参考：&lt;a href=&quot;http://www.tamasoft.co.jp/lasm/help/lasm1to2.htm&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;8086 のレジスタ&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;a20-lineの有効化&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#a20-line%E3%81%AE%E6%9C%89%E5%8A%B9%E5%8C%96&quot; aria-label=&quot;a20 lineの有効化 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;A20 Lineの有効化&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;Intel 8086&lt;/code&gt;では、後方互換のためにデフォルトでA20 Line(メモリアクセスの21番目のbit)が無効化されています。&lt;/p&gt;
+&lt;p&gt;そのため、最大2MBのメモリ領域にアクセスするためには、A20 Lineを有効化する必要があります。&lt;/p&gt;
+&lt;p&gt;A20 Lineは初めはKBC(キーボードコントローラ)に接続されています。&lt;/p&gt;
+&lt;p&gt;KBCとは、キーボードからの入力をCPUに伝えるための機構です。&lt;/p&gt;
+&lt;p&gt;KBCは、キーボードからシリアル通信で受け取った情報を一度バッファに格納し、KBCの制御コマンドか、CPUに転送する入力データかをチェックします。&lt;/p&gt;
+&lt;p&gt;CPUに転送するデータの場合は&lt;code class=&quot;language-text&quot;&gt;0x60&lt;/code&gt;、制御コマンドの場合は&lt;code class=&quot;language-text&quot;&gt;0x64&lt;/code&gt;のポートからデータが転送されます。&lt;/p&gt;
+&lt;p&gt;ここで、以下のコードではそれぞれ、KBCのバッファに未処理の入力がない状態を確認してから、&lt;code class=&quot;language-text&quot;&gt;0x60&lt;/code&gt;と&lt;code class=&quot;language-text&quot;&gt;0x64&lt;/code&gt;のポートにそれぞれ制御コマンドを送信することで、A20を有効化します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;assembly&quot;&gt;&lt;pre class=&quot;language-assembly&quot;&gt;&lt;code class=&quot;language-assembly&quot;&gt;  # Physical address line A20 is tied to zero so that the first PCs 
+  # with 2 MB would run software that assumed 1 MB.  Undo that.
+seta20.1:
+  inb     $0x64,%al               # Wait for not busy
+  testb   $0x2,%al
+  jnz     seta20.1
+
+  movb    $0xd1,%al               # 0xd1 -&amp;gt; port 0x64
+  outb    %al,$0x64
+
+seta20.2:
+  inb     $0x64,%al               # Wait for not busy
+  testb   $0x2,%al
+  jnz     seta20.2
+
+  movb    $0xdf,%al               # 0xdf -&amp;gt; port 0x60
+  outb    %al,$0x60&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;上記の例では、制御コマンド&lt;code class=&quot;language-text&quot;&gt;0xd1&lt;/code&gt;をポート&lt;code class=&quot;language-text&quot;&gt;0x64&lt;/code&gt;に送信した後、&lt;code class=&quot;language-text&quot;&gt;0xdf&lt;/code&gt;がポート&lt;code class=&quot;language-text&quot;&gt;0x60&lt;/code&gt;に送信され、A20が有効になります。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://wiki.osdev.org/A20_Line&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;A20 Line - OSDev Wiki&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://cstmize.hatenablog.jp/entry/2019/06/11/A20_gate%E3%81%A8keyboard_controller%E3%81%A8%E3%81%AE%E3%82%84%E3%82%8A%E3%81%A8%E3%82%8A%28xv6%E3%82%92%E4%BE%8B%E3%81%AB%E3%81%97%E3%81%A6%29&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;A20 gateとkeyboard controller(xv6を例にして) - 私のひらめき日記&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://stackoverflow.com/questions/15768683/the-a20-line-with-jos&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;assembly - The A20 Line with JOS - Stack Overflow&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;プロテクトモードへの移行&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%97%E3%83%AD%E3%83%86%E3%82%AF%E3%83%88%E3%83%A2%E3%83%BC%E3%83%89%E3%81%B8%E3%81%AE%E7%A7%BB%E8%A1%8C&quot; aria-label=&quot;プロテクトモードへの移行 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;プロテクトモードへの移行&lt;/h3&gt;
+&lt;p&gt;ここからプログラムの操作はプロテクトモードに移行します。&lt;/p&gt;
+&lt;p&gt;プロテクトモードは「保護」リアルモードとは異なり、メモリ空間が保護されます。&lt;/p&gt;
+&lt;p&gt;つまり、プロテクトモードではプログラムは許可されたメモリ空間にのみアクセスすることが可能となります。&lt;/p&gt;
+&lt;p&gt;このため、リアルモードからプロテクトモードに移行する際には、ロードするカーネルがアクセス可能なメモリ空間を事前に定義する必要があります。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;assembly&quot;&gt;&lt;pre class=&quot;language-assembly&quot;&gt;&lt;code class=&quot;language-assembly&quot;&gt;  # Switch from real to protected mode.  Use a bootstrap GDT that makes
+  # virtual addresses map directly to physical addresses so that the
+  # effective memory map doesn&amp;#39;t change during the transition.
+  lgdt    gdtdesc
+  movl    %cr0, %eax
+  orl     $CR0_PE, %eax
+  movl    %eax, %cr0
+
+//PAGEBREAK!
+  # Complete the transition to 32-bit protected mode by using a long jmp
+  # to reload %cs and %eip.  The segment descriptors are set up with no
+  # translation, so that the mapping is still the identity mapping.
+  ljmp    $(SEG_KCODE&amp;lt;&amp;lt;3), $start32
+
+.code32  # Tell assembler to generate 32-bit code now.
+start32:&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;プロテクトモードへの移行自体は以下の行で行っています。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;assembly&quot;&gt;&lt;pre class=&quot;language-assembly&quot;&gt;&lt;code class=&quot;language-assembly&quot;&gt;movl    %cr0, %eax
+orl     $CR0_PE, %eax
+movl    %eax, %cr0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;x86CPUでは、プロテクトモードを有効化するためにコントロールレジスタのPEフラグを1にする必要があります。&lt;/p&gt;
+&lt;p&gt;上記のアセンブリコードでは、&lt;code class=&quot;language-text&quot;&gt;or&lt;/code&gt;演算を用いてコントロールレジスタのPEフラグを1に設定しています。&lt;/p&gt;
+&lt;p&gt;これでプロテクトモードへの移行が完了します。&lt;/p&gt;
+&lt;p&gt;※GDTの初期化を先に完了させておく必要があります。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://en.wikipedia.org/wiki/Control_register&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Control register - Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;プロテクトモードでのメモリアドレス参照&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%97%E3%83%AD%E3%83%86%E3%82%AF%E3%83%88%E3%83%A2%E3%83%BC%E3%83%89%E3%81%A7%E3%81%AE%E3%83%A1%E3%83%A2%E3%83%AA%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E5%8F%82%E7%85%A7&quot; aria-label=&quot;プロテクトモードでのメモリアドレス参照 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;プロテクトモードでのメモリアドレス参照&lt;/h3&gt;
+&lt;p&gt;プロテクトモードでは、メモリアドレスの参照のためにGDT(グローバルディスクリプタテーブル)が使用されます。&lt;/p&gt;
+&lt;p&gt;GDT周りの機構については長くなったので別の記事にメモ書きとしてまとめました。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://kashiwaba-yuki/Linux/linux-got-plt&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;x86CPUのメモリ保護機構に関するメモ書き(GDTとLDT)&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;lgdt-gdtdesc&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#lgdt-gdtdesc&quot; aria-label=&quot;lgdt gdtdesc permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;lgdt gdtdesc&lt;/h3&gt;
+&lt;p&gt;まず、&lt;code class=&quot;language-text&quot;&gt;lgdt&lt;/code&gt;命令はGDTのデータ構造をGDTRに登録するための命令です。&lt;/p&gt;
+&lt;p&gt;ここに格納している&lt;code class=&quot;language-text&quot;&gt;gdtdesc&lt;/code&gt;は、&lt;code class=&quot;language-text&quot;&gt;bootasm.S&lt;/code&gt;内で定義された以下のラベルです。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;assembly&quot;&gt;&lt;pre class=&quot;language-assembly&quot;&gt;&lt;code class=&quot;language-assembly&quot;&gt;# Bootstrap GDT
+.p2align 2                                # force 4 byte alignment
+gdt:
+  SEG_NULLASM                             # null seg
+  SEG_ASM(STA_X|STA_R, 0x0, 0xffffffff)   # code seg
+  SEG_ASM(STA_W, 0x0, 0xffffffff)         # data seg
+
+gdtdesc:
+  .word   (gdtdesc - gdt - 1)             # sizeof(gdt) - 1
+  .long   gdt                             # address gdt&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;.p2align 2&lt;/code&gt;は、この直後の命令やデータを4バイト境界に強制的に配置させます。&lt;/p&gt;
+&lt;p&gt;これは、4の倍数のアドレスを開始点としてデータを配置することを意味します。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://stackoverflow.com/questions/2846914/what-is-meant-by-memory-is-8-bytes-aligned&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;c - What is meant by “memory is 8 bytes aligned”? - Stack Overflow&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;次の行では、&lt;code class=&quot;language-text&quot;&gt;SEG_NULLASM&lt;/code&gt;マクロなどが配置されている行に&lt;code class=&quot;language-text&quot;&gt;gtd&lt;/code&gt;ラベルを付けています。&lt;/p&gt;
+&lt;p&gt;これらのマクロは、&lt;code class=&quot;language-text&quot;&gt;asm.h&lt;/code&gt;で定義されている以下のマクロです。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;assembly&quot;&gt;&lt;pre class=&quot;language-assembly&quot;&gt;&lt;code class=&quot;language-assembly&quot;&gt;//
+// assembler macros to create x86 segments
+//
+
+#define SEG_NULLASM                                             \
+        .word 0, 0;                                             \
+        .byte 0, 0, 0, 0
+
+// The 0xC0 means the limit is in 4096-byte units
+// and (for executable segments) 32-bit mode.
+#define SEG_ASM(type,base,lim)                                  \
+        .word (((lim) &amp;gt;&amp;gt; 12) &amp;amp; 0xffff), ((base) &amp;amp; 0xffff);      \
+        .byte (((base) &amp;gt;&amp;gt; 16) &amp;amp; 0xff), (0x90 | (type)),         \
+                (0xC0 | (((lim) &amp;gt;&amp;gt; 28) &amp;amp; 0xf)), (((base) &amp;gt;&amp;gt; 24) &amp;amp; 0xff)
+
+#define STA_X     0x8       // Executable segment
+#define STA_W     0x2       // Writeable (non-executable segments)
+#define STA_R     0x2       // Readable (executable segments)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;x86CPUにおけるGDTは、基本的には8バイトのディスクリプタをいくつも並べた構造になっています。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://en.wikipedia.org/wiki/Global_Descriptor_Table&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Global Descriptor Table - Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://amzn.to/3qXYsZX&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;ゼロからのOS自作入門&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;以下は、&lt;a href=&quot;https://amzn.to/3qZSCY7&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;30日でできる! OS自作入門&lt;/a&gt;で紹介されていたディスクリプタの構造体です。&lt;/p&gt;
+&lt;p&gt;こちらの方がxv6OSのコードよりもわかりやすかったので貼っておきます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;SEGMENT_DESCRIPTOR&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;short&lt;/span&gt; limit_low&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; base_low&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;char&lt;/span&gt; base_mid&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; access_right&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;char&lt;/span&gt; limit_high&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; base_high&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://amzn.to/3qZSCY7&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;30日でできる! OS自作入門&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;GDTの先頭(1つ目のディスクリプタ)には、すべての値が0に設定されたヌルディスクリプタを配置します。&lt;/p&gt;
+&lt;p&gt;これはシステムからは参照されることはありません。&lt;/p&gt;
+&lt;p&gt;ヌルディスクリプタはセグメントレジスタを無効化するために使用されます。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://stackoverflow.com/questions/37861691/why-x86-processor-need-a-null-descriptor-in-gdt&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Why x86 processor need a NULL descriptor in GDT? - Stack Overflow&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;2番目のディスクリプタはコードセグメント、3番目のディスクリプタはデータセグメントのディスクリプタを定義しています。&lt;/p&gt;
+&lt;p&gt;コードセグメントは読み取りと実行、データセグメントは書き込み権限が付与されています。&lt;/p&gt;
+&lt;p&gt;最後に、このマクロで作成したGDTのアドレスを使用して、&lt;code class=&quot;language-text&quot;&gt;lgdt gdtdesc&lt;/code&gt;命令によってGDTRを初期化します。&lt;/p&gt;
+&lt;p&gt;GDTRには48bitの値を格納します。&lt;/p&gt;
+&lt;p&gt;上位32bitには、GDTの先頭アドレス(gdtラベル)が格納されます。&lt;/p&gt;
+&lt;p&gt;下位16bitには、リミット値(GDTのエントリ数)が格納されます。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://yz2cm.hatenadiary.org/entry/20140502/1399006500&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;GDTR（Global Descriptor Table Register） - ゆずさん研究所&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;プログラムがLDTなどのディスクリプタを利用する際には、GDTRにセットされた先頭アドレスからのオフセットとして参照されることになります。&lt;/p&gt;
+&lt;p&gt;これでGDTRの初期化が完了しました。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://stackoverflow.com/questions/67901342/why-in-xv6-theres-sizeofgdt-1-in-gdtdesc&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;assembly - Why in xv6 there’s sizeof(gdt)-1 in gdtdesc - Stack Overflow&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://jupiteroak.hatenablog.com/entry/2021/12/10/073000&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;OS起動編⑮-2 entryother.S (Unix xv6を読む～OSコードリーディング～) - 野良プログラマーのCS日記&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;32bitモードの開始&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#32bit%E3%83%A2%E3%83%BC%E3%83%89%E3%81%AE%E9%96%8B%E5%A7%8B&quot; aria-label=&quot;32bitモードの開始 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;32bitモードの開始&lt;/h3&gt;
+&lt;p&gt;GDTRの初期化とプロテクトモードへの移行が完了したため、ここからは32bitモードで動作することになります。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;assembly&quot;&gt;&lt;pre class=&quot;language-assembly&quot;&gt;&lt;code class=&quot;language-assembly&quot;&gt;//PAGEBREAK!
+  # Complete the transition to 32-bit protected mode by using a long jmp
+  # to reload %cs and %eip.  The segment descriptors are set up with no
+  # translation, so that the mapping is still the identity mapping.
+  ljmp    $(SEG_KCODE&amp;lt;&amp;lt;3), $start32
+
+.code32  # Tell assembler to generate 32-bit code now.
+start32:&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;ljmp&lt;/code&gt;命令は第1オペランドにセグメントセレクタをとり、第2オペランドにオフセットアドレス(&lt;code class=&quot;language-text&quot;&gt;start32&lt;/code&gt;ラベル)を与えることで、セレクタに対応するセグメントベース+オフセットのアドレスにジャンプする命令です。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;SEG_KCODE&lt;/code&gt;は&lt;code class=&quot;language-text&quot;&gt;mmu.h&lt;/code&gt;内で以下のように定義されています。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// various segment selectors.&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;SEG_KCODE&lt;/span&gt; &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;  &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// kernel code&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;SEG_KDATA&lt;/span&gt; &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;  &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// kernel data+stack&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;SEG_UCODE&lt;/span&gt; &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;  &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// user code&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;SEG_UDATA&lt;/span&gt; &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;  &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// user data+stack&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;SEG_TSS&lt;/span&gt;   &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;  &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// this process&apos;s task state&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;上記より、&lt;code class=&quot;language-text&quot;&gt;$(SEG_KCODE&amp;lt;&amp;lt;3)&lt;/code&gt;が定義するセグメントセレクタは、&lt;code class=&quot;language-text&quot;&gt;0b1000&lt;/code&gt;となります。&lt;/p&gt;
+&lt;p&gt;これは、GDTの2つ目のセグメントであるコードセグメントを指します。&lt;/p&gt;
+&lt;p&gt;セグメントセレクタは、以下のページの通り16bitで構成され、上位13bitにはディスクリプタのインデックス(GDTの先頭からのインデックス)が定義され、下位3bitにはテーブルインジゲータ(TI)と要求特権レベル(RPL)が定義されます。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://yz2cm.hatenadiary.org/entry/20140502/1399012324&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;セグメント・セレクタ - ゆずさん研究所&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;TIが0の場合、GDTを参照します。(1の場合はLDTを参照)&lt;/p&gt;
+&lt;p&gt;また、RPLが0の場合は、特権アクセスを意味します。&lt;/p&gt;
+&lt;p&gt;ここで、&lt;code class=&quot;language-text&quot;&gt;$(SEG_KCODE&amp;lt;&amp;lt;3)&lt;/code&gt;が定義するセグメントセレクタ&lt;code class=&quot;language-text&quot;&gt;0b1000&lt;/code&gt;は、インデックスが1、TIが0、RPLが0と定義されたセグメントレジスタになります。&lt;/p&gt;
+&lt;h3 id=&quot;なぜljmp命令を使用するのか&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%AA%E3%81%9Cljmp%E5%91%BD%E4%BB%A4%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B&quot; aria-label=&quot;なぜljmp命令を使用するのか permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;なぜljmp命令を使用するのか&lt;/h3&gt;
+&lt;p&gt;このコードには少し違和感がありました。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;%cr0&lt;/code&gt;の設定が完了してプロテクトモードに移行するところまで処理を進めた場合、わざわざ&lt;code class=&quot;language-text&quot;&gt;ljmp&lt;/code&gt;命令を呼び出さなくても&lt;code class=&quot;language-text&quot;&gt;start32&lt;/code&gt;の処理が呼び出されるはずです。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;assembly&quot;&gt;&lt;pre class=&quot;language-assembly&quot;&gt;&lt;code class=&quot;language-assembly&quot;&gt;  lgdt    gdtdesc
+  movl    %cr0, %eax
+  orl     $CR0_PE, %eax
+  movl    %eax, %cr0
+  ljmp    $(SEG_KCODE&amp;lt;&amp;lt;3), $start32
+
+.code32  # Tell assembler to generate 32-bit code now.
+start32:
+{{ 省略 }}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;ここでわざわざ&lt;code class=&quot;language-text&quot;&gt;ljmp&lt;/code&gt;命令を使用しているのは、リアルモードで動作していた際にCPUが高速化のためにメモリから先読みした命令を破棄するためです。&lt;/p&gt;
+&lt;p&gt;CPUには命令を高速に実行するためにパイプラインという仕組みがあり、これによって次の命令を先読みしています。&lt;/p&gt;
+&lt;p&gt;しかし、プロテクトモードに移行するとリアルモードとは機械語の解釈が変わるため、これをリセットする必要がありまし。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;ljmp&lt;/code&gt;命令を呼び出すことで、&lt;code class=&quot;language-text&quot;&gt;cs&lt;/code&gt;レジスタや&lt;code class=&quot;language-text&quot;&gt;eip&lt;/code&gt;レジスタの値がリロードされます。&lt;/p&gt;
+&lt;h3 id=&quot;プロテクトモード移行後の設定&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%97%E3%83%AD%E3%83%86%E3%82%AF%E3%83%88%E3%83%A2%E3%83%BC%E3%83%89%E7%A7%BB%E8%A1%8C%E5%BE%8C%E3%81%AE%E8%A8%AD%E5%AE%9A&quot; aria-label=&quot;プロテクトモード移行後の設定 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;プロテクトモード移行後の設定&lt;/h3&gt;
+&lt;p&gt;あと少しで&lt;code class=&quot;language-text&quot;&gt;bootasm.S&lt;/code&gt;の処理をすべて追うことができます。&lt;/p&gt;
+&lt;p&gt;最後に見るのは以下の挙動です。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;assembly&quot;&gt;&lt;pre class=&quot;language-assembly&quot;&gt;&lt;code class=&quot;language-assembly&quot;&gt;.code32  # Tell assembler to generate 32-bit code now.
+start32:
+  # Set up the protected-mode data segment registers
+  movw    $(SEG_KDATA&amp;lt;&amp;lt;3), %ax    # Our data segment selector
+  movw    %ax, %ds                # -&amp;gt; DS: Data Segment
+  movw    %ax, %es                # -&amp;gt; ES: Extra Segment
+  movw    %ax, %ss                # -&amp;gt; SS: Stack Segment
+  movw    $0, %ax                 # Zero segments not ready for use
+  movw    %ax, %fs                # -&amp;gt; FS
+  movw    %ax, %gs                # -&amp;gt; GS
+
+  # Set up the stack pointer and call into C.
+  movl    $start, %esp
+  call    bootmain
+
+  # If bootmain returns (it shouldn&amp;#39;t), trigger a Bochs
+  # breakpoint if running under Bochs, then loop.
+  movw    $0x8a00, %ax            # 0x8a00 -&amp;gt; port 0x8a00
+  movw    %ax, %dx
+  outw    %ax, %dx
+  movw    $0x8ae0, %ax            # 0x8ae0 -&amp;gt; port 0x8a00
+  outw    %ax, %dx
+spin:
+  jmp     spin&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;セグメントレジスタの初期化-1&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88%E3%83%AC%E3%82%B8%E3%82%B9%E3%82%BF%E3%81%AE%E5%88%9D%E6%9C%9F%E5%8C%96-1&quot; aria-label=&quot;セグメントレジスタの初期化 1 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;セグメントレジスタの初期化&lt;/h3&gt;
+&lt;p&gt;ここでは、CS以外のセグメントレジスタの初期化を行っています。&lt;/p&gt;
+&lt;p&gt;リアルモードからプロテクトモードに移行したことで、セグメントセレクタの用法が変わりました。&lt;/p&gt;
+&lt;p&gt;具体的には、リアルモードではメモリアドレスを参照する場合に、セグメント部を16倍してオフセットに加算する方式を取っていたものが、プロテクトモードではセグメントディスクリプタの参照に変わります。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://atmarkit.itmedia.co.jp/icd/root/02/5785802.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Insider’s Computer Dictionary：8086 とは？ - ＠IT&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;そのため、プロテクトモードではセグメントレジスタにはセグメントセレクタを格納する必要があります。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;assembly&quot;&gt;&lt;pre class=&quot;language-assembly&quot;&gt;&lt;code class=&quot;language-assembly&quot;&gt;start32:
+  # Set up the protected-mode data segment registers
+  movw    $(SEG_KDATA&amp;lt;&amp;lt;3), %ax    # Our data segment selector
+  movw    %ax, %ds                # -&amp;gt; DS: Data Segment
+  movw    %ax, %es                # -&amp;gt; ES: Extra Segment
+  movw    %ax, %ss                # -&amp;gt; SS: Stack Segment
+  
+  movw    $0, %ax                 # Zero segments not ready for use
+  movw    %ax, %fs                # -&amp;gt; FS
+  movw    %ax, %gs                # -&amp;gt; GS&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;セグメントセレクタは&lt;code class=&quot;language-text&quot;&gt;$(SEG_KDATA&amp;lt;&amp;lt;3)&lt;/code&gt;で設定されます。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;SEG_KDATA&lt;/code&gt;は&lt;code class=&quot;language-text&quot;&gt;mmu.h&lt;/code&gt;内で2と定義されていました。&lt;/p&gt;
+&lt;p&gt;つまり、&lt;code class=&quot;language-text&quot;&gt;$(SEG_KDATA&amp;lt;&amp;lt;3)&lt;/code&gt;は&lt;code class=&quot;language-text&quot;&gt;0b1000&lt;/code&gt;となります。&lt;/p&gt;
+&lt;p&gt;これは、GDTの3番目に定義したセグメントディスクリプタ&lt;code class=&quot;language-text&quot;&gt;SEG_ASM(STA_W, 0x0, 0xffffffff)&lt;/code&gt;を指定するセレクタになります。&lt;/p&gt;
+&lt;p&gt;これらの値を用いて、DS、ES、SSの各セグメントレジスタを初期化しています。&lt;/p&gt;
+&lt;p&gt;また、FSとGSには0を格納しています。&lt;/p&gt;
+&lt;p&gt;セグメントセレクタが0の場合、セグメントレジスタは無効化されます。&lt;/p&gt;
+&lt;h3 id=&quot;bootmaincの呼び出し&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#bootmainc%E3%81%AE%E5%91%BC%E3%81%B3%E5%87%BA%E3%81%97&quot; aria-label=&quot;bootmaincの呼び出し permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;bootmain.cの呼び出し&lt;/h3&gt;
+&lt;p&gt;ここからは、&lt;code class=&quot;language-text&quot;&gt;bootmain.c&lt;/code&gt;に処理が移行します。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;$start&lt;/code&gt;は初めに見た通り、&lt;code class=&quot;language-text&quot;&gt;0x7C00&lt;/code&gt;に配置されています。&lt;/p&gt;
+&lt;p&gt;つまり、スタックポインタ(スタックを積むベースのアドレス)は&lt;code class=&quot;language-text&quot;&gt;0x7C00&lt;/code&gt;になるわけですね。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;assembly&quot;&gt;&lt;pre class=&quot;language-assembly&quot;&gt;&lt;code class=&quot;language-assembly&quot;&gt;# Set up the stack pointer and call into C.
+movl    $start, %esp
+call    bootmain&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;上記より、今までの理解を図にするとこのようになるかと思います。(違ってたらごめんなさい)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://yukituna.com/wp-content/uploads/2022/01/image-15.png&quot; alt=&quot;https://yukituna.com/wp-content/uploads/2022/01/image-15.png&quot;&gt;&lt;/p&gt;
+&lt;p&gt;ちなみに以下は&lt;code class=&quot;language-text&quot;&gt;bootmain.c&lt;/code&gt;がReturnされた後の処理となるので今回は割愛します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;assembly&quot;&gt;&lt;pre class=&quot;language-assembly&quot;&gt;&lt;code class=&quot;language-assembly&quot;&gt;  # If bootmain returns (it shouldn&amp;#39;t), trigger a Bochs
+  # breakpoint if running under Bochs, then loop.
+  movw    $0x8a00, %ax            # 0x8a00 -&amp;gt; port 0x8a00
+  movw    %ax, %dx
+  outw    %ax, %dx
+  movw    $0x8ae0, %ax            # 0x8ae0 -&amp;gt; port 0x8a00
+  outw    %ax, %dx
+spin:
+  jmp     spin&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;カーネルのロード&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%81%AE%E3%83%AD%E3%83%BC%E3%83%89&quot; aria-label=&quot;カーネルのロード permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;カーネルのロード&lt;/h3&gt;
+&lt;p&gt;ようやくプロテクトモードへの移行も完了し、処理が&lt;code class=&quot;language-text&quot;&gt;bootmain.c&lt;/code&gt;に切り替わりました。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;bootmain.c&lt;/code&gt;には、以下の4つの関数が定義されていますす。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;void bootmain(void)&lt;/li&gt;
+&lt;li&gt;void waitdisk(void)&lt;/li&gt;
+&lt;li&gt;void readsect(void *dst, uint offset)&lt;/li&gt;
+&lt;li&gt;void readsect(void *dst, uint offset)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ここからは&lt;code class=&quot;language-text&quot;&gt;bootmain.c&lt;/code&gt;の挙動について追っていきます。&lt;/p&gt;
+&lt;h3 id=&quot;ディスクからelfカーネルイメージをロードする&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E3%81%8B%E3%82%89elf%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%82%A4%E3%83%A1%E3%83%BC%E3%82%B8%E3%82%92%E3%83%AD%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B&quot; aria-label=&quot;ディスクからelfカーネルイメージをロードする permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;ディスクからELFカーネルイメージをロードする&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;bootmain()&lt;/code&gt;は、ディスクからELFカーネルイメージをロードするための関数です。&lt;/p&gt;
+&lt;p&gt;先頭から順に見ていきます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;bootmain&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;elfhdr&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;elf&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;proghdr&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;ph&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;eph&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;entry&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; pa&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  elf &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;elfhdr&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x10000&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// scratch space&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// Read 1st page off disk&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;readseg&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;elf&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4096&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// Is this an ELF executable?&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;elf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;magic &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; ELF_MAGIC&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// let bootasm.S handle error&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// Load each program segment (ignores ph flags).&lt;/span&gt;
+  ph &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;proghdr&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;elf &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; elf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;phoff&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  eph &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; ph &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; elf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;phnum&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; ph &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; eph&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    pa &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;paddr&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;readseg&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pa&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;filesz&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;off&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;memsz &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;filesz&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;token function&quot;&gt;stosb&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pa &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;filesz&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;memsz &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;filesz&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// Call the entry point from the ELF header.&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// Does not return!&lt;/span&gt;
+  entry &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;elf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;entry&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;始めに宣言されている構造体&lt;code class=&quot;language-text&quot;&gt;elfhdr&lt;/code&gt;と&lt;code class=&quot;language-text&quot;&gt;proghdr&lt;/code&gt;は、どちらも&lt;code class=&quot;language-text&quot;&gt;elf.h&lt;/code&gt;で定義されています。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Format of an ELF executable file&lt;/span&gt;
+
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;ELF_MAGIC&lt;/span&gt; &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;0x464C457FU&lt;/span&gt;  &lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// &quot;\x7FELF&quot; in little endian&lt;/span&gt;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// File header&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;elfhdr&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  uint magic&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// must equal ELF_MAGIC&lt;/span&gt;
+  uchar elf&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  ushort type&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  ushort machine&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  uint version&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  uint entry&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  uint phoff&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  uint shoff&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  uint flags&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  ushort ehsize&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  ushort phentsize&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  ushort phnum&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  ushort shentsize&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  ushort shnum&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  ushort shstrndx&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// Program section header&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;proghdr&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  uint type&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  uint off&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  uint vaddr&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  uint paddr&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  uint filesz&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  uint memsz&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  uint flags&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  uint align&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// Values for Proghdr type&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;ELF_PROG_LOAD&lt;/span&gt;           &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// Flag bits for Proghdr flags&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;ELF_PROG_FLAG_EXEC&lt;/span&gt;      &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;ELF_PROG_FLAG_WRITE&lt;/span&gt;     &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token macro property&quot;&gt;&lt;span class=&quot;token directive-hash&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;token directive keyword&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;token macro-name&quot;&gt;ELF_PROG_FLAG_READ&lt;/span&gt;      &lt;span class=&quot;token expression&quot;&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;この構造体の詳細については以下のページのままなので割愛します。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://en.wikipedia.org/wiki/Executable_and_Linkable_Format&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Executable and Linkable Format - Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;次の行の&lt;code class=&quot;language-text&quot;&gt;void (*entry)(void);&lt;/code&gt;では関数ポインタの宣言をしています。&lt;/p&gt;
+&lt;p&gt;最終的に、ロードしたELFヘッダのエントリポイントを取得して呼び出します。&lt;/p&gt;
+&lt;h3 id=&quot;ディスクからセクタを読み取る&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E3%81%8B%E3%82%89%E3%82%BB%E3%82%AF%E3%82%BF%E3%82%92%E8%AA%AD%E3%81%BF%E5%8F%96%E3%82%8B&quot; aria-label=&quot;ディスクからセクタを読み取る permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;ディスクからセクタを読み取る&lt;/h3&gt;
+&lt;p&gt;次は以下の箇所を見ていきます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;elf &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;elfhdr&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x10000&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// scratch space&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;// Read 1st page off disk&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;readseg&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;elf&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4096&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;elf = (struct elfhdr*)0x10000;&lt;/code&gt;の行は何をしているのかいまいちわかっていなかったのですが、&lt;code class=&quot;language-text&quot;&gt;0x10000&lt;/code&gt;番地からの領域を&lt;code class=&quot;language-text&quot;&gt;elfhdr&lt;/code&gt;構造体としてキャストすることで、ポインタ変数&lt;code class=&quot;language-text&quot;&gt;elf&lt;/code&gt;を通してこの領域にアクセスできるようにしています。&lt;/p&gt;
+&lt;p&gt;このポインタ変数&lt;code class=&quot;language-text&quot;&gt;elf&lt;/code&gt;は、次の行で&lt;code class=&quot;language-text&quot;&gt;unsigned char&lt;/code&gt;型のポインタにキャストされ、&lt;code class=&quot;language-text&quot;&gt;readseg&lt;/code&gt;関数の第1引数として渡されています。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://vmm.dev/ja/lowlevel/xv6/xv6-1.md&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;xv6 のブートローダーを読む&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;readseg((uchar*)elf, 4096, 0);&lt;/code&gt;の行では、&lt;code class=&quot;language-text&quot;&gt;(uchar*)elf&lt;/code&gt;のアドレスに4096バイトのデータをロードします。&lt;/p&gt;
+&lt;p&gt;ELFヘッダのサイズが52バイトであるにも関わらず4096バイトを読み込んでいる理由については下記が参考になりました。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://stackoverflow.com/questions/64795450/xv6-bootmain-loading-kernel-elf-header&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;x86 - XV6: bootmain - loading kernel ELF header - Stack Overflow&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;プログラム側からは、ELFヘッダとプログラムヘッダの組み合わせのサイズが呼び出し時点では不明なため、ELFヘッダとプログラムヘッダが4KBの範囲内に収まっていることを期待して、1ページ分のデータを読み込んでいる、という背景のようです。&lt;/p&gt;
+&lt;p&gt;※x86CPUの1ページ分のサイズは4069バイト(4KB)&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://stackoverflow.com/questions/11543748/why-is-the-page-size-of-linux-x86-4-kb-how-is-that-calculated&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Why is the page size of Linux (x86) 4 KB, how is that calculated? - Stack Overflow&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;readseg&lt;/code&gt;関数は以下のようなコードです。&lt;/p&gt;
+&lt;p&gt;内部の処理では、&lt;code class=&quot;language-text&quot;&gt;readsect&lt;/code&gt;関数によって2番目のセクタ(セクタ1)から、4096バイト分のデータを1セクタずつディスクから読み込み、&lt;code class=&quot;language-text&quot;&gt;uchar* pa&lt;/code&gt;の領域に書き込んでいきます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Read &apos;count&apos; bytes at &apos;offset&apos; from kernel into physical address &apos;pa&apos;.&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// Might copy more than asked.&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;readseg&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; pa&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; uint count&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; uint offset&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; epa&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  epa &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; pa &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; count&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// Round down to sector boundary.&lt;/span&gt;
+  pa &lt;span class=&quot;token operator&quot;&gt;-=&lt;/span&gt; offset &lt;span class=&quot;token operator&quot;&gt;%&lt;/span&gt; SECTSIZE&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  
+  &lt;span class=&quot;token comment&quot;&gt;// Translate from bytes to sectors; kernel starts at sector 1.&lt;/span&gt;
+  offset &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;offset &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt; SECTSIZE&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// If this is too slow, we could read lots of sectors at a time.&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// We&apos;d write more to memory than asked, but it doesn&apos;t matter --&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// we load in increasing order.&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; pa &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; epa&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; pa &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; SECTSIZE&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; offset&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;readsect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pa&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; offset&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;こちらが&lt;code class=&quot;language-text&quot;&gt;readsect&lt;/code&gt;関数です。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Read a single sector at offset into dst.&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;readsect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;dst&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; uint offset&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;// Issue command.&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;waitdisk&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;outb&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x1F2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;   &lt;span class=&quot;token comment&quot;&gt;// count = 1&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;outb&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x1F3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; offset&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;outb&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x1F4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; offset &lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;outb&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x1F5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; offset &lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;outb&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x1F6&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;offset &lt;span class=&quot;token operator&quot;&gt;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0xE0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;outb&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x1F7&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0x20&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// cmd 0x20 - read sectors&lt;/span&gt;
+
+  &lt;span class=&quot;token comment&quot;&gt;// Read data.&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;waitdisk&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;insl&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;0x1F0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; dst&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; SECTSIZE&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;このようなディスクの呼び出しは&lt;code class=&quot;language-text&quot;&gt;Cylinder-head-sector(CHS)&lt;/code&gt;と呼ばれる方法を使用しています。&lt;/p&gt;
+&lt;p&gt;昨今のOSでこのようなディスク読み出しを実装しているものは(おそらく)無いのでCHSの詳細については割愛します。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://en.wikipedia.org/wiki/Cylinder-head-sector&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Cylinder-head-sector - Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://stackoverflow.com/questions/61028931/xv6-boot-loader-reading-sectors-off-disk-using-chs&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;c - xv6 boot loader: Reading sectors off disk using CHS - Stack Overflow&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ここでなぜ&lt;code class=&quot;language-text&quot;&gt;offset = (offset / SECTSIZE) + 1;&lt;/code&gt;の行で、2番目のセクタ(セクタ1)からデータを読み込んでいるのかというと、Makefileの項で確認した通り、カーネルプログラムはイメージの先頭512バイトの位置に配置されているためです。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/0ee723f0df4390ef428db10febeb6cfd/0b533/image-8-16455921223972.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAARlAAAEZQAGA43XUAAABiElEQVQ4y8WU6XaCMBBGff8Hah+gdtGiApGqaCsgFgmgHDZ3viZxpaL1X3POPWFmwiXDVsF+bLdbRFFUII5jJEki4Me/65vNRpyb5/lBg0oQ+IjY4vVqhW9KQcwRNMsWEMNCo9dHUx+ADM1Tnq2xnAm2ZcLlcon1es12uIE9cVHTh3gfGJAGJl47AzxUa3h8qeNZ0yF9mixviDXDsYOcdXUhxNlwPAeNLxmyQRiqmMlIEygmQWufaw5lGI5ZLuTBIeGHFF0qo+8T6B5HFce7WN3nCHqeAtszWcsn4YGC0Ju5+JjI6LkEXVdlEKijBhRLOsacjsuEtCgstHwhpDshn+t6FW/dp13MZL0rwuMOC8LQFYt1ry1knL6vCQ4xr3WpgrFnYZ4tQKmLsW0jCKbgD7ggpNMJa1GCNm6hfaS5ZxfzGrElWK7BdpjfbjlOYqTzBOkiZSTlsHrG6mE4E6/bzZazbI57B/96zoWlO8yyrHC1a4hu+Nf1L8J7x13CNE3FveHzX1z72/wARuV7fAc3xmkAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/0ee723f0df4390ef428db10febeb6cfd/8ac56/image-8-16455921223972.webp 240w,
+/static/0ee723f0df4390ef428db10febeb6cfd/d3be9/image-8-16455921223972.webp 480w,
+/static/0ee723f0df4390ef428db10febeb6cfd/b0a15/image-8-16455921223972.webp 500w&quot;
+              sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/0ee723f0df4390ef428db10febeb6cfd/8ff5a/image-8-16455921223972.png 240w,
+/static/0ee723f0df4390ef428db10febeb6cfd/e85cb/image-8-16455921223972.png 480w,
+/static/0ee723f0df4390ef428db10febeb6cfd/0b533/image-8-16455921223972.png 500w&quot;
+            sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/0ee723f0df4390ef428db10febeb6cfd/0b533/image-8-16455921223972.png&quot;
+            alt=&quot;img&quot;
+            title=&quot;img&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;xv6OSでは、&lt;code class=&quot;language-text&quot;&gt;\#define SECTSIZE  512&lt;/code&gt;とある通り、1セクタ分のサイズが512バイトと定義されています。&lt;/p&gt;
+&lt;p&gt;そのため、2セクタ目の先頭にはカーネルの先頭バイトが存在していることが期待されます。&lt;/p&gt;
+&lt;h3 id=&quot;読み込んだカーネルの確認&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%93%E3%81%A0%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%81%AE%E7%A2%BA%E8%AA%8D&quot; aria-label=&quot;読み込んだカーネルの確認 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;読み込んだカーネルの確認&lt;/h3&gt;
+&lt;p&gt;次の処理では、カーネルが正常に読み込まれているか確認するため、マジックナンバを参照しています。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Is this an ELF executable?&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;elf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;magic &lt;span class=&quot;token operator&quot;&gt;!=&lt;/span&gt; ELF_MAGIC&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;// let bootasm.S handle error&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;プログラムヘッダの読み込み&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%83%98%E3%83%83%E3%83%80%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF&quot; aria-label=&quot;プログラムヘッダの読み込み permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;プログラムヘッダの読み込み&lt;/h3&gt;
+&lt;p&gt;続いて、プログラムヘッダを読み込みます。&lt;/p&gt;
+&lt;p&gt;基本的にはカーネルを読み込んだ際とほとんど同じ挙動のようです。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Load each program segment (ignores ph flags).&lt;/span&gt;
+ph &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;proghdr&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;elf &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; elf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;phoff&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+eph &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; ph &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; elf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;phnum&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; ph &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; eph&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  pa &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;uchar&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;paddr&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;readseg&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pa&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;filesz&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;off&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;memsz &lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;filesz&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;stosb&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pa &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;filesz&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;memsz &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; ph&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;filesz&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;まず、&lt;code class=&quot;language-text&quot;&gt;(uchar*)elf + elf-&gt;phoff&lt;/code&gt;のアドレスを&lt;code class=&quot;language-text&quot;&gt;proghdr&lt;/code&gt;構造体としてキャストします。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;(uchar*)elf + elf-&gt;phoff&lt;/code&gt;はプログラムヘッダの開始オフセットです。&lt;/p&gt;
+&lt;p&gt;先ほど4096バイト分のデータを読み込んだことで、ELFヘッダとともにプログラムヘッダもすべて読み込まれていることが期待されているため、&lt;code class=&quot;language-text&quot;&gt;(uchar*)elf + elf-&gt;phoff&lt;/code&gt;の位置にはすでにプログラムヘッダの情報が格納されています。&lt;/p&gt;
+&lt;p&gt;ここから、各プログラムセグメントのデータをロードします。&lt;/p&gt;
+&lt;p&gt;この処理によって、実際に実行されるプログラムがロードされます。&lt;/p&gt;
+&lt;p&gt;なお、&lt;code class=&quot;language-text&quot;&gt;stosb&lt;/code&gt;は&lt;code class=&quot;language-text&quot;&gt;x86.h&lt;/code&gt;で定義されており、&lt;code class=&quot;language-text&quot;&gt;ph-&gt;memsz&lt;/code&gt;が&lt;code class=&quot;language-text&quot;&gt;ph-&gt;filesz&lt;/code&gt;よりも大きい場合に0埋めするために利用されています。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;inline&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;stosb&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;addr&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; data&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt; cnt&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;asm&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;volatile&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;cld; rep stosb&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+               &lt;span class=&quot;token string&quot;&gt;&quot;=D&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;addr&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;=c&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;cnt&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+               &lt;span class=&quot;token string&quot;&gt;&quot;0&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;addr&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;1&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;cnt&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;a&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;data&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;
+               &lt;span class=&quot;token string&quot;&gt;&quot;memory&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;cc&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://stackoverflow.com/questions/27958743/difference-between-p-filesz-and-p-memsz-of-elf32-phdr/31011428#31011428&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;elf - Difference between p&lt;em&gt;filesz and p&lt;/em&gt;memsz of Elf32_Phdr - Stack Overflow&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;これでディスクからカーネルプログラムを読み込むことができたので、以降の処理はカーネルに任せることとなります。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;c&quot;&gt;&lt;pre class=&quot;language-c&quot;&gt;&lt;code class=&quot;language-c&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// Call the entry point from the ELF header.&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;// Does not return!&lt;/span&gt;
+entry &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;elf&lt;span class=&quot;token operator&quot;&gt;-&gt;&lt;/span&gt;entry&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;結構時間がかかりましたがxv6 UNIXのブートストラップについて深掘りしつつ読み込みました。&lt;/p&gt;
+&lt;p&gt;次回からようやく本題(カーネルのソースコードを読む)に入れそうです。&lt;/p&gt;
+&lt;h2 id=&quot;参考書籍&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E5%8F%82%E8%80%83%E6%9B%B8%E7%B1%8D&quot; aria-label=&quot;参考書籍 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;参考書籍&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://amzn.to/3qZSCY7&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;30日でできる! OS自作入門&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://amzn.to/3qXYsZX&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;ゼロからのOS自作入門&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://amzn.to/3q8TU3K&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://amzn.to/3I6fkVt&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;詳解 Linuxカーネル&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://amzn.to/3JRUdI2&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;作って理解するOS x86系コンピュータを動かす理論と実装&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item></channel></rss>
