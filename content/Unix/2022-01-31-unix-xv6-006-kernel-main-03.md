@@ -1,25 +1,23 @@
 ---
-title: 
-date: "2022-02-20"
+title: xv6OSを真面目に読みこんでカーネルを完全に理解する -マルチプロセッサ 編-
+date: "2022-01-31"
 template: "post"
-draft: true
-slug: ""
-category: ""
+draft: false
+slug: "unix-xv6-006-kernel-main-03"
+category: "Unix"
 tags:
-  - ""
-  - ""
-  - ""
-description: ""
-socialImage: "/media/cards/no-image.png"
+  - "Unix"
+  - "xv6"
+  - "Kernel"
+description: "教育用OSのxv6OSのソースコードを読んでカーネルについて学んでいきます。この記事ではxv6OSのカーネルのmain関数の挙動を読み解きます。"
+socialImage: "/media/cards/unix-xv6-006-kernel-main-03.png"
 ---
 
 [はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ](https://amzn.to/3q8TU3K)にインスパイアされて[xv6 OS](https://github.com/mit-pdos/xv6-public)を読んでます。
 
 UNIX V6自体はx86CPUでは動作しないため、基本的には、UNIXv6をX86アーキテクチャで動くようにした[xv6 OS](https://github.com/mit-pdos/xv6-public)のリポジトリをForkした[kash1064/xv6-public: xv6 OS](https://github.com/kash1064/xv6-public)のソースコードを読んでいくことにしました。
 
-[前回](https://yukituna.com/3877/)は`main`関数で実行される`kvmalloc`関数によるページテーブル割り当ての挙動を確認しました。
-
-https://yukituna.com/3877/
+[前回](/unix-xv6-005-kernel-main-02)は`main`関数で実行される`kvmalloc`関数によるページテーブル割り当ての挙動を確認しました。
 
 今回は`mpinit`関数の挙動を追っていきます。
 
@@ -177,7 +175,7 @@ MPテーブルにはx86CPUのMP仕様に関連した情報が格納されてい�
 
 `FLOATING POINTER STRUCTURE`から`FIXED-LENGTH HEADER`を参照しています。
 
-![https://yukituna.com/wp-content/uploads/2022/01/image-29.png](https://yukituna.com/wp-content/uploads/2022/01/image-29.png)
+![2022/01/image-29.png](../../static/media/2022-01-31-unix-xv6-006-kernel-main-03/image-29.png)
 
 参考画像：[Intel MultiProcessor Specification  | ManualsLib](https://www.manualslib.com/manual/77733/Intel-Multiprocessor.html)
 
@@ -338,7 +336,7 @@ struct mp {             // floating pointer
 
 `mp`構造体の定義は上記ですが、Intel仕様書の図の方がイメージしやすいので一緒に貼っておきます。
 
-![https://yukituna.com/wp-content/uploads/2022/01/image-30.png](https://yukituna.com/wp-content/uploads/2022/01/image-30.png)
+![2022/01/image-30.png](../../static/media/2022-01-31-unix-xv6-006-kernel-main-03/image-30.png)
 
 参考画像：[Intel MultiProcessor Specification  | ManualsLib](https://www.manualslib.com/manual/77733/Intel-Multiprocessor.html)
 
@@ -382,7 +380,7 @@ struct mpconf {         // configuration table header
 
 以下はIntel仕様書から引用した構造図です。
 
-![https://yukituna.com/wp-content/uploads/2022/01/image-31.png](https://yukituna.com/wp-content/uploads/2022/01/image-31.png)
+![2022/01/image-31.png](../../static/media/2022-01-31-unix-xv6-006-kernel-main-03/image-31.png)
 
 参考画像：[Intel MultiProcessor Specification  | ManualsLib](https://www.manualslib.com/manual/77733/Intel-Multiprocessor.html)
 
@@ -430,7 +428,7 @@ struct mpioapic {       // I/O APIC table entry
 
 Intel仕様書の図は以下です。
 
-![https://yukituna.com/wp-content/uploads/2022/01/image-32.png](https://yukituna.com/wp-content/uploads/2022/01/image-32.png)
+![2022/01/image-32.png](../../static/media/2022-01-31-unix-xv6-006-kernel-main-03/image-32.png)
 
 参考画像：[Intel MultiProcessor Specification  | ManualsLib](https://www.manualslib.com/manual/77733/Intel-Multiprocessor.html)
 
@@ -498,23 +496,23 @@ MPコンフィグレーションテーブルエントリは、先ほど例示し
 
 - Processor Entry
 
-![https://yukituna.com/wp-content/uploads/2022/01/image-32.png](https://yukituna.com/wp-content/uploads/2022/01/image-32.png)
+![2022/01/image-32.png](../../static/media/2022-01-31-unix-xv6-006-kernel-main-03/image-32-164559487926114.png)
 
 - Bus Entry
 
-![https://yukituna.com/wp-content/uploads/2022/01/image-33.png](https://yukituna.com/wp-content/uploads/2022/01/image-33.png)
+![2022/01/image-33.png](../../static/media/2022-01-31-unix-xv6-006-kernel-main-03/image-33.png)
 
 - I/O APIC Entry
 
-![https://yukituna.com/wp-content/uploads/2022/01/image-34.png](https://yukituna.com/wp-content/uploads/2022/01/image-34.png)
+![2022/01/image-34.png](../../static/media/2022-01-31-unix-xv6-006-kernel-main-03/image-34.png)
 
 - I/O Interrupt Entry
 
-![https://yukituna.com/wp-content/uploads/2022/01/image-35.png](https://yukituna.com/wp-content/uploads/2022/01/image-35.png)
+![2022/01/image-35.png](../../static/media/2022-01-31-unix-xv6-006-kernel-main-03/image-35.png)
 
 - Local Interrupt Entry
 
-![https://yukituna.com/wp-content/uploads/2022/01/image-36.png](https://yukituna.com/wp-content/uploads/2022/01/image-36.png)
+![2022/01/image-36.png](../../static/media/2022-01-31-unix-xv6-006-kernel-main-03/image-36.png)
 
 参考画像：[Intel MultiProcessor Specification  | ManualsLib](https://www.manualslib.com/manual/77733/Intel-Multiprocessor.html)
 
