@@ -19,8 +19,8 @@ const Sidebar = ({ isIndex }: Props) => {
   return (
     <div className={styles['sidebar']}>
       <div className={styles['sidebar__inner']}>
-        <div className={styles['logo-image']}>
-          <img src={LOGO_IMG} className={styles['headerimage']} alt="logo"></img>
+        {/* <div className={styles['logo-image']}>
+          <img src={LOGO_IMG} className={styles['headerimage']} alt="logo"></img> */}
         </div>
         <Author author={author} isIndex={isIndex} />
         <Menu menu={menu} />
