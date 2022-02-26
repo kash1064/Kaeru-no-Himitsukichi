@@ -9,9 +9,6 @@ import Pagination from '../components/Pagination';
 import { useSiteMetadata } from '../hooks';
 import type { PageContext, AllMarkdownRemark } from '../types';
 
-import styles from './Custom.module.scss';
-import LOGO_IMG from "../../static/icon2-logo2.png"
-
 type Props = {
   data: AllMarkdownRemark,
   pageContext: PageContext
@@ -33,9 +30,6 @@ const IndexTemplate = ({ data, pageContext }: Props) => {
 
   return (
     <Layout title={pageTitle} description={siteSubtitle}>
-      <div className={styles['logo-image']}>
-        <img src={LOGO_IMG} className={styles['headerimage']} alt="logo"></img>
-      </div>
       <Sidebar isIndex />
       <Page>
         <Feed edges={edges} />
