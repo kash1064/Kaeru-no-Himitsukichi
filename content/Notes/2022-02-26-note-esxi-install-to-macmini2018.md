@@ -10,7 +10,7 @@ tags:
   - ""
   - ""
 description: ""
-socialImage: "/media/cards/note-esxi-install-to-macmini2018.png"
+socialImage: "/media/cards/no-image.png"
 
 ---
 
