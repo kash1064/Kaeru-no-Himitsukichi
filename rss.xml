@@ -1,4 +1,376 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[かえるのひみつきち]]></title><description><![CDATA[かえるのひみつきち]]></description><link>https://kashiwaba-yuki.com</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 26 Feb 2022 12:22:45 GMT</lastBuildDate><item><title><![CDATA[Gatsbyで作成したSPAブログをGitHubPagesに公開する環境を作る備忘録]]></title><description><![CDATA[Gatsbyで作成したSPAブログをGithub Pagesに公開する手順についてまとめています。Gatsbyの開発環境はDockerコンテナ上に構築しています。]]></description><link>https://kashiwaba-yuki.com/note-how-to-deploy-gatsby-spa</link><guid isPermaLink="false">https://kashiwaba-yuki.com/note-how-to-deploy-gatsby-spa</guid><pubDate>Sun, 20 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;突然ですが、諸般の事情につきブログを移転することにしました。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[かえるのひみつきち]]></title><description><![CDATA[かえるのひみつきち]]></description><link>https://kashiwaba-yuki.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 28 Feb 2022 13:40:58 GMT</lastBuildDate><item><title><![CDATA[Mac mini Late2018を購入したのでVMWare Fusion PlayerでMacOSの仮想マシンを構築してみた]]></title><description><![CDATA[note-setup-macmini.md]]></description><link>https://kashiwaba-yuki.com/note-setup-macmini</link><guid isPermaLink="false">https://kashiwaba-yuki.com/note-setup-macmini</guid><pubDate>Sat, 26 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;先日初めてのMac端末を手に入れたのでセットアップ手順やつまづいた点について記録しておきます。&lt;/p&gt;
+&lt;p&gt;今回はMac mini(Late2018)で以下のような環境をセットアップしていきます。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Mac miniにインストールしたMacOSを現在最新のMonterey 12.2.1にアップグレードする&lt;/li&gt;
+&lt;li&gt;VMWare fusion playerをインストールしてMacOS Big Surの仮想マシンを構築する&lt;/li&gt;
+&lt;li&gt;LAN上のWindowsマシンからVNCでリモートアクセスできるようにする&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;初めてのMac機ということで結構手こずった点もあったのでその辺まとめておきます。&lt;/p&gt;
+&lt;!-- omit in toc --&gt;
+&lt;h2 id=&quot;もくじ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%82%E3%81%8F%E3%81%98&quot; aria-label=&quot;もくじ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;もくじ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E7%92%B0%E5%A2%83%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6&quot;&gt;環境について&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#macos%E3%82%92%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B&quot;&gt;MacOSをクリーンインストールする&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#mac-os%E3%82%92%E3%82%A2%E3%83%83%E3%83%97%E3%82%B0%E3%83%AC%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B&quot;&gt;Mac OSをアップグレードする&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#vmware-fusion-player%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B&quot;&gt;VMWare Fusion Playerをインストールする&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E4%BB%AE%E6%83%B3%E3%83%9E%E3%82%B7%E3%83%B3%E3%81%AEmacos%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6&quot;&gt;仮想マシンのMacOSライセンスについて&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E7%94%A8%E3%81%AEos%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B&quot;&gt;インストール用のOSを取得する&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;環境について&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E7%92%B0%E5%A2%83%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6&quot; aria-label=&quot;環境について permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;環境について&lt;/h2&gt;
+&lt;p&gt;今回購入したMac miniのスペックは以下の通りです。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Mac mini Late 2018&lt;/li&gt;
+&lt;li&gt;Intel core i3 8100B&lt;/li&gt;
+&lt;li&gt;16GB RAM&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 881px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/46874829b33a7188178bc0e0cc89457c/96658/image-20220228213725674.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 55.833333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAACtUlEQVQozyWRWW8bZRSGfYt60QTUZDzLN5uX8diesT3jLbGdpFlMg5NGSew6SVOlgAilErQkFKksAsENfyOirKGIG674bw+nzsWjkeabeb73vCfz5c5PPIyec778gnF8ybD4BZveBffcb9i2v59xX3vJyPiBlvOKlroiNa9IjCvq+hU1Ic7eEAmZb9tTvq4d8FW4y87iiGb2hJ5+zIb2hFH2c3azzzg1nvKp+ojN6jWtyn+0i//QzL0m9a5pOH9St3+npn6lZr0is7/1ko32Mzqlc7nxhCXzIT3zEWvaU4aLF2xrF+wIp9onHDvfMaj+S6/0N8v5azreH5L6N1L1C4n1Mw1JnpluXLIWvi+jHJEaU1rmCX37jMS+R91dJ/WHdAvb8uM6HWeVJL9HVJgS58dU/cMZZfeA0BkRqc9EOHzBQIQ1fUJDhA3jiKZxTM6MUZaLmTUxdAPL9FAqh6M8PPsGV3AsB9t05VwjMHZk5LXnrFY+IJGEcXZCfSad4ul1LN0hbWzT607wVAGVzbHaH7I2eJdWo087GZBzyvK+IN/alI19Mg+Gl2yl5/TDM1LniJoxoe09Qi2WGaSb3G//RSd4zXr3Q1zLp15t04g6+HZJLglm2HoBU7eITBHejT4mmNsnWphSfmdCaf6QcF4S6RHdeETy9mPeu/Mj69ULgkKFbnOF/tJdOs0+ab1LVE4o5WIMqaauDsislp/g39onuP2AkhDenspzirpTJa60yFtdutqYldoeyvRJa0tEYQNlePhOUXosEBakHtOWRY7JLIePcW/tEsyPJemY0twb8QRHi6UXl0pQpyIp1Jul6L6M254lq4YJSdyh2ViSPnvYtkPTFWG3dIr51hb5uT2Kc4cincyE7oKk0PNYi3nsbBHPKuMLjh7cYJRwBaXJQhakQ81hpXDG/3y7bZgx6q+QAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/46874829b33a7188178bc0e0cc89457c/8ac56/image-20220228213725674.webp 240w,
+/static/46874829b33a7188178bc0e0cc89457c/d3be9/image-20220228213725674.webp 480w,
+/static/46874829b33a7188178bc0e0cc89457c/8e8eb/image-20220228213725674.webp 881w&quot;
+              sizes=&quot;(max-width: 881px) 100vw, 881px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/46874829b33a7188178bc0e0cc89457c/8ff5a/image-20220228213725674.png 240w,
+/static/46874829b33a7188178bc0e0cc89457c/e85cb/image-20220228213725674.png 480w,
+/static/46874829b33a7188178bc0e0cc89457c/96658/image-20220228213725674.png 881w&quot;
+            sizes=&quot;(max-width: 881px) 100vw, 881px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/46874829b33a7188178bc0e0cc89457c/96658/image-20220228213725674.png&quot;
+            alt=&quot;image-20220228213725674&quot;
+            title=&quot;image-20220228213725674&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;本当はM1チップ搭載のLate2020が欲しかったのですが、VMWare ESXiがまだM1アーキテクチャをサポートしていなかったためLate2018にしました。&lt;/p&gt;
+&lt;p&gt;中古で買う予定だったのでLate2014と迷ったのですが、Late2018で一番安いCPUのIntel core i3 8100Bの評価がかなり良く、Late2014のIntel Core i7-4578Uよりもスペックがよさそうだったのでこちらを購入しました。&lt;/p&gt;
+&lt;p&gt;中古相場についても、Late2018のi3モデルとLate2014のi7モデルではほとんど価格は変わらなかったです。&lt;/p&gt;
+&lt;p&gt;また、Late2018はLate2014と違ってRAMの拡張もできるという点が最終的に決め手になりました。&lt;/p&gt;
+&lt;h2 id=&quot;macosをクリーンインストールする&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#macos%E3%82%92%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B&quot; aria-label=&quot;macosをクリーンインストールする permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;MacOSをクリーンインストールする&lt;/h2&gt;
+&lt;p&gt;PCを購入したらまずはクリーンインストールをするのがお作法です。&lt;/p&gt;
+&lt;p&gt;MacOSの再インストールは初めてだったので少々戸惑いました。&lt;/p&gt;
+&lt;p&gt;MacOSの場合は、WindowsやLinuxのようにブートメディアを作成してBIOSからリセットする方法ではなく、Mac端末に内臓されている復旧ユーティリティからインターネットもしくは復旧メディア経由で再インストールを行います。&lt;/p&gt;
+&lt;p&gt;詳しくは以下のリンクが参考になります。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://support.apple.com/ja-jp/HT204904&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;macOS を再インストールする方法 - Apple サポート (日本)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Windowsキーボードの場合は[Winキー + R]を押しながらMac mini Late2018の電源を付けることで復旧ユーティリティが起動します。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 362px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/a026780da82d130498c68b6f20d52ab9/10600/image-20220228215319901.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 95.41666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAYAAACQjC21AAAACXBIWXMAAAsTAAALEwEAmpwYAAACN0lEQVQ4y5WTzXLSUBTHeQexlBA+WgoEAkn4SqgFKQgFIk1pocO4cdw448aNblw4bnTle/gGvoUuHDc+zt97bnsyNzZUXfw5NyHndz5vIlPQQNLy6Tvi/+K06/vELmf9IPNXxQVIxEVOx0TfJQ7O/gk1GtlKrYS6WUalXkbZLIUyGhWpqmWEom9UX1JCjaDl9jFbP8WLz+8RbAIEV0sE63Osri8w9ScYnZ1iOHksdTodojfwIsBohkJaNoXZ5hybD2+x2q7gB3P4Fwup2fIMC/HMULIE5FKzh/pNhvRDD/IPce70mrjcztHyHDhdB003Xi2vCavdCDMjBikEZg90pApJLNw1vr76juXER3/ax5P5GOPZSGblPurC7lio2dWwpyowkqFeELaYEQNxMNCuYVsOao6BetMMZTo1aQnIg+GW3QHKssVQeiKby4+f0Bsei5JvsiEQW4aSvR9YzCKdSWK02eDllx8Y+3O4J21YokTqV7vXCq170pVnCsLJhEA65ASMX5riI0841W73jLLg/eO+qfvIfsyQwPxRTiqZfoDt82f49usnJv4UneM2vL4r14OGYd9m63RtNFr1CJD8JZDI9EA2LXo4GPfx+t0b2cO66BOtBoEIQGeCkahcukEqkBghkNM2RJkF8UzReRjqQHhlaMnp9tB9jmSo1k/7JAOU8pFmx+moWkTROJRA8on0kKE0pX1x/f5Fe5mHSOl70kcdamQPufz/kQoL1+ZPKIsd7nunwsj+BjhnLE4e9s/dAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/a026780da82d130498c68b6f20d52ab9/8ac56/image-20220228215319901.webp 240w,
+/static/a026780da82d130498c68b6f20d52ab9/c2de8/image-20220228215319901.webp 362w&quot;
+              sizes=&quot;(max-width: 362px) 100vw, 362px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/a026780da82d130498c68b6f20d52ab9/8ff5a/image-20220228215319901.png 240w,
+/static/a026780da82d130498c68b6f20d52ab9/10600/image-20220228215319901.png 362w&quot;
+            sizes=&quot;(max-width: 362px) 100vw, 362px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/a026780da82d130498c68b6f20d52ab9/10600/image-20220228215319901.png&quot;
+            alt=&quot;image-20220228215319901&quot;
+            title=&quot;image-20220228215319901&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;僕の環境ではディスクユーティリティから既存のパーティションをすべて削除した上でパーティションを再構成し、インターネット経由でMac OSを再インストールしました。&lt;/p&gt;
+&lt;p&gt;ちなみに、今回は使用しませんでしたが以下のようにインストールメディアからのインストールも可能なようです。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://support.apple.com/ja-jp/HT211683&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;以前のバージョンの macOS を入手する - Apple サポート (日本)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://support.apple.com/ja-jp/HT201372&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;macOS の起動可能なインストーラを作成する方法 - Apple サポート (日本)&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;mac-osをアップグレードする&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#mac-os%E3%82%92%E3%82%A2%E3%83%83%E3%83%97%E3%82%B0%E3%83%AC%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B&quot; aria-label=&quot;mac osをアップグレードする permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Mac OSをアップグレードする&lt;/h2&gt;
+&lt;p&gt;インストールが完了したらAppleIDと連携した後、[システム環境設定]&gt;[ソフトウェア・アップデート]を開き、アップデートを実行します。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 696px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/ed28ed22d50aa76a3efeacc8f6054dca/82158/image-20220228220157397.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 38.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAABp0lEQVQoz01S23aaQBTlI9pYtQjMwHAHDQjIRSMtTUw1yepLktq+1ZX8/w/snBm72jzstffZzLnNoCWiQGqvkPICEW8Q22tCh0TCIc1b4k55gVURSsURr8lv4VPsmxV8liEZPUHjTMCcChgTG5buwDY9CBbAsXylueEqfh9zwyPtw+Uh+QGERcwchKMDNH1soiy3aNYDHUgw+2TDNkLkaY1NM2A33OF2uFdaefVXtGWvsFw08HhKBWMI7iMY3UNbFjV+n15x/HPCj8cjmE7djUAd7rtrStyiytYIxQK+nSLyLpWO3DO7LIarCno04QO0ttvg9PKCx+cnPB9/wTFpfJpQWNFZ/4WMZfJ7T0J6Hkv+F+Smi+HLNe72B2RpqVY+F4vU6gqz4B+EKQsnairJ0uM6fbNcRHJl47OFKm8x9DvqEmI2YXTBAeZxjmW2QpHXWJUdKomiReTPKZkejgdgpsCm67H7tkeWZYjH9CizC+owWUBMc7CLBawPc4hxjkhv0Pg3GC4f0KcHXMXf0YW3WLItUp1+KZ3uddqhcG+wCvZI2RUWH3/iDf9z9ztnZUKUAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/ed28ed22d50aa76a3efeacc8f6054dca/8ac56/image-20220228220157397.webp 240w,
+/static/ed28ed22d50aa76a3efeacc8f6054dca/d3be9/image-20220228220157397.webp 480w,
+/static/ed28ed22d50aa76a3efeacc8f6054dca/038cb/image-20220228220157397.webp 696w&quot;
+              sizes=&quot;(max-width: 696px) 100vw, 696px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/ed28ed22d50aa76a3efeacc8f6054dca/8ff5a/image-20220228220157397.png 240w,
+/static/ed28ed22d50aa76a3efeacc8f6054dca/e85cb/image-20220228220157397.png 480w,
+/static/ed28ed22d50aa76a3efeacc8f6054dca/82158/image-20220228220157397.png 696w&quot;
+            sizes=&quot;(max-width: 696px) 100vw, 696px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/ed28ed22d50aa76a3efeacc8f6054dca/82158/image-20220228220157397.png&quot;
+            alt=&quot;image-20220228220157397&quot;
+            title=&quot;image-20220228220157397&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;しばらく待つとアップグレードが完了します。&lt;/p&gt;
+&lt;h2 id=&quot;vmware-fusion-playerをインストールする&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#vmware-fusion-player%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B&quot; aria-label=&quot;vmware fusion playerをインストールする permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;VMWare Fusion Playerをインストールする&lt;/h2&gt;
+&lt;p&gt;VMware Fusionは、MacOS上で実行できるホスト型のハイパーバイザです。&lt;/p&gt;
+&lt;p&gt;Windowsなどで使えるVMWare Workstationと同様にProとPlayerのエディションが存在し、Fusion Playerは無料での個人利用が可能です。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://www.vmware.com/jp/products/fusion/faq.html&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;VMware Fusion の概要 | FAQ | JP&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Windowsなどで使えるWorkstation Playerの場合は、残念ながら無料ライセンスでは仮想化の最大のメリットともいえるスナップショット機能が使用できません。&lt;/p&gt;
+&lt;p&gt;しかし、なんとVMware Fusionは個人用の無料ライセンスでもスナップショット機能が使えるのです。&lt;/p&gt;
+&lt;p&gt;これは素晴らしい。&lt;/p&gt;
+&lt;p&gt;VMWare Fusionは以下のダウンロードページからダウンロード可能です。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://customerconnect.vmware.com/downloads/info/slug/desktop_end_user_computing/vmware_fusion/12_0&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Download VMware Fusion 12 - VMware Customer Connect&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;インストーラをダウンロードできたら、次に以下のページにVMWareアカウントでログインして個人利用用のライセンスを取得します。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://customerconnect.vmware.com/web/vmware/evalcenter?p=fusion-player-personal&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;VMware Fusion Player – Personal Use License&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;VMWareアカウントがない場合はアカウント作成が必要です。&lt;/p&gt;
+&lt;p&gt;作成できたら「VMware Fusion Player – Personal Use」というライセンスが取得できます。&lt;/p&gt;
+&lt;p&gt;あとはダウンロードしたインストーラを実行して取得したライセンスを登録すればOKです。&lt;/p&gt;
+&lt;h3 id=&quot;仮想マシンのmacosライセンスについて&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E4%BB%AE%E6%83%B3%E3%83%9E%E3%82%B7%E3%83%B3%E3%81%AEmacos%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6&quot; aria-label=&quot;仮想マシンのmacosライセンスについて permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;仮想マシンのMacOSライセンスについて&lt;/h3&gt;
+&lt;p&gt;仮想マシンを作成する前にMacOSの仮想マシンのライセンスについて確認しておきます。&lt;/p&gt;
+&lt;p&gt;Appleのライセンスを読むと、MacOSの仮想マシンは、Mac端末上でのみ最大2つのコピーを使用することができると書かれています。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;(iii) to install, use and run up to two (2) additional copies or instances of the Apple Software, or any prior macOS or OS X operating system software or subsequent release of the Apple Software, within virtual operating system environments on each Apple-branded computer you own or control that is already running the Apple Software, for purposes of: (a) software development; (b) testing during software development; (c) using macOS Server; or (d) personal, non-commercial use.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://www.apple.com/legal/sla/docs/macOSMonterey.pdf&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;macOS Monterey License&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;MacOSの仮想マシンを構築するのはOKですが、あくまでMac端末上でのみ許可されるという点に注意が必要ですね。&lt;/p&gt;
+&lt;h3 id=&quot;インストール用のosを取得する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E7%94%A8%E3%81%AEos%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B&quot; aria-label=&quot;インストール用のosを取得する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;インストール用のOSを取得する&lt;/h3&gt;
+&lt;p&gt;インストールしたFusion Playerを起動すると、以下のような仮想マシンのセットアップ画面がでてきます。&lt;/p&gt;
+&lt;p&gt;ここで、「リカバリパーティションからMacOSをインストール」を選択すると、現在使用しているOSと同じバージョンの仮想マシンを簡単に立てることができます。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 649px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/b4df7f7aff16130cd0cfcaed8572e9b8/7762d/image-20220228222728117.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 83.33333333333334%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAAAsTAAALEwEAmpwYAAACfUlEQVQ4y11T227bMAw1sK7d2q5Jc7FlWZIdW7ZzcW5okqXNQx4KbMMwYP//NWciHTvuHg5ISTzUoUh5WWqRpRmMNtAOjY0i1UI5yFAiFBJChAgCAaV0G6tbbgxPG+0OiRi10FqjLEvMZjO2WZZhs9lgv9/jeDzifD4jTVNIKRGpK08536tVRB9gjOFk8/mc7XQ6xXa75YRvb28fEnbFkM8JyVFOFYHUUTlUGkHKiCFCWgv4QQDf9/kp9AdOncdTF4WBCxQOAcNHkiSslHwh6jOyoUtKoP0u6NI6IasJ8PXGw/1nD1+cfX78hNU8xW4zw+DbDcTwAdJ/wqh/h2HvFsHwHqPencMtnxPXH4+4MR5lpbd47j1g0H9kOx72MCstbBpD+EOnaIQodEqDIfxRH1oJtqPBE4M49BxUvtc8pjZxDWq/SZDZnFEUU9i8gLUFr8mvqiXiZOJ4NC41jyrtNOXaJa2brskaTr28oF27BhGn6XCX33Y5dEFFUfBoNONAoFKstXzGZV32qdO73Q6LxYIb2Xa5SUhJiERB15sVlsslXl5eeLCrquIRyfOc9wir1YovbEbnOoeXJF11tKafQphMJkxszuI4bn1K1pZ8nUPBs0eKqLQmYDwet7+G/P+/aRetQhrgsiixXq9xOBz4W8VxwgHkv76+4nQ68ZNQbENWneraN5Qy5IBkkrgkhrtM5RlTl1GXmrF6sqqZAlWD+PyTuCoJz6YF8mzqBrnCYu4eOC0RCZdYuvmKnMow5jXbkPYT3uczF0Pxq2qLynHTJIdXphXW8z3ez7/w8/0PttV36CBDLHOYMGfbBe2Z0LKvRea+6A6/f/xl/tSu8A9c58w8tNayMwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/b4df7f7aff16130cd0cfcaed8572e9b8/8ac56/image-20220228222728117.webp 240w,
+/static/b4df7f7aff16130cd0cfcaed8572e9b8/d3be9/image-20220228222728117.webp 480w,
+/static/b4df7f7aff16130cd0cfcaed8572e9b8/df8c5/image-20220228222728117.webp 649w&quot;
+              sizes=&quot;(max-width: 649px) 100vw, 649px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/b4df7f7aff16130cd0cfcaed8572e9b8/8ff5a/image-20220228222728117.png 240w,
+/static/b4df7f7aff16130cd0cfcaed8572e9b8/e85cb/image-20220228222728117.png 480w,
+/static/b4df7f7aff16130cd0cfcaed8572e9b8/7762d/image-20220228222728117.png 649w&quot;
+            sizes=&quot;(max-width: 649px) 100vw, 649px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/b4df7f7aff16130cd0cfcaed8572e9b8/7762d/image-20220228222728117.png&quot;
+            alt=&quot;image-20220228222728117&quot;
+            title=&quot;image-20220228222728117&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;しかし、今回は検証用のマシンを作成したいので、一つ前のBig Surをインストールしていきます。&lt;/p&gt;
+&lt;p&gt;そのため、まずはOSイメージを取得します。&lt;/p&gt;
+&lt;p&gt;OSイメージはApp Storeからダウンロード可能ですが、現行バージョンより古いOSイメージはApp Storeのアプリの検索結果には表示されないため、Webから直接リンクにアクセスする必要があります。&lt;/p&gt;
+&lt;p&gt;各OSイメージのリンクは、以下の公式ページからアクセスできます。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://support.apple.com/ja-jp/HT211683&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;以前のバージョンの macOS を入手する - Apple サポート (日本)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;このURLからApp Storeを開きOSイメージをダウンロードすると、イメージは「Application」ディレクトリに配置されます。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 540px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/235c0ba772dab3e2f52f5d26e05f8fbb/07484/image-20220226220901937.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 80%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAAsTAAALEwEAmpwYAAADwklEQVQ4y0WUyW4jdRDG/QbAhAmJl3a33d3ubu9re4ljx0tsZ4/HntjYDpkkQmJWQIQDDMsBDgwiQkJCcB6JE1y4MW/BWyDNjRf4Ue5E4lCqpUuf/vXVV+1rGkNOCkPc4pCSNsbVTiga+7iFDcqFTSrFBoPuAf3OPu3GgE5zx6u5+brY5q3/P/Zt6kMOM2PK6ZGAidcmFPQ9cukS+XSFfKZCvdpio7xFtdSgWe9SytXIpVzpKd9YZuldr9fnGvdoxM/YTp5TjoypRKZkwtsEA2GUgEZ4XSG4HiYgFg5FiekOUdXwvilB7bYn4vUYUVsArUP2Ny6ZdD6knTqlGBoJYF+aDMJBhzU1ixq00QKW1EySdklet+HFml9qgRh+QyesxLzct5kYM+k+Y9G7Ytx4Qi99Sck4RLkTxJx8Se/Vv6j9R6h3QljRPL//8YqXv/2JbWQJvqlTPG7y3etfaX19TEhyXzc356T1jOnWR4w3nzJrX1G1hoRWAsR2Pqf/82uijQ9QJI/Hylx98oLvX/xCNlkl+EYUZ6/E4u+nZK+ahN8y8dXsI/arF+xkz2nZMzajU3JKD9Uv41llUukejp6X3CIairPhdmnVd9GVuFez9QzJjRJxJ4e2LhxWZbyT1iMOCpfU1BENASwsOfTHsKPSbOYx1aRwaHuA6rqFsmZ68bKmKQlCqzaK3yEinPvq5hGDzCm7mQcMUu/RMma3gCbVYpP5bE4uWUHzFmPT2upQLddlATECAYe26vDXeMSTYo21tRi+lnmfjvEuDdHg0pqiw5I6ILiii4Db9O7vU8410dYc/CsqD68+5vlnXxG6G2FVAM8Vk3+++YJFdxf/XVnKluhwKOPOGo85KlwwsE8pKQOcTILBYo/dx2d0px1MxyEuW86ka5iRFHE9J2PaVMwcfTOFFXeJLkdumfc4zp3LtTzgIH1G31pQDPSIF5Icfdtm8pOc3qc1DAF0BNDR0lhqCsfIe7qzxSecChmrdMNhyxyxbUxpy7hL60QmVNQ+wVWTREheVSmiaLKMVQtd8s7emN7RFON2KaoIXouIV2449u2YQ8bJBTvxuQAKuADWhMNVOaf3jQ7Pr1/yjvwQ1BWNVKzA+fUPnP54TTlTx/92lFSiyPhsTsxJewrw7VkHzEsLjvMX9GMTD7AaHhDy67hqGbf9kJDpoq4Zoscse8dTDkdzEiKnsABE5NW6HpebNonIkny7yX1m1Zm3mEHshN4SUEZWRRaqNCf0NJFlLOPYAliQC3HldY6Ru9Hhsh7NCh0JL/4PbSUSlPnIetEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/235c0ba772dab3e2f52f5d26e05f8fbb/8ac56/image-20220226220901937.webp 240w,
+/static/235c0ba772dab3e2f52f5d26e05f8fbb/d3be9/image-20220226220901937.webp 480w,
+/static/235c0ba772dab3e2f52f5d26e05f8fbb/9e625/image-20220226220901937.webp 540w&quot;
+              sizes=&quot;(max-width: 540px) 100vw, 540px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/235c0ba772dab3e2f52f5d26e05f8fbb/8ff5a/image-20220226220901937.png 240w,
+/static/235c0ba772dab3e2f52f5d26e05f8fbb/e85cb/image-20220226220901937.png 480w,
+/static/235c0ba772dab3e2f52f5d26e05f8fbb/07484/image-20220226220901937.png 540w&quot;
+            sizes=&quot;(max-width: 540px) 100vw, 540px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/235c0ba772dab3e2f52f5d26e05f8fbb/07484/image-20220226220901937.png&quot;
+            alt=&quot;image-20220226220901937&quot;
+            title=&quot;image-20220226220901937&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;あとはこのイメージをFusion PlayerのGUIにドラッグ&amp;#x26;ドロップすると、以下のように仮想マシンの作成に進むことができます。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 651px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/4f2f2f93ff31a98e5932337ddb4b2ddf/1ac66/image-20220226220842339.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 83.33333333333334%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAAAsTAAALEwEAmpwYAAAC10lEQVQ4y51Ta1faQBCl9tTWHj3aCuSxj2TzIiESIAgoCFjtqWBb7dHW//9PbmeXh1K/9cM9MzuZuXt3MlM55bfo+hMU/AItd4wWGxubW2conBHa1gAd6xSlM0Tu3SCVc6T8GzIxR1Mu0OQLZGy+hDtHxecNMM+CK2w43ILN6mDSQV5kUJGHvN1EUbagYgUVCqRZiOZJTD6Hw6pUV1+C16i+iopyMsRJhCxtIm+ekM3Q7XRxd3eP4fAMi8Utnv48YXIxwXQ6w83NAo8PvzEeTxCFMdIG1UcJTk5aEFwSoZshCH3EcYI0TdFoNAyiKILv+8iyjIrHKMsSRVEgDEMkSWJytK/z4jg2tYwxerKbggvXHPTH2WxmiF5CxzWBlHIT0/76Ul3LOYfruktCIbkJRFGI0WhkEvVZCGGsLtJqdOE6xskPggBKKXPWFxhCz2nA86nZ1DtNFBK0TempWlWSLJHnOdrtjnlah3pclj0iYAa6Xb6vVgqJUHgk17YguYPAl+h122gXOUIloegy5tRR/XyIevXTxtaOj+BYVUSBR7U1o37TQ8Zd1KpH8BSDUztEK4tQPz7A/oc3ONjbwcfdCt6/3cbuToW+7+Bofxd77yqwbZt4+FKh9EiFLWHXSGmdw666Bk6NGeiYa4lXcCjfNjnUQ+E/91DSkwPRIKQr+69P4C8gXthVri/VmjAxCn0ew2f/D29NKJ3YECqeQLEVyN9SJ16r2son+M+EK4UiJETGejx41S9mSdNn0zvqqWS026t8XefJVQ+FEy03hTPztzVUoGhvJ7iYXGA6m9L2TGn9RjT055hQ/Or6imYzhsscGnRO47Ksd8lWAk7zFoSIQ9rhhPbajwyG/XPCGYaDc5wRBqdD9HtDE7+cfkG3XW5yG3GGJKYf4wWoZKqPshjg5voH7r8/YjyYwdOqLfWMuto6D3tj3N0+4HL8Ff3OOe7J/zn/hU7ex18yL9+RFzgsLAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/4f2f2f93ff31a98e5932337ddb4b2ddf/8ac56/image-20220226220842339.webp 240w,
+/static/4f2f2f93ff31a98e5932337ddb4b2ddf/d3be9/image-20220226220842339.webp 480w,
+/static/4f2f2f93ff31a98e5932337ddb4b2ddf/be1d0/image-20220226220842339.webp 651w&quot;
+              sizes=&quot;(max-width: 651px) 100vw, 651px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/4f2f2f93ff31a98e5932337ddb4b2ddf/8ff5a/image-20220226220842339.png 240w,
+/static/4f2f2f93ff31a98e5932337ddb4b2ddf/e85cb/image-20220226220842339.png 480w,
+/static/4f2f2f93ff31a98e5932337ddb4b2ddf/1ac66/image-20220226220842339.png 651w&quot;
+            sizes=&quot;(max-width: 651px) 100vw, 651px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/4f2f2f93ff31a98e5932337ddb4b2ddf/1ac66/image-20220226220842339.png&quot;
+            alt=&quot;image-20220226220842339&quot;
+            title=&quot;image-20220226220842339&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;細かいハードウェアのカスタマイズは割愛します。&lt;/p&gt;
+&lt;p&gt;これで、MacOS上で仮想MacOSを動かすことができました。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/85c82b1fc74c3df19844d24b22aff21e/44a54/image-20220228223342401.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 70.41666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAACbUlEQVQ4y5WSaU8TURhGZ5pOKZRCp9PSGUohXSiBlqVsXVgFGsAoFQW/QNCQgMZdCEjSyFagKCKgyN893rJo1NaED0+edzI35547d6QhY43xhnWmmt+RDr7nftMqD8Nijn4lFTol6f9CX/CE/sAZnfohXXpe9AGdxh4drmPaHRd0u37Q572g13OEFKtcImqfIlhfg7fei1evxfB40D0Ghph1j46vzkcoGKLWMK7jRTc0gu5h4uo5cU1sVpUnVrWF1GV/Tsg2gSRJt46mtDKofSPhPKTbsSOyidRuWyRQnr5eJP8H8PudLJkuu6asnWHXdxLqPr0C2FstgJGKeRrKhkuCZFkuCfcI4IjrjJSaIynSUy2OHLbO4LMM3vK4V0Dd2sGY+5h+dZeUY18At5H8ZVMYlkRJs2w2SyQS+cv2qg1rG5PuPMPOnIDmiBcMA2UZdEu8pE0ymUTTtKKGdeURMp48o9oeQ+qOsPyIVGcZo0bpLgqz2+1Fv6V8DayviDJjHDLh2mXUuc2AI4ukW/pRlZaShiaT6Z/bv7llvy3KvPeAjHuLSW2TO+oGkmEZKA6UC1ZXffP8xyy6qSLCSu0RT9w5Zp1b3HUUgEo/mjmKSTZjkkRkRfTfv4ryy1IWa6ySFUXMMXMfK5UnLFpzzFduM139AcmltOEyt+M0t6AWYmqk2h6jJ/WYdGeaVHyOhppeEi3jJOML9DRNMxB5yUggy5y+wRvfZ163HjGrr/LAvo6kKo1cxhzGqTSjyWE05yhTC3leLCwz93SfpoY+Ho0tMTt/QnpomeTIBgNd5yx637KR+sRa5pR7/mekba/4CSjrfxEjUmocAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/85c82b1fc74c3df19844d24b22aff21e/8ac56/image-20220228223342401.webp 240w,
+/static/85c82b1fc74c3df19844d24b22aff21e/d3be9/image-20220228223342401.webp 480w,
+/static/85c82b1fc74c3df19844d24b22aff21e/e46b2/image-20220228223342401.webp 960w,
+/static/85c82b1fc74c3df19844d24b22aff21e/11ae3/image-20220228223342401.webp 1017w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/85c82b1fc74c3df19844d24b22aff21e/8ff5a/image-20220228223342401.png 240w,
+/static/85c82b1fc74c3df19844d24b22aff21e/e85cb/image-20220228223342401.png 480w,
+/static/85c82b1fc74c3df19844d24b22aff21e/d9199/image-20220228223342401.png 960w,
+/static/85c82b1fc74c3df19844d24b22aff21e/44a54/image-20220228223342401.png 1017w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/85c82b1fc74c3df19844d24b22aff21e/d9199/image-20220228223342401.png&quot;
+            alt=&quot;image-20220228223342401&quot;
+            title=&quot;image-20220228223342401&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;新しくMac端末を買ったので仮想マシンのセットアップまでやってみました。&lt;/p&gt;
+&lt;p&gt;本当はESXiを入れたかったのですが、どうやらMac miniの内臓SSDにESXiをインストールすることはできず、Thunderbolt 3で接続した外部SSDにインストールする必要があることがわかったので、今回はFusion Playerで代用しました。&lt;/p&gt;
+&lt;p&gt;また外部接続用のSSDが手に入ったらESXiの構築にもチャレンジしていこうと思います。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Gatsbyで作成したSPAブログをGitHubPagesに公開する環境を作る備忘録]]></title><description><![CDATA[Gatsbyで作成したSPAブログをGithub Pagesに公開する手順についてまとめています。Gatsbyの開発環境はDockerコンテナ上に構築しています。]]></description><link>https://kashiwaba-yuki.com/note-how-to-deploy-gatsby-spa</link><guid isPermaLink="false">https://kashiwaba-yuki.com/note-how-to-deploy-gatsby-spa</guid><pubDate>Sun, 20 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;突然ですが、諸般の事情につきブログを移転することにしました。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://yukituna.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;旧ブログ&lt;/a&gt;の記事は順次こちらのブログに移植していこうと思います（手動でやる必要があるので面倒ですが…。）&lt;/p&gt;
 &lt;p&gt;新しいブログですが、MITライセンスで公開されているGatsbyテンプレートの&lt;a href=&quot;https://github.com/alxshelepenok/gatsby-starter-lumen&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;gatsby-starter-lumen&lt;/a&gt;をベースに使用させてもらってます。&lt;/p&gt;
 &lt;p&gt;この記事では、新しいブログを公開するまでに実施した作業について備忘録としてまとめておきます。&lt;/p&gt;
