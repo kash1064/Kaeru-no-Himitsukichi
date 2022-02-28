@@ -25,7 +25,7 @@ module.exports = {
     },
     {
       label: 'WinDbg',
-      path: '/tag/windbg/'
+      path: '/tag/win-dbg/'
     }
     // {
     //   label: '競プロ',
