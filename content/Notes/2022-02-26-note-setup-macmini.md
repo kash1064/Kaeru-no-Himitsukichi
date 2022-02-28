@@ -9,7 +9,7 @@ tags:
   - "MacOS"
   - "VMWware"
   - "備忘録"
-description: "note-setup-macmini.md"
+description: ""
 socialImage: "/media/cards/note-setup-macmini.png"
 
 ---
