@@ -17,11 +17,15 @@ module.exports = {
     },
     {
       label: 'Windows',
-      path: '/tag/windows/'
+      path: '/category/windows/'
     },
     {
       label: 'Unix',
       path: '/tag/unix/'
+    },
+    {
+      label: 'WinDbg',
+      path: '/tag/windbg/'
     }
     // {
     //   label: '競プロ',
