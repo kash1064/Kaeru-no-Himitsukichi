@@ -32,6 +32,7 @@ socialImage: "/media/cards/note-setup-macmini.png"
 - [VMWare Fusion Playerをインストールする](#vmware-fusion-playerをインストールする)
   - [仮想マシンのMacOSライセンスについて](#仮想マシンのmacosライセンスについて)
   - [インストール用のOSを取得する](#インストール用のosを取得する)
+- [VNCを使ってWindowsマシンからローカルネットワーク経由でリモートアクセスする](#vncを使ってwindowsマシンからローカルネットワーク経由でリモートアクセスする)
 - [まとめ](#まとめ)
 
 ## 環境について
@@ -155,6 +156,30 @@ OSイメージはApp Storeからダウンロード可能ですが、現行バー
 これで、MacOS上で仮想MacOSを動かすことができました。
 
 ![image-20220228223342401](../../static/media/2022-02-26-note-setup-macmini/image-20220228223342401.png)
+
+## VNCを使ってWindowsマシンからローカルネットワーク経由でリモートアクセスする
+
+MacOSのシステム環境設定から「共有」をクリックします。
+
+ここで、「画面共有」を有効化して、「アクセスを許可」欄に表示されているユーザ`Administors`をダブルクリックして接続用のパスワードを設定します。
+
+![image-20220302232446577](../../static/media/2022-02-26-note-setup-macmini/image-20220302232446577.png)
+
+MacOS側の設定はこれで完了です。
+
+続いて、クライアント側のWindowsマシンに[UltraVNC](https://uvnc.com/)をインストールします。
+
+参考：[Home - UltraVNC VNC OFFICIAL SITE, Remote Desktop Free Opensource](https://uvnc.com/)
+
+上記リンク先からダウンロードしたインストーラを実行するだけです。
+
+[UltraVNC](https://uvnc.com/)のインストールが完了したら、アクセス先に`<MacOSのコンピュータ名>.LOCAL`を指定してリモートアクセスできます。
+
+![image-20220302232841563](../../static/media/2022-02-26-note-setup-macmini/image-20220302232841563.png)
+
+細かいオプションの設定についてはデフォルトのままでもつながるはずです。
+
+日本語配列キーボードを使っているのであれば「Mouse and Keyboard」の設定タブから「Japanese Keyboard」の設定は有効化しておいた方がよさそうな気がします。
 
 ## まとめ
 
