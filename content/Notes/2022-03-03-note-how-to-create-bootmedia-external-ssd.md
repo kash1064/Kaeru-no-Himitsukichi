@@ -2,7 +2,7 @@
 title: DISMとBCDBootでUSB接続した外付けSSDから起動可能なWindowsメディアを作成する
 date: "2022-03-03"
 template: "post"
-draft: true
+draft: false
 slug: "note-how-to-create-bootmedia-external-ssd"
 category: "Notes"
 tags:
