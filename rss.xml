@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[かえるのひみつきち]]></title><description><![CDATA[かえるのひみつきち]]></description><link>https://kashiwaba-yuki.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 28 Feb 2022 15:14:49 GMT</lastBuildDate><item><title><![CDATA[Mac mini Late2018を購入したのでVMWare Fusion PlayerでMacOSの仮想マシンを構築してみた]]></title><link>https://kashiwaba-yuki.com/note-setup-macmini</link><guid isPermaLink="false">https://kashiwaba-yuki.com/note-setup-macmini</guid><pubDate>Sat, 26 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;先日初めてのMac端末を手に入れたのでセットアップ手順やつまづいた点について記録しておきます。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[かえるのひみつきち]]></title><description><![CDATA[かえるのひみつきち]]></description><link>https://kashiwaba-yuki.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 03 Mar 2022 14:32:37 GMT</lastBuildDate><item><title><![CDATA[Mac mini Late2018を購入したのでVMWare Fusion PlayerでMacOSの仮想マシンを構築してみた]]></title><link>https://kashiwaba-yuki.com/note-setup-macmini</link><guid isPermaLink="false">https://kashiwaba-yuki.com/note-setup-macmini</guid><pubDate>Sat, 26 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;先日初めてのMac端末を手に入れたのでセットアップ手順やつまづいた点について記録しておきます。&lt;/p&gt;
 &lt;p&gt;今回はMac mini(Late2018)で以下のような環境をセットアップしていきます。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Mac miniにインストールしたMacOSを現在最新のMonterey 12.2.1にアップグレードする&lt;/li&gt;
@@ -19,6 +19,7 @@
 &lt;li&gt;&lt;a href=&quot;#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E7%94%A8%E3%81%AEos%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B&quot;&gt;インストール用のOSを取得する&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#vnc%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6windows%E3%83%9E%E3%82%B7%E3%83%B3%E3%81%8B%E3%82%89%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E7%B5%8C%E7%94%B1%E3%81%A7%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B&quot;&gt;VNCを使ってWindowsマシンからローカルネットワーク経由でリモートアクセスする&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&quot;環境について&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E7%92%B0%E5%A2%83%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6&quot; aria-label=&quot;環境について permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;環境について&lt;/h2&gt;
@@ -367,6 +368,96 @@
         &lt;/picture&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&quot;vncを使ってwindowsマシンからローカルネットワーク経由でリモートアクセスする&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#vnc%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6windows%E3%83%9E%E3%82%B7%E3%83%B3%E3%81%8B%E3%82%89%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E7%B5%8C%E7%94%B1%E3%81%A7%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B&quot; aria-label=&quot;vncを使ってwindowsマシンからローカルネットワーク経由でリモートアクセスする permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;VNCを使ってWindowsマシンからローカルネットワーク経由でリモートアクセスする&lt;/h2&gt;
+&lt;p&gt;MacOSのシステム環境設定から「共有」をクリックします。&lt;/p&gt;
+&lt;p&gt;ここで、「画面共有」を有効化して、「アクセスを許可」欄に表示されているユーザ&lt;code class=&quot;language-text&quot;&gt;Administors&lt;/code&gt;をダブルクリックして接続用のパスワードを設定します。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 686px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/7b5639362f47c667b74b394ff608321d/f6386/image-20220302232446577.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 81.66666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC2UlEQVQ4y12T647aMBCFeYBK1V65h9wTx879CgEWWGApbaVKVf9Uff/XOB07wG7745Mdg2fOnBn3NrM/OGd7tOKEmh1R+XvM+Qn7+idWyTfk7g6l/4rCu0B7eTbPD9isz1jO39DWR7TzA9r0O3q5VqMUHMIPwVyhEH6MLCogWAzPDsAcDt/+gBWA8xBxliKMY4goQpgQQYGecx9BnzBwO0PkFdBHDh4+9zF61OAb8YUIzIz/wZtF8PXrGsEc+TAeOXruYwJj7MAc+9CHLgVOUKULjJ4ncA2GTNR0Rkq8HMLNIBzau7laJZlo8OvHb/othf4UoBf0C1ik0BhSBsriaIKyhjAmtDe5Uu3pIVw6k0rcmYA1ZurOFUfjRABvkqInhhXiNEfbbNBWG1IlPaLLdoSyXmG/+oJltYOl+ejfj6CPbaS8RsIqhUwYWAnZQKVPM/TYsEDWFFivdjhsTyjThpqRgDsxFvmGuvmCOlmSzzY+f7oH92Ks61c02RorWg8vZ+yWb8QRXC/Jw36mojMyPw/nyq/xg6FK6UoVcKUNWqiUyLLluT3lyMm/1/VJBT1uzwjNmgIOyGgvRRpUqNMlyrhVQWzyRF5oyy2aYoW2JUtI8aLY3DyViZSfhGyqKtkdpAjsWPnSZCusGxreaKGMluOiLhsCVbNQlpwOX7Fud8hj8lAUSMOyg+aW60UX0DMFmZuTugUyCmxPu+6pgEaogkoSXiKh4U1FBUaNc3WumniFadRlRyp0Ov/m+VoFlbNo0dhcFcpVljS4m2HyZCm0voPZgOhfoL0/STqFlsYuryFSyuSA29NAnUmkXzErlSUyQTd3/zGTCi8e2tr7kMpAEpf+cC1VXkioactqe3l27zZ8/I9SaDwJehWuKskcewrjhktvu0Mb2Jg8m7fvKwYxGzpg1FhfkwHvYvKADp89hX6DniJhDwM4I35DfluSgYQpzD5ZpsXgoxJ/Adgs3a3eKj14AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/7b5639362f47c667b74b394ff608321d/8ac56/image-20220302232446577.webp 240w,
+/static/7b5639362f47c667b74b394ff608321d/d3be9/image-20220302232446577.webp 480w,
+/static/7b5639362f47c667b74b394ff608321d/7dbce/image-20220302232446577.webp 686w&quot;
+              sizes=&quot;(max-width: 686px) 100vw, 686px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/7b5639362f47c667b74b394ff608321d/8ff5a/image-20220302232446577.png 240w,
+/static/7b5639362f47c667b74b394ff608321d/e85cb/image-20220302232446577.png 480w,
+/static/7b5639362f47c667b74b394ff608321d/f6386/image-20220302232446577.png 686w&quot;
+            sizes=&quot;(max-width: 686px) 100vw, 686px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/7b5639362f47c667b74b394ff608321d/f6386/image-20220302232446577.png&quot;
+            alt=&quot;image-20220302232446577&quot;
+            title=&quot;image-20220302232446577&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;MacOS側の設定はこれで完了です。&lt;/p&gt;
+&lt;p&gt;続いて、クライアント側のWindowsマシンに&lt;a href=&quot;https://uvnc.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;UltraVNC&lt;/a&gt;をインストールします。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://uvnc.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Home - UltraVNC VNC OFFICIAL SITE, Remote Desktop Free Opensource&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;上記リンク先からダウンロードしたインストーラを実行するだけです。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://uvnc.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;UltraVNC&lt;/a&gt;のインストールが完了したら、アクセス先に&lt;code class=&quot;language-text&quot;&gt;&amp;lt;MacOSのコンピュータ名&gt;.LOCAL&lt;/code&gt;を指定してリモートアクセスできます。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 386px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/2e44ac270daa9e556d3440060985841d/7bc0b/image-20220302232841563.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 142.08333333333331%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAcCAYAAABh2p9gAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFG0lEQVRIx21WyXLbRhTkl+k3fPJn5JCjj8kth1TlkJxcdlUsVyJbjuPIkq1dtGTJ3BcAxEZwEQkQJEFC3Dv9hiDtg6fqFQbE4E2/fj0Npj5ffYBrGqhpJZhGGbZZhefUYHFedwy0Gw7DVtHyLDTrFlrq3tmG/O532jjYf45U3TYQz6eIJw+YzeaYTKZYrYDZfIHNWCXx7Vjyh1USi8VS/XZzcYTU57tzPP7jMX5+/RPiKEY0inD7+QbPnz/D4eEhnj19ihe7L3H88Qi7uy8438XF1RX6/T6CwGcE8LtdxA9THB+8Qiqb+YQfn/2A397+ilF/pBY2Gw1c8aWzszPc3t7CsizU6y4MQ0e5XOG8jl4vVMkkut0OxvEDTg/3kSrmbuHWGtBKOqrVKgaDITzPw6NHj7Czs4MnT57Aq3tottosb4XlcklqZqRmso0Rq4pGMRO+RqpS/IJoPELQCxCG4Ta6LKPT6eD+/l7Nfd9XIfcS8mwTrVZLJTzZJByPx0TWx3A4RBRFqgzTNIm0gS6TNJstOLaj7sOwr2gZDAZqvUSfAKZs6Mn7V+uEfi8iLx4aLFVeanLHQqEIraoxWZPJbeRzeeiGkTQjQJtrGuRanstVIXyfIHSbPsoVDRUSXmQir9FEHI+5+2CLRJArNEwoJUsF19fXOD+/YKPK6IWDpOSClEy5REOVYPOSoJBkMu/1eiqE281zmct1Pe/hYTLDx4M9pHJ3adi2jcvLNLusqVKE/HKphJPjUxR5FeLlt1w2q1Dl8wUlla7fhaZVkU6nSdM93u3/KQjvlCR0Xd8iEU40TaP+7ERnXSUl07RQrVTRIG/yu+vWFRjZ3A9CHL37CymtlMF9J0COpMtD4cd1XaVJhy9Id/P5PC4vLin2NNKfrtUGwqnj1HH96QaZLxlMZos1h9XiHUvyFcJsNqdQhDwFUqLNZLpuKHQeUXvcyO/cU8gjnt+5Or+BH7DDIzVXCY1Klqi6CpFpOarkdrvN3R3UKaH54qtJxMzRn6ywWi7UiQm5Vhoa8lDIODt6g5SlF9RNmzy2SGx/09kw3PLX4jNpluk2UbU8ovKxYMIN52IOMtKHFLal5dWNIMpm87BYspRdM2pErcN1XEolUi8OuEmPne33B/jeyH/4WxKuEUpni8WKEqwkk2uOnIq7iGFIEuFWOJO5IBSzUIaR8OkcU4d2UrKIWCRRoRal2zIvFErKugS9yU3WDWrQ+x6+mq8kTXiuf9xbc7ig/YpBiMepZtDvBLHIRzosVznXLTZr4zqtVhMjvqPcO0HoSclmNUe9eeqUCDI5z6I9TdPVubbJoWwgmgzZrO+O5Rph4wMR1qpZWLbLZtgKncHSBGm300WdyOJ4Xd58Plf6G9M75Soh4hY7m9JkVcmHRFijDmuqsyaR2SiVynx5oboq5ItPyr2UXeAZtslpqVhWc5GTeGVMLcqwDpKSPa/Jci2iM5RkZKE0IwjWIt+Yg2wyTHQ64GabL+EqKdn4TxAyoUtzFf0ZPH46udNZtvAoZU6nU2VZMqRMEXsv6KmkImjR6CZh5d8kYRSN1O5yAjaL5FjJB2hFvckxW1AaYvXyXEI0GXHd5BsJFd/SbUy9hNlipT6D8m19YKzn/JqRm6GYL+URxTHG3CAmYokWXalMZVRYVYZO5dCxMvsvkUqfvIXJvyFiY3o5uw2NUStl4RYyMPM51HJZGFmJDIxMBl/OTnG09wqn/7zB6f4e8jdXuPj9F/wPz70HbvXate8AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/2e44ac270daa9e556d3440060985841d/8ac56/image-20220302232841563.webp 240w,
+/static/2e44ac270daa9e556d3440060985841d/23cef/image-20220302232841563.webp 386w&quot;
+              sizes=&quot;(max-width: 386px) 100vw, 386px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/2e44ac270daa9e556d3440060985841d/8ff5a/image-20220302232841563.png 240w,
+/static/2e44ac270daa9e556d3440060985841d/7bc0b/image-20220302232841563.png 386w&quot;
+            sizes=&quot;(max-width: 386px) 100vw, 386px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/2e44ac270daa9e556d3440060985841d/7bc0b/image-20220302232841563.png&quot;
+            alt=&quot;image-20220302232841563&quot;
+            title=&quot;image-20220302232841563&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;細かいオプションの設定についてはデフォルトのままでもつながるはずです。&lt;/p&gt;
+&lt;p&gt;日本語配列キーボードを使っているのであれば「Mouse and Keyboard」の設定タブから「Japanese Keyboard」の設定は有効化しておいた方がよさそうな気がします。&lt;/p&gt;
 &lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
 &lt;p&gt;新しくMac端末を買ったので仮想マシンのセットアップまでやってみました。&lt;/p&gt;
 &lt;p&gt;本当はESXiを入れたかったのですが、どうやらMac miniの内臓SSDにESXiをインストールすることはできず、Thunderbolt 3で接続した外部SSDにインストールする必要があることがわかったので、今回はFusion Playerで代用しました。&lt;/p&gt;
@@ -10695,79 +10786,7 @@ setxkbmap jp&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;imwheelなどのツールを試しましたが効果はありませんでした。&lt;/p&gt;
 &lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
 &lt;p&gt;個人的にハマった問題の解消方法をまとめました。&lt;/p&gt;
-&lt;p&gt;Ubuntuのセットアップでまた困ったことがあれば、都度追記していきたいと思います。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[llvm-mingwを使ってLinux環境でもシンボルファイル（.pdb）を作成する方法]]></title><link>https://kashiwaba-yuki.com/windows-windbg-006-symbol</link><guid isPermaLink="false">https://kashiwaba-yuki.com/windows-windbg-006-symbol</guid><pubDate>Mon, 18 Oct 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;WinDbgによるWindowsデバッグやダンプ解析によるトラブルシューティングに習熟することを目指しています。&lt;/p&gt;
-&lt;p&gt;WinDbgを用いたWindowsのデバッグやダンプの解析方法について公開している情報については、以下のページに一覧をまとめているので、よければご覧ください。&lt;/p&gt;
-&lt;p&gt;参考：&lt;a href=&quot;/windows-windbg-001-index&quot;&gt;WinDbgを用いたデバッグとトラブルシューティングのテクニック&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;今回は、上記のWinDbgまとめ記事で解析のために使用するサンプルプログラムをビルドする環境について紹介します。&lt;/p&gt;
-&lt;p&gt;以下の要件を実現できる環境を、WSL2上のUbuntu20.04で構築していきます。
-基本的にはDockerコンテナを使用するので、Dockerが動くならどの環境でも問題ないと思います。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Linux環境でEXEファイルをクロスコンパイルできる&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Linux環境でシンボルファイル（.pdbファイル）を生成できる&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;!-- omit in toc --&gt;
-&lt;h2 id=&quot;もくじ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%82%E3%81%8F%E3%81%98&quot; aria-label=&quot;もくじ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;もくじ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#%E3%83%93%E3%83%AB%E3%83%89%E7%92%B0%E5%A2%83%E3%82%92%E6%95%B4%E3%81%88%E3%82%8B&quot;&gt;ビルド環境を整える&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E3%83%95%E3%82%A1%E3%82%A4%E3%83%ABpdb%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%A8%E3%81%AF&quot;&gt;シンボルファイル（.pdbファイル）とは&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#linux%E7%92%B0%E5%A2%83%E3%81%A7%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%AB%E6%99%82%E3%81%AB%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95&quot;&gt;Linux環境でコンパイル時にシンボルファイルを生成する方法&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#llvm-mingw%E3%81%AE%E7%92%B0%E5%A2%83%E3%82%92%E7%94%A8%E6%84%8F%E3%81%99%E3%82%8B&quot;&gt;llvm-mingwの環境を用意する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#llvm-mingw%E3%81%A7pdb%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E4%BB%98%E3%81%8D%E3%81%A7c%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%AB%E3%81%99%E3%82%8B&quot;&gt;llvm-mingwでPDBファイル付きでC++ファイルをコンパイルする&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;ビルド環境を整える&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%93%E3%83%AB%E3%83%89%E7%92%B0%E5%A2%83%E3%82%92%E6%95%B4%E3%81%88%E3%82%8B&quot; aria-label=&quot;ビルド環境を整える permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;ビルド環境を整える&lt;/h2&gt;
-&lt;p&gt;WinDbgテスト用のプログラムは、以下のリポジトリに置いてあります。&lt;/p&gt;
-&lt;p&gt;参考：&lt;a href=&quot;https://github.com/kash1064/Try2WinDbg&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;kash1064/Try2WinDbg&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;まずは、Dockerが利用可能なOS上の任意のディレクトリに上記のリポジトリをcloneします。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; clone https://github.com/kash1064/Try2WinDbg&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;続いて、コンパイル用の以下のコンテナイメージをpullします。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; pull kashiwabayuki/try2windbg:1.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;参考：&lt;a href=&quot;https://hub.docker.com/r/kashiwabayuki/try2windbg&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;kashiwabayuki/try2windbg&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;このコンテナイメージは、&lt;a href=&quot;https://hub.docker.com/r/mstorsjo/llvm-mingw/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;mstorsjo/llvm-mingw&lt;/a&gt;のコンテナイメージを一部カスタマイズしたイメージです。&lt;/p&gt;
-&lt;p&gt;詳細については後述します。&lt;/p&gt;
-&lt;p&gt;サンプルプログラムのリポジトリとコンテナイメージの取得が完了したら、ダウンロードした&lt;code class=&quot;language-text&quot;&gt;Try2WinDbg&lt;/code&gt;ディレクトリに移動します。&lt;/p&gt;
-&lt;p&gt;続いて、以下のコマンドを入力することで、&lt;code class=&quot;language-text&quot;&gt;Try2WinDbg/src&lt;/code&gt;直下に、コンパイルされたEXEファイルとシンボルファイルが生成されます。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; Try2WinDbg
-
-&lt;span class=&quot;token comment&quot;&gt;# ビルドに使用するコンテナイメージを指定&lt;/span&gt;
-&lt;span class=&quot;token assign-left variable&quot;&gt;CONTAINER&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;kashiwabayuki/try2windbg:1.0
-&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run --rm -it -v &lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;`&lt;/span&gt;&lt;/span&gt;/src:/try2windbg &lt;span class=&quot;token variable&quot;&gt;$CONTAINER&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;bash&lt;/span&gt; -c &lt;span class=&quot;token string&quot;&gt;&quot;cd /try2windbg &amp;amp;&amp;amp; make&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;これで、環境構築は完了です。&lt;/p&gt;
-&lt;h2 id=&quot;シンボルファイルpdbファイルとは&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E3%83%95%E3%82%A1%E3%82%A4%E3%83%ABpdb%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%A8%E3%81%AF&quot; aria-label=&quot;シンボルファイルpdbファイルとは permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;シンボルファイル（.pdbファイル）とは&lt;/h2&gt;
-&lt;p&gt;拡張子&lt;code class=&quot;language-text&quot;&gt;.pdb&lt;/code&gt;を持つファイルは、シンボルファイルと呼ばれるファイルです。&lt;/p&gt;
-&lt;p&gt;PDBは、「プログラムデータベース」の略称で、プロジェクトのソースコード内の識別子とステートメントをコンパイル済みアプリの対応する識別子と命令にマッピングしています。&lt;/p&gt;
-&lt;p&gt;このシンボルファイルを利用することで、デバッガを用いてアプリケーションやプロセスの解析を行う際に、非常に効率的な解析を行うことができます。&lt;/p&gt;
-&lt;p&gt;シンボルファイルがなくても、デバッガによる解析は可能です。&lt;/p&gt;
-&lt;p&gt;しかし、適切なシンボルファイルが読み込まれている場合と読み込まれていない場合には、同じアドレスを指し示す場合にも、デバッガ上で次のような表示の差異が発生します。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;sample+0x110     &lt;span class=&quot;token comment&quot;&gt;# シンボルファイルなし&lt;/span&gt;
-sample&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;main+0x10 &lt;span class=&quot;token comment&quot;&gt;# シンボルファイルあり&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;シンボルファイルを適切に読み込ませることで、被疑箇所をスムーズに特定したり、関数名から挙動を類推したりと、より効率的にデバッグを行うことができるようになります。&lt;/p&gt;
-&lt;p&gt;参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/visualstudio/debugger/specify-symbol-dot-pdb-and-source-files-in-the-visual-studio-debugger?view=vs-2019&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;デバッガーでシンボル (.pdb) ファイルとソース ファイルを設定する | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;linux環境でコンパイル時にシンボルファイルを生成する方法&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#linux%E7%92%B0%E5%A2%83%E3%81%A7%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%AB%E6%99%82%E3%81%AB%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95&quot; aria-label=&quot;linux環境でコンパイル時にシンボルファイルを生成する方法 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Linux環境でコンパイル時にシンボルファイルを生成する方法&lt;/h2&gt;
-&lt;p&gt;Windowsアプリケーションのデバッグ時に非常に重要なシンボルファイルですが、Microsoftコンパイラの場合はビルド時に自動的に作成されます。&lt;/p&gt;
-&lt;p&gt;しかし、MinGWなどを用いてLinux環境でクロスコンパイルを行う場合は、シンボルファイルは通常生成されません。&lt;/p&gt;
-&lt;p&gt;MinGWでクロスコンパイルしたEXEファイルのシンボルファイルを作成する方法については、以下のStackOverFlowのように、&lt;code class=&quot;language-text&quot;&gt;cv2pdb&lt;/code&gt;を用いた方法が案内されるケースもありますが、この方法ではLinux環境ではシンボルファイルの作成ができません。&lt;/p&gt;
-&lt;p&gt;参考：&lt;a href=&quot;https://stackoverflow.com/questions/19269350/how-to-generate-pdb-files-while-building-library-using-mingw/28627790&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;c++ - how to generate pdb files while building library using mingw? - Stack Overflow&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;そこで今回は、&lt;a href=&quot;https://github.com/mstorsjo/llvm-mingw&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;llvm-mingw&lt;/a&gt;を用いた方法を利用しました。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/mstorsjo/llvm-mingw&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;llvm-mingw&lt;/a&gt;とは、&lt;a href=&quot;https://llvm.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;LLVM&lt;/a&gt;/&lt;a href=&quot;https://clang.llvm.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Clang&lt;/a&gt;/&lt;a href=&quot;https://lld.llvm.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;LLD&lt;/a&gt; をベースにした&lt;code class=&quot;language-text&quot;&gt;mingw-w64&lt;/code&gt;のツールチェーンです。&lt;/p&gt;
-&lt;p&gt;参考：&lt;a href=&quot;https://github.com/mstorsjo/llvm-mingw&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;mstorsjo/llvm-mingw: An LLVM/Clang/LLD based mingw-w64 toolchain&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;LLVMとは、一言で言うとプラットフォームに依存せずに任意のプログラミング言語のコンパイルを行うことができる基盤です。&lt;/p&gt;
-&lt;p&gt;また、ClangとLLDは、LLVM用のC言語とリンカです。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/mstorsjo/llvm-mingw&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;llvm-mingw&lt;/a&gt;は、通常のMinGWがGNUベースのbinutilsをLLVMベースのbinutilsに置き換えたものです。&lt;/p&gt;
-&lt;p&gt;これによって、様々なコンピュータアーキテクチャ（i686、x86_64、armv7、arm64）に対して単一のツールチェーンでのコンパイルを実現しています。
-また、PDB形式でのシンボルファイルの生成もできるようになります。&lt;/p&gt;
-&lt;h2 id=&quot;llvm-mingwの環境を用意する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#llvm-mingw%E3%81%AE%E7%92%B0%E5%A2%83%E3%82%92%E7%94%A8%E6%84%8F%E3%81%99%E3%82%8B&quot; aria-label=&quot;llvm mingwの環境を用意する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;llvm-mingwの環境を用意する&lt;/h2&gt;
-&lt;p&gt;LLVMベースのMinGWを利用できる環境を用意するために最も簡単な方法は、公式の用意している&lt;a href=&quot;https://hub.docker.com/r/mstorsjo/llvm-mingw/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Dockerイメージ&lt;/a&gt;を使用することです。&lt;/p&gt;
-&lt;p&gt;基本的には、このイメージをDockerhubからpullするだけで、簡単に利用できるようになります。&lt;/p&gt;
-&lt;p&gt;もしDockerコンテナではなく、Linuxのホスト上にllvm-mingwの環境を構築する必要がある場合は、以下のDockerfile内のスクリプトを参考にするとよいです。&lt;/p&gt;
-&lt;p&gt;参考：&lt;a href=&quot;https://github.com/mstorsjo/llvm-mingw/blob/master/Dockerfile.cross&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;llvm-mingw/Dockerfile.cross at master · mstorsjo/llvm-mingw&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;llvm-mingwでpdbファイル付きでcファイルをコンパイルする&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#llvm-mingw%E3%81%A7pdb%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E4%BB%98%E3%81%8D%E3%81%A7c%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%AB%E3%81%99%E3%82%8B&quot; aria-label=&quot;llvm mingwでpdbファイル付きでcファイルをコンパイルする permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;llvm-mingwでPDBファイル付きでC++ファイルをコンパイルする&lt;/h2&gt;
-&lt;p&gt;llvm-mingwの使い方は以下の通りです。&lt;/p&gt;
-&lt;p&gt;公式のDockerイメージの場合は、すでにLLVMベースのMinGWに対して、&lt;code class=&quot;language-text&quot;&gt;x86_64-w64-mingw32-g++&lt;/code&gt;としてパスが通っています。&lt;/p&gt;
-&lt;p&gt;これを利用して、&lt;code class=&quot;language-text&quot;&gt;-Wl,-pdb=&amp;lt;filename&gt;.pdb&lt;/code&gt;というオプションを付けてコンパイルを実行することで、EXEファイルのコンパイルと同時にシンボルファイルも作成されます。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;x86_64-w64-mingw32-g++ -Wl,-pdb&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;sample.pdb sample.cpp -o sample.exe&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
-&lt;p&gt;今回は、Linux環境でWindows向けのEXEファイルをクロスコンパイルする際に、デバッグ用のシンボルファイルを作成する方法についてまとめました。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[WinDbgでスタックポインタの指すメモリの情報を書き換えて任意の関数を実行させてみる]]></title><link>https://kashiwaba-yuki.com/windows-windbg-007-memory-spoofing</link><guid isPermaLink="false">https://kashiwaba-yuki.com/windows-windbg-007-memory-spoofing</guid><pubDate>Mon, 18 Oct 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;WinDbgによるWindowsデバッグやダンプ解析によるトラブルシューティングに習熟することを目指しています。&lt;/p&gt;
+&lt;p&gt;Ubuntuのセットアップでまた困ったことがあれば、都度追記していきたいと思います。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[WinDbgでスタックポインタの指すメモリの情報を書き換えて任意の関数を実行させてみる]]></title><link>https://kashiwaba-yuki.com/windows-windbg-007-memory-spoofing</link><guid isPermaLink="false">https://kashiwaba-yuki.com/windows-windbg-007-memory-spoofing</guid><pubDate>Mon, 18 Oct 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;WinDbgによるWindowsデバッグやダンプ解析によるトラブルシューティングに習熟することを目指しています。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;/windows-windbg-002-tutorial&quot;&gt;WinDbgのユーザモードデバッグチュートリアルを試してみた&lt;/a&gt;では、WinDbgを用いてユーザモードアプリケーションのデバッグを行う方法について紹介しました。&lt;/p&gt;
 &lt;p&gt;今回は、ユースケース別のWinDbgの使い方として、ユーザモードアプリケーションのライブデバッグ時に、メモリやレジスタの情報を確認する方法について紹介します。&lt;/p&gt;
 &lt;p&gt;WinDbgを用いたWindowsのデバッグやダンプの解析方法について公開している情報については、以下のページに一覧をまとめているので、よければご覧ください。&lt;/p&gt;
@@ -11225,7 +11244,79 @@ return_addr!Z8ret_funcv:
 &lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
 &lt;p&gt;今回は、WinDbgでメモリの情報を参照したり改ざんしたりする方法について紹介しました。&lt;/p&gt;
 &lt;p&gt;WinDbgを用いたWindowsのデバッグやダンプの解析方法について公開しているその他情報については、以下のページのリストをご覧ください。&lt;/p&gt;
-&lt;p&gt;参考：&lt;a href=&quot;/windows-windbg-001-index&quot;&gt;WinDbgを用いたデバッグとトラブルシューティングのテクニック&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[【WinDbg Preview】Time Travel Debuggingで始める新しいデバッグ手法]]></title><link>https://kashiwaba-yuki.com/windows-windbg-008-time-travel-debugging</link><guid isPermaLink="false">https://kashiwaba-yuki.com/windows-windbg-008-time-travel-debugging</guid><pubDate>Mon, 18 Oct 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;WinDbgによるWindowsデバッグやダンプ解析によるトラブルシューティングに習熟することを目指しています。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;/windows-windbg-001-index&quot;&gt;WinDbgを用いたデバッグとトラブルシューティングのテクニック&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[llvm-mingwを使ってLinux環境でもシンボルファイル（.pdb）を作成する方法]]></title><link>https://kashiwaba-yuki.com/windows-windbg-006-symbol</link><guid isPermaLink="false">https://kashiwaba-yuki.com/windows-windbg-006-symbol</guid><pubDate>Mon, 18 Oct 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;WinDbgによるWindowsデバッグやダンプ解析によるトラブルシューティングに習熟することを目指しています。&lt;/p&gt;
+&lt;p&gt;WinDbgを用いたWindowsのデバッグやダンプの解析方法について公開している情報については、以下のページに一覧をまとめているので、よければご覧ください。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;/windows-windbg-001-index&quot;&gt;WinDbgを用いたデバッグとトラブルシューティングのテクニック&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;今回は、上記のWinDbgまとめ記事で解析のために使用するサンプルプログラムをビルドする環境について紹介します。&lt;/p&gt;
+&lt;p&gt;以下の要件を実現できる環境を、WSL2上のUbuntu20.04で構築していきます。
+基本的にはDockerコンテナを使用するので、Dockerが動くならどの環境でも問題ないと思います。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Linux環境でEXEファイルをクロスコンパイルできる&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Linux環境でシンボルファイル（.pdbファイル）を生成できる&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;!-- omit in toc --&gt;
+&lt;h2 id=&quot;もくじ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%82%E3%81%8F%E3%81%98&quot; aria-label=&quot;もくじ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;もくじ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%93%E3%83%AB%E3%83%89%E7%92%B0%E5%A2%83%E3%82%92%E6%95%B4%E3%81%88%E3%82%8B&quot;&gt;ビルド環境を整える&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E3%83%95%E3%82%A1%E3%82%A4%E3%83%ABpdb%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%A8%E3%81%AF&quot;&gt;シンボルファイル（.pdbファイル）とは&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#linux%E7%92%B0%E5%A2%83%E3%81%A7%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%AB%E6%99%82%E3%81%AB%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95&quot;&gt;Linux環境でコンパイル時にシンボルファイルを生成する方法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#llvm-mingw%E3%81%AE%E7%92%B0%E5%A2%83%E3%82%92%E7%94%A8%E6%84%8F%E3%81%99%E3%82%8B&quot;&gt;llvm-mingwの環境を用意する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#llvm-mingw%E3%81%A7pdb%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E4%BB%98%E3%81%8D%E3%81%A7c%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%AB%E3%81%99%E3%82%8B&quot;&gt;llvm-mingwでPDBファイル付きでC++ファイルをコンパイルする&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;ビルド環境を整える&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%93%E3%83%AB%E3%83%89%E7%92%B0%E5%A2%83%E3%82%92%E6%95%B4%E3%81%88%E3%82%8B&quot; aria-label=&quot;ビルド環境を整える permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;ビルド環境を整える&lt;/h2&gt;
+&lt;p&gt;WinDbgテスト用のプログラムは、以下のリポジトリに置いてあります。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://github.com/kash1064/Try2WinDbg&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;kash1064/Try2WinDbg&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;まずは、Dockerが利用可能なOS上の任意のディレクトリに上記のリポジトリをcloneします。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; clone https://github.com/kash1064/Try2WinDbg&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;続いて、コンパイル用の以下のコンテナイメージをpullします。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; pull kashiwabayuki/try2windbg:1.0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://hub.docker.com/r/kashiwabayuki/try2windbg&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;kashiwabayuki/try2windbg&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;このコンテナイメージは、&lt;a href=&quot;https://hub.docker.com/r/mstorsjo/llvm-mingw/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;mstorsjo/llvm-mingw&lt;/a&gt;のコンテナイメージを一部カスタマイズしたイメージです。&lt;/p&gt;
+&lt;p&gt;詳細については後述します。&lt;/p&gt;
+&lt;p&gt;サンプルプログラムのリポジトリとコンテナイメージの取得が完了したら、ダウンロードした&lt;code class=&quot;language-text&quot;&gt;Try2WinDbg&lt;/code&gt;ディレクトリに移動します。&lt;/p&gt;
+&lt;p&gt;続いて、以下のコマンドを入力することで、&lt;code class=&quot;language-text&quot;&gt;Try2WinDbg/src&lt;/code&gt;直下に、コンパイルされたEXEファイルとシンボルファイルが生成されます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; Try2WinDbg
+
+&lt;span class=&quot;token comment&quot;&gt;# ビルドに使用するコンテナイメージを指定&lt;/span&gt;
+&lt;span class=&quot;token assign-left variable&quot;&gt;CONTAINER&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;kashiwabayuki/try2windbg:1.0
+&lt;span class=&quot;token function&quot;&gt;docker&lt;/span&gt; run --rm -it -v &lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;token variable&quot;&gt;`&lt;/span&gt;&lt;/span&gt;/src:/try2windbg &lt;span class=&quot;token variable&quot;&gt;$CONTAINER&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;bash&lt;/span&gt; -c &lt;span class=&quot;token string&quot;&gt;&quot;cd /try2windbg &amp;amp;&amp;amp; make&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;これで、環境構築は完了です。&lt;/p&gt;
+&lt;h2 id=&quot;シンボルファイルpdbファイルとは&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E3%83%95%E3%82%A1%E3%82%A4%E3%83%ABpdb%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%A8%E3%81%AF&quot; aria-label=&quot;シンボルファイルpdbファイルとは permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;シンボルファイル（.pdbファイル）とは&lt;/h2&gt;
+&lt;p&gt;拡張子&lt;code class=&quot;language-text&quot;&gt;.pdb&lt;/code&gt;を持つファイルは、シンボルファイルと呼ばれるファイルです。&lt;/p&gt;
+&lt;p&gt;PDBは、「プログラムデータベース」の略称で、プロジェクトのソースコード内の識別子とステートメントをコンパイル済みアプリの対応する識別子と命令にマッピングしています。&lt;/p&gt;
+&lt;p&gt;このシンボルファイルを利用することで、デバッガを用いてアプリケーションやプロセスの解析を行う際に、非常に効率的な解析を行うことができます。&lt;/p&gt;
+&lt;p&gt;シンボルファイルがなくても、デバッガによる解析は可能です。&lt;/p&gt;
+&lt;p&gt;しかし、適切なシンボルファイルが読み込まれている場合と読み込まれていない場合には、同じアドレスを指し示す場合にも、デバッガ上で次のような表示の差異が発生します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;sample+0x110     &lt;span class=&quot;token comment&quot;&gt;# シンボルファイルなし&lt;/span&gt;
+sample&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt;main+0x10 &lt;span class=&quot;token comment&quot;&gt;# シンボルファイルあり&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;シンボルファイルを適切に読み込ませることで、被疑箇所をスムーズに特定したり、関数名から挙動を類推したりと、より効率的にデバッグを行うことができるようになります。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/visualstudio/debugger/specify-symbol-dot-pdb-and-source-files-in-the-visual-studio-debugger?view=vs-2019&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;デバッガーでシンボル (.pdb) ファイルとソース ファイルを設定する | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;linux環境でコンパイル時にシンボルファイルを生成する方法&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#linux%E7%92%B0%E5%A2%83%E3%81%A7%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%AB%E6%99%82%E3%81%AB%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95&quot; aria-label=&quot;linux環境でコンパイル時にシンボルファイルを生成する方法 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Linux環境でコンパイル時にシンボルファイルを生成する方法&lt;/h2&gt;
+&lt;p&gt;Windowsアプリケーションのデバッグ時に非常に重要なシンボルファイルですが、Microsoftコンパイラの場合はビルド時に自動的に作成されます。&lt;/p&gt;
+&lt;p&gt;しかし、MinGWなどを用いてLinux環境でクロスコンパイルを行う場合は、シンボルファイルは通常生成されません。&lt;/p&gt;
+&lt;p&gt;MinGWでクロスコンパイルしたEXEファイルのシンボルファイルを作成する方法については、以下のStackOverFlowのように、&lt;code class=&quot;language-text&quot;&gt;cv2pdb&lt;/code&gt;を用いた方法が案内されるケースもありますが、この方法ではLinux環境ではシンボルファイルの作成ができません。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://stackoverflow.com/questions/19269350/how-to-generate-pdb-files-while-building-library-using-mingw/28627790&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;c++ - how to generate pdb files while building library using mingw? - Stack Overflow&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;そこで今回は、&lt;a href=&quot;https://github.com/mstorsjo/llvm-mingw&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;llvm-mingw&lt;/a&gt;を用いた方法を利用しました。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/mstorsjo/llvm-mingw&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;llvm-mingw&lt;/a&gt;とは、&lt;a href=&quot;https://llvm.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;LLVM&lt;/a&gt;/&lt;a href=&quot;https://clang.llvm.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Clang&lt;/a&gt;/&lt;a href=&quot;https://lld.llvm.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;LLD&lt;/a&gt; をベースにした&lt;code class=&quot;language-text&quot;&gt;mingw-w64&lt;/code&gt;のツールチェーンです。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://github.com/mstorsjo/llvm-mingw&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;mstorsjo/llvm-mingw: An LLVM/Clang/LLD based mingw-w64 toolchain&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;LLVMとは、一言で言うとプラットフォームに依存せずに任意のプログラミング言語のコンパイルを行うことができる基盤です。&lt;/p&gt;
+&lt;p&gt;また、ClangとLLDは、LLVM用のC言語とリンカです。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/mstorsjo/llvm-mingw&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;llvm-mingw&lt;/a&gt;は、通常のMinGWがGNUベースのbinutilsをLLVMベースのbinutilsに置き換えたものです。&lt;/p&gt;
+&lt;p&gt;これによって、様々なコンピュータアーキテクチャ（i686、x86_64、armv7、arm64）に対して単一のツールチェーンでのコンパイルを実現しています。
+また、PDB形式でのシンボルファイルの生成もできるようになります。&lt;/p&gt;
+&lt;h2 id=&quot;llvm-mingwの環境を用意する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#llvm-mingw%E3%81%AE%E7%92%B0%E5%A2%83%E3%82%92%E7%94%A8%E6%84%8F%E3%81%99%E3%82%8B&quot; aria-label=&quot;llvm mingwの環境を用意する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;llvm-mingwの環境を用意する&lt;/h2&gt;
+&lt;p&gt;LLVMベースのMinGWを利用できる環境を用意するために最も簡単な方法は、公式の用意している&lt;a href=&quot;https://hub.docker.com/r/mstorsjo/llvm-mingw/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Dockerイメージ&lt;/a&gt;を使用することです。&lt;/p&gt;
+&lt;p&gt;基本的には、このイメージをDockerhubからpullするだけで、簡単に利用できるようになります。&lt;/p&gt;
+&lt;p&gt;もしDockerコンテナではなく、Linuxのホスト上にllvm-mingwの環境を構築する必要がある場合は、以下のDockerfile内のスクリプトを参考にするとよいです。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://github.com/mstorsjo/llvm-mingw/blob/master/Dockerfile.cross&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;llvm-mingw/Dockerfile.cross at master · mstorsjo/llvm-mingw&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;llvm-mingwでpdbファイル付きでcファイルをコンパイルする&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#llvm-mingw%E3%81%A7pdb%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E4%BB%98%E3%81%8D%E3%81%A7c%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%AB%E3%81%99%E3%82%8B&quot; aria-label=&quot;llvm mingwでpdbファイル付きでcファイルをコンパイルする permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;llvm-mingwでPDBファイル付きでC++ファイルをコンパイルする&lt;/h2&gt;
+&lt;p&gt;llvm-mingwの使い方は以下の通りです。&lt;/p&gt;
+&lt;p&gt;公式のDockerイメージの場合は、すでにLLVMベースのMinGWに対して、&lt;code class=&quot;language-text&quot;&gt;x86_64-w64-mingw32-g++&lt;/code&gt;としてパスが通っています。&lt;/p&gt;
+&lt;p&gt;これを利用して、&lt;code class=&quot;language-text&quot;&gt;-Wl,-pdb=&amp;lt;filename&gt;.pdb&lt;/code&gt;というオプションを付けてコンパイルを実行することで、EXEファイルのコンパイルと同時にシンボルファイルも作成されます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;x86_64-w64-mingw32-g++ -Wl,-pdb&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;sample.pdb sample.cpp -o sample.exe&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;今回は、Linux環境でWindows向けのEXEファイルをクロスコンパイルする際に、デバッグ用のシンボルファイルを作成する方法についてまとめました。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[【WinDbg Preview】Time Travel Debuggingで始める新しいデバッグ手法]]></title><link>https://kashiwaba-yuki.com/windows-windbg-008-time-travel-debugging</link><guid isPermaLink="false">https://kashiwaba-yuki.com/windows-windbg-008-time-travel-debugging</guid><pubDate>Mon, 18 Oct 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;WinDbgによるWindowsデバッグやダンプ解析によるトラブルシューティングに習熟することを目指しています。&lt;/p&gt;
 &lt;p&gt;今回は、UWP版のWinDbg Previewから利用可能になった Time Travel Debugging 機能の公式チュートリアルを試していきます。&lt;/p&gt;
 &lt;p&gt;参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/time-travel-debugging-walkthrough&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Time Travel Debugging - サンプル アプリのチュートリアル - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;WinDbgを用いたWindowsのデバッグやダンプの解析方法について公開している情報については、以下のページに一覧をまとめているので、よければご覧ください。&lt;/p&gt;
@@ -13000,222 +13091,6 @@ kd&gt; bl
 &lt;p&gt;今回は、WinDbgを用いたカーネルデバッグの設定方法と、簡単な操作について紹介しました。&lt;/p&gt;
 &lt;p&gt;実際にカーネルデバッグを用いてトラブルシューティングを行うテクニックについては、また違う記事でまとめていく予定です。&lt;/p&gt;
 &lt;p&gt;WinDbgを用いたWindowsのデバッグやダンプの解析方法について公開しているその他情報については、以下のページのリストをご覧ください。&lt;/p&gt;
-&lt;p&gt;参考：&lt;a href=&quot;/windows-windbg-001-index&quot;&gt;WinDbgを用いたデバッグとトラブルシューティングのテクニック&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[WinDbgのユーザモードデバッグチュートリアルを試してみた]]></title><link>https://kashiwaba-yuki.com/windows-windbg-002-tutorial</link><guid isPermaLink="false">https://kashiwaba-yuki.com/windows-windbg-002-tutorial</guid><pubDate>Tue, 05 Oct 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;WinDbgによるWindowsデバッグやダンプ解析によるトラブルシューティングに習熟することを目指しています。&lt;/p&gt;
-&lt;p&gt;今回はとりあえず公式チュートリアル内の手順を再現して、WinDbgによるユーザモードプロセスのデバッグについて試してみました。&lt;/p&gt;
-&lt;p&gt;WinDbgを用いたWindowsのデバッグやダンプの解析方法について公開している情報については、以下のページに一覧をまとめているので、よければご覧ください。&lt;/p&gt;
-&lt;p&gt;参考：&lt;a href=&quot;/windows-windbg-001-index&quot;&gt;WinDbgを用いたデバッグとトラブルシューティングのテクニック&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;この記事では以下の内容についてまとめています。&lt;/p&gt;
-&lt;!-- omit in toc --&gt;
-&lt;h2 id=&quot;もくじ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%82%E3%81%8F%E3%81%98&quot; aria-label=&quot;もくじ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;もくじ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#widbg%E3%81%A8%E3%81%AF&quot;&gt;WiDbgとは&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;#windbg%E3%83%81%E3%83%A5%E3%83%BC%E3%83%88%E3%83%AA%E3%82%A2%E3%83%AB&quot;&gt;WinDbgチュートリアル&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#%E4%BB%8A%E5%9B%9E%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E7%92%B0%E5%A2%83&quot;&gt;今回使用する環境&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#notepadexe%E3%81%AE%E8%B5%B7%E5%8B%95&quot;&gt;Notepad.exeの起動&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E3%83%91%E3%82%B9%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%81%A8%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF&quot;&gt;シンボルパスの設定と読み込み&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E4%B8%80%E8%A6%A7%E3%81%AE%E5%87%BA%E5%8A%9B&quot;&gt;シンボル一覧の出力&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E3%83%96%E3%83%AC%E3%83%BC%E3%82%AF%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%AE%E8%A8%AD%E5%AE%9A&quot;&gt;ブレークポイントの設定&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#notepadexe%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B&quot;&gt;Notepad.exeを実行する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%81%AB%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BE%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%B3%E3%83%BC%E3%83%89%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E4%B8%80%E8%A6%A7%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B&quot;&gt;プロセスに読み込まれているコードモジュールの一覧を表示する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B&quot;&gt;スタックトレースを表示する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#notepadexe%E3%82%92%E5%86%8D%E9%96%8B%E3%81%99%E3%82%8B&quot;&gt;Notepad.exeを再開する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF%E6%99%82%E3%81%AB%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%82%92%E5%81%9C%E6%AD%A2%E3%81%99%E3%82%8B&quot;&gt;ファイル書き込み時にプロセスを停止する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E5%86%85%E3%81%AE%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89%E4%B8%80%E8%A6%A7%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B&quot;&gt;プロセス内のスレッド一覧を表示する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E7%89%B9%E5%AE%9A%E3%81%AE%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89%E3%81%AE%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B&quot;&gt;特定のスレッドのスタックトレースを取得する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%82%92%E7%B5%82%E4%BA%86%E3%81%97%E3%81%A6%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%81%8B%E3%82%89%E3%83%87%E3%82%BF%E3%83%83%E3%83%81%E3%81%99%E3%82%8B&quot;&gt;デバッグを終了して、プロセスからデタッチする&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;widbgとは&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#widbg%E3%81%A8%E3%81%AF&quot; aria-label=&quot;widbgとは permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;WiDbgとは&lt;/h2&gt;
-&lt;p&gt;Windows環境のデバッグやトラブルシューティングに使用するツールです。&lt;/p&gt;
-&lt;p&gt;参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/getting-started-with-windows-debugging&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Windows のデバッグの概要 - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;WinDbgは、主に以下の用途に利用されます。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Windowsメモリダンプやプロセスダンプの解析&lt;/li&gt;
-&lt;li&gt;カーネルモードのライブデバッグ&lt;/li&gt;
-&lt;li&gt;ユーザモードのライブデバッグ&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;MicrosoftのWindows開発チームも使用している公式のデバッガです。&lt;/p&gt;
-&lt;p&gt;VisualStudioデバッガとの違いとして、WinDbgはカーネルモードのデバッグやスレッドスタックの分析まで実現することができます。&lt;/p&gt;
-&lt;h2 id=&quot;windbgチュートリアル&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#windbg%E3%83%81%E3%83%A5%E3%83%BC%E3%83%88%E3%83%AA%E3%82%A2%E3%83%AB&quot; aria-label=&quot;windbgチュートリアル permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;WinDbgチュートリアル&lt;/h2&gt;
-&lt;p&gt;WinDbgのはじめの一歩として、&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/getting-started-with-windbg&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;公式ドキュメントのチュートリアル&lt;/a&gt;を実践していきます。&lt;/p&gt;
-&lt;p&gt;このチュートリアルでは、WinDbgを使用してユーザモードのプロセスにアタッチし、デバッグを行います。&lt;/p&gt;
-&lt;h3 id=&quot;今回使用する環境&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E4%BB%8A%E5%9B%9E%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E7%92%B0%E5%A2%83&quot; aria-label=&quot;今回使用する環境 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;今回使用する環境&lt;/h3&gt;
-&lt;p&gt;今回使用している環境は以下の環境です。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Windows10 20H2&lt;/li&gt;
-&lt;li&gt;WinDbg 10.0.22000.1 AMD64（管理者権限で起動）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;notepadexeの起動&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#notepadexe%E3%81%AE%E8%B5%B7%E5%8B%95&quot; aria-label=&quot;notepadexeの起動 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Notepad.exeの起動&lt;/h3&gt;
-&lt;p&gt;Windows環境でWinDbgを起動した後、[Ctrl+E]キーで[Open Executable File]を呼び出し、&lt;code class=&quot;language-text&quot;&gt;C:\Windows\System32\notepad.exe&lt;/code&gt;を選択します。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;image-20211002113631533.png&quot; alt=&quot;image-20211002113631533&quot;&gt;&lt;/p&gt;
-&lt;p&gt;実行ファイルを開くと、Commandウィンドウが起動しました。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;image-20211002113723502.png&quot; alt=&quot;image-20211002113723502&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;シンボルパスの設定と読み込み&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E3%83%91%E3%82%B9%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%81%A8%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF&quot; aria-label=&quot;シンボルパスの設定と読み込み permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;シンボルパスの設定と読み込み&lt;/h3&gt;
-&lt;p&gt;Commandウィンドウの下部にあるコンソールに、以下のコマンドを入力します。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sympath srv*&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;.sympath&lt;/code&gt;コマンドは、シンボルパスを設定するコマンドです。
-シンボルパスとは、デバッガがシンボルファイルを探す際の探索先を意味します。&lt;/p&gt;
-&lt;p&gt;シンボルファイルは、デバッガがコード モジュール (関数名、変数名など) に関する情報を取得するために必要です。&lt;/p&gt;
-&lt;p&gt;参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/-sympath--set-symbol-path-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;.sympath (シンボル パスの設定) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;シンボルパスの設定が完了したので、以下のコマンドを実行します。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;reload&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;.reload&lt;/code&gt;コマンドによって、シンボル情報を削除した後、再読み込みします。&lt;/p&gt;
-&lt;p&gt;参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/-reload--reload-module-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;.reload (モジュールの再読み込み) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;.reload&lt;/code&gt;コマンドを実行しても、特にレスポンスはない点に注意が必要です。
-以下の出力が得られたら次に進みます。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:000&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;reload
-Reloading current modules
-&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&quot;シンボル一覧の出力&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E4%B8%80%E8%A6%A7%E3%81%AE%E5%87%BA%E5%8A%9B&quot; aria-label=&quot;シンボル一覧の出力 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;シンボル一覧の出力&lt;/h3&gt;
-&lt;p&gt;上記の出力確認後に、&lt;code class=&quot;language-text&quot;&gt;x notepad!*&lt;/code&gt;コマンドを実行して&lt;code class=&quot;language-text&quot;&gt;Notepad.exe&lt;/code&gt;モジュールのシンボルを表示します。
-※ ここで出力が得られない場合は&lt;code class=&quot;language-text&quot;&gt;.reload&lt;/code&gt;コマンドを再実行します。&lt;/p&gt;
-&lt;p&gt;参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/x--examine-symbols-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;x notepad!*&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;出力結果は1500行近い数になりました。
-かなり多いですね。&lt;/p&gt;
-&lt;h3 id=&quot;ブレークポイントの設定&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%96%E3%83%AC%E3%83%BC%E3%82%AF%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%AE%E8%A8%AD%E5%AE%9A&quot; aria-label=&quot;ブレークポイントの設定 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;ブレークポイントの設定&lt;/h3&gt;
-&lt;p&gt;次に、上記の出力で確認したシンボル情報を用いて、wWinMain関数にブレークポイントを設定します。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;bu notepad!wWinMain&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;特に出力は返ってきませんが、&lt;code class=&quot;language-text&quot;&gt;bl&lt;/code&gt;コマンドでブレークポイントの一覧を参照できます。
-参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/bl--breakpoint-list-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;bl (ブレークポイントの一覧) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;これで、&lt;code class=&quot;language-text&quot;&gt;notepad!wWinMain&lt;/code&gt;にブレークポイントが設定されたことが確認できました。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:000&gt; bu notepad!wWinMain
-0:000&gt; bl
-     0 e Disable Clear  00007ff6`8402c0f8     0001 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;0001&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;  0:&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; notepad!wWinMain&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&quot;notepadexeを実行する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#notepadexe%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B&quot; aria-label=&quot;notepadexeを実行する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Notepad.exeを実行する&lt;/h3&gt;
-&lt;p&gt;ブレークポイントの設定が完了したので、&lt;code class=&quot;language-text&quot;&gt;g&lt;/code&gt;コマンドで起動しているアプリケーションを実行します。
-参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/g--go-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;g (実行) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;ブレークポイントで設定されたwWinMain関数の呼び出し時点で停止しました。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:000&gt; g
-ModLoad: 00007ff9`9cd70000 00007ff9`9cda0000   C:\WINDOWS\System32\IMM32&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;DLL
-Breakpoint 0 hit
-notepad!wWinMain:
-00007ff6`8402c0f8 488bc4          mov     rax&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;rsp&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&quot;プロセスに読み込まれているコードモジュールの一覧を表示する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%81%AB%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BE%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%B3%E3%83%BC%E3%83%89%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E4%B8%80%E8%A6%A7%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B&quot; aria-label=&quot;プロセスに読み込まれているコードモジュールの一覧を表示する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;プロセスに読み込まれているコードモジュールの一覧を表示する&lt;/h3&gt;
-&lt;p&gt;ブレークポイントでプロセスが停止した状態で&lt;code class=&quot;language-text&quot;&gt;lm&lt;/code&gt;コマンドを実行し、現在プロセスに読み込まれているコードモジュールを確認します。
-参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/lm--list-loaded-modules-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;lm (読み込まれたモジュールの一覧表示) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:000&gt; lm
-&lt;span class=&quot;token function&quot;&gt;start&lt;/span&gt;             &lt;span class=&quot;token keyword&quot;&gt;end&lt;/span&gt;                 module name
-00007ff6`84020000 00007ff6`8405a000   notepad    &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pdb symbols&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;          C:\Program Files &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x86&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;\Windows Kits\10\Debuggers\x64\sym\notepad&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;pdb\6539CE998C7CAFD73A8E13A54542E1121\notepad&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;pdb
-00007ff9`8ef30000 00007ff9`8f1ca000   COMCTL32   &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`982c0000 00007ff9`98350000   apphelp    &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9aa40000 00007ff9`9aadd000   msvcp_win   &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9ab90000 00007ff9`9ae59000   KERNELBASE   &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9aec0000 00007ff9`9afc0000   ucrtbase   &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9b010000 00007ff9`9b11b000   gdi32full   &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9b340000 00007ff9`9b362000   win32u     &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9bbc0000 00007ff9`9bcea000   RPCRT4     &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9bf20000 00007ff9`9c275000   combase    &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9c3c0000 00007ff9`9c46e000   shcore     &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9cc50000 00007ff9`9cd0e000   KERNEL32   &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9cd70000 00007ff9`9cda0000   IMM32      &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9cfd0000 00007ff9`9cffb000   GDI32      &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9d000000 00007ff9`9d1a1000   USER32     &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9d1b0000 00007ff9`9d24e000   msvcrt     &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9d290000 00007ff9`9d485000   ntdll      &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pdb symbols&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;          C:\Program Files &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x86&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;\Windows Kits\10\Debuggers\x64\sym\ntdll&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;pdb\E2BF5EA3ECAA1D5310F1E166306A0BCC1\ntdll&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;pdb&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&quot;スタックトレースを表示する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B&quot; aria-label=&quot;スタックトレースを表示する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;スタックトレースを表示する&lt;/h3&gt;
-&lt;p&gt;プロセスが停止した状態で&lt;code class=&quot;language-text&quot;&gt;k&lt;/code&gt;コマンドを実行して、スタックトレースを表示します。&lt;/p&gt;
-&lt;p&gt;今回は&lt;code class=&quot;language-text&quot;&gt;notepad!wWinMain&lt;/code&gt;で停止したタイミングでのスタックトレースを取得できました。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:000&gt; k
- &lt;span class=&quot;token comment&quot;&gt;# Child-SP          RetAddr               Call Site&lt;/span&gt;
-00 00000055`5f11f7b8 00007ff6`840459b6     notepad!wWinMain
-01 00000055`5f11f7c0 00007ff9`9cc67034     notepad!__scrt_common_main_seh+0x106
-02 00000055`5f11f800 00007ff9`9d2e2651     KERNEL32!BaseThreadInitThunk+0x14
-03 00000055`5f11f830 00000000`00000000     ntdll!RtlUserThreadStart+0x21&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&quot;notepadexeを再開する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#notepadexe%E3%82%92%E5%86%8D%E9%96%8B%E3%81%99%E3%82%8B&quot; aria-label=&quot;notepadexeを再開する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Notepad.exeを再開する&lt;/h3&gt;
-&lt;p&gt;もう一度&lt;code class=&quot;language-text&quot;&gt;g&lt;/code&gt;コマンドを実行すると、中断されていたプロセスが再開され、メモ帳アプリが起動しました。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;image-20211003210626408.png&quot; alt=&quot;image-20211003210626408&quot;&gt;&lt;/p&gt;
-&lt;p&gt;この状態では、デバッガはBusy状態となり、追加のコマンド入力を受け付けなくなります。&lt;/p&gt;
-&lt;p&gt;再びメモ帳プロセスを停止してデバッガを使用するために、Breakボタンか、[Ctrl+Break]キーを押します。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;image-20211003211015461.png&quot; alt=&quot;image-20211003211015461&quot;&gt;&lt;/p&gt;
-&lt;p&gt;これで再度メモ帳プロセスが停止され、デバッガ操作が可能になりました。&lt;/p&gt;
-&lt;h3 id=&quot;ファイル書き込み時にプロセスを停止する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF%E6%99%82%E3%81%AB%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%82%92%E5%81%9C%E6%AD%A2%E3%81%99%E3%82%8B&quot; aria-label=&quot;ファイル書き込み時にプロセスを停止する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;ファイル書き込み時にプロセスを停止する&lt;/h3&gt;
-&lt;p&gt;続いて、&lt;code class=&quot;language-text&quot;&gt;bu ntdll!ZwWriteFile&lt;/code&gt;を実行して、ファイル書き込み時にプロセスを中断するためのブレークポイントを設定します。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:002&gt; bu ntdll!ZwWriteFile
-0:002&gt; bl
-     0 e Disable Clear  00007ff6`8402c0f8     0001 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;0001&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;  0:&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; notepad!wWinMain
-     1 e Disable Clear  00007ff9`9d32ce60     0001 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;0001&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;  0:&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; ntdll!NtWriteFile&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;再び&lt;code class=&quot;language-text&quot;&gt;g&lt;/code&gt;コマンドを入力してプロセスを再開したのち、メモ帳に書き込み保存を実行しようとすると、プロセスが停止されます。&lt;/p&gt;
-&lt;p&gt;このタイミングでスタックトレースを表示すると、書き込み時のスタックトレースを取得することができます。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:011&gt; k
- &lt;span class=&quot;token comment&quot;&gt;# Child-SP          RetAddr               Call Site&lt;/span&gt;
-00 00000055`5f8fdb78 00007ff9`9bc1f6f4     ntdll!NtWriteFile
-01 00000055`5f8fdb80 00007ff9`9bc0c641     RPCRT4!UTIL_WriteFile+0x5c
-02 00000055`5f8fdbe0 00007ff9`9bbf5863     RPCRT4!NMP_SyncSend+0x81
-03 00000055`5f8fdc60 00007ff9`9bbf2a56     RPCRT4!OSF_CCONNECTION::TransSendReceive+0xf7
-04 00000055`5f8fdcd0 00007ff9`9bbf239b     RPCRT4!OSF_CCONNECTION::SendBindPacket+0x2ee
-05 00000055`5f8fdf20 00007ff9`9bbf3ed1     RPCRT4!OSF_CCONNECTION::ActuallyDoBinding+0xeb
-06 00000055`5f8fdfd0 00007ff9`9bbf3c0e     RPCRT4!OSF_CCONNECTION::OpenConnectionAndBind+0x225
-07 00000055`5f8fe080 00007ff9`9bbf7736     RPCRT4!OSF_CCALL::BindToServer+0xce
-08 00000055`5f8fe120 00007ff9`9bbf84d6     RPCRT4!OSF_BINDING_HANDLE::InitCCallWithAssociation+0x8a
-09 00000055`5f8fe180 00007ff9`9bbf75e7     RPCRT4!OSF_BINDING_HANDLE::AllocateCCall+0x256
-0a 00000055`5f8fe2e0 00007ff9`9bca00f5     RPCRT4!OSF_BINDING_HANDLE::NegotiateTransferSyntax+0x37
-0b 00000055`5f8fe330 00007ff9`9bca3840     RPCRT4!NdrpClientCall3+0x715
-0c 00000055`5f8fe6a0 00007ff9`99bc139e     RPCRT4!NdrClientCall3+0xf0
-0d 00000055`5f8fea30 00007ff9`775c1e00     wkscli!NetWkstaGetInfo+0x5e
-0e 00000055`5f8feae0 00007ff9`83c62df6     ntlanman!NPOpenEnum+0x50
-0f 00000055`5f8fec40 00007ff9`83c61b7f     MPR!MprOpenEnumConnect+0x176&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&quot;プロセス内のスレッド一覧を表示する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E5%86%85%E3%81%AE%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89%E4%B8%80%E8%A6%A7%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B&quot; aria-label=&quot;プロセス内のスレッド一覧を表示する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;プロセス内のスレッド一覧を表示する&lt;/h3&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;~&lt;/code&gt;コマンドを使って、プロセス内のスレッド一覧を取得できます。
-参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/---thread-status-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;~ (スレッドの状態) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;現在のメモ帳プロセスには、以下の14個のスレッドが存在するようです。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:011&gt; ~
-   0  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;7ac Suspend: 1 Teb: 00000055`5f35c000 Unfrozen
-   1  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;22f0 Suspend: 1 Teb: 00000055`5f36a000 Unfrozen
-   2  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;1500 Suspend: 1 Teb: 00000055`5f36e000 Unfrozen
-   3  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;198c Suspend: 1 Teb: 00000055`5f370000 Unfrozen
-   4  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;2094 Suspend: 1 Teb: 00000055`5f364000 Unfrozen
-   5  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;1d6c Suspend: 1 Teb: 00000055`5f372000 Unfrozen
-   6  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;1048 Suspend: 1 Teb: 00000055`5f368000 Unfrozen
-   7  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;1408 Suspend: 1 Teb: 00000055`5f374000 Unfrozen
-   8  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;30c Suspend: 1 Teb: 00000055`5f376000 Unfrozen
-   9  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;1b18 Suspend: 1 Teb: 00000055`5f378000 Unfrozen
-  10  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;af8 Suspend: 1 Teb: 00000055`5f37a000 Unfrozen
-&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt; 11  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;898 Suspend: 1 Teb: 00000055`5f37e000 Unfrozen
-  12  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;1720 Suspend: 1 Teb: 00000055`5f380000 Unfrozen
-  13  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;37c Suspend: 1 Teb: 00000055`5f382000 Unfrozen&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&quot;特定のスレッドのスタックトレースを取得する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E7%89%B9%E5%AE%9A%E3%81%AE%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89%E3%81%AE%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B&quot; aria-label=&quot;特定のスレッドのスタックトレースを取得する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;特定のスレッドのスタックトレースを取得する&lt;/h3&gt;
-&lt;p&gt;ここで、特定のスレッドのスタックトレースを取得するには、以下のコマンドを続けて使用します。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;~0s
-k&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;~0s&lt;/code&gt;コマンドは、スレッド番号0の設定を取得します。
-参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/-s--set-current-thread-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;~s (現在のスレッドの設定) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;出力は次のようになりました。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:011&gt; ~0s
-win32u!NtGdiGetCharABCWidthsW+0x14:
-00007ff9`9b3465e4 c3              ret
-0:000&gt; k
- &lt;span class=&quot;token comment&quot;&gt;# Child-SP          RetAddr               Call Site&lt;/span&gt;
-00 00000055`5f117108 00007ff9`9b01a2ae     win32u!NtGdiGetCharABCWidthsW+0x14
-01 00000055`5f117110 00007ff9`9b01a211     gdi32full!LoadGlyphMetricsWithGetCharABCWidthsI+0x5e
-02 00000055`5f1174b0 00007ff9`9b019d60     gdi32full!LoadGlyphMetrics+0x99
-03 00000055`5f1174f0 00007ff9`8aa29016     gdi32full!CUspShapingFont::GetGlyphDefaultAdvanceWidths+0x150
-04 00000055`5f117550 00007ff9`9b020b65     TextShaping!ShapingGetGlyphPositions+0x516
-05 00000055`5f117750 00007ff9`9b0266e3     gdi32full!ShlPlaceOT+0x255
-06 00000055`5f117970 00007ff9`9b025d9b     gdi32full!RenderItemNoFallback+0x573
-07 00000055`5f117aa0 00007ff9`9b025c6b     gdi32full!RenderItemWithFallback+0xeb
-08 00000055`5f117af0 00007ff9`9b025a3f     gdi32full!RenderItem+0x3b
-09 00000055`5f117b40 00007ff9`9b027ac6     gdi32full!ScriptStringAnalyzeGlyphs+0x20f
-0a 00000055`5f117bf0 00007ff9`9b024ca2     gdi32full!ScriptStringAnalyse+0x626
-0b 00000055`5f117dc0 00007ff9`9b0246be     gdi32full!LpkCharsetDraw+0x5c2
-0c 00000055`5f117ff0 00007ff9`9d01f5f2     gdi32full!LpkDrawTextEx+0x5e
-0d 00000055`5f118060 00007ff9`9d01e9bf     USER32!DT_DrawStr+0xb6
-0e 00000055`5f118110 00007ff9`9d01eede     USER32!DT_GetLineBreak+0xf3
-0f 00000055`5f1181b0 00007ff9`9d01eb50     USER32!DrawTextExWorker+0x36e
-10 00000055`5f118300 00007ff9`6b8a6123     USER32!DrawTextW+0x40
-11 00000055`5f118370 00007ff9`6b89ac60     DUI70!DirectUI::Element::GetContentSize+0x463
-12 00000055`5f118450 00007ff9`6b8a7196     DUI70!DirectUI::Element::_UpdateDesiredSize+0x6a0
-&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; 以下略 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&quot;デバッグを終了してプロセスからデタッチする&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%82%92%E7%B5%82%E4%BA%86%E3%81%97%E3%81%A6%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%81%8B%E3%82%89%E3%83%87%E3%82%BF%E3%83%83%E3%83%81%E3%81%99%E3%82%8B&quot; aria-label=&quot;デバッグを終了してプロセスからデタッチする permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;デバッグを終了して、プロセスからデタッチする&lt;/h3&gt;
-&lt;p&gt;最後に&lt;code class=&quot;language-text&quot;&gt;qd&lt;/code&gt;コマンドを使用して、デバッグを終了してプロセスからデタッチします。&lt;/p&gt;
-&lt;p&gt;デバッグを終了すると、Commandウィンドウが終了し、停止されていたメモ帳の書き込み処理が再開されました。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;image-20211003212553671.png&quot; alt=&quot;image-20211003212553671&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
-&lt;p&gt;とりあえず&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/getting-started-with-windbg&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;公式チュートリアル&lt;/a&gt;のユーザモードデバッグの手順について一通り実践してみました。&lt;/p&gt;
-&lt;p&gt;WinDbgを用いたWindowsのデバッグやダンプの解析方法について公開しているその他情報については、以下のページのリストをご覧ください。&lt;/p&gt;
 &lt;p&gt;参考：&lt;a href=&quot;/windows-windbg-001-index&quot;&gt;WinDbgを用いたデバッグとトラブルシューティングのテクニック&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[WinDbgの各ウィンドウについてまとめてみた]]></title><link>https://kashiwaba-yuki.com/windows-windbg-003-ui</link><guid isPermaLink="false">https://kashiwaba-yuki.com/windows-windbg-003-ui</guid><pubDate>Tue, 05 Oct 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;この記事では、&lt;a href=&quot;/windows-windbg-002-tutorial&quot;&gt;WinDbgのユーザモードデバッグチュートリアルを試してみた&lt;/a&gt;で使用したチュートリアルの環境を利用して、WinDbgの基本的なUI操作についてまとめていきます。&lt;/p&gt;
 &lt;p&gt;WinDbgを用いたWindowsのデバッグやダンプの解析方法について公開している情報については、以下のページに一覧をまとめているので、よければご覧ください。&lt;/p&gt;
 &lt;p&gt;参考：&lt;a href=&quot;/windows-windbg-001-index&quot;&gt;WinDbgを用いたデバッグとトラブルシューティングのテクニック&lt;/a&gt;&lt;/p&gt;
@@ -13915,6 +13790,222 @@ Watchウィンドウの詳細については以下のドキュメントを参照
     &lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
 &lt;p&gt;今回は、WinDbgを用いたデバッグや解析の際に利用するウィンドウのインターフェースについてまとめました。&lt;/p&gt;
+&lt;p&gt;WinDbgを用いたWindowsのデバッグやダンプの解析方法について公開しているその他情報については、以下のページのリストをご覧ください。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;/windows-windbg-001-index&quot;&gt;WinDbgを用いたデバッグとトラブルシューティングのテクニック&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[WinDbgのユーザモードデバッグチュートリアルを試してみた]]></title><link>https://kashiwaba-yuki.com/windows-windbg-002-tutorial</link><guid isPermaLink="false">https://kashiwaba-yuki.com/windows-windbg-002-tutorial</guid><pubDate>Tue, 05 Oct 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;WinDbgによるWindowsデバッグやダンプ解析によるトラブルシューティングに習熟することを目指しています。&lt;/p&gt;
+&lt;p&gt;今回はとりあえず公式チュートリアル内の手順を再現して、WinDbgによるユーザモードプロセスのデバッグについて試してみました。&lt;/p&gt;
+&lt;p&gt;WinDbgを用いたWindowsのデバッグやダンプの解析方法について公開している情報については、以下のページに一覧をまとめているので、よければご覧ください。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;/windows-windbg-001-index&quot;&gt;WinDbgを用いたデバッグとトラブルシューティングのテクニック&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;この記事では以下の内容についてまとめています。&lt;/p&gt;
+&lt;!-- omit in toc --&gt;
+&lt;h2 id=&quot;もくじ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%82%E3%81%8F%E3%81%98&quot; aria-label=&quot;もくじ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;もくじ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#widbg%E3%81%A8%E3%81%AF&quot;&gt;WiDbgとは&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#windbg%E3%83%81%E3%83%A5%E3%83%BC%E3%83%88%E3%83%AA%E3%82%A2%E3%83%AB&quot;&gt;WinDbgチュートリアル&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E4%BB%8A%E5%9B%9E%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E7%92%B0%E5%A2%83&quot;&gt;今回使用する環境&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#notepadexe%E3%81%AE%E8%B5%B7%E5%8B%95&quot;&gt;Notepad.exeの起動&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E3%83%91%E3%82%B9%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%81%A8%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF&quot;&gt;シンボルパスの設定と読み込み&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E4%B8%80%E8%A6%A7%E3%81%AE%E5%87%BA%E5%8A%9B&quot;&gt;シンボル一覧の出力&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%96%E3%83%AC%E3%83%BC%E3%82%AF%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%AE%E8%A8%AD%E5%AE%9A&quot;&gt;ブレークポイントの設定&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#notepadexe%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B&quot;&gt;Notepad.exeを実行する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%81%AB%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BE%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%B3%E3%83%BC%E3%83%89%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E4%B8%80%E8%A6%A7%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B&quot;&gt;プロセスに読み込まれているコードモジュールの一覧を表示する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B&quot;&gt;スタックトレースを表示する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#notepadexe%E3%82%92%E5%86%8D%E9%96%8B%E3%81%99%E3%82%8B&quot;&gt;Notepad.exeを再開する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF%E6%99%82%E3%81%AB%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%82%92%E5%81%9C%E6%AD%A2%E3%81%99%E3%82%8B&quot;&gt;ファイル書き込み時にプロセスを停止する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E5%86%85%E3%81%AE%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89%E4%B8%80%E8%A6%A7%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B&quot;&gt;プロセス内のスレッド一覧を表示する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E7%89%B9%E5%AE%9A%E3%81%AE%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89%E3%81%AE%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B&quot;&gt;特定のスレッドのスタックトレースを取得する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%82%92%E7%B5%82%E4%BA%86%E3%81%97%E3%81%A6%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%81%8B%E3%82%89%E3%83%87%E3%82%BF%E3%83%83%E3%83%81%E3%81%99%E3%82%8B&quot;&gt;デバッグを終了して、プロセスからデタッチする&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;widbgとは&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#widbg%E3%81%A8%E3%81%AF&quot; aria-label=&quot;widbgとは permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;WiDbgとは&lt;/h2&gt;
+&lt;p&gt;Windows環境のデバッグやトラブルシューティングに使用するツールです。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/getting-started-with-windows-debugging&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Windows のデバッグの概要 - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;WinDbgは、主に以下の用途に利用されます。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Windowsメモリダンプやプロセスダンプの解析&lt;/li&gt;
+&lt;li&gt;カーネルモードのライブデバッグ&lt;/li&gt;
+&lt;li&gt;ユーザモードのライブデバッグ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;MicrosoftのWindows開発チームも使用している公式のデバッガです。&lt;/p&gt;
+&lt;p&gt;VisualStudioデバッガとの違いとして、WinDbgはカーネルモードのデバッグやスレッドスタックの分析まで実現することができます。&lt;/p&gt;
+&lt;h2 id=&quot;windbgチュートリアル&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#windbg%E3%83%81%E3%83%A5%E3%83%BC%E3%83%88%E3%83%AA%E3%82%A2%E3%83%AB&quot; aria-label=&quot;windbgチュートリアル permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;WinDbgチュートリアル&lt;/h2&gt;
+&lt;p&gt;WinDbgのはじめの一歩として、&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/getting-started-with-windbg&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;公式ドキュメントのチュートリアル&lt;/a&gt;を実践していきます。&lt;/p&gt;
+&lt;p&gt;このチュートリアルでは、WinDbgを使用してユーザモードのプロセスにアタッチし、デバッグを行います。&lt;/p&gt;
+&lt;h3 id=&quot;今回使用する環境&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E4%BB%8A%E5%9B%9E%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E7%92%B0%E5%A2%83&quot; aria-label=&quot;今回使用する環境 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;今回使用する環境&lt;/h3&gt;
+&lt;p&gt;今回使用している環境は以下の環境です。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Windows10 20H2&lt;/li&gt;
+&lt;li&gt;WinDbg 10.0.22000.1 AMD64（管理者権限で起動）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;notepadexeの起動&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#notepadexe%E3%81%AE%E8%B5%B7%E5%8B%95&quot; aria-label=&quot;notepadexeの起動 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Notepad.exeの起動&lt;/h3&gt;
+&lt;p&gt;Windows環境でWinDbgを起動した後、[Ctrl+E]キーで[Open Executable File]を呼び出し、&lt;code class=&quot;language-text&quot;&gt;C:\Windows\System32\notepad.exe&lt;/code&gt;を選択します。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;image-20211002113631533.png&quot; alt=&quot;image-20211002113631533&quot;&gt;&lt;/p&gt;
+&lt;p&gt;実行ファイルを開くと、Commandウィンドウが起動しました。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;image-20211002113723502.png&quot; alt=&quot;image-20211002113723502&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;シンボルパスの設定と読み込み&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E3%83%91%E3%82%B9%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%81%A8%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF&quot; aria-label=&quot;シンボルパスの設定と読み込み permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;シンボルパスの設定と読み込み&lt;/h3&gt;
+&lt;p&gt;Commandウィンドウの下部にあるコンソールに、以下のコマンドを入力します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sympath srv*&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;.sympath&lt;/code&gt;コマンドは、シンボルパスを設定するコマンドです。
+シンボルパスとは、デバッガがシンボルファイルを探す際の探索先を意味します。&lt;/p&gt;
+&lt;p&gt;シンボルファイルは、デバッガがコード モジュール (関数名、変数名など) に関する情報を取得するために必要です。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/-sympath--set-symbol-path-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;.sympath (シンボル パスの設定) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;シンボルパスの設定が完了したので、以下のコマンドを実行します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;reload&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;.reload&lt;/code&gt;コマンドによって、シンボル情報を削除した後、再読み込みします。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/-reload--reload-module-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;.reload (モジュールの再読み込み) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;.reload&lt;/code&gt;コマンドを実行しても、特にレスポンスはない点に注意が必要です。
+以下の出力が得られたら次に進みます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:000&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;reload
+Reloading current modules
+&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;シンボル一覧の出力&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E4%B8%80%E8%A6%A7%E3%81%AE%E5%87%BA%E5%8A%9B&quot; aria-label=&quot;シンボル一覧の出力 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;シンボル一覧の出力&lt;/h3&gt;
+&lt;p&gt;上記の出力確認後に、&lt;code class=&quot;language-text&quot;&gt;x notepad!*&lt;/code&gt;コマンドを実行して&lt;code class=&quot;language-text&quot;&gt;Notepad.exe&lt;/code&gt;モジュールのシンボルを表示します。
+※ ここで出力が得られない場合は&lt;code class=&quot;language-text&quot;&gt;.reload&lt;/code&gt;コマンドを再実行します。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/x--examine-symbols-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;x notepad!*&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;出力結果は1500行近い数になりました。
+かなり多いですね。&lt;/p&gt;
+&lt;h3 id=&quot;ブレークポイントの設定&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%96%E3%83%AC%E3%83%BC%E3%82%AF%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%AE%E8%A8%AD%E5%AE%9A&quot; aria-label=&quot;ブレークポイントの設定 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;ブレークポイントの設定&lt;/h3&gt;
+&lt;p&gt;次に、上記の出力で確認したシンボル情報を用いて、wWinMain関数にブレークポイントを設定します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;bu notepad!wWinMain&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;特に出力は返ってきませんが、&lt;code class=&quot;language-text&quot;&gt;bl&lt;/code&gt;コマンドでブレークポイントの一覧を参照できます。
+参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/bl--breakpoint-list-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;bl (ブレークポイントの一覧) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;これで、&lt;code class=&quot;language-text&quot;&gt;notepad!wWinMain&lt;/code&gt;にブレークポイントが設定されたことが確認できました。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:000&gt; bu notepad!wWinMain
+0:000&gt; bl
+     0 e Disable Clear  00007ff6`8402c0f8     0001 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;0001&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;  0:&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; notepad!wWinMain&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;notepadexeを実行する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#notepadexe%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B&quot; aria-label=&quot;notepadexeを実行する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Notepad.exeを実行する&lt;/h3&gt;
+&lt;p&gt;ブレークポイントの設定が完了したので、&lt;code class=&quot;language-text&quot;&gt;g&lt;/code&gt;コマンドで起動しているアプリケーションを実行します。
+参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/g--go-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;g (実行) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ブレークポイントで設定されたwWinMain関数の呼び出し時点で停止しました。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:000&gt; g
+ModLoad: 00007ff9`9cd70000 00007ff9`9cda0000   C:\WINDOWS\System32\IMM32&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;DLL
+Breakpoint 0 hit
+notepad!wWinMain:
+00007ff6`8402c0f8 488bc4          mov     rax&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;rsp&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;プロセスに読み込まれているコードモジュールの一覧を表示する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%81%AB%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BE%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%B3%E3%83%BC%E3%83%89%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E4%B8%80%E8%A6%A7%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B&quot; aria-label=&quot;プロセスに読み込まれているコードモジュールの一覧を表示する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;プロセスに読み込まれているコードモジュールの一覧を表示する&lt;/h3&gt;
+&lt;p&gt;ブレークポイントでプロセスが停止した状態で&lt;code class=&quot;language-text&quot;&gt;lm&lt;/code&gt;コマンドを実行し、現在プロセスに読み込まれているコードモジュールを確認します。
+参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/lm--list-loaded-modules-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;lm (読み込まれたモジュールの一覧表示) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:000&gt; lm
+&lt;span class=&quot;token function&quot;&gt;start&lt;/span&gt;             &lt;span class=&quot;token keyword&quot;&gt;end&lt;/span&gt;                 module name
+00007ff6`84020000 00007ff6`8405a000   notepad    &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pdb symbols&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;          C:\Program Files &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x86&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;\Windows Kits\10\Debuggers\x64\sym\notepad&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;pdb\6539CE998C7CAFD73A8E13A54542E1121\notepad&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;pdb
+00007ff9`8ef30000 00007ff9`8f1ca000   COMCTL32   &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`982c0000 00007ff9`98350000   apphelp    &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9aa40000 00007ff9`9aadd000   msvcp_win   &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9ab90000 00007ff9`9ae59000   KERNELBASE   &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9aec0000 00007ff9`9afc0000   ucrtbase   &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9b010000 00007ff9`9b11b000   gdi32full   &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9b340000 00007ff9`9b362000   win32u     &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9bbc0000 00007ff9`9bcea000   RPCRT4     &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9bf20000 00007ff9`9c275000   combase    &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9c3c0000 00007ff9`9c46e000   shcore     &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9cc50000 00007ff9`9cd0e000   KERNEL32   &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9cd70000 00007ff9`9cda0000   IMM32      &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9cfd0000 00007ff9`9cffb000   GDI32      &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9d000000 00007ff9`9d1a1000   USER32     &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9d1b0000 00007ff9`9d24e000   msvcrt     &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9d290000 00007ff9`9d485000   ntdll      &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pdb symbols&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;          C:\Program Files &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x86&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;\Windows Kits\10\Debuggers\x64\sym\ntdll&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;pdb\E2BF5EA3ECAA1D5310F1E166306A0BCC1\ntdll&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;pdb&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;スタックトレースを表示する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B&quot; aria-label=&quot;スタックトレースを表示する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;スタックトレースを表示する&lt;/h3&gt;
+&lt;p&gt;プロセスが停止した状態で&lt;code class=&quot;language-text&quot;&gt;k&lt;/code&gt;コマンドを実行して、スタックトレースを表示します。&lt;/p&gt;
+&lt;p&gt;今回は&lt;code class=&quot;language-text&quot;&gt;notepad!wWinMain&lt;/code&gt;で停止したタイミングでのスタックトレースを取得できました。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:000&gt; k
+ &lt;span class=&quot;token comment&quot;&gt;# Child-SP          RetAddr               Call Site&lt;/span&gt;
+00 00000055`5f11f7b8 00007ff6`840459b6     notepad!wWinMain
+01 00000055`5f11f7c0 00007ff9`9cc67034     notepad!__scrt_common_main_seh+0x106
+02 00000055`5f11f800 00007ff9`9d2e2651     KERNEL32!BaseThreadInitThunk+0x14
+03 00000055`5f11f830 00000000`00000000     ntdll!RtlUserThreadStart+0x21&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;notepadexeを再開する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#notepadexe%E3%82%92%E5%86%8D%E9%96%8B%E3%81%99%E3%82%8B&quot; aria-label=&quot;notepadexeを再開する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Notepad.exeを再開する&lt;/h3&gt;
+&lt;p&gt;もう一度&lt;code class=&quot;language-text&quot;&gt;g&lt;/code&gt;コマンドを実行すると、中断されていたプロセスが再開され、メモ帳アプリが起動しました。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;image-20211003210626408.png&quot; alt=&quot;image-20211003210626408&quot;&gt;&lt;/p&gt;
+&lt;p&gt;この状態では、デバッガはBusy状態となり、追加のコマンド入力を受け付けなくなります。&lt;/p&gt;
+&lt;p&gt;再びメモ帳プロセスを停止してデバッガを使用するために、Breakボタンか、[Ctrl+Break]キーを押します。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;image-20211003211015461.png&quot; alt=&quot;image-20211003211015461&quot;&gt;&lt;/p&gt;
+&lt;p&gt;これで再度メモ帳プロセスが停止され、デバッガ操作が可能になりました。&lt;/p&gt;
+&lt;h3 id=&quot;ファイル書き込み時にプロセスを停止する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF%E6%99%82%E3%81%AB%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%82%92%E5%81%9C%E6%AD%A2%E3%81%99%E3%82%8B&quot; aria-label=&quot;ファイル書き込み時にプロセスを停止する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;ファイル書き込み時にプロセスを停止する&lt;/h3&gt;
+&lt;p&gt;続いて、&lt;code class=&quot;language-text&quot;&gt;bu ntdll!ZwWriteFile&lt;/code&gt;を実行して、ファイル書き込み時にプロセスを中断するためのブレークポイントを設定します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:002&gt; bu ntdll!ZwWriteFile
+0:002&gt; bl
+     0 e Disable Clear  00007ff6`8402c0f8     0001 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;0001&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;  0:&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; notepad!wWinMain
+     1 e Disable Clear  00007ff9`9d32ce60     0001 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;0001&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;  0:&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; ntdll!NtWriteFile&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;再び&lt;code class=&quot;language-text&quot;&gt;g&lt;/code&gt;コマンドを入力してプロセスを再開したのち、メモ帳に書き込み保存を実行しようとすると、プロセスが停止されます。&lt;/p&gt;
+&lt;p&gt;このタイミングでスタックトレースを表示すると、書き込み時のスタックトレースを取得することができます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:011&gt; k
+ &lt;span class=&quot;token comment&quot;&gt;# Child-SP          RetAddr               Call Site&lt;/span&gt;
+00 00000055`5f8fdb78 00007ff9`9bc1f6f4     ntdll!NtWriteFile
+01 00000055`5f8fdb80 00007ff9`9bc0c641     RPCRT4!UTIL_WriteFile+0x5c
+02 00000055`5f8fdbe0 00007ff9`9bbf5863     RPCRT4!NMP_SyncSend+0x81
+03 00000055`5f8fdc60 00007ff9`9bbf2a56     RPCRT4!OSF_CCONNECTION::TransSendReceive+0xf7
+04 00000055`5f8fdcd0 00007ff9`9bbf239b     RPCRT4!OSF_CCONNECTION::SendBindPacket+0x2ee
+05 00000055`5f8fdf20 00007ff9`9bbf3ed1     RPCRT4!OSF_CCONNECTION::ActuallyDoBinding+0xeb
+06 00000055`5f8fdfd0 00007ff9`9bbf3c0e     RPCRT4!OSF_CCONNECTION::OpenConnectionAndBind+0x225
+07 00000055`5f8fe080 00007ff9`9bbf7736     RPCRT4!OSF_CCALL::BindToServer+0xce
+08 00000055`5f8fe120 00007ff9`9bbf84d6     RPCRT4!OSF_BINDING_HANDLE::InitCCallWithAssociation+0x8a
+09 00000055`5f8fe180 00007ff9`9bbf75e7     RPCRT4!OSF_BINDING_HANDLE::AllocateCCall+0x256
+0a 00000055`5f8fe2e0 00007ff9`9bca00f5     RPCRT4!OSF_BINDING_HANDLE::NegotiateTransferSyntax+0x37
+0b 00000055`5f8fe330 00007ff9`9bca3840     RPCRT4!NdrpClientCall3+0x715
+0c 00000055`5f8fe6a0 00007ff9`99bc139e     RPCRT4!NdrClientCall3+0xf0
+0d 00000055`5f8fea30 00007ff9`775c1e00     wkscli!NetWkstaGetInfo+0x5e
+0e 00000055`5f8feae0 00007ff9`83c62df6     ntlanman!NPOpenEnum+0x50
+0f 00000055`5f8fec40 00007ff9`83c61b7f     MPR!MprOpenEnumConnect+0x176&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;プロセス内のスレッド一覧を表示する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E5%86%85%E3%81%AE%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89%E4%B8%80%E8%A6%A7%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B&quot; aria-label=&quot;プロセス内のスレッド一覧を表示する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;プロセス内のスレッド一覧を表示する&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;~&lt;/code&gt;コマンドを使って、プロセス内のスレッド一覧を取得できます。
+参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/---thread-status-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;~ (スレッドの状態) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;現在のメモ帳プロセスには、以下の14個のスレッドが存在するようです。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:011&gt; ~
+   0  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;7ac Suspend: 1 Teb: 00000055`5f35c000 Unfrozen
+   1  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;22f0 Suspend: 1 Teb: 00000055`5f36a000 Unfrozen
+   2  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;1500 Suspend: 1 Teb: 00000055`5f36e000 Unfrozen
+   3  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;198c Suspend: 1 Teb: 00000055`5f370000 Unfrozen
+   4  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;2094 Suspend: 1 Teb: 00000055`5f364000 Unfrozen
+   5  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;1d6c Suspend: 1 Teb: 00000055`5f372000 Unfrozen
+   6  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;1048 Suspend: 1 Teb: 00000055`5f368000 Unfrozen
+   7  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;1408 Suspend: 1 Teb: 00000055`5f374000 Unfrozen
+   8  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;30c Suspend: 1 Teb: 00000055`5f376000 Unfrozen
+   9  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;1b18 Suspend: 1 Teb: 00000055`5f378000 Unfrozen
+  10  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;af8 Suspend: 1 Teb: 00000055`5f37a000 Unfrozen
+&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt; 11  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;898 Suspend: 1 Teb: 00000055`5f37e000 Unfrozen
+  12  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;1720 Suspend: 1 Teb: 00000055`5f380000 Unfrozen
+  13  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;37c Suspend: 1 Teb: 00000055`5f382000 Unfrozen&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;特定のスレッドのスタックトレースを取得する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E7%89%B9%E5%AE%9A%E3%81%AE%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89%E3%81%AE%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B&quot; aria-label=&quot;特定のスレッドのスタックトレースを取得する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;特定のスレッドのスタックトレースを取得する&lt;/h3&gt;
+&lt;p&gt;ここで、特定のスレッドのスタックトレースを取得するには、以下のコマンドを続けて使用します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;~0s
+k&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;~0s&lt;/code&gt;コマンドは、スレッド番号0の設定を取得します。
+参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/-s--set-current-thread-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;~s (現在のスレッドの設定) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;出力は次のようになりました。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:011&gt; ~0s
+win32u!NtGdiGetCharABCWidthsW+0x14:
+00007ff9`9b3465e4 c3              ret
+0:000&gt; k
+ &lt;span class=&quot;token comment&quot;&gt;# Child-SP          RetAddr               Call Site&lt;/span&gt;
+00 00000055`5f117108 00007ff9`9b01a2ae     win32u!NtGdiGetCharABCWidthsW+0x14
+01 00000055`5f117110 00007ff9`9b01a211     gdi32full!LoadGlyphMetricsWithGetCharABCWidthsI+0x5e
+02 00000055`5f1174b0 00007ff9`9b019d60     gdi32full!LoadGlyphMetrics+0x99
+03 00000055`5f1174f0 00007ff9`8aa29016     gdi32full!CUspShapingFont::GetGlyphDefaultAdvanceWidths+0x150
+04 00000055`5f117550 00007ff9`9b020b65     TextShaping!ShapingGetGlyphPositions+0x516
+05 00000055`5f117750 00007ff9`9b0266e3     gdi32full!ShlPlaceOT+0x255
+06 00000055`5f117970 00007ff9`9b025d9b     gdi32full!RenderItemNoFallback+0x573
+07 00000055`5f117aa0 00007ff9`9b025c6b     gdi32full!RenderItemWithFallback+0xeb
+08 00000055`5f117af0 00007ff9`9b025a3f     gdi32full!RenderItem+0x3b
+09 00000055`5f117b40 00007ff9`9b027ac6     gdi32full!ScriptStringAnalyzeGlyphs+0x20f
+0a 00000055`5f117bf0 00007ff9`9b024ca2     gdi32full!ScriptStringAnalyse+0x626
+0b 00000055`5f117dc0 00007ff9`9b0246be     gdi32full!LpkCharsetDraw+0x5c2
+0c 00000055`5f117ff0 00007ff9`9d01f5f2     gdi32full!LpkDrawTextEx+0x5e
+0d 00000055`5f118060 00007ff9`9d01e9bf     USER32!DT_DrawStr+0xb6
+0e 00000055`5f118110 00007ff9`9d01eede     USER32!DT_GetLineBreak+0xf3
+0f 00000055`5f1181b0 00007ff9`9d01eb50     USER32!DrawTextExWorker+0x36e
+10 00000055`5f118300 00007ff9`6b8a6123     USER32!DrawTextW+0x40
+11 00000055`5f118370 00007ff9`6b89ac60     DUI70!DirectUI::Element::GetContentSize+0x463
+12 00000055`5f118450 00007ff9`6b8a7196     DUI70!DirectUI::Element::_UpdateDesiredSize+0x6a0
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; 以下略 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;デバッグを終了してプロセスからデタッチする&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%82%92%E7%B5%82%E4%BA%86%E3%81%97%E3%81%A6%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%81%8B%E3%82%89%E3%83%87%E3%82%BF%E3%83%83%E3%83%81%E3%81%99%E3%82%8B&quot; aria-label=&quot;デバッグを終了してプロセスからデタッチする permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;デバッグを終了して、プロセスからデタッチする&lt;/h3&gt;
+&lt;p&gt;最後に&lt;code class=&quot;language-text&quot;&gt;qd&lt;/code&gt;コマンドを使用して、デバッグを終了してプロセスからデタッチします。&lt;/p&gt;
+&lt;p&gt;デバッグを終了すると、Commandウィンドウが終了し、停止されていたメモ帳の書き込み処理が再開されました。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;image-20211003212553671.png&quot; alt=&quot;image-20211003212553671&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;とりあえず&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/getting-started-with-windbg&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;公式チュートリアル&lt;/a&gt;のユーザモードデバッグの手順について一通り実践してみました。&lt;/p&gt;
 &lt;p&gt;WinDbgを用いたWindowsのデバッグやダンプの解析方法について公開しているその他情報については、以下のページのリストをご覧ください。&lt;/p&gt;
 &lt;p&gt;参考：&lt;a href=&quot;/windows-windbg-001-index&quot;&gt;WinDbgを用いたデバッグとトラブルシューティングのテクニック&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[WinDbgを用いたデバッグとトラブルシューティングのテクニック]]></title><link>https://kashiwaba-yuki.com/windows-windbg-001-index</link><guid isPermaLink="false">https://kashiwaba-yuki.com/windows-windbg-001-index</guid><pubDate>Mon, 04 Oct 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;今回は、WinDbgを用いたWindowsのデバッグやダンプの解析方法について0から学べる情報を整理したいと思い、この記事を書き始めました。&lt;/p&gt;
 &lt;p&gt;私は、本業の中でしばしばメモリダンプやプロセスダンプを解析してトラブルシューティングをしなければならないことがあるのですが、各問題の原因特定のために有効な調査方法についてわかりやすい情報が非常に少ないと感じています。&lt;/p&gt;
