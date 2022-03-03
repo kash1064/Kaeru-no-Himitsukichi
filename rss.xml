@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[かえるのひみつきち]]></title><description><![CDATA[かえるのひみつきち]]></description><link>https://kashiwaba-yuki.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 03 Mar 2022 14:38:31 GMT</lastBuildDate><item><title><![CDATA[DISMとBCDBootでUSB接続した外付けSSDから起動可能なWindowsメディアを作成する]]></title><link>https://kashiwaba-yuki.com/note-how-to-create-bootmedia-external-ssd</link><guid isPermaLink="false">https://kashiwaba-yuki.com/note-how-to-create-bootmedia-external-ssd</guid><pubDate>Thu, 03 Mar 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;今回は外付けSSDからUSB経由でWindowsを起動可能なブートメディアを作成していきます。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[かえるのひみつきち]]></title><description><![CDATA[かえるのひみつきち]]></description><link>https://kashiwaba-yuki.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 03 Mar 2022 14:57:51 GMT</lastBuildDate><item><title><![CDATA[DISMとBCDBootでUSB接続した外付けSSDから起動可能なWindowsメディアを作成する]]></title><link>https://kashiwaba-yuki.com/note-how-to-create-bootmedia-external-ssd</link><guid isPermaLink="false">https://kashiwaba-yuki.com/note-how-to-create-bootmedia-external-ssd</guid><pubDate>Thu, 03 Mar 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;今回は外付けSSDからUSB経由でWindowsを起動可能なブートメディアを作成していきます。&lt;/p&gt;
 &lt;p&gt;外付けSSDからUSB経由でWindowsを起動可能なブートメディアの作成方法についてググると非常に多くの情報がでてきます。&lt;/p&gt;
 &lt;p&gt;Windowsマシンでは外付けSSDからのブートは実現できないとか、有料アプリを使えば実現できるとか、Macなら可能とか、ほんとに色々な情報があり混乱しました。&lt;/p&gt;
 &lt;p&gt;結論から言って、本記事執筆時点で最新のWindows10 21H2のバージョンでも外付けSSDからUSB経由で起動可能なブートメディアを作成することはできます。&lt;/p&gt;
@@ -275,7 +275,49 @@ M:\Windows\System32\bcdboot M:\Windows &lt;span class=&quot;token operator&quot;
 &lt;p&gt;参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/manufacture/desktop/bcdboot-command-line-options-techref-di?view=windows-11&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;BCDBoot のコマンド ライン オプション | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
 &lt;p&gt;これでUSBからブート可能なWindowsのディスクを作成することができました。&lt;/p&gt;
-&lt;p&gt;USB 3.1 Gen2でPCとSSDを接続して起動してみましたが、十分に速度が出ているので、体感的には内臓のM.2にインストールされているOSとそこまで遜色ない使用感です。&lt;/p&gt;
+&lt;p&gt;USB 3.1 Gen1でPCとSSDを接続して起動してみましたが、十分に速度が出ているので、体感的には内臓のSSDにインストールされているOSとそこまで遜色ない使用感です。&lt;/p&gt;
+&lt;p&gt;ベンチでこれだけ出てれば上出来ですね。普通に快適に使えます。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 692px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/164d445b48a5f8760888417208818cf5/91e7e/image-20220303235640818.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 73.33333333333334%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsTAAALEwEAmpwYAAAD2klEQVQ4yzWTyW9bVRTG/X/AngUsKlViUYYVSAgQqAUJoUKFxAY2hbbAAqkIIWjipmJQEkinkKZOardJ26RpUjfBTpPg2k5iu55Sx1MSv9jPw/PwPPvZ/nFj4Oh++u75zrlX5+qeo/vZv8XyXgLzVgpzcJ/FkMxSON3DgW8NK7izbTbTGu5MG5dgT6aDS9bYSDZxpwRLTTZ2q8z6FHTrMZmaIlEp5EhLO1RKOdS8TEmRKWSTNCpFGuUCdFvUy3najQqqkqZSzPV0ra7yv2UqFXT23SLFWk44BfYzKfKFAlklh5Tap1QuU6nWyOSyJOWU0JIk0yniezvEE7so+bxAATmTQS0VCacL6IbSw+ilI/wgv8pm1UC7BnI6STQeRpZlJEkSB2TS2TQ5JStYJr4bI7i9RVktk0gkCEVC5JUMcaWEbmbPyt+qHovSTypv65UuJ7N4vUF8T/041h1kRYUHpmmdHucVFbfbz1NxkWPdjpTc7+l7RfHkKwkj/Z6jDPg/5Xbte0ZaHzDKR4wUjvPZpTe4OD3AE/cT7tyaYcE/xcXuh1zpHGdUO8EXk29x/s+zOBwb3DJNMrtiQ2fcn2Y69TnT6a9ZrpznfuMM843TzKlnGPeeZNV3m+1QBJ8ngEda5X7zlIiLnNoZJrZPYg0aRDyG1+PCFgihM+w+4HLgS64Ev8NSHWW2pWeuM8AdtQ/93dOM3xzD4/Zwd2oGW9jKPRGba59ntq7n16VvGBkfxOncxDw/h9m+gW4sOcpY5l2u5T7mXvUUhuYxbrSPcS3/Hj9Z3mbqwVU2nC4s5mXsO/Nc144y2TrGZON99LY3uXqnD/vjTdZWrFhdXnRTOzaMvnOYgoPY1RkeNa+zqk2wpI5iDkzg9T0hISVw2Jw4wzZWNAMrLQPW6hgPtsewO9aIxXcI+L2sio/UDUu/oY8d5oL0GsbqJwy1jnCx8woXSofoW34Hh91JYMvPmuUxc95xfu++xB/ayww2XqTf+TrTU1OsrK5hWXrIvM2Bbm7XI8ZsjMXoLbzqIzxNM+v1e+y3fdSqJYJbgV6F0XCMaDqEq7mAu7GAt7VIoSYRCUdEXGInEmYjHEd3IdnPV6Fn+TZ2iEuVo/RpL3C29QzL3XMUM3WGRoZZWHzI+KiRm67L9PE8Pzaf4xcOE0ytYDLNYLb8xdDgIKbFZXR++aApo7Q7cbrtPTqdg30YOikxv9p/U9oU6IqlonUidLrRHqD8r47W44wqRm/AV+d2vM2NSBtjVMMo2BTpCL/JRLiCYbvC5HZV9NwB1zGFOhi3RF5QYzIgdH+ZCV8Zk8CgU+Ef/tv2kiwXWHwAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/164d445b48a5f8760888417208818cf5/8ac56/image-20220303235640818.webp 240w,
+/static/164d445b48a5f8760888417208818cf5/d3be9/image-20220303235640818.webp 480w,
+/static/164d445b48a5f8760888417208818cf5/f686e/image-20220303235640818.webp 692w&quot;
+              sizes=&quot;(max-width: 692px) 100vw, 692px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/164d445b48a5f8760888417208818cf5/8ff5a/image-20220303235640818.png 240w,
+/static/164d445b48a5f8760888417208818cf5/e85cb/image-20220303235640818.png 480w,
+/static/164d445b48a5f8760888417208818cf5/91e7e/image-20220303235640818.png 692w&quot;
+            sizes=&quot;(max-width: 692px) 100vw, 692px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/164d445b48a5f8760888417208818cf5/91e7e/image-20220303235640818.png&quot;
+            alt=&quot;image-20220303235640818&quot;
+            title=&quot;image-20220303235640818&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;今までツール任せにしていたブート構成を手動で作成してみたので結構勉強になりました。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Mac mini Late2018を購入したのでVMWare Fusion PlayerでMacOSの仮想マシンを構築してみた]]></title><link>https://kashiwaba-yuki.com/note-setup-macmini</link><guid isPermaLink="false">https://kashiwaba-yuki.com/note-setup-macmini</guid><pubDate>Sat, 26 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;先日初めてのMac端末を手に入れたのでセットアップ手順やつまづいた点について記録しておきます。&lt;/p&gt;
 &lt;p&gt;今回はMac mini(Late2018)で以下のような環境をセットアップしていきます。&lt;/p&gt;
 &lt;ul&gt;
