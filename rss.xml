@@ -1,4 +1,548 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[かえるのひみつきち]]></title><description><![CDATA[かえるのひみつきち]]></description><link>https://kashiwaba-yuki.com</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 04 Mar 2022 13:54:15 GMT</lastBuildDate><item><title><![CDATA[DISMとBCDBootでUSB接続した外付けSSDから起動可能なWindowsメディアを作成する]]></title><link>https://kashiwaba-yuki.com/note-how-to-create-bootmedia-external-ssd</link><guid isPermaLink="false">https://kashiwaba-yuki.com/note-how-to-create-bootmedia-external-ssd</guid><pubDate>Thu, 03 Mar 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;今回は外付けSSDからUSB経由でWindowsを起動可能なブートメディアを作成していきます。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[かえるのひみつきち]]></title><description><![CDATA[かえるのひみつきち]]></description><link>https://kashiwaba-yuki.com</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 04 Mar 2022 14:02:38 GMT</lastBuildDate><item><title><![CDATA[仮想ネットワークゲートウェイでAzureにVPN接続してクラウドプロキシっぽい環境を作ったメモ]]></title><link>https://kashiwaba-yuki.com/azure-vpn-setup</link><guid isPermaLink="false">https://kashiwaba-yuki.com/azure-vpn-setup</guid><pubDate>Fri, 04 Mar 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;先日&lt;a href=&quot;/honeypot-setup-on-azure&quot;&gt;こちらの記事&lt;/a&gt;でAzure上にハニーポットを構築した話を書きましたが、アクセスコントロール的にもセキュリティ的にも、ハニーポットへの接続はVPNを使った方がよさそうでしたので、Azureの仮想ネットワークゲートウェイを使って仮想ネットワークに対してP2S VPN接続を構成しました。&lt;/p&gt;
+&lt;p&gt;ついでにAzureVM上のサーバをクラウドプロキシとして使えば色々セキュアなのでは？(浅い)と思ったので、VPN接続するAzureの仮想ネットワーク上にプロキシサーバも構築してみました。&lt;/p&gt;
+&lt;!-- omit in toc --&gt;
+&lt;h2 id=&quot;もくじ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%82%E3%81%8F%E3%81%98&quot; aria-label=&quot;もくじ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;もくじ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E4%BB%AE%E6%83%B3%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%A8%E4%BB%AE%E6%83%B3%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B&quot;&gt;仮想ネットワークと仮想ネットワークゲートウェイを作成する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%82%AA%E3%83%AC%E3%82%AA%E3%83%AC%E3%83%AB%E3%83%BC%E3%83%88%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B&quot;&gt;オレオレルート証明書とクライアント証明書を生成する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#p2s-vpn%E6%8E%A5%E7%B6%9A%E3%82%92%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B&quot;&gt;P2S VPN接続を構成する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#windows%E3%81%A7vpn%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B&quot;&gt;WindowsでVPNを設定する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#azurevm%E4%B8%8A%E3%81%AB%E3%83%97%E3%83%AD%E3%82%AD%E3%82%B7%E3%82%92%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B&quot;&gt;AzureVM上にプロキシを構成する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E6%8E%A5%E7%B6%9A%E3%83%86%E3%82%B9%E3%83%88&quot;&gt;接続テスト&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;仮想ネットワークと仮想ネットワークゲートウェイを作成する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E4%BB%AE%E6%83%B3%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%A8%E4%BB%AE%E6%83%B3%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B&quot; aria-label=&quot;仮想ネットワークと仮想ネットワークゲートウェイを作成する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;仮想ネットワークと仮想ネットワークゲートウェイを作成する&lt;/h2&gt;
+&lt;p&gt;まずは仮想ネットワークを作成します。&lt;/p&gt;
+&lt;p&gt;今回は&lt;code class=&quot;language-text&quot;&gt;172.16.0.0/20&lt;/code&gt;の仮想ネットワークを作成し、その中に仮想マシンを割り当てるサブネットを作成しました。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 764px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/9763efe3f469ddd0448c1c516dd153a1/f3c12/image-20220304201840502.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 77.91666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAAsTAAALEwEAmpwYAAABxklEQVQ4y61TC2/eIAzk//+9VWsntdI2bcsbEgIk5HXzsfApa9WHpiGdYoixz2ejSj3iR2uhx4DvnUdlHIbR49h3HACO47gB5/6tpe7uPuHLwwOqqkJT13h6esT9/WdM0/QiwEeCq9cyXS9/BPmOstbChwlloxGmGeNoEWPEsiwYhgFN04A+760cWLlxRFk3KLoBRfmnbAZyzp0Ba/R9j65rJdmYzrquS8g+JHBGheJG6w5VWaQLz8vdpTkZr+1vJVNDis9sxhhpRMAgbHLmXs6M0WAV27piPbGduO23FWGOMG6CCsEjeI8pBCQ74W97egPpvxDxboTtDRTLJMiwKIrUgPdm7SrL8/FR8zyjbdskPANrrVFLY2gzeAbPmZQ2v/TJ9zjDWmTbtw1q3Q+hPCdHL6VTE45MjDP+ZSnnpSltI+NSYV2idG2T75ICUx9rh8SuFZ9cZp5RktiE1XUq1BoDtJthwga7APtFPiZgSZn5VT/uOTIvGH6rRUNjUbUavyp5FdROsmsj6O1N19tXWJEdO5t15zTwhbEfavBrcjIy3K28Cl6iBD/bAV8bh7isyZEPYJ4nKTcmmwx5vpzy8JzlK/zn9Rvm19/kFBhR6QAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/9763efe3f469ddd0448c1c516dd153a1/8ac56/image-20220304201840502.webp 240w,
+/static/9763efe3f469ddd0448c1c516dd153a1/d3be9/image-20220304201840502.webp 480w,
+/static/9763efe3f469ddd0448c1c516dd153a1/79237/image-20220304201840502.webp 764w&quot;
+              sizes=&quot;(max-width: 764px) 100vw, 764px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/9763efe3f469ddd0448c1c516dd153a1/8ff5a/image-20220304201840502.png 240w,
+/static/9763efe3f469ddd0448c1c516dd153a1/e85cb/image-20220304201840502.png 480w,
+/static/9763efe3f469ddd0448c1c516dd153a1/f3c12/image-20220304201840502.png 764w&quot;
+            sizes=&quot;(max-width: 764px) 100vw, 764px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/9763efe3f469ddd0448c1c516dd153a1/f3c12/image-20220304201840502.png&quot;
+            alt=&quot;image-20220304201840502&quot;
+            title=&quot;image-20220304201840502&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;次に仮想ネットワークゲートウェイを作成しました。&lt;/p&gt;
+&lt;p&gt;この時ネットワークゲートウェイサブネットのアドレス範囲に設定するアドレスは「仮想ネットワークのアドレス範囲」かつ「仮想ネットワーク内の既存のサブネットと重複しない」アドレス範囲に設定する必要があります。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 755px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/19c219e1f532d0dbfc3dbcf0916e30dc/cab43/image-20220304202022318.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 99.16666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAACXUlEQVQ4y51U7XKbMBDk/Z8vf5xOp820cTAgvoWEJLjuHpDYnqTulJm1ZAF3e3t7ZE9PT3I6naQsCymKDZfLRc7ns3x7ftZ7IQThta7rQ2T8SSnJPM96cLz4v1fWNo1UVaWMQphvmDCJ906cc8qSZ8uy/AVJsq5tJcX4nuFgx5u1MZCi1IR938vsvQa/hwemacJ+ksxaKxHZWfbBjFdCxrw0UtdmZ+oVZPoZ+AyR8aHKVFKBCZnuKkpYRMoBgZC1A7sG0vDZhxpaO8olz5X2R8mrxGWVqndaBssax1HXuMvzZZdZe5hvm7FpuGi5xmwlX5f1GVRLNFA1VJ9dZdGA0LSpazFoyLzrd90Ef7P3e1MQsOs67SBvsDHHlSKacq7l9Vch+VsjboD4NirmfQ3Tvsfqcd+PaAqDaIdR4sZwC+jjKi+llaIe5NWMYsEihvhefpiDMuOZ7lEB9c3uu3SUHED25XcuP398FzsOqKKTASsrYoOGYVB9KRn3LfzMoGqb45AoMcsOetDYDEJjT3t3yWxbZ9WM73IlmGRyVrLDtDzkw+wuy5ereb6fbUpEEseEWGXcbwxJtUY3aWy3e1FfQozeBfUhEzlYQoM8MLf6kNEHzioCHpOSQDKvOnl7PUtjGnQ8l+JSih0sLLWqC24A0VNMR0CK3Sr1D9skMbmRtkKyZpTeDGqL5BdYJahdtnXfj1insBmbUGGxUkM19rrg/ygh4rMl//59VGNzZD6zz+wwUtYp6LcFpX0Flr1Ap21SgGWfko/RW6Wr8ZWpWlkCvj4uSiR82tZr4IzlEn8A4awbAE8ST9oAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/19c219e1f532d0dbfc3dbcf0916e30dc/8ac56/image-20220304202022318.webp 240w,
+/static/19c219e1f532d0dbfc3dbcf0916e30dc/d3be9/image-20220304202022318.webp 480w,
+/static/19c219e1f532d0dbfc3dbcf0916e30dc/a149a/image-20220304202022318.webp 755w&quot;
+              sizes=&quot;(max-width: 755px) 100vw, 755px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/19c219e1f532d0dbfc3dbcf0916e30dc/8ff5a/image-20220304202022318.png 240w,
+/static/19c219e1f532d0dbfc3dbcf0916e30dc/e85cb/image-20220304202022318.png 480w,
+/static/19c219e1f532d0dbfc3dbcf0916e30dc/cab43/image-20220304202022318.png 755w&quot;
+            sizes=&quot;(max-width: 755px) 100vw, 755px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/19c219e1f532d0dbfc3dbcf0916e30dc/cab43/image-20220304202022318.png&quot;
+            alt=&quot;image-20220304202022318&quot;
+            title=&quot;image-20220304202022318&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;これで作成が完了したので、次は仮想ネットワークゲートウェイに適用するルート証明書を作成します。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;P2S VPN と証明書認証を使用して VNet に接続する: ポータル - Azure VPN Gateway | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;オレオレルート証明書とクライアント証明書を生成する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%AA%E3%83%AC%E3%82%AA%E3%83%AC%E3%83%AB%E3%83%BC%E3%83%88%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B&quot; aria-label=&quot;オレオレルート証明書とクライアント証明書を生成する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;オレオレルート証明書とクライアント証明書を生成する&lt;/h2&gt;
+&lt;p&gt;仮想ネットワークゲートウェイを使用してVPN接続を行うために、クライアント側のWindowsでオレオレ証明書を作成します。&lt;/p&gt;
+&lt;p&gt;以下の公式ドキュメントの手順の通りに実施すればOKです。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/azure/vpn-gateway/vpn-gateway-certificates-point-to-site&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;P2S 用の証明書を生成してエクスポートする: PowerShell - Azure VPN Gateway | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;まずは管理者権限で起動したPowershellで以下のコマンドを実行します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$cert&lt;/span&gt; = &lt;span class=&quot;token function&quot;&gt;New-SelfSignedCertificate&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;Type&lt;/span&gt; Custom &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;KeySpec Signature `
+&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;Subject &lt;span class=&quot;token string&quot;&gt;&quot;CN=P2SRootCert&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;KeyExportPolicy Exportable `
+&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;HashAlgorithm sha256 &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;KeyLength 2048 `
+&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;CertStoreLocation &lt;span class=&quot;token string&quot;&gt;&quot;Cert:\CurrentUser\My&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;KeyUsageProperty Sign &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;KeyUsage CertSign&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;これでオレオレルート証明書が作成できたので、このままクライアント証明書も作成します。&lt;/p&gt;
+&lt;p&gt;同じPowershellセッションで以下のコマンドを実行します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;New-SelfSignedCertificate&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;Type&lt;/span&gt; Custom &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;DnsName P2SChildCert &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;KeySpec Signature `
+&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;Subject &lt;span class=&quot;token string&quot;&gt;&quot;CN=P2SChildCert&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;KeyExportPolicy Exportable `
+&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;HashAlgorithm sha256 &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;KeyLength 2048 `
+&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;CertStoreLocation &lt;span class=&quot;token string&quot;&gt;&quot;Cert:\CurrentUser\My&quot;&lt;/span&gt; `
+&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;Signer &lt;span class=&quot;token variable&quot;&gt;$cert&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;TextExtension @&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;2.5.29.37={text}1.3.6.1.5.5.7.3.2&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;成功すると以下のような画面になります。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/194ee083b47c67d0f91560b7aa6071b3/709cb/image-20220304203105251.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 25.83333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA7UlEQVQY022PW2+CQBSE10ZWRbDa1F5ieUApKqJIW0KqIVx3jf3//2c8C9j44MOXmZPsmTPL7N8zrB+JV+ItPuP9cMLTdworzmAfS0yCFM/7EtP9CUOvAl/m6K8KGJuqnjU3ByeU769LsGkoYHoZBmEC089hbivoPrET6BJMPVoWRA5Gi8p3HNJ51rBouc6PgYDhSwqT0DcCQ0J5g1T3mhaqjd6q6QtqLaGpIxSkwm9hdizxEhTofSbQFoSTgJPnpD03xSz6qwM4BWhuga7baL18L9BwIjx8fNV0ZmHD1VsRRluJMaGa/n+v5V7oBXKPkC7zRjjmAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/194ee083b47c67d0f91560b7aa6071b3/8ac56/image-20220304203105251.webp 240w,
+/static/194ee083b47c67d0f91560b7aa6071b3/d3be9/image-20220304203105251.webp 480w,
+/static/194ee083b47c67d0f91560b7aa6071b3/e46b2/image-20220304203105251.webp 960w,
+/static/194ee083b47c67d0f91560b7aa6071b3/43c62/image-20220304203105251.webp 1034w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/194ee083b47c67d0f91560b7aa6071b3/8ff5a/image-20220304203105251.png 240w,
+/static/194ee083b47c67d0f91560b7aa6071b3/e85cb/image-20220304203105251.png 480w,
+/static/194ee083b47c67d0f91560b7aa6071b3/d9199/image-20220304203105251.png 960w,
+/static/194ee083b47c67d0f91560b7aa6071b3/709cb/image-20220304203105251.png 1034w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/194ee083b47c67d0f91560b7aa6071b3/d9199/image-20220304203105251.png&quot;
+            alt=&quot;image-20220304203105251&quot;
+            title=&quot;image-20220304203105251&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Windows上で証明書ストアを参照してみると、以下の2つの証明書が登録されていました。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/b5c43c4ff1c25d259cc948972ffe094d/cdef6/image-20220304203801460.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 20%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA5ElEQVQY03WOy07CUBRF+9/GGeEhkmugipWfcECC1UE1DUqQ+AIMA56mURMUXwFLW1me2zpg4mDn3L3PPivXGFdTeE6efi3N0E7z6GwzPMryUlcEt/ssb8r/an3vXyfT8NwiUzePd6r4aCieXSUwEzoHBFIK9KEuiyIBrGf+1V78TnYWoQa+nWXoHW7w5BQI5WB+WeLBTvFa34l9DJbi5DjLvLXLSrzWomUytjN8C3Qm3dl50jeWzS0G1U1Gdo7JSU6AJp8XivdGkahtQbfCjwC018fcV+IsurP4apYIZfp/v9X5L/joCMlYBDZrAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/b5c43c4ff1c25d259cc948972ffe094d/8ac56/image-20220304203801460.webp 240w,
+/static/b5c43c4ff1c25d259cc948972ffe094d/d3be9/image-20220304203801460.webp 480w,
+/static/b5c43c4ff1c25d259cc948972ffe094d/e46b2/image-20220304203801460.webp 960w,
+/static/b5c43c4ff1c25d259cc948972ffe094d/5231b/image-20220304203801460.webp 1163w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/b5c43c4ff1c25d259cc948972ffe094d/8ff5a/image-20220304203801460.png 240w,
+/static/b5c43c4ff1c25d259cc948972ffe094d/e85cb/image-20220304203801460.png 480w,
+/static/b5c43c4ff1c25d259cc948972ffe094d/d9199/image-20220304203801460.png 960w,
+/static/b5c43c4ff1c25d259cc948972ffe094d/cdef6/image-20220304203801460.png 1163w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/b5c43c4ff1c25d259cc948972ffe094d/d9199/image-20220304203801460.png&quot;
+            alt=&quot;image-20220304203801460&quot;
+            title=&quot;image-20220304203801460&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;このうち、「P2SRootCert」という名前のルート証明書からcerファイルをエクスポートします。&lt;/p&gt;
+&lt;p&gt;ルート証明書を右クリックしてエクスポートを選択し、「Base64 Encode~」を選択して進みます。&lt;/p&gt;
+&lt;p&gt;最終的に以下のような設定でエクスポートします。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 473px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/46960aabb8a03d1d20ca4efd91ff8d5a/c7c3c/image-20220304203933730.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 91.66666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC/ElEQVQ4y51UW1cSURjlr9XqwdVfMFcr3+ulVQ+1ViWCIAyXmeEiAlarC48tDcm74hW8l4iIZomCkCiioZbA7jszCIO9WA+b7xzmnD3fZe9RHYV4fB/UIzHUjr2gCbkZAfmwiP1JC45CQhXZKQtyFDMTZvwYN0vnyhE3sNpJsZOiW4Iq5lfD73yAgPM+hryPEPmgxppfg5DvKZJjJmwN6LDeq8HXfj2So0bM+J4g+OoxJWAkAo9EVkeIqAdY76rAC6x5ZMQUa+WeRQZ2T8pOzhKRvwivEETdlcj23hqR8gwR1LKToyof5rEZ0GCrT48s9e2AkJ204pj6yPa5aR4Z6m1qlCMYkaH+sX4eTFlx8cVVJS1fZigNhfq0PWjA/oQFh3QwHxJRmLOBPWOR/Z8cMSI9xuGQXpAOcvQSM34tdSgIZaikcuIvK+Ww3lRiBWVlyVeel4isGKmBZakqzApIBdRI+J8jM6DBDsX9wVYcDmlxPKYnAsoiTqWtK7DWISPmqgf1UZUgPTVxRjQarWgyW3CrlaA242aLGTdemNCg5dHQVsNtnYBm3o57vIg7ZhHNFhF3rQIaOQHfgpRhivql93IweAVoOzk8FDg884jQve2oQ9sbBie0rx0wdPHguiywvbfD4bPD7nNAfGfH3pQLqrMFO7LDWqT7NciNtCM/qsPvkAlYFoElHsWwGefTRpRmLcACD3y2oUjrwiRHraD+btB0NynG3bhYdlIP5+1Y7VEj3qtFYtiEjYBWckFmwipZMebXItItu2fzkx7pcYtkvzRN+eeCA2c06dNFJwpsTVF1vuQgTcm62h5sx+6wAeVVT22qTPRxhZNI8LtUSYoktEtSYr7eoXvJYQ4sOSJ0ympnzojKzlDqqqRA1bfRSwcpHEUSYrqUCIsrrjqC8n+gtNJJhFQy+5G8qPTodRF1V78yTNQS4dmiA6fzNpzMiv+E47CAc7pbJj8zMLJzNpQT+ghs97Uh/pEm3XN9xLpbkCL/n8zwEjI0oMKcHX8A78KQdb7lPQ0AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/46960aabb8a03d1d20ca4efd91ff8d5a/8ac56/image-20220304203933730.webp 240w,
+/static/46960aabb8a03d1d20ca4efd91ff8d5a/7124e/image-20220304203933730.webp 473w&quot;
+              sizes=&quot;(max-width: 473px) 100vw, 473px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/46960aabb8a03d1d20ca4efd91ff8d5a/8ff5a/image-20220304203933730.png 240w,
+/static/46960aabb8a03d1d20ca4efd91ff8d5a/c7c3c/image-20220304203933730.png 473w&quot;
+            sizes=&quot;(max-width: 473px) 100vw, 473px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/46960aabb8a03d1d20ca4efd91ff8d5a/c7c3c/image-20220304203933730.png&quot;
+            alt=&quot;image-20220304203933730&quot;
+            title=&quot;image-20220304203933730&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;エクスポートされたcerファイルの&lt;code class=&quot;language-text&quot;&gt;BEGIN CERTIFICATE&lt;/code&gt;の次の行から書かれている鍵の中身をコピーしておきます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;-----BEGIN CERTIFICATE-----
+&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;この中身をコピー&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+-----END CERTIFICATE-----&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;p2s-vpn接続を構成する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#p2s-vpn%E6%8E%A5%E7%B6%9A%E3%82%92%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B&quot; aria-label=&quot;p2s vpn接続を構成する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;P2S VPN接続を構成する&lt;/h2&gt;
+&lt;p&gt;仮想ネットワークゲートウェイの画面から「ポイント対サイトの構成」を開きます。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 581px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/8a89e3e28bfcab709b0e7a873e089fd1/92d15/image-20220304204212568.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 68.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAABi0lEQVQ4y51TaW+DMAzN//9Z28eu6tCkHpNKOQorBcJ9F97sbJlQV6lqLVkhxu89x07EYudh/WHg3TDw+vqC3XaLzXqN5fINBsV4b1kHcguu66i9ae7hOA5WqxUWiwWqqsI0TcqFFZaIwwBFUSDLMiRJgq7rMAwD+r5H27a4XC4qeRxHtbLp/TzGJmQcQcaxImMidiZpmuYnmZJYTIu0FGehuq7Vnp1zGZMnEsLxPBWYK2rVPM9RlSWyVKpkFnZsGxGtURQhTVNVvfaBhEQQxQrUkAKr6eOw+SSWZAUOYQEzyEm4JvIUJeWzc5XXJoqyUmrsDJgTHo9HEqI2jEAzTLhlehh/QymJUEqphsGq+ocm7LpWQ/+B5wPS3yIKY9Vk7gH37rpCbvY8NgffMuH7ngL6vq+qvEd4zwRXd6snTxOegjNNt1fH1cfm9WlC/xRg/CW4No+uzcOEtm3R0wvpfiWIwjPyLEVTV+Q1+B+/kIcIv3gojg2XwJ+7DV1mFxm9ilTGMPd7IuwfIvwGJ29AqTzHzX8AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/8a89e3e28bfcab709b0e7a873e089fd1/8ac56/image-20220304204212568.webp 240w,
+/static/8a89e3e28bfcab709b0e7a873e089fd1/d3be9/image-20220304204212568.webp 480w,
+/static/8a89e3e28bfcab709b0e7a873e089fd1/39daa/image-20220304204212568.webp 581w&quot;
+              sizes=&quot;(max-width: 581px) 100vw, 581px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/8a89e3e28bfcab709b0e7a873e089fd1/8ff5a/image-20220304204212568.png 240w,
+/static/8a89e3e28bfcab709b0e7a873e089fd1/e85cb/image-20220304204212568.png 480w,
+/static/8a89e3e28bfcab709b0e7a873e089fd1/92d15/image-20220304204212568.png 581w&quot;
+            sizes=&quot;(max-width: 581px) 100vw, 581px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/8a89e3e28bfcab709b0e7a873e089fd1/92d15/image-20220304204212568.png&quot;
+            alt=&quot;image-20220304204212568&quot;
+            title=&quot;image-20220304204212568&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;ここから「今すぐ構成」をクリックし、設定画面に進みます。&lt;/p&gt;
+&lt;p&gt;アドレスプールには仮想ネットワークのレンジに含まれるアドレスプールを指定します。&lt;/p&gt;
+&lt;p&gt;また、トンネルの種類は特に問題がなければ&lt;code class=&quot;language-text&quot;&gt;IKEv2&lt;/code&gt;にするのが良いと思います。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/4cf7cb7d01a1def6252ca3065e197ac9/218a4/image-20220304204407809.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 59.166666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsTAAALEwEAmpwYAAABmklEQVQoz4WT23LbIBRF/f+f4sZxO8l7JnlJ/sB9cXNr7EhCFwTIEhftHo5cRvE4CTN7EAMsNpujxTbTeHp8xMvzM/b7PassSzRNg6qqIIRAlmUYxzHpq7YQTQutNbz3rEAbjPVwYYQPgQGBeucsrB14zRx+qkUuFZRs0sIIv725w2q5wtWva4isRHAjbO/gBs99CJPLs0ClB0gC9n3Pi6SUyN9zvL3u0DYK9mDhh8AwT3IEHI9AnLn9QtaSM/sPjNlFkOvJsccEmWsGPOuwaiRdwafDZNsi22Uo3gVDT2UPjjP9PMOyxuHQwVlLwTs0dY3ouq5qcgJ2M2m6IvdfvXJe5Ni9/UWR5zBaoaQyEaKAIqfeu/SySrX4s91SKZXQSvE4idZ2XTc5rFVHA5NOaGkybiryjNxWrHjQ780Gq4sL/Fyvsb68TIrjH8slHu7vJ4et0h8KNr5yhCpyEbOah/9dOzpsP4QcgfEPMUZzpvHacd5QfRpjjjFYLvRJLuXPQFGXGPohnRLLJm7gv8Na/rbHDVH8fSI7A/4DfMygpJYWvYEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/4cf7cb7d01a1def6252ca3065e197ac9/8ac56/image-20220304204407809.webp 240w,
+/static/4cf7cb7d01a1def6252ca3065e197ac9/d3be9/image-20220304204407809.webp 480w,
+/static/4cf7cb7d01a1def6252ca3065e197ac9/e46b2/image-20220304204407809.webp 960w,
+/static/4cf7cb7d01a1def6252ca3065e197ac9/c18de/image-20220304204407809.webp 1052w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/4cf7cb7d01a1def6252ca3065e197ac9/8ff5a/image-20220304204407809.png 240w,
+/static/4cf7cb7d01a1def6252ca3065e197ac9/e85cb/image-20220304204407809.png 480w,
+/static/4cf7cb7d01a1def6252ca3065e197ac9/d9199/image-20220304204407809.png 960w,
+/static/4cf7cb7d01a1def6252ca3065e197ac9/218a4/image-20220304204407809.png 1052w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/4cf7cb7d01a1def6252ca3065e197ac9/d9199/image-20220304204407809.png&quot;
+            alt=&quot;image-20220304204407809&quot;
+            title=&quot;image-20220304204407809&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;その後、「認証の種類」を「Azure証明書」に設定し、先ほどコピーしたルート証明書を貼り付けて保存します。&lt;/p&gt;
+&lt;p&gt;設定が完了すると「VPNクライアントのダウンロード」が可能になるので、ここからダウンロードしたクライアントをVPN接続に使用するWindowsマシンにインストールします。&lt;/p&gt;
+&lt;h2 id=&quot;windowsでvpnを設定する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#windows%E3%81%A7vpn%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B&quot; aria-label=&quot;windowsでvpnを設定する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;WindowsでVPNを設定する&lt;/h2&gt;
+&lt;p&gt;クライアントがインストールできたら、WindowsのVPNの設定を開き、Azureに接続します。&lt;/p&gt;
+&lt;p&gt;無事に接続できれば、以下のように仮想ネットワークに設定したAzure側のローカルIPアドレスでSSH接続などを行うことができます。&lt;/p&gt;
+&lt;p&gt;※ VM側のセキュリティグループの許可設定を忘れずに。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/8eb3966f00e81c5e29e709906e53c39b/e548f/image-20220304210335018.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 70.41666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAACB0lEQVQ4y2VT2XLiQBDz4wbwfR/4wGASwOQg2aS2av//s7StNuMN5GFKc1mtlsbWaVjj+bHG5dThcuzw8tRgHErsN6mMAvsux7ZJ8dQXihxDm+ng3nFXCpYoUx+r5S9YoxDy4FE+Pu9rHdsm0/XHuEGVBcgTD+s81I+4LgS55pzYFBGKxIe9eoD1dmy1CgneRSULjPv/Rd4OreJhW0mBDmfphl2wq7Pc4/dGfRTasJoywqZOQGSLZeajreJZDc+4LmQ/Cmwkkat3cjlPY1fVe+4Sjv2gaHVVgr+XAX9ed6iFNA5dfJ570Nuvly2+nnvxtsVv2TtsSy3Mj1fSnmMvYMvcdRZKRrQyqbBrU1TiBatnsaeK6iLUNoi1eLRZJ3IvE3WB3HER+KuZyJCpQhJUeaCEvbRHlWwlDp25QCJzEnGPZyzAeeBNpDcKmzLWUPo6Fd8CdOvJT01S1BHZ/nFXqZ8kZJq5pDq1v7hVyCA+xafXQ6MtMdEkcjQAo3J6b5Wm34sNLEqVJGR3LDIT0i/zYDVxuVxcE6Z/RJMiA3DufPvRMon4N1AdU+Q7pMqTKOJb45xqlPzqNe/Tb99b3pCpQl+M5SS4orn03fBQEuWaZ7SAdkxntwkr4SDVqIJIhfz1GMI4VKr6JMhzekhltIWB3BPNhKE/mf89hPSqwvwZRLNnHvJ9q2b8Aw/lZ5EFks3UAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/8eb3966f00e81c5e29e709906e53c39b/8ac56/image-20220304210335018.webp 240w,
+/static/8eb3966f00e81c5e29e709906e53c39b/d3be9/image-20220304210335018.webp 480w,
+/static/8eb3966f00e81c5e29e709906e53c39b/e46b2/image-20220304210335018.webp 960w,
+/static/8eb3966f00e81c5e29e709906e53c39b/1e975/image-20220304210335018.webp 975w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/8eb3966f00e81c5e29e709906e53c39b/8ff5a/image-20220304210335018.png 240w,
+/static/8eb3966f00e81c5e29e709906e53c39b/e85cb/image-20220304210335018.png 480w,
+/static/8eb3966f00e81c5e29e709906e53c39b/d9199/image-20220304210335018.png 960w,
+/static/8eb3966f00e81c5e29e709906e53c39b/e548f/image-20220304210335018.png 975w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/8eb3966f00e81c5e29e709906e53c39b/d9199/image-20220304210335018.png&quot;
+            alt=&quot;image-20220304210335018&quot;
+            title=&quot;image-20220304210335018&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;ちなみに僕の環境のネットワークセキュリティグループはこんな感じにしてみました。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/6a7ba15e8f1506feaa048ce87f057b43/11a8f/image-20220304221534416.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 23.75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA50lEQVQY011QyU7FMBDr/38VF84gDhw4gQQP0TZ9TZplspqZCSdGclpZsT3O8vF5gzEG+3HH/Yo4nMd5ngghYN93BMoYkJnn/3HU8fJNeP0hPN8SFmsdYgxw3iPmitqB3gdyzqi1IpeGEJOKW2sKMScOkjG+4OHtwNNXwuN7wDJGV2GKcW4xJogIncUC7y8Vp5Swrqved86hlsoBhBTM374NSykFAqktVUXUe2cTr7yIr2saSsi2bfoVLvHmuRAOa9C4FXGrRQQCa61Wl6piKMbCS8XI248xn0F44TSYucahkRvoP9//Be67hRYwNfTTAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/6a7ba15e8f1506feaa048ce87f057b43/8ac56/image-20220304221534416.webp 240w,
+/static/6a7ba15e8f1506feaa048ce87f057b43/d3be9/image-20220304221534416.webp 480w,
+/static/6a7ba15e8f1506feaa048ce87f057b43/e46b2/image-20220304221534416.webp 960w,
+/static/6a7ba15e8f1506feaa048ce87f057b43/4cec6/image-20220304221534416.webp 1272w&quot;
+              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/6a7ba15e8f1506feaa048ce87f057b43/8ff5a/image-20220304221534416.png 240w,
+/static/6a7ba15e8f1506feaa048ce87f057b43/e85cb/image-20220304221534416.png 480w,
+/static/6a7ba15e8f1506feaa048ce87f057b43/d9199/image-20220304221534416.png 960w,
+/static/6a7ba15e8f1506feaa048ce87f057b43/11a8f/image-20220304221534416.png 1272w&quot;
+            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/6a7ba15e8f1506feaa048ce87f057b43/d9199/image-20220304221534416.png&quot;
+            alt=&quot;image-20220304221534416&quot;
+            title=&quot;image-20220304221534416&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;この後セットアップするプロキシのポートも開放してあります。&lt;/p&gt;
+&lt;p&gt;「ソース」を「VirtualNetwork」に設定しているので、グローバルIPでは接続できず、P2S VPN接続でAzureの仮想ネットワークに接続した端末からの接続のみを受け入れる構成になっているはずです。&lt;/p&gt;
+&lt;p&gt;接続には登録したルート証明書に対応するクライアント証明書が必要になるので、かなりセキュアになった感じありますね。&lt;/p&gt;
+&lt;h2 id=&quot;azurevm上にプロキシを構成する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#azurevm%E4%B8%8A%E3%81%AB%E3%83%97%E3%83%AD%E3%82%AD%E3%82%B7%E3%82%92%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B&quot; aria-label=&quot;azurevm上にプロキシを構成する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;AzureVM上にプロキシを構成する&lt;/h2&gt;
+&lt;p&gt;最後に、AzureVM上にSquidを構築してプロキシ化したいと思います。&lt;/p&gt;
+&lt;p&gt;マシンはUbuntu20.04を使用しています。&lt;/p&gt;
+&lt;p&gt;まずはアップデートを行います。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; update &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; upgrade -y
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;make&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;vim&lt;/span&gt; -y&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;続いてSquidをインストールして設定ファイルを編集します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; squid -y
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;cp&lt;/span&gt; /etc/squid/squid.conf /etc/squid/squid.conf.origin
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;vim&lt;/span&gt; /etc/squid/squid.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;今回はとりあえず最低限の設定をしたいので、&lt;code class=&quot;language-text&quot;&gt;http_port&lt;/code&gt;と&lt;code class=&quot;language-text&quot;&gt;http_access&lt;/code&gt;の2箇所を変更します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Squid normally listens to port 3128&lt;/span&gt;
+http_port &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;VMのプライベートIP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;:3128
+
+acl vGateways src &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;仮想ネットワークゲートウェイのIPレンジ&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+http_access allow vGateways&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;http_port&lt;/code&gt;は&lt;code class=&quot;language-text&quot;&gt;&amp;lt;VMのプライベートIP&gt;:3128&lt;/code&gt;のように指定することで、特定のインターフェースのポートのみ通信を受け入れるように構成できます。&lt;/p&gt;
+&lt;p&gt;また、&lt;code class=&quot;language-text&quot;&gt;http_access&lt;/code&gt;に仮想ネットワークゲートウェイのIPレンジを設定することで、VPN経由の通信のみがプロキシを利用できるようにします。&lt;/p&gt;
+&lt;p&gt;これで最低限の設定はOKなので、Squidを起動します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; systemctl &lt;span class=&quot;token builtin class-name&quot;&gt;enable&lt;/span&gt; squid
+&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; systemctl restart squid&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;接続テスト&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E6%8E%A5%E7%B6%9A%E3%83%86%E3%82%B9%E3%83%88&quot; aria-label=&quot;接続テスト permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;接続テスト&lt;/h2&gt;
+&lt;p&gt;VPNを構成したWindowsマシンでAzureVM上のサーバに対してプロキシ設定を実施します。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 815px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/fe9ae4b91175dc4eeb8f5dcb32e030cc/ef916/image-20220304212806392.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsTAAALEwEAmpwYAAACyElEQVQ4y21TaVPaUBTFFdz3DZRNcKS0VsSqg0wtjlq1fnF0BBGSkIQlxCxi1f7703sfjbUdP5y5L8nkvHvuOdd3dHSE0/MzfD08RP5bAfuMQgEHx8eIJxNYXV3F2toaJiYmMDY2hvHxcYHR0VEMDg7C7/f/A9/l5SVKtyV8v7jAwckpCmc/cHh2jvOra3zMbCG4tIRkMolQKIQlOjOCwSBmZ2ffJ9R1Ha7romkYqDY03KhVlOQ7VNQaNrNZhOjnVCqF4eFh9PT0oL+/HwMDAwL/kwlCRVFgmiaqsoRyjYjqVVSUMhRVQSa7hfn5edHR9PS0OHNl0rfo6+sTF3DHPk3T4Dx0oDaaAlqrBUnTUa23sLm9g/DKCtbX1xGJRBCPx7G8vCzmOTc3h5mZGVEXFxcxOTnZ7VCSZRiWTUT3RGih1jBRlDVclBWkNrcRi0axsbEhwGTcIf/M3fIcmXBhYQFTU1N/JdudRzTMDqqaDaVuoSwruCpf48OnFKLUWTgcFmawrN7eXiGR4cn1zkKyTB0+PD2j7TyjotuQiVCtqzDMG+zsppFIJMjhIIaGhgQ4OtxhIBB43xRJkYTkWoPJHKhNC3VDg9u5Qy7/mToLClM8QpbI2WRiJuCu3sInaZKQXGvaZAbNkmrd0GG7MhFmSW4E6XQamUxGEPEc+QIeAY+CL2DD2JiuZF1G5+UX2u4L6uaT6FQnp22nhf38nhg4b0qUzGEjeEu8jeHK+RwZGRG1S0h5syg2jfufUI3HP4RtWI6D3H5ODNsf8L9uBcvm+fHq8bMXdO+7r6aqaFsOJN1CRSNDmkxownQfSHJexIHlsMQVyqQHfub3LJsveSUs3d5S/lpkCM1QmNIlvHc72MvlxM+cQZbI0rgzBkvkyu89cwRhsViEojdod1u0em0yxqAsNoXzX3b3RHhjsZgg8LLmSfR22iPj+htVH82nQkLdoAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/fe9ae4b91175dc4eeb8f5dcb32e030cc/8ac56/image-20220304212806392.webp 240w,
+/static/fe9ae4b91175dc4eeb8f5dcb32e030cc/d3be9/image-20220304212806392.webp 480w,
+/static/fe9ae4b91175dc4eeb8f5dcb32e030cc/0ea8f/image-20220304212806392.webp 815w&quot;
+              sizes=&quot;(max-width: 815px) 100vw, 815px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/fe9ae4b91175dc4eeb8f5dcb32e030cc/8ff5a/image-20220304212806392.png 240w,
+/static/fe9ae4b91175dc4eeb8f5dcb32e030cc/e85cb/image-20220304212806392.png 480w,
+/static/fe9ae4b91175dc4eeb8f5dcb32e030cc/ef916/image-20220304212806392.png 815w&quot;
+            sizes=&quot;(max-width: 815px) 100vw, 815px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/fe9ae4b91175dc4eeb8f5dcb32e030cc/ef916/image-20220304212806392.png&quot;
+            alt=&quot;image-20220304212806392&quot;
+            title=&quot;image-20220304212806392&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;これで適当なサイトにアクセスしたとき、アクセス元のアドレスがAzureVMに割り当てているグローバルIPアドレスに変更されていればOKです。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 730px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/cb0e0cb96c6948928636e233cb8f0826/e9beb/image-20220304212900959.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 33.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAAB50lEQVQoz1WOS0+TYRCFv5/gDhcaFxrXxn+gO010ZbwsjHjZmLjSpCEiBUxqvLBgURTazwItIRCiMcTSUkKgtjUmGAq0FKn2Tu/QllJotZfHgbhx8eSdmfecmaMMOX5gFEbmgwzaNxiYWUc/48cwu4F5ISi9nyGpB2yH83XRBI506lyQ0YWf9E37jtB9XGXKE0a5rhnkdud72rtM3Owwck0zxI0Olfu9Yzx6McGD5+Pc67XQ3mPhTrdZegu3nqpHnrtaE1cev+Pqk0EuPuxHZ5pFMQxoGFW7GTZ0MWLUyvuMSYsOx7Qe+yc9TruRiREdU2NvmDS/ZHxYh/q2E5PoDj1mVcuYqUdmGtyLH1BgCVj+j1jCy4rPSyi6zJrfy6XLF2g7fozTZ05w8lQb586fpVB0iNYnfP/nW6LZCqI0m05aLQ/Npot63SkfLrJZN5Goh3Tmq/ANt1vFan2FzdaH9fNr5uf7qVTmqFadNBou4YuwSK0WQKlUVonH/KTTAaq1HMl0mNJunHojw04hwv7+lhwpcnCQlQRFqUuSLsXvPznRbZFMhUSTk0CbsnANJZ9fIZHYIJkMUCzFSaV/ScKwmOJkMiFy+QiFQoxsLszOTkw0CUkdZm8vSbm8RX47ym45LQeD7B9s8hcCBcNXc4vukgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/cb0e0cb96c6948928636e233cb8f0826/8ac56/image-20220304212900959.webp 240w,
+/static/cb0e0cb96c6948928636e233cb8f0826/d3be9/image-20220304212900959.webp 480w,
+/static/cb0e0cb96c6948928636e233cb8f0826/87ca7/image-20220304212900959.webp 730w&quot;
+              sizes=&quot;(max-width: 730px) 100vw, 730px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/cb0e0cb96c6948928636e233cb8f0826/8ff5a/image-20220304212900959.png 240w,
+/static/cb0e0cb96c6948928636e233cb8f0826/e85cb/image-20220304212900959.png 480w,
+/static/cb0e0cb96c6948928636e233cb8f0826/e9beb/image-20220304212900959.png 730w&quot;
+            sizes=&quot;(max-width: 730px) 100vw, 730px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/cb0e0cb96c6948928636e233cb8f0826/e9beb/image-20220304212900959.png&quot;
+            alt=&quot;image-20220304212900959&quot;
+            title=&quot;image-20220304212900959&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://www.cman.jp/network/support/go_access.cgi&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;アクセス情報【使用中のIPアドレス確認】&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;今回は東日本リージョンで構成しましたが、同じ手順で海外リージョンのマシンをプロキシにすれば国外のIPを使用して接続できるようになるのかな？&lt;/p&gt;
+&lt;p&gt;手順も簡単なので有用ですね。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[DISMとBCDBootでUSB接続した外付けSSDから起動可能なWindowsメディアを作成する]]></title><link>https://kashiwaba-yuki.com/note-how-to-create-bootmedia-external-ssd</link><guid isPermaLink="false">https://kashiwaba-yuki.com/note-how-to-create-bootmedia-external-ssd</guid><pubDate>Thu, 03 Mar 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;今回は外付けSSDからUSB経由でWindowsを起動可能なブートメディアを作成していきます。&lt;/p&gt;
 &lt;p&gt;外付けSSDからUSB経由でWindowsを起動可能なブートメディアの作成方法についてググると非常に多くの情報がでてきます。&lt;/p&gt;
 &lt;p&gt;Windowsマシンでは外付けSSDからのブートは実現できないとか、有料アプリを使えば実現できるとか、Macなら可能とか、ほんとに色々な情報があり混乱しました。&lt;/p&gt;
 &lt;p&gt;結論から言って、本記事執筆時点で最新のWindows10 21H2のバージョンでも外付けSSDからUSB経由で起動可能なブートメディアを作成することはできます。&lt;/p&gt;
@@ -781,551 +1325,7 @@ M:\Windows\System32\bcdboot M:\Windows &lt;span class=&quot;token operator&quot;
 &lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
 &lt;p&gt;新しくMac端末を買ったので仮想マシンのセットアップまでやってみました。&lt;/p&gt;
 &lt;p&gt;本当はESXiを入れたかったのですが、どうやらMac miniの内臓SSDにESXiをインストールすることはできず、Thunderbolt 3で接続した外部SSDにインストールする必要があることがわかったので、今回はFusion Playerで代用しました。&lt;/p&gt;
-&lt;p&gt;また外部接続用のSSDが手に入ったらESXiの構築にもチャレンジしていこうと思います。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[仮想ネットワークゲートウェイでAzureにVPN接続してクラウドプロキシっぽい環境を作ったメモ]]></title><link>https://kashiwaba-yuki.com/azure-vpn-setup</link><guid isPermaLink="false">https://kashiwaba-yuki.com/azure-vpn-setup</guid><pubDate>Sun, 20 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;先日&lt;a href=&quot;/honeypot-setup-on-azure&quot;&gt;こちらの記事&lt;/a&gt;でAzure上にハニーポットを構築した話を書きましたが、アクセスコントロール的にもセキュリティ的にも、ハニーポットへの接続はVPNを使った方がよさそうでしたので、Azureの仮想ネットワークゲートウェイを使って仮想ネットワークに対してP2S VPN接続を構成しました。&lt;/p&gt;
-&lt;p&gt;ついでにAzureVM上のサーバをクラウドプロキシとして使えば色々セキュアなのでは？(浅い)と思ったので、VPN接続するAzureの仮想ネットワーク上にプロキシサーバも構築してみました。&lt;/p&gt;
-&lt;!-- omit in toc --&gt;
-&lt;h2 id=&quot;もくじ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%82%E3%81%8F%E3%81%98&quot; aria-label=&quot;もくじ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;もくじ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#%E4%BB%AE%E6%83%B3%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%A8%E4%BB%AE%E6%83%B3%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B&quot;&gt;仮想ネットワークと仮想ネットワークゲートウェイを作成する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E3%82%AA%E3%83%AC%E3%82%AA%E3%83%AC%E3%83%AB%E3%83%BC%E3%83%88%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B&quot;&gt;オレオレルート証明書とクライアント証明書を生成する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#p2s-vpn%E6%8E%A5%E7%B6%9A%E3%82%92%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B&quot;&gt;P2S VPN接続を構成する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#windows%E3%81%A7vpn%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B&quot;&gt;WindowsでVPNを設定する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#azurevm%E4%B8%8A%E3%81%AB%E3%83%97%E3%83%AD%E3%82%AD%E3%82%B7%E3%82%92%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B&quot;&gt;AzureVM上にプロキシを構成する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E6%8E%A5%E7%B6%9A%E3%83%86%E3%82%B9%E3%83%88&quot;&gt;接続テスト&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;仮想ネットワークと仮想ネットワークゲートウェイを作成する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E4%BB%AE%E6%83%B3%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%A8%E4%BB%AE%E6%83%B3%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B2%E3%83%BC%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A4%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B&quot; aria-label=&quot;仮想ネットワークと仮想ネットワークゲートウェイを作成する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;仮想ネットワークと仮想ネットワークゲートウェイを作成する&lt;/h2&gt;
-&lt;p&gt;まずは仮想ネットワークを作成します。&lt;/p&gt;
-&lt;p&gt;今回は&lt;code class=&quot;language-text&quot;&gt;172.16.0.0/20&lt;/code&gt;の仮想ネットワークを作成し、その中に仮想マシンを割り当てるサブネットを作成しました。&lt;/p&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 764px; &quot;
-    &gt;
-      &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/9763efe3f469ddd0448c1c516dd153a1/f3c12/image-20220304201840502.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
-  &gt;
-    &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 77.91666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAAsTAAALEwEAmpwYAAABxklEQVQ4y61TC2/eIAzk//+9VWsntdI2bcsbEgIk5HXzsfApa9WHpiGdYoixz2ejSj3iR2uhx4DvnUdlHIbR49h3HACO47gB5/6tpe7uPuHLwwOqqkJT13h6esT9/WdM0/QiwEeCq9cyXS9/BPmOstbChwlloxGmGeNoEWPEsiwYhgFN04A+760cWLlxRFk3KLoBRfmnbAZyzp0Ba/R9j65rJdmYzrquS8g+JHBGheJG6w5VWaQLz8vdpTkZr+1vJVNDis9sxhhpRMAgbHLmXs6M0WAV27piPbGduO23FWGOMG6CCsEjeI8pBCQ74W97egPpvxDxboTtDRTLJMiwKIrUgPdm7SrL8/FR8zyjbdskPANrrVFLY2gzeAbPmZQ2v/TJ9zjDWmTbtw1q3Q+hPCdHL6VTE45MjDP+ZSnnpSltI+NSYV2idG2T75ICUx9rh8SuFZ9cZp5RktiE1XUq1BoDtJthwga7APtFPiZgSZn5VT/uOTIvGH6rRUNjUbUavyp5FdROsmsj6O1N19tXWJEdO5t15zTwhbEfavBrcjIy3K28Cl6iBD/bAV8bh7isyZEPYJ4nKTcmmwx5vpzy8JzlK/zn9Rvm19/kFBhR6QAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;picture&gt;
-          &lt;source
-              srcset=&quot;/static/9763efe3f469ddd0448c1c516dd153a1/8ac56/image-20220304201840502.webp 240w,
-/static/9763efe3f469ddd0448c1c516dd153a1/d3be9/image-20220304201840502.webp 480w,
-/static/9763efe3f469ddd0448c1c516dd153a1/79237/image-20220304201840502.webp 764w&quot;
-              sizes=&quot;(max-width: 764px) 100vw, 764px&quot;
-              type=&quot;image/webp&quot;
-            /&gt;
-          &lt;source
-            srcset=&quot;/static/9763efe3f469ddd0448c1c516dd153a1/8ff5a/image-20220304201840502.png 240w,
-/static/9763efe3f469ddd0448c1c516dd153a1/e85cb/image-20220304201840502.png 480w,
-/static/9763efe3f469ddd0448c1c516dd153a1/f3c12/image-20220304201840502.png 764w&quot;
-            sizes=&quot;(max-width: 764px) 100vw, 764px&quot;
-            type=&quot;image/png&quot;
-          /&gt;
-          &lt;img
-            class=&quot;gatsby-resp-image-image&quot;
-            src=&quot;/static/9763efe3f469ddd0448c1c516dd153a1/f3c12/image-20220304201840502.png&quot;
-            alt=&quot;image-20220304201840502&quot;
-            title=&quot;image-20220304201840502&quot;
-            loading=&quot;lazy&quot;
-            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-          /&gt;
-        &lt;/picture&gt;
-  &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;次に仮想ネットワークゲートウェイを作成しました。&lt;/p&gt;
-&lt;p&gt;この時ネットワークゲートウェイサブネットのアドレス範囲に設定するアドレスは「仮想ネットワークのアドレス範囲」かつ「仮想ネットワーク内の既存のサブネットと重複しない」アドレス範囲に設定する必要があります。&lt;/p&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 755px; &quot;
-    &gt;
-      &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/19c219e1f532d0dbfc3dbcf0916e30dc/cab43/image-20220304202022318.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
-  &gt;
-    &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 99.16666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAACXUlEQVQ4y51U7XKbMBDk/Z8vf5xOp820cTAgvoWEJLjuHpDYnqTulJm1ZAF3e3t7ZE9PT3I6naQsCymKDZfLRc7ns3x7ftZ7IQThta7rQ2T8SSnJPM96cLz4v1fWNo1UVaWMQphvmDCJ906cc8qSZ8uy/AVJsq5tJcX4nuFgx5u1MZCi1IR938vsvQa/hwemacJ+ksxaKxHZWfbBjFdCxrw0UtdmZ+oVZPoZ+AyR8aHKVFKBCZnuKkpYRMoBgZC1A7sG0vDZhxpaO8olz5X2R8mrxGWVqndaBssax1HXuMvzZZdZe5hvm7FpuGi5xmwlX5f1GVRLNFA1VJ9dZdGA0LSpazFoyLzrd90Ef7P3e1MQsOs67SBvsDHHlSKacq7l9Vch+VsjboD4NirmfQ3Tvsfqcd+PaAqDaIdR4sZwC+jjKi+llaIe5NWMYsEihvhefpiDMuOZ7lEB9c3uu3SUHED25XcuP398FzsOqKKTASsrYoOGYVB9KRn3LfzMoGqb45AoMcsOetDYDEJjT3t3yWxbZ9WM73IlmGRyVrLDtDzkw+wuy5ereb6fbUpEEseEWGXcbwxJtUY3aWy3e1FfQozeBfUhEzlYQoM8MLf6kNEHzioCHpOSQDKvOnl7PUtjGnQ8l+JSih0sLLWqC24A0VNMR0CK3Sr1D9skMbmRtkKyZpTeDGqL5BdYJahdtnXfj1insBmbUGGxUkM19rrg/ygh4rMl//59VGNzZD6zz+wwUtYp6LcFpX0Flr1Ap21SgGWfko/RW6Wr8ZWpWlkCvj4uSiR82tZr4IzlEn8A4awbAE8ST9oAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;picture&gt;
-          &lt;source
-              srcset=&quot;/static/19c219e1f532d0dbfc3dbcf0916e30dc/8ac56/image-20220304202022318.webp 240w,
-/static/19c219e1f532d0dbfc3dbcf0916e30dc/d3be9/image-20220304202022318.webp 480w,
-/static/19c219e1f532d0dbfc3dbcf0916e30dc/a149a/image-20220304202022318.webp 755w&quot;
-              sizes=&quot;(max-width: 755px) 100vw, 755px&quot;
-              type=&quot;image/webp&quot;
-            /&gt;
-          &lt;source
-            srcset=&quot;/static/19c219e1f532d0dbfc3dbcf0916e30dc/8ff5a/image-20220304202022318.png 240w,
-/static/19c219e1f532d0dbfc3dbcf0916e30dc/e85cb/image-20220304202022318.png 480w,
-/static/19c219e1f532d0dbfc3dbcf0916e30dc/cab43/image-20220304202022318.png 755w&quot;
-            sizes=&quot;(max-width: 755px) 100vw, 755px&quot;
-            type=&quot;image/png&quot;
-          /&gt;
-          &lt;img
-            class=&quot;gatsby-resp-image-image&quot;
-            src=&quot;/static/19c219e1f532d0dbfc3dbcf0916e30dc/cab43/image-20220304202022318.png&quot;
-            alt=&quot;image-20220304202022318&quot;
-            title=&quot;image-20220304202022318&quot;
-            loading=&quot;lazy&quot;
-            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-          /&gt;
-        &lt;/picture&gt;
-  &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;これで作成が完了したので、次は仮想ネットワークゲートウェイに適用するルート証明書を作成します。&lt;/p&gt;
-&lt;p&gt;参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;P2S VPN と証明書認証を使用して VNet に接続する: ポータル - Azure VPN Gateway | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;オレオレルート証明書とクライアント証明書を生成する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%AA%E3%83%AC%E3%82%AA%E3%83%AC%E3%83%AB%E3%83%BC%E3%83%88%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B&quot; aria-label=&quot;オレオレルート証明書とクライアント証明書を生成する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;オレオレルート証明書とクライアント証明書を生成する&lt;/h2&gt;
-&lt;p&gt;仮想ネットワークゲートウェイを使用してVPN接続を行うために、クライアント側のWindowsでオレオレ証明書を作成します。&lt;/p&gt;
-&lt;p&gt;以下の公式ドキュメントの手順の通りに実施すればOKです。&lt;/p&gt;
-&lt;p&gt;参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/azure/vpn-gateway/vpn-gateway-certificates-point-to-site&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;P2S 用の証明書を生成してエクスポートする: PowerShell - Azure VPN Gateway | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;まずは管理者権限で起動したPowershellで以下のコマンドを実行します。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$cert&lt;/span&gt; = &lt;span class=&quot;token function&quot;&gt;New-SelfSignedCertificate&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;Type&lt;/span&gt; Custom &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;KeySpec Signature `
-&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;Subject &lt;span class=&quot;token string&quot;&gt;&quot;CN=P2SRootCert&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;KeyExportPolicy Exportable `
-&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;HashAlgorithm sha256 &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;KeyLength 2048 `
-&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;CertStoreLocation &lt;span class=&quot;token string&quot;&gt;&quot;Cert:\CurrentUser\My&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;KeyUsageProperty Sign &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;KeyUsage CertSign&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;これでオレオレルート証明書が作成できたので、このままクライアント証明書も作成します。&lt;/p&gt;
-&lt;p&gt;同じPowershellセッションで以下のコマンドを実行します。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;&lt;span class=&quot;token function&quot;&gt;New-SelfSignedCertificate&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;Type&lt;/span&gt; Custom &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;DnsName P2SChildCert &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;KeySpec Signature `
-&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;Subject &lt;span class=&quot;token string&quot;&gt;&quot;CN=P2SChildCert&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;KeyExportPolicy Exportable `
-&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;HashAlgorithm sha256 &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;KeyLength 2048 `
-&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;CertStoreLocation &lt;span class=&quot;token string&quot;&gt;&quot;Cert:\CurrentUser\My&quot;&lt;/span&gt; `
-&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;Signer &lt;span class=&quot;token variable&quot;&gt;$cert&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;TextExtension @&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;2.5.29.37={text}1.3.6.1.5.5.7.3.2&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;成功すると以下のような画面になります。&lt;/p&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
-    &gt;
-      &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/194ee083b47c67d0f91560b7aa6071b3/709cb/image-20220304203105251.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
-  &gt;
-    &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 25.83333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA7UlEQVQY022PW2+CQBSE10ZWRbDa1F5ieUApKqJIW0KqIVx3jf3//2c8C9j44MOXmZPsmTPL7N8zrB+JV+ItPuP9cMLTdworzmAfS0yCFM/7EtP9CUOvAl/m6K8KGJuqnjU3ByeU769LsGkoYHoZBmEC089hbivoPrET6BJMPVoWRA5Gi8p3HNJ51rBouc6PgYDhSwqT0DcCQ0J5g1T3mhaqjd6q6QtqLaGpIxSkwm9hdizxEhTofSbQFoSTgJPnpD03xSz6qwM4BWhuga7baL18L9BwIjx8fNV0ZmHD1VsRRluJMaGa/n+v5V7oBXKPkC7zRjjmAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;picture&gt;
-          &lt;source
-              srcset=&quot;/static/194ee083b47c67d0f91560b7aa6071b3/8ac56/image-20220304203105251.webp 240w,
-/static/194ee083b47c67d0f91560b7aa6071b3/d3be9/image-20220304203105251.webp 480w,
-/static/194ee083b47c67d0f91560b7aa6071b3/e46b2/image-20220304203105251.webp 960w,
-/static/194ee083b47c67d0f91560b7aa6071b3/43c62/image-20220304203105251.webp 1034w&quot;
-              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
-              type=&quot;image/webp&quot;
-            /&gt;
-          &lt;source
-            srcset=&quot;/static/194ee083b47c67d0f91560b7aa6071b3/8ff5a/image-20220304203105251.png 240w,
-/static/194ee083b47c67d0f91560b7aa6071b3/e85cb/image-20220304203105251.png 480w,
-/static/194ee083b47c67d0f91560b7aa6071b3/d9199/image-20220304203105251.png 960w,
-/static/194ee083b47c67d0f91560b7aa6071b3/709cb/image-20220304203105251.png 1034w&quot;
-            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
-            type=&quot;image/png&quot;
-          /&gt;
-          &lt;img
-            class=&quot;gatsby-resp-image-image&quot;
-            src=&quot;/static/194ee083b47c67d0f91560b7aa6071b3/d9199/image-20220304203105251.png&quot;
-            alt=&quot;image-20220304203105251&quot;
-            title=&quot;image-20220304203105251&quot;
-            loading=&quot;lazy&quot;
-            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-          /&gt;
-        &lt;/picture&gt;
-  &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Windows上で証明書ストアを参照してみると、以下の2つの証明書が登録されていました。&lt;/p&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
-    &gt;
-      &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/b5c43c4ff1c25d259cc948972ffe094d/cdef6/image-20220304203801460.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
-  &gt;
-    &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 20%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA5ElEQVQY03WOy07CUBRF+9/GGeEhkmugipWfcECC1UE1DUqQ+AIMA56mURMUXwFLW1me2zpg4mDn3L3PPivXGFdTeE6efi3N0E7z6GwzPMryUlcEt/ssb8r/an3vXyfT8NwiUzePd6r4aCieXSUwEzoHBFIK9KEuiyIBrGf+1V78TnYWoQa+nWXoHW7w5BQI5WB+WeLBTvFa34l9DJbi5DjLvLXLSrzWomUytjN8C3Qm3dl50jeWzS0G1U1Gdo7JSU6AJp8XivdGkahtQbfCjwC018fcV+IsurP4apYIZfp/v9X5L/joCMlYBDZrAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;picture&gt;
-          &lt;source
-              srcset=&quot;/static/b5c43c4ff1c25d259cc948972ffe094d/8ac56/image-20220304203801460.webp 240w,
-/static/b5c43c4ff1c25d259cc948972ffe094d/d3be9/image-20220304203801460.webp 480w,
-/static/b5c43c4ff1c25d259cc948972ffe094d/e46b2/image-20220304203801460.webp 960w,
-/static/b5c43c4ff1c25d259cc948972ffe094d/5231b/image-20220304203801460.webp 1163w&quot;
-              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
-              type=&quot;image/webp&quot;
-            /&gt;
-          &lt;source
-            srcset=&quot;/static/b5c43c4ff1c25d259cc948972ffe094d/8ff5a/image-20220304203801460.png 240w,
-/static/b5c43c4ff1c25d259cc948972ffe094d/e85cb/image-20220304203801460.png 480w,
-/static/b5c43c4ff1c25d259cc948972ffe094d/d9199/image-20220304203801460.png 960w,
-/static/b5c43c4ff1c25d259cc948972ffe094d/cdef6/image-20220304203801460.png 1163w&quot;
-            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
-            type=&quot;image/png&quot;
-          /&gt;
-          &lt;img
-            class=&quot;gatsby-resp-image-image&quot;
-            src=&quot;/static/b5c43c4ff1c25d259cc948972ffe094d/d9199/image-20220304203801460.png&quot;
-            alt=&quot;image-20220304203801460&quot;
-            title=&quot;image-20220304203801460&quot;
-            loading=&quot;lazy&quot;
-            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-          /&gt;
-        &lt;/picture&gt;
-  &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;このうち、「P2SRootCert」という名前のルート証明書からcerファイルをエクスポートします。&lt;/p&gt;
-&lt;p&gt;ルート証明書を右クリックしてエクスポートを選択し、「Base64 Encode~」を選択して進みます。&lt;/p&gt;
-&lt;p&gt;最終的に以下のような設定でエクスポートします。&lt;/p&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 473px; &quot;
-    &gt;
-      &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/46960aabb8a03d1d20ca4efd91ff8d5a/c7c3c/image-20220304203933730.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
-  &gt;
-    &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 91.66666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC/ElEQVQ4y51UW1cSURjlr9XqwdVfMFcr3+ulVQ+1ViWCIAyXmeEiAlarC48tDcm74hW8l4iIZomCkCiioZbA7jszCIO9WA+b7xzmnD3fZe9RHYV4fB/UIzHUjr2gCbkZAfmwiP1JC45CQhXZKQtyFDMTZvwYN0vnyhE3sNpJsZOiW4Iq5lfD73yAgPM+hryPEPmgxppfg5DvKZJjJmwN6LDeq8HXfj2So0bM+J4g+OoxJWAkAo9EVkeIqAdY76rAC6x5ZMQUa+WeRQZ2T8pOzhKRvwivEETdlcj23hqR8gwR1LKToyof5rEZ0GCrT48s9e2AkJ204pj6yPa5aR4Z6m1qlCMYkaH+sX4eTFlx8cVVJS1fZigNhfq0PWjA/oQFh3QwHxJRmLOBPWOR/Z8cMSI9xuGQXpAOcvQSM34tdSgIZaikcuIvK+Ww3lRiBWVlyVeel4isGKmBZakqzApIBdRI+J8jM6DBDsX9wVYcDmlxPKYnAsoiTqWtK7DWISPmqgf1UZUgPTVxRjQarWgyW3CrlaA242aLGTdemNCg5dHQVsNtnYBm3o57vIg7ZhHNFhF3rQIaOQHfgpRhivql93IweAVoOzk8FDg884jQve2oQ9sbBie0rx0wdPHguiywvbfD4bPD7nNAfGfH3pQLqrMFO7LDWqT7NciNtCM/qsPvkAlYFoElHsWwGefTRpRmLcACD3y2oUjrwiRHraD+btB0NynG3bhYdlIP5+1Y7VEj3qtFYtiEjYBWckFmwipZMebXItItu2fzkx7pcYtkvzRN+eeCA2c06dNFJwpsTVF1vuQgTcm62h5sx+6wAeVVT22qTPRxhZNI8LtUSYoktEtSYr7eoXvJYQ4sOSJ0ympnzojKzlDqqqRA1bfRSwcpHEUSYrqUCIsrrjqC8n+gtNJJhFQy+5G8qPTodRF1V78yTNQS4dmiA6fzNpzMiv+E47CAc7pbJj8zMLJzNpQT+ghs97Uh/pEm3XN9xLpbkCL/n8zwEjI0oMKcHX8A78KQdb7lPQ0AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;picture&gt;
-          &lt;source
-              srcset=&quot;/static/46960aabb8a03d1d20ca4efd91ff8d5a/8ac56/image-20220304203933730.webp 240w,
-/static/46960aabb8a03d1d20ca4efd91ff8d5a/7124e/image-20220304203933730.webp 473w&quot;
-              sizes=&quot;(max-width: 473px) 100vw, 473px&quot;
-              type=&quot;image/webp&quot;
-            /&gt;
-          &lt;source
-            srcset=&quot;/static/46960aabb8a03d1d20ca4efd91ff8d5a/8ff5a/image-20220304203933730.png 240w,
-/static/46960aabb8a03d1d20ca4efd91ff8d5a/c7c3c/image-20220304203933730.png 473w&quot;
-            sizes=&quot;(max-width: 473px) 100vw, 473px&quot;
-            type=&quot;image/png&quot;
-          /&gt;
-          &lt;img
-            class=&quot;gatsby-resp-image-image&quot;
-            src=&quot;/static/46960aabb8a03d1d20ca4efd91ff8d5a/c7c3c/image-20220304203933730.png&quot;
-            alt=&quot;image-20220304203933730&quot;
-            title=&quot;image-20220304203933730&quot;
-            loading=&quot;lazy&quot;
-            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-          /&gt;
-        &lt;/picture&gt;
-  &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;エクスポートされたcerファイルの&lt;code class=&quot;language-text&quot;&gt;BEGIN CERTIFICATE&lt;/code&gt;の次の行から書かれている鍵の中身をコピーしておきます。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;-----BEGIN CERTIFICATE-----
-&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;この中身をコピー&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
------END CERTIFICATE-----&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&quot;p2s-vpn接続を構成する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#p2s-vpn%E6%8E%A5%E7%B6%9A%E3%82%92%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B&quot; aria-label=&quot;p2s vpn接続を構成する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;P2S VPN接続を構成する&lt;/h2&gt;
-&lt;p&gt;仮想ネットワークゲートウェイの画面から「ポイント対サイトの構成」を開きます。&lt;/p&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 581px; &quot;
-    &gt;
-      &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/8a89e3e28bfcab709b0e7a873e089fd1/92d15/image-20220304204212568.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
-  &gt;
-    &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 68.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAABi0lEQVQ4y51TaW+DMAzN//9Z28eu6tCkHpNKOQorBcJ9F97sbJlQV6lqLVkhxu89x07EYudh/WHg3TDw+vqC3XaLzXqN5fINBsV4b1kHcguu66i9ae7hOA5WqxUWiwWqqsI0TcqFFZaIwwBFUSDLMiRJgq7rMAwD+r5H27a4XC4qeRxHtbLp/TzGJmQcQcaxImMidiZpmuYnmZJYTIu0FGehuq7Vnp1zGZMnEsLxPBWYK2rVPM9RlSWyVKpkFnZsGxGtURQhTVNVvfaBhEQQxQrUkAKr6eOw+SSWZAUOYQEzyEm4JvIUJeWzc5XXJoqyUmrsDJgTHo9HEqI2jEAzTLhlehh/QymJUEqphsGq+ocm7LpWQ/+B5wPS3yIKY9Vk7gH37rpCbvY8NgffMuH7ngL6vq+qvEd4zwRXd6snTxOegjNNt1fH1cfm9WlC/xRg/CW4No+uzcOEtm3R0wvpfiWIwjPyLEVTV+Q1+B+/kIcIv3gojg2XwJ+7DV1mFxm9ilTGMPd7IuwfIvwGJ29AqTzHzX8AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;picture&gt;
-          &lt;source
-              srcset=&quot;/static/8a89e3e28bfcab709b0e7a873e089fd1/8ac56/image-20220304204212568.webp 240w,
-/static/8a89e3e28bfcab709b0e7a873e089fd1/d3be9/image-20220304204212568.webp 480w,
-/static/8a89e3e28bfcab709b0e7a873e089fd1/39daa/image-20220304204212568.webp 581w&quot;
-              sizes=&quot;(max-width: 581px) 100vw, 581px&quot;
-              type=&quot;image/webp&quot;
-            /&gt;
-          &lt;source
-            srcset=&quot;/static/8a89e3e28bfcab709b0e7a873e089fd1/8ff5a/image-20220304204212568.png 240w,
-/static/8a89e3e28bfcab709b0e7a873e089fd1/e85cb/image-20220304204212568.png 480w,
-/static/8a89e3e28bfcab709b0e7a873e089fd1/92d15/image-20220304204212568.png 581w&quot;
-            sizes=&quot;(max-width: 581px) 100vw, 581px&quot;
-            type=&quot;image/png&quot;
-          /&gt;
-          &lt;img
-            class=&quot;gatsby-resp-image-image&quot;
-            src=&quot;/static/8a89e3e28bfcab709b0e7a873e089fd1/92d15/image-20220304204212568.png&quot;
-            alt=&quot;image-20220304204212568&quot;
-            title=&quot;image-20220304204212568&quot;
-            loading=&quot;lazy&quot;
-            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-          /&gt;
-        &lt;/picture&gt;
-  &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;ここから「今すぐ構成」をクリックし、設定画面に進みます。&lt;/p&gt;
-&lt;p&gt;アドレスプールには仮想ネットワークのレンジに含まれるアドレスプールを指定します。&lt;/p&gt;
-&lt;p&gt;また、トンネルの種類は特に問題がなければ&lt;code class=&quot;language-text&quot;&gt;IKEv2&lt;/code&gt;にするのが良いと思います。&lt;/p&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
-    &gt;
-      &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/4cf7cb7d01a1def6252ca3065e197ac9/218a4/image-20220304204407809.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
-  &gt;
-    &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 59.166666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsTAAALEwEAmpwYAAABmklEQVQoz4WT23LbIBRF/f+f4sZxO8l7JnlJ/sB9cXNr7EhCFwTIEhftHo5cRvE4CTN7EAMsNpujxTbTeHp8xMvzM/b7PassSzRNg6qqIIRAlmUYxzHpq7YQTQutNbz3rEAbjPVwYYQPgQGBeucsrB14zRx+qkUuFZRs0sIIv725w2q5wtWva4isRHAjbO/gBs99CJPLs0ClB0gC9n3Pi6SUyN9zvL3u0DYK9mDhh8AwT3IEHI9AnLn9QtaSM/sPjNlFkOvJsccEmWsGPOuwaiRdwafDZNsi22Uo3gVDT2UPjjP9PMOyxuHQwVlLwTs0dY3ouq5qcgJ2M2m6IvdfvXJe5Ni9/UWR5zBaoaQyEaKAIqfeu/SySrX4s91SKZXQSvE4idZ2XTc5rFVHA5NOaGkybiryjNxWrHjQ780Gq4sL/Fyvsb68TIrjH8slHu7vJ4et0h8KNr5yhCpyEbOah/9dOzpsP4QcgfEPMUZzpvHacd5QfRpjjjFYLvRJLuXPQFGXGPohnRLLJm7gv8Na/rbHDVH8fSI7A/4DfMygpJYWvYEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;picture&gt;
-          &lt;source
-              srcset=&quot;/static/4cf7cb7d01a1def6252ca3065e197ac9/8ac56/image-20220304204407809.webp 240w,
-/static/4cf7cb7d01a1def6252ca3065e197ac9/d3be9/image-20220304204407809.webp 480w,
-/static/4cf7cb7d01a1def6252ca3065e197ac9/e46b2/image-20220304204407809.webp 960w,
-/static/4cf7cb7d01a1def6252ca3065e197ac9/c18de/image-20220304204407809.webp 1052w&quot;
-              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
-              type=&quot;image/webp&quot;
-            /&gt;
-          &lt;source
-            srcset=&quot;/static/4cf7cb7d01a1def6252ca3065e197ac9/8ff5a/image-20220304204407809.png 240w,
-/static/4cf7cb7d01a1def6252ca3065e197ac9/e85cb/image-20220304204407809.png 480w,
-/static/4cf7cb7d01a1def6252ca3065e197ac9/d9199/image-20220304204407809.png 960w,
-/static/4cf7cb7d01a1def6252ca3065e197ac9/218a4/image-20220304204407809.png 1052w&quot;
-            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
-            type=&quot;image/png&quot;
-          /&gt;
-          &lt;img
-            class=&quot;gatsby-resp-image-image&quot;
-            src=&quot;/static/4cf7cb7d01a1def6252ca3065e197ac9/d9199/image-20220304204407809.png&quot;
-            alt=&quot;image-20220304204407809&quot;
-            title=&quot;image-20220304204407809&quot;
-            loading=&quot;lazy&quot;
-            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-          /&gt;
-        &lt;/picture&gt;
-  &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;その後、「認証の種類」を「Azure証明書」に設定し、先ほどコピーしたルート証明書を貼り付けて保存します。&lt;/p&gt;
-&lt;p&gt;設定が完了すると「VPNクライアントのダウンロード」が可能になるので、ここからダウンロードしたクライアントをVPN接続に使用するWindowsマシンにインストールします。&lt;/p&gt;
-&lt;h2 id=&quot;windowsでvpnを設定する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#windows%E3%81%A7vpn%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B&quot; aria-label=&quot;windowsでvpnを設定する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;WindowsでVPNを設定する&lt;/h2&gt;
-&lt;p&gt;クライアントがインストールできたら、WindowsのVPNの設定を開き、Azureに接続します。&lt;/p&gt;
-&lt;p&gt;無事に接続できれば、以下のように仮想ネットワークに設定したAzure側のローカルIPアドレスでSSH接続などを行うことができます。&lt;/p&gt;
-&lt;p&gt;※ VM側のセキュリティグループの許可設定を忘れずに。&lt;/p&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
-    &gt;
-      &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/8eb3966f00e81c5e29e709906e53c39b/e548f/image-20220304210335018.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
-  &gt;
-    &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 70.41666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAACB0lEQVQ4y2VT2XLiQBDz4wbwfR/4wGASwOQg2aS2av//s7StNuMN5GFKc1mtlsbWaVjj+bHG5dThcuzw8tRgHErsN6mMAvsux7ZJ8dQXihxDm+ng3nFXCpYoUx+r5S9YoxDy4FE+Pu9rHdsm0/XHuEGVBcgTD+s81I+4LgS55pzYFBGKxIe9eoD1dmy1CgneRSULjPv/Rd4OreJhW0mBDmfphl2wq7Pc4/dGfRTasJoywqZOQGSLZeajreJZDc+4LmQ/Cmwkkat3cjlPY1fVe+4Sjv2gaHVVgr+XAX9ed6iFNA5dfJ570Nuvly2+nnvxtsVv2TtsSy3Mj1fSnmMvYMvcdRZKRrQyqbBrU1TiBatnsaeK6iLUNoi1eLRZJ3IvE3WB3HER+KuZyJCpQhJUeaCEvbRHlWwlDp25QCJzEnGPZyzAeeBNpDcKmzLWUPo6Fd8CdOvJT01S1BHZ/nFXqZ8kZJq5pDq1v7hVyCA+xafXQ6MtMdEkcjQAo3J6b5Wm34sNLEqVJGR3LDIT0i/zYDVxuVxcE6Z/RJMiA3DufPvRMon4N1AdU+Q7pMqTKOJb45xqlPzqNe/Tb99b3pCpQl+M5SS4orn03fBQEuWaZ7SAdkxntwkr4SDVqIJIhfz1GMI4VKr6JMhzekhltIWB3BPNhKE/mf89hPSqwvwZRLNnHvJ9q2b8Aw/lZ5EFks3UAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;picture&gt;
-          &lt;source
-              srcset=&quot;/static/8eb3966f00e81c5e29e709906e53c39b/8ac56/image-20220304210335018.webp 240w,
-/static/8eb3966f00e81c5e29e709906e53c39b/d3be9/image-20220304210335018.webp 480w,
-/static/8eb3966f00e81c5e29e709906e53c39b/e46b2/image-20220304210335018.webp 960w,
-/static/8eb3966f00e81c5e29e709906e53c39b/1e975/image-20220304210335018.webp 975w&quot;
-              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
-              type=&quot;image/webp&quot;
-            /&gt;
-          &lt;source
-            srcset=&quot;/static/8eb3966f00e81c5e29e709906e53c39b/8ff5a/image-20220304210335018.png 240w,
-/static/8eb3966f00e81c5e29e709906e53c39b/e85cb/image-20220304210335018.png 480w,
-/static/8eb3966f00e81c5e29e709906e53c39b/d9199/image-20220304210335018.png 960w,
-/static/8eb3966f00e81c5e29e709906e53c39b/e548f/image-20220304210335018.png 975w&quot;
-            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
-            type=&quot;image/png&quot;
-          /&gt;
-          &lt;img
-            class=&quot;gatsby-resp-image-image&quot;
-            src=&quot;/static/8eb3966f00e81c5e29e709906e53c39b/d9199/image-20220304210335018.png&quot;
-            alt=&quot;image-20220304210335018&quot;
-            title=&quot;image-20220304210335018&quot;
-            loading=&quot;lazy&quot;
-            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-          /&gt;
-        &lt;/picture&gt;
-  &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;ちなみに僕の環境のネットワークセキュリティグループはこんな感じにしてみました。&lt;/p&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 960px; &quot;
-    &gt;
-      &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/6a7ba15e8f1506feaa048ce87f057b43/11a8f/image-20220304221534416.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
-  &gt;
-    &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 23.75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA50lEQVQY011QyU7FMBDr/38VF84gDhw4gQQP0TZ9TZplspqZCSdGclpZsT3O8vF5gzEG+3HH/Yo4nMd5ngghYN93BMoYkJnn/3HU8fJNeP0hPN8SFmsdYgxw3iPmitqB3gdyzqi1IpeGEJOKW2sKMScOkjG+4OHtwNNXwuN7wDJGV2GKcW4xJogIncUC7y8Vp5Swrqved86hlsoBhBTM374NSykFAqktVUXUe2cTr7yIr2saSsi2bfoVLvHmuRAOa9C4FXGrRQQCa61Wl6piKMbCS8XI248xn0F44TSYucahkRvoP9//Be67hRYwNfTTAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;picture&gt;
-          &lt;source
-              srcset=&quot;/static/6a7ba15e8f1506feaa048ce87f057b43/8ac56/image-20220304221534416.webp 240w,
-/static/6a7ba15e8f1506feaa048ce87f057b43/d3be9/image-20220304221534416.webp 480w,
-/static/6a7ba15e8f1506feaa048ce87f057b43/e46b2/image-20220304221534416.webp 960w,
-/static/6a7ba15e8f1506feaa048ce87f057b43/4cec6/image-20220304221534416.webp 1272w&quot;
-              sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
-              type=&quot;image/webp&quot;
-            /&gt;
-          &lt;source
-            srcset=&quot;/static/6a7ba15e8f1506feaa048ce87f057b43/8ff5a/image-20220304221534416.png 240w,
-/static/6a7ba15e8f1506feaa048ce87f057b43/e85cb/image-20220304221534416.png 480w,
-/static/6a7ba15e8f1506feaa048ce87f057b43/d9199/image-20220304221534416.png 960w,
-/static/6a7ba15e8f1506feaa048ce87f057b43/11a8f/image-20220304221534416.png 1272w&quot;
-            sizes=&quot;(max-width: 960px) 100vw, 960px&quot;
-            type=&quot;image/png&quot;
-          /&gt;
-          &lt;img
-            class=&quot;gatsby-resp-image-image&quot;
-            src=&quot;/static/6a7ba15e8f1506feaa048ce87f057b43/d9199/image-20220304221534416.png&quot;
-            alt=&quot;image-20220304221534416&quot;
-            title=&quot;image-20220304221534416&quot;
-            loading=&quot;lazy&quot;
-            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-          /&gt;
-        &lt;/picture&gt;
-  &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;この後セットアップするプロキシのポートも開放してあります。&lt;/p&gt;
-&lt;p&gt;「ソース」を「VirtualNetwork」に設定しているので、グローバルIPでは接続できず、P2S VPN接続でAzureの仮想ネットワークに接続した端末からの接続のみを受け入れる構成になっているはずです。&lt;/p&gt;
-&lt;p&gt;接続には登録したルート証明書に対応するクライアント証明書が必要になるので、かなりセキュアになった感じありますね。&lt;/p&gt;
-&lt;h2 id=&quot;azurevm上にプロキシを構成する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#azurevm%E4%B8%8A%E3%81%AB%E3%83%97%E3%83%AD%E3%82%AD%E3%82%B7%E3%82%92%E6%A7%8B%E6%88%90%E3%81%99%E3%82%8B&quot; aria-label=&quot;azurevm上にプロキシを構成する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;AzureVM上にプロキシを構成する&lt;/h2&gt;
-&lt;p&gt;最後に、AzureVM上にSquidを構築してプロキシ化したいと思います。&lt;/p&gt;
-&lt;p&gt;マシンはUbuntu20.04を使用しています。&lt;/p&gt;
-&lt;p&gt;まずはアップデートを行います。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; update &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; upgrade -y
-&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;make&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;vim&lt;/span&gt; -y&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;続いてSquidをインストールして設定ファイルを編集します。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;apt&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; squid -y
-&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;cp&lt;/span&gt; /etc/squid/squid.conf /etc/squid/squid.conf.origin
-&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;vim&lt;/span&gt; /etc/squid/squid.conf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;今回はとりあえず最低限の設定をしたいので、&lt;code class=&quot;language-text&quot;&gt;http_port&lt;/code&gt;と&lt;code class=&quot;language-text&quot;&gt;http_access&lt;/code&gt;の2箇所を変更します。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Squid normally listens to port 3128&lt;/span&gt;
-http_port &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;VMのプライベートIP&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;:3128
-
-acl vGateways src &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;仮想ネットワークゲートウェイのIPレンジ&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
-http_access allow vGateways&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;http_port&lt;/code&gt;は&lt;code class=&quot;language-text&quot;&gt;&amp;lt;VMのプライベートIP&gt;:3128&lt;/code&gt;のように指定することで、特定のインターフェースのポートのみ通信を受け入れるように構成できます。&lt;/p&gt;
-&lt;p&gt;また、&lt;code class=&quot;language-text&quot;&gt;http_access&lt;/code&gt;に仮想ネットワークゲートウェイのIPレンジを設定することで、VPN経由の通信のみがプロキシを利用できるようにします。&lt;/p&gt;
-&lt;p&gt;これで最低限の設定はOKなので、Squidを起動します。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; systemctl &lt;span class=&quot;token builtin class-name&quot;&gt;enable&lt;/span&gt; squid
-&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt; systemctl restart squid&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2 id=&quot;接続テスト&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E6%8E%A5%E7%B6%9A%E3%83%86%E3%82%B9%E3%83%88&quot; aria-label=&quot;接続テスト permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;接続テスト&lt;/h2&gt;
-&lt;p&gt;VPNを構成したWindowsマシンでAzureVM上のサーバに対してプロキシ設定を実施します。&lt;/p&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 815px; &quot;
-    &gt;
-      &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/fe9ae4b91175dc4eeb8f5dcb32e030cc/ef916/image-20220304212806392.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
-  &gt;
-    &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsTAAALEwEAmpwYAAACyElEQVQ4y21TaVPaUBTFFdz3DZRNcKS0VsSqg0wtjlq1fnF0BBGSkIQlxCxi1f7703sfjbUdP5y5L8nkvHvuOdd3dHSE0/MzfD08RP5bAfuMQgEHx8eIJxNYXV3F2toaJiYmMDY2hvHxcYHR0VEMDg7C7/f/A9/l5SVKtyV8v7jAwckpCmc/cHh2jvOra3zMbCG4tIRkMolQKIQlOjOCwSBmZ2ffJ9R1Ha7romkYqDY03KhVlOQ7VNQaNrNZhOjnVCqF4eFh9PT0oL+/HwMDAwL/kwlCRVFgmiaqsoRyjYjqVVSUMhRVQSa7hfn5edHR9PS0OHNl0rfo6+sTF3DHPk3T4Dx0oDaaAlqrBUnTUa23sLm9g/DKCtbX1xGJRBCPx7G8vCzmOTc3h5mZGVEXFxcxOTnZ7VCSZRiWTUT3RGih1jBRlDVclBWkNrcRi0axsbEhwGTcIf/M3fIcmXBhYQFTU1N/JdudRzTMDqqaDaVuoSwruCpf48OnFKLUWTgcFmawrN7eXiGR4cn1zkKyTB0+PD2j7TyjotuQiVCtqzDMG+zsppFIJMjhIIaGhgQ4OtxhIBB43xRJkYTkWoPJHKhNC3VDg9u5Qy7/mToLClM8QpbI2WRiJuCu3sInaZKQXGvaZAbNkmrd0GG7MhFmSW4E6XQamUxGEPEc+QIeAY+CL2DD2JiuZF1G5+UX2u4L6uaT6FQnp22nhf38nhg4b0qUzGEjeEu8jeHK+RwZGRG1S0h5syg2jfufUI3HP4RtWI6D3H5ODNsf8L9uBcvm+fHq8bMXdO+7r6aqaFsOJN1CRSNDmkxownQfSHJexIHlsMQVyqQHfub3LJsveSUs3d5S/lpkCM1QmNIlvHc72MvlxM+cQZbI0rgzBkvkyu89cwRhsViEojdod1u0em0yxqAsNoXzX3b3RHhjsZgg8LLmSfR22iPj+htVH82nQkLdoAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;picture&gt;
-          &lt;source
-              srcset=&quot;/static/fe9ae4b91175dc4eeb8f5dcb32e030cc/8ac56/image-20220304212806392.webp 240w,
-/static/fe9ae4b91175dc4eeb8f5dcb32e030cc/d3be9/image-20220304212806392.webp 480w,
-/static/fe9ae4b91175dc4eeb8f5dcb32e030cc/0ea8f/image-20220304212806392.webp 815w&quot;
-              sizes=&quot;(max-width: 815px) 100vw, 815px&quot;
-              type=&quot;image/webp&quot;
-            /&gt;
-          &lt;source
-            srcset=&quot;/static/fe9ae4b91175dc4eeb8f5dcb32e030cc/8ff5a/image-20220304212806392.png 240w,
-/static/fe9ae4b91175dc4eeb8f5dcb32e030cc/e85cb/image-20220304212806392.png 480w,
-/static/fe9ae4b91175dc4eeb8f5dcb32e030cc/ef916/image-20220304212806392.png 815w&quot;
-            sizes=&quot;(max-width: 815px) 100vw, 815px&quot;
-            type=&quot;image/png&quot;
-          /&gt;
-          &lt;img
-            class=&quot;gatsby-resp-image-image&quot;
-            src=&quot;/static/fe9ae4b91175dc4eeb8f5dcb32e030cc/ef916/image-20220304212806392.png&quot;
-            alt=&quot;image-20220304212806392&quot;
-            title=&quot;image-20220304212806392&quot;
-            loading=&quot;lazy&quot;
-            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-          /&gt;
-        &lt;/picture&gt;
-  &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;これで適当なサイトにアクセスしたとき、アクセス元のアドレスがAzureVMに割り当てているグローバルIPアドレスに変更されていればOKです。&lt;/p&gt;
-&lt;p&gt;&lt;span
-      class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 730px; &quot;
-    &gt;
-      &lt;a
-    class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/cb0e0cb96c6948928636e233cb8f0826/e9beb/image-20220304212900959.png&quot;
-    style=&quot;display: block&quot;
-    target=&quot;_blank&quot;
-    rel=&quot;noopener&quot;
-  &gt;
-    &lt;span
-    class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 33.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsTAAALEwEAmpwYAAAB50lEQVQoz1WOS0+TYRCFv5/gDhcaFxrXxn+gO010ZbwsjHjZmLjSpCEiBUxqvLBgURTazwItIRCiMcTSUkKgtjUmGAq0FKn2Tu/QllJotZfHgbhx8eSdmfecmaMMOX5gFEbmgwzaNxiYWUc/48cwu4F5ISi9nyGpB2yH83XRBI506lyQ0YWf9E37jtB9XGXKE0a5rhnkdud72rtM3Owwck0zxI0Olfu9Yzx6McGD5+Pc67XQ3mPhTrdZegu3nqpHnrtaE1cev+Pqk0EuPuxHZ5pFMQxoGFW7GTZ0MWLUyvuMSYsOx7Qe+yc9TruRiREdU2NvmDS/ZHxYh/q2E5PoDj1mVcuYqUdmGtyLH1BgCVj+j1jCy4rPSyi6zJrfy6XLF2g7fozTZ05w8lQb586fpVB0iNYnfP/nW6LZCqI0m05aLQ/Npot63SkfLrJZN5Goh3Tmq/ANt1vFan2FzdaH9fNr5uf7qVTmqFadNBou4YuwSK0WQKlUVonH/KTTAaq1HMl0mNJunHojw04hwv7+lhwpcnCQlQRFqUuSLsXvPznRbZFMhUSTk0CbsnANJZ9fIZHYIJkMUCzFSaV/ScKwmOJkMiFy+QiFQoxsLszOTkw0CUkdZm8vSbm8RX47ym45LQeD7B9s8hcCBcNXc4vukgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
-  &gt;&lt;/span&gt;
-  &lt;picture&gt;
-          &lt;source
-              srcset=&quot;/static/cb0e0cb96c6948928636e233cb8f0826/8ac56/image-20220304212900959.webp 240w,
-/static/cb0e0cb96c6948928636e233cb8f0826/d3be9/image-20220304212900959.webp 480w,
-/static/cb0e0cb96c6948928636e233cb8f0826/87ca7/image-20220304212900959.webp 730w&quot;
-              sizes=&quot;(max-width: 730px) 100vw, 730px&quot;
-              type=&quot;image/webp&quot;
-            /&gt;
-          &lt;source
-            srcset=&quot;/static/cb0e0cb96c6948928636e233cb8f0826/8ff5a/image-20220304212900959.png 240w,
-/static/cb0e0cb96c6948928636e233cb8f0826/e85cb/image-20220304212900959.png 480w,
-/static/cb0e0cb96c6948928636e233cb8f0826/e9beb/image-20220304212900959.png 730w&quot;
-            sizes=&quot;(max-width: 730px) 100vw, 730px&quot;
-            type=&quot;image/png&quot;
-          /&gt;
-          &lt;img
-            class=&quot;gatsby-resp-image-image&quot;
-            src=&quot;/static/cb0e0cb96c6948928636e233cb8f0826/e9beb/image-20220304212900959.png&quot;
-            alt=&quot;image-20220304212900959&quot;
-            title=&quot;image-20220304212900959&quot;
-            loading=&quot;lazy&quot;
-            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
-          /&gt;
-        &lt;/picture&gt;
-  &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;参考：&lt;a href=&quot;https://www.cman.jp/network/support/go_access.cgi&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;アクセス情報【使用中のIPアドレス確認】&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;今回は東日本リージョンで構成しましたが、同じ手順で海外リージョンのマシンをプロキシにすれば国外のIPを使用して接続できるようになるのかな？&lt;/p&gt;
-&lt;p&gt;手順も簡単なので有用ですね。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Gatsbyで作成したSPAブログをGitHubPagesに公開する環境を作る備忘録]]></title><description><![CDATA[Gatsbyで作成したSPAブログをGithub Pagesに公開する手順についてまとめています。Gatsbyの開発環境はDockerコンテナ上に構築しています。]]></description><link>https://kashiwaba-yuki.com/note-how-to-deploy-gatsby-spa</link><guid isPermaLink="false">https://kashiwaba-yuki.com/note-how-to-deploy-gatsby-spa</guid><pubDate>Sun, 20 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;突然ですが、諸般の事情につきブログを移転することにしました。&lt;/p&gt;
+&lt;p&gt;また外部接続用のSSDが手に入ったらESXiの構築にもチャレンジしていこうと思います。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Gatsbyで作成したSPAブログをGitHubPagesに公開する環境を作る備忘録]]></title><description><![CDATA[Gatsbyで作成したSPAブログをGithub Pagesに公開する手順についてまとめています。Gatsbyの開発環境はDockerコンテナ上に構築しています。]]></description><link>https://kashiwaba-yuki.com/note-how-to-deploy-gatsby-spa</link><guid isPermaLink="false">https://kashiwaba-yuki.com/note-how-to-deploy-gatsby-spa</guid><pubDate>Sun, 20 Feb 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;突然ですが、諸般の事情につきブログを移転することにしました。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://yukituna.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;旧ブログ&lt;/a&gt;の記事は順次こちらのブログに移植していこうと思います（手動でやる必要があるので面倒ですが…。）&lt;/p&gt;
 &lt;p&gt;新しいブログですが、MITライセンスで公開されているGatsbyテンプレートの&lt;a href=&quot;https://github.com/alxshelepenok/gatsby-starter-lumen&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;gatsby-starter-lumen&lt;/a&gt;をベースに使用させてもらってます。&lt;/p&gt;
 &lt;p&gt;この記事では、新しいブログを公開するまでに実施した作業について備忘録としてまとめておきます。&lt;/p&gt;
@@ -2815,7 +2815,7 @@ uart &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=
 
 &lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; azure&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;functions &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; func
 
-DISCORDWEBHOOK &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;https://discord.com/api/webhooks/942244089682870272/LFwOIqSnh3CfnF3hDOESAMqqUZcrrsvEoEXVbgdrab-nB-VhSdGCJmAu_16_ejFJ4jw5&quot;&lt;/span&gt;
+DISCORDWEBHOOK &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&amp;lt;Webhook URL&gt;&quot;&lt;/span&gt;
 data &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;token string&quot;&gt;&quot;content&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Azure Cost Alert&quot;&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
@@ -16568,6 +16568,222 @@ kd&gt; bl
 &lt;p&gt;今回は、WinDbgを用いたカーネルデバッグの設定方法と、簡単な操作について紹介しました。&lt;/p&gt;
 &lt;p&gt;実際にカーネルデバッグを用いてトラブルシューティングを行うテクニックについては、また違う記事でまとめていく予定です。&lt;/p&gt;
 &lt;p&gt;WinDbgを用いたWindowsのデバッグやダンプの解析方法について公開しているその他情報については、以下のページのリストをご覧ください。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;/windows-windbg-001-index&quot;&gt;WinDbgを用いたデバッグとトラブルシューティングのテクニック&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[WinDbgのユーザモードデバッグチュートリアルを試してみた]]></title><link>https://kashiwaba-yuki.com/windows-windbg-002-tutorial</link><guid isPermaLink="false">https://kashiwaba-yuki.com/windows-windbg-002-tutorial</guid><pubDate>Tue, 05 Oct 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;WinDbgによるWindowsデバッグやダンプ解析によるトラブルシューティングに習熟することを目指しています。&lt;/p&gt;
+&lt;p&gt;今回はとりあえず公式チュートリアル内の手順を再現して、WinDbgによるユーザモードプロセスのデバッグについて試してみました。&lt;/p&gt;
+&lt;p&gt;WinDbgを用いたWindowsのデバッグやダンプの解析方法について公開している情報については、以下のページに一覧をまとめているので、よければご覧ください。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;/windows-windbg-001-index&quot;&gt;WinDbgを用いたデバッグとトラブルシューティングのテクニック&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;この記事では以下の内容についてまとめています。&lt;/p&gt;
+&lt;!-- omit in toc --&gt;
+&lt;h2 id=&quot;もくじ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%82%E3%81%8F%E3%81%98&quot; aria-label=&quot;もくじ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;もくじ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#widbg%E3%81%A8%E3%81%AF&quot;&gt;WiDbgとは&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#windbg%E3%83%81%E3%83%A5%E3%83%BC%E3%83%88%E3%83%AA%E3%82%A2%E3%83%AB&quot;&gt;WinDbgチュートリアル&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E4%BB%8A%E5%9B%9E%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E7%92%B0%E5%A2%83&quot;&gt;今回使用する環境&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#notepadexe%E3%81%AE%E8%B5%B7%E5%8B%95&quot;&gt;Notepad.exeの起動&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E3%83%91%E3%82%B9%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%81%A8%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF&quot;&gt;シンボルパスの設定と読み込み&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E4%B8%80%E8%A6%A7%E3%81%AE%E5%87%BA%E5%8A%9B&quot;&gt;シンボル一覧の出力&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%96%E3%83%AC%E3%83%BC%E3%82%AF%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%AE%E8%A8%AD%E5%AE%9A&quot;&gt;ブレークポイントの設定&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#notepadexe%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B&quot;&gt;Notepad.exeを実行する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%81%AB%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BE%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%B3%E3%83%BC%E3%83%89%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E4%B8%80%E8%A6%A7%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B&quot;&gt;プロセスに読み込まれているコードモジュールの一覧を表示する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B&quot;&gt;スタックトレースを表示する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#notepadexe%E3%82%92%E5%86%8D%E9%96%8B%E3%81%99%E3%82%8B&quot;&gt;Notepad.exeを再開する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF%E6%99%82%E3%81%AB%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%82%92%E5%81%9C%E6%AD%A2%E3%81%99%E3%82%8B&quot;&gt;ファイル書き込み時にプロセスを停止する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E5%86%85%E3%81%AE%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89%E4%B8%80%E8%A6%A7%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B&quot;&gt;プロセス内のスレッド一覧を表示する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E7%89%B9%E5%AE%9A%E3%81%AE%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89%E3%81%AE%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B&quot;&gt;特定のスレッドのスタックトレースを取得する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%82%92%E7%B5%82%E4%BA%86%E3%81%97%E3%81%A6%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%81%8B%E3%82%89%E3%83%87%E3%82%BF%E3%83%83%E3%83%81%E3%81%99%E3%82%8B&quot;&gt;デバッグを終了して、プロセスからデタッチする&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;widbgとは&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#widbg%E3%81%A8%E3%81%AF&quot; aria-label=&quot;widbgとは permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;WiDbgとは&lt;/h2&gt;
+&lt;p&gt;Windows環境のデバッグやトラブルシューティングに使用するツールです。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/getting-started-with-windows-debugging&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Windows のデバッグの概要 - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;WinDbgは、主に以下の用途に利用されます。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Windowsメモリダンプやプロセスダンプの解析&lt;/li&gt;
+&lt;li&gt;カーネルモードのライブデバッグ&lt;/li&gt;
+&lt;li&gt;ユーザモードのライブデバッグ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;MicrosoftのWindows開発チームも使用している公式のデバッガです。&lt;/p&gt;
+&lt;p&gt;VisualStudioデバッガとの違いとして、WinDbgはカーネルモードのデバッグやスレッドスタックの分析まで実現することができます。&lt;/p&gt;
+&lt;h2 id=&quot;windbgチュートリアル&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#windbg%E3%83%81%E3%83%A5%E3%83%BC%E3%83%88%E3%83%AA%E3%82%A2%E3%83%AB&quot; aria-label=&quot;windbgチュートリアル permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;WinDbgチュートリアル&lt;/h2&gt;
+&lt;p&gt;WinDbgのはじめの一歩として、&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/getting-started-with-windbg&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;公式ドキュメントのチュートリアル&lt;/a&gt;を実践していきます。&lt;/p&gt;
+&lt;p&gt;このチュートリアルでは、WinDbgを使用してユーザモードのプロセスにアタッチし、デバッグを行います。&lt;/p&gt;
+&lt;h3 id=&quot;今回使用する環境&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E4%BB%8A%E5%9B%9E%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E7%92%B0%E5%A2%83&quot; aria-label=&quot;今回使用する環境 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;今回使用する環境&lt;/h3&gt;
+&lt;p&gt;今回使用している環境は以下の環境です。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Windows10 20H2&lt;/li&gt;
+&lt;li&gt;WinDbg 10.0.22000.1 AMD64（管理者権限で起動）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;notepadexeの起動&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#notepadexe%E3%81%AE%E8%B5%B7%E5%8B%95&quot; aria-label=&quot;notepadexeの起動 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Notepad.exeの起動&lt;/h3&gt;
+&lt;p&gt;Windows環境でWinDbgを起動した後、[Ctrl+E]キーで[Open Executable File]を呼び出し、&lt;code class=&quot;language-text&quot;&gt;C:\Windows\System32\notepad.exe&lt;/code&gt;を選択します。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;image-20211002113631533.png&quot; alt=&quot;image-20211002113631533&quot;&gt;&lt;/p&gt;
+&lt;p&gt;実行ファイルを開くと、Commandウィンドウが起動しました。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;image-20211002113723502.png&quot; alt=&quot;image-20211002113723502&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;シンボルパスの設定と読み込み&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E3%83%91%E3%82%B9%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%81%A8%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF&quot; aria-label=&quot;シンボルパスの設定と読み込み permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;シンボルパスの設定と読み込み&lt;/h3&gt;
+&lt;p&gt;Commandウィンドウの下部にあるコンソールに、以下のコマンドを入力します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sympath srv*&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;.sympath&lt;/code&gt;コマンドは、シンボルパスを設定するコマンドです。
+シンボルパスとは、デバッガがシンボルファイルを探す際の探索先を意味します。&lt;/p&gt;
+&lt;p&gt;シンボルファイルは、デバッガがコード モジュール (関数名、変数名など) に関する情報を取得するために必要です。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/-sympath--set-symbol-path-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;.sympath (シンボル パスの設定) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;シンボルパスの設定が完了したので、以下のコマンドを実行します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;reload&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;.reload&lt;/code&gt;コマンドによって、シンボル情報を削除した後、再読み込みします。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/-reload--reload-module-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;.reload (モジュールの再読み込み) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;.reload&lt;/code&gt;コマンドを実行しても、特にレスポンスはない点に注意が必要です。
+以下の出力が得られたら次に進みます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:000&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;reload
+Reloading current modules
+&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;シンボル一覧の出力&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E4%B8%80%E8%A6%A7%E3%81%AE%E5%87%BA%E5%8A%9B&quot; aria-label=&quot;シンボル一覧の出力 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;シンボル一覧の出力&lt;/h3&gt;
+&lt;p&gt;上記の出力確認後に、&lt;code class=&quot;language-text&quot;&gt;x notepad!*&lt;/code&gt;コマンドを実行して&lt;code class=&quot;language-text&quot;&gt;Notepad.exe&lt;/code&gt;モジュールのシンボルを表示します。
+※ ここで出力が得られない場合は&lt;code class=&quot;language-text&quot;&gt;.reload&lt;/code&gt;コマンドを再実行します。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/x--examine-symbols-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;x notepad!*&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;出力結果は1500行近い数になりました。
+かなり多いですね。&lt;/p&gt;
+&lt;h3 id=&quot;ブレークポイントの設定&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%96%E3%83%AC%E3%83%BC%E3%82%AF%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%AE%E8%A8%AD%E5%AE%9A&quot; aria-label=&quot;ブレークポイントの設定 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;ブレークポイントの設定&lt;/h3&gt;
+&lt;p&gt;次に、上記の出力で確認したシンボル情報を用いて、wWinMain関数にブレークポイントを設定します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;bu notepad!wWinMain&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;特に出力は返ってきませんが、&lt;code class=&quot;language-text&quot;&gt;bl&lt;/code&gt;コマンドでブレークポイントの一覧を参照できます。
+参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/bl--breakpoint-list-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;bl (ブレークポイントの一覧) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;これで、&lt;code class=&quot;language-text&quot;&gt;notepad!wWinMain&lt;/code&gt;にブレークポイントが設定されたことが確認できました。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:000&gt; bu notepad!wWinMain
+0:000&gt; bl
+     0 e Disable Clear  00007ff6`8402c0f8     0001 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;0001&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;  0:&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; notepad!wWinMain&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;notepadexeを実行する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#notepadexe%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B&quot; aria-label=&quot;notepadexeを実行する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Notepad.exeを実行する&lt;/h3&gt;
+&lt;p&gt;ブレークポイントの設定が完了したので、&lt;code class=&quot;language-text&quot;&gt;g&lt;/code&gt;コマンドで起動しているアプリケーションを実行します。
+参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/g--go-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;g (実行) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ブレークポイントで設定されたwWinMain関数の呼び出し時点で停止しました。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:000&gt; g
+ModLoad: 00007ff9`9cd70000 00007ff9`9cda0000   C:\WINDOWS\System32\IMM32&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;DLL
+Breakpoint 0 hit
+notepad!wWinMain:
+00007ff6`8402c0f8 488bc4          mov     rax&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;rsp&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;プロセスに読み込まれているコードモジュールの一覧を表示する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%81%AB%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BE%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%B3%E3%83%BC%E3%83%89%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E4%B8%80%E8%A6%A7%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B&quot; aria-label=&quot;プロセスに読み込まれているコードモジュールの一覧を表示する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;プロセスに読み込まれているコードモジュールの一覧を表示する&lt;/h3&gt;
+&lt;p&gt;ブレークポイントでプロセスが停止した状態で&lt;code class=&quot;language-text&quot;&gt;lm&lt;/code&gt;コマンドを実行し、現在プロセスに読み込まれているコードモジュールを確認します。
+参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/lm--list-loaded-modules-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;lm (読み込まれたモジュールの一覧表示) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:000&gt; lm
+&lt;span class=&quot;token function&quot;&gt;start&lt;/span&gt;             &lt;span class=&quot;token keyword&quot;&gt;end&lt;/span&gt;                 module name
+00007ff6`84020000 00007ff6`8405a000   notepad    &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pdb symbols&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;          C:\Program Files &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x86&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;\Windows Kits\10\Debuggers\x64\sym\notepad&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;pdb\6539CE998C7CAFD73A8E13A54542E1121\notepad&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;pdb
+00007ff9`8ef30000 00007ff9`8f1ca000   COMCTL32   &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`982c0000 00007ff9`98350000   apphelp    &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9aa40000 00007ff9`9aadd000   msvcp_win   &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9ab90000 00007ff9`9ae59000   KERNELBASE   &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9aec0000 00007ff9`9afc0000   ucrtbase   &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9b010000 00007ff9`9b11b000   gdi32full   &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9b340000 00007ff9`9b362000   win32u     &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9bbc0000 00007ff9`9bcea000   RPCRT4     &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9bf20000 00007ff9`9c275000   combase    &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9c3c0000 00007ff9`9c46e000   shcore     &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9cc50000 00007ff9`9cd0e000   KERNEL32   &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9cd70000 00007ff9`9cda0000   IMM32      &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9cfd0000 00007ff9`9cffb000   GDI32      &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9d000000 00007ff9`9d1a1000   USER32     &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9d1b0000 00007ff9`9d24e000   msvcrt     &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
+00007ff9`9d290000 00007ff9`9d485000   ntdll      &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pdb symbols&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;          C:\Program Files &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x86&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;\Windows Kits\10\Debuggers\x64\sym\ntdll&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;pdb\E2BF5EA3ECAA1D5310F1E166306A0BCC1\ntdll&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;pdb&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;スタックトレースを表示する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B&quot; aria-label=&quot;スタックトレースを表示する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;スタックトレースを表示する&lt;/h3&gt;
+&lt;p&gt;プロセスが停止した状態で&lt;code class=&quot;language-text&quot;&gt;k&lt;/code&gt;コマンドを実行して、スタックトレースを表示します。&lt;/p&gt;
+&lt;p&gt;今回は&lt;code class=&quot;language-text&quot;&gt;notepad!wWinMain&lt;/code&gt;で停止したタイミングでのスタックトレースを取得できました。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:000&gt; k
+ &lt;span class=&quot;token comment&quot;&gt;# Child-SP          RetAddr               Call Site&lt;/span&gt;
+00 00000055`5f11f7b8 00007ff6`840459b6     notepad!wWinMain
+01 00000055`5f11f7c0 00007ff9`9cc67034     notepad!__scrt_common_main_seh+0x106
+02 00000055`5f11f800 00007ff9`9d2e2651     KERNEL32!BaseThreadInitThunk+0x14
+03 00000055`5f11f830 00000000`00000000     ntdll!RtlUserThreadStart+0x21&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;notepadexeを再開する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#notepadexe%E3%82%92%E5%86%8D%E9%96%8B%E3%81%99%E3%82%8B&quot; aria-label=&quot;notepadexeを再開する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Notepad.exeを再開する&lt;/h3&gt;
+&lt;p&gt;もう一度&lt;code class=&quot;language-text&quot;&gt;g&lt;/code&gt;コマンドを実行すると、中断されていたプロセスが再開され、メモ帳アプリが起動しました。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;image-20211003210626408.png&quot; alt=&quot;image-20211003210626408&quot;&gt;&lt;/p&gt;
+&lt;p&gt;この状態では、デバッガはBusy状態となり、追加のコマンド入力を受け付けなくなります。&lt;/p&gt;
+&lt;p&gt;再びメモ帳プロセスを停止してデバッガを使用するために、Breakボタンか、[Ctrl+Break]キーを押します。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;image-20211003211015461.png&quot; alt=&quot;image-20211003211015461&quot;&gt;&lt;/p&gt;
+&lt;p&gt;これで再度メモ帳プロセスが停止され、デバッガ操作が可能になりました。&lt;/p&gt;
+&lt;h3 id=&quot;ファイル書き込み時にプロセスを停止する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF%E6%99%82%E3%81%AB%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%82%92%E5%81%9C%E6%AD%A2%E3%81%99%E3%82%8B&quot; aria-label=&quot;ファイル書き込み時にプロセスを停止する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;ファイル書き込み時にプロセスを停止する&lt;/h3&gt;
+&lt;p&gt;続いて、&lt;code class=&quot;language-text&quot;&gt;bu ntdll!ZwWriteFile&lt;/code&gt;を実行して、ファイル書き込み時にプロセスを中断するためのブレークポイントを設定します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:002&gt; bu ntdll!ZwWriteFile
+0:002&gt; bl
+     0 e Disable Clear  00007ff6`8402c0f8     0001 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;0001&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;  0:&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; notepad!wWinMain
+     1 e Disable Clear  00007ff9`9d32ce60     0001 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;0001&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;  0:&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; ntdll!NtWriteFile&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;再び&lt;code class=&quot;language-text&quot;&gt;g&lt;/code&gt;コマンドを入力してプロセスを再開したのち、メモ帳に書き込み保存を実行しようとすると、プロセスが停止されます。&lt;/p&gt;
+&lt;p&gt;このタイミングでスタックトレースを表示すると、書き込み時のスタックトレースを取得することができます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:011&gt; k
+ &lt;span class=&quot;token comment&quot;&gt;# Child-SP          RetAddr               Call Site&lt;/span&gt;
+00 00000055`5f8fdb78 00007ff9`9bc1f6f4     ntdll!NtWriteFile
+01 00000055`5f8fdb80 00007ff9`9bc0c641     RPCRT4!UTIL_WriteFile+0x5c
+02 00000055`5f8fdbe0 00007ff9`9bbf5863     RPCRT4!NMP_SyncSend+0x81
+03 00000055`5f8fdc60 00007ff9`9bbf2a56     RPCRT4!OSF_CCONNECTION::TransSendReceive+0xf7
+04 00000055`5f8fdcd0 00007ff9`9bbf239b     RPCRT4!OSF_CCONNECTION::SendBindPacket+0x2ee
+05 00000055`5f8fdf20 00007ff9`9bbf3ed1     RPCRT4!OSF_CCONNECTION::ActuallyDoBinding+0xeb
+06 00000055`5f8fdfd0 00007ff9`9bbf3c0e     RPCRT4!OSF_CCONNECTION::OpenConnectionAndBind+0x225
+07 00000055`5f8fe080 00007ff9`9bbf7736     RPCRT4!OSF_CCALL::BindToServer+0xce
+08 00000055`5f8fe120 00007ff9`9bbf84d6     RPCRT4!OSF_BINDING_HANDLE::InitCCallWithAssociation+0x8a
+09 00000055`5f8fe180 00007ff9`9bbf75e7     RPCRT4!OSF_BINDING_HANDLE::AllocateCCall+0x256
+0a 00000055`5f8fe2e0 00007ff9`9bca00f5     RPCRT4!OSF_BINDING_HANDLE::NegotiateTransferSyntax+0x37
+0b 00000055`5f8fe330 00007ff9`9bca3840     RPCRT4!NdrpClientCall3+0x715
+0c 00000055`5f8fe6a0 00007ff9`99bc139e     RPCRT4!NdrClientCall3+0xf0
+0d 00000055`5f8fea30 00007ff9`775c1e00     wkscli!NetWkstaGetInfo+0x5e
+0e 00000055`5f8feae0 00007ff9`83c62df6     ntlanman!NPOpenEnum+0x50
+0f 00000055`5f8fec40 00007ff9`83c61b7f     MPR!MprOpenEnumConnect+0x176&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;プロセス内のスレッド一覧を表示する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E5%86%85%E3%81%AE%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89%E4%B8%80%E8%A6%A7%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B&quot; aria-label=&quot;プロセス内のスレッド一覧を表示する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;プロセス内のスレッド一覧を表示する&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;~&lt;/code&gt;コマンドを使って、プロセス内のスレッド一覧を取得できます。
+参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/---thread-status-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;~ (スレッドの状態) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;現在のメモ帳プロセスには、以下の14個のスレッドが存在するようです。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:011&gt; ~
+   0  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;7ac Suspend: 1 Teb: 00000055`5f35c000 Unfrozen
+   1  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;22f0 Suspend: 1 Teb: 00000055`5f36a000 Unfrozen
+   2  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;1500 Suspend: 1 Teb: 00000055`5f36e000 Unfrozen
+   3  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;198c Suspend: 1 Teb: 00000055`5f370000 Unfrozen
+   4  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;2094 Suspend: 1 Teb: 00000055`5f364000 Unfrozen
+   5  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;1d6c Suspend: 1 Teb: 00000055`5f372000 Unfrozen
+   6  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;1048 Suspend: 1 Teb: 00000055`5f368000 Unfrozen
+   7  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;1408 Suspend: 1 Teb: 00000055`5f374000 Unfrozen
+   8  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;30c Suspend: 1 Teb: 00000055`5f376000 Unfrozen
+   9  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;1b18 Suspend: 1 Teb: 00000055`5f378000 Unfrozen
+  10  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;af8 Suspend: 1 Teb: 00000055`5f37a000 Unfrozen
+&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt; 11  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;898 Suspend: 1 Teb: 00000055`5f37e000 Unfrozen
+  12  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;1720 Suspend: 1 Teb: 00000055`5f380000 Unfrozen
+  13  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;37c Suspend: 1 Teb: 00000055`5f382000 Unfrozen&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;特定のスレッドのスタックトレースを取得する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E7%89%B9%E5%AE%9A%E3%81%AE%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89%E3%81%AE%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B&quot; aria-label=&quot;特定のスレッドのスタックトレースを取得する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;特定のスレッドのスタックトレースを取得する&lt;/h3&gt;
+&lt;p&gt;ここで、特定のスレッドのスタックトレースを取得するには、以下のコマンドを続けて使用します。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;~0s
+k&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;~0s&lt;/code&gt;コマンドは、スレッド番号0の設定を取得します。
+参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/-s--set-current-thread-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;~s (現在のスレッドの設定) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;出力は次のようになりました。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:011&gt; ~0s
+win32u!NtGdiGetCharABCWidthsW+0x14:
+00007ff9`9b3465e4 c3              ret
+0:000&gt; k
+ &lt;span class=&quot;token comment&quot;&gt;# Child-SP          RetAddr               Call Site&lt;/span&gt;
+00 00000055`5f117108 00007ff9`9b01a2ae     win32u!NtGdiGetCharABCWidthsW+0x14
+01 00000055`5f117110 00007ff9`9b01a211     gdi32full!LoadGlyphMetricsWithGetCharABCWidthsI+0x5e
+02 00000055`5f1174b0 00007ff9`9b019d60     gdi32full!LoadGlyphMetrics+0x99
+03 00000055`5f1174f0 00007ff9`8aa29016     gdi32full!CUspShapingFont::GetGlyphDefaultAdvanceWidths+0x150
+04 00000055`5f117550 00007ff9`9b020b65     TextShaping!ShapingGetGlyphPositions+0x516
+05 00000055`5f117750 00007ff9`9b0266e3     gdi32full!ShlPlaceOT+0x255
+06 00000055`5f117970 00007ff9`9b025d9b     gdi32full!RenderItemNoFallback+0x573
+07 00000055`5f117aa0 00007ff9`9b025c6b     gdi32full!RenderItemWithFallback+0xeb
+08 00000055`5f117af0 00007ff9`9b025a3f     gdi32full!RenderItem+0x3b
+09 00000055`5f117b40 00007ff9`9b027ac6     gdi32full!ScriptStringAnalyzeGlyphs+0x20f
+0a 00000055`5f117bf0 00007ff9`9b024ca2     gdi32full!ScriptStringAnalyse+0x626
+0b 00000055`5f117dc0 00007ff9`9b0246be     gdi32full!LpkCharsetDraw+0x5c2
+0c 00000055`5f117ff0 00007ff9`9d01f5f2     gdi32full!LpkDrawTextEx+0x5e
+0d 00000055`5f118060 00007ff9`9d01e9bf     USER32!DT_DrawStr+0xb6
+0e 00000055`5f118110 00007ff9`9d01eede     USER32!DT_GetLineBreak+0xf3
+0f 00000055`5f1181b0 00007ff9`9d01eb50     USER32!DrawTextExWorker+0x36e
+10 00000055`5f118300 00007ff9`6b8a6123     USER32!DrawTextW+0x40
+11 00000055`5f118370 00007ff9`6b89ac60     DUI70!DirectUI::Element::GetContentSize+0x463
+12 00000055`5f118450 00007ff9`6b8a7196     DUI70!DirectUI::Element::_UpdateDesiredSize+0x6a0
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; 以下略 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;デバッグを終了してプロセスからデタッチする&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%82%92%E7%B5%82%E4%BA%86%E3%81%97%E3%81%A6%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%81%8B%E3%82%89%E3%83%87%E3%82%BF%E3%83%83%E3%83%81%E3%81%99%E3%82%8B&quot; aria-label=&quot;デバッグを終了してプロセスからデタッチする permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;デバッグを終了して、プロセスからデタッチする&lt;/h3&gt;
+&lt;p&gt;最後に&lt;code class=&quot;language-text&quot;&gt;qd&lt;/code&gt;コマンドを使用して、デバッグを終了してプロセスからデタッチします。&lt;/p&gt;
+&lt;p&gt;デバッグを終了すると、Commandウィンドウが終了し、停止されていたメモ帳の書き込み処理が再開されました。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;image-20211003212553671.png&quot; alt=&quot;image-20211003212553671&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;とりあえず&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/getting-started-with-windbg&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;公式チュートリアル&lt;/a&gt;のユーザモードデバッグの手順について一通り実践してみました。&lt;/p&gt;
+&lt;p&gt;WinDbgを用いたWindowsのデバッグやダンプの解析方法について公開しているその他情報については、以下のページのリストをご覧ください。&lt;/p&gt;
 &lt;p&gt;参考：&lt;a href=&quot;/windows-windbg-001-index&quot;&gt;WinDbgを用いたデバッグとトラブルシューティングのテクニック&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[WinDbgの各ウィンドウについてまとめてみた]]></title><link>https://kashiwaba-yuki.com/windows-windbg-003-ui</link><guid isPermaLink="false">https://kashiwaba-yuki.com/windows-windbg-003-ui</guid><pubDate>Tue, 05 Oct 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;この記事では、&lt;a href=&quot;/windows-windbg-002-tutorial&quot;&gt;WinDbgのユーザモードデバッグチュートリアルを試してみた&lt;/a&gt;で使用したチュートリアルの環境を利用して、WinDbgの基本的なUI操作についてまとめていきます。&lt;/p&gt;
 &lt;p&gt;WinDbgを用いたWindowsのデバッグやダンプの解析方法について公開している情報については、以下のページに一覧をまとめているので、よければご覧ください。&lt;/p&gt;
 &lt;p&gt;参考：&lt;a href=&quot;/windows-windbg-001-index&quot;&gt;WinDbgを用いたデバッグとトラブルシューティングのテクニック&lt;/a&gt;&lt;/p&gt;
@@ -17267,222 +17483,6 @@ Watchウィンドウの詳細については以下のドキュメントを参照
     &lt;/span&gt;&lt;/p&gt;
 &lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
 &lt;p&gt;今回は、WinDbgを用いたデバッグや解析の際に利用するウィンドウのインターフェースについてまとめました。&lt;/p&gt;
-&lt;p&gt;WinDbgを用いたWindowsのデバッグやダンプの解析方法について公開しているその他情報については、以下のページのリストをご覧ください。&lt;/p&gt;
-&lt;p&gt;参考：&lt;a href=&quot;/windows-windbg-001-index&quot;&gt;WinDbgを用いたデバッグとトラブルシューティングのテクニック&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[WinDbgのユーザモードデバッグチュートリアルを試してみた]]></title><link>https://kashiwaba-yuki.com/windows-windbg-002-tutorial</link><guid isPermaLink="false">https://kashiwaba-yuki.com/windows-windbg-002-tutorial</guid><pubDate>Tue, 05 Oct 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;WinDbgによるWindowsデバッグやダンプ解析によるトラブルシューティングに習熟することを目指しています。&lt;/p&gt;
-&lt;p&gt;今回はとりあえず公式チュートリアル内の手順を再現して、WinDbgによるユーザモードプロセスのデバッグについて試してみました。&lt;/p&gt;
-&lt;p&gt;WinDbgを用いたWindowsのデバッグやダンプの解析方法について公開している情報については、以下のページに一覧をまとめているので、よければご覧ください。&lt;/p&gt;
-&lt;p&gt;参考：&lt;a href=&quot;/windows-windbg-001-index&quot;&gt;WinDbgを用いたデバッグとトラブルシューティングのテクニック&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;この記事では以下の内容についてまとめています。&lt;/p&gt;
-&lt;!-- omit in toc --&gt;
-&lt;h2 id=&quot;もくじ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%82%E3%81%8F%E3%81%98&quot; aria-label=&quot;もくじ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;もくじ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#widbg%E3%81%A8%E3%81%AF&quot;&gt;WiDbgとは&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&quot;#windbg%E3%83%81%E3%83%A5%E3%83%BC%E3%83%88%E3%83%AA%E3%82%A2%E3%83%AB&quot;&gt;WinDbgチュートリアル&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;#%E4%BB%8A%E5%9B%9E%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E7%92%B0%E5%A2%83&quot;&gt;今回使用する環境&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#notepadexe%E3%81%AE%E8%B5%B7%E5%8B%95&quot;&gt;Notepad.exeの起動&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E3%83%91%E3%82%B9%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%81%A8%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF&quot;&gt;シンボルパスの設定と読み込み&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E4%B8%80%E8%A6%A7%E3%81%AE%E5%87%BA%E5%8A%9B&quot;&gt;シンボル一覧の出力&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E3%83%96%E3%83%AC%E3%83%BC%E3%82%AF%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%AE%E8%A8%AD%E5%AE%9A&quot;&gt;ブレークポイントの設定&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#notepadexe%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B&quot;&gt;Notepad.exeを実行する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%81%AB%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BE%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%B3%E3%83%BC%E3%83%89%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E4%B8%80%E8%A6%A7%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B&quot;&gt;プロセスに読み込まれているコードモジュールの一覧を表示する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B&quot;&gt;スタックトレースを表示する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#notepadexe%E3%82%92%E5%86%8D%E9%96%8B%E3%81%99%E3%82%8B&quot;&gt;Notepad.exeを再開する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF%E6%99%82%E3%81%AB%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%82%92%E5%81%9C%E6%AD%A2%E3%81%99%E3%82%8B&quot;&gt;ファイル書き込み時にプロセスを停止する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E5%86%85%E3%81%AE%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89%E4%B8%80%E8%A6%A7%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B&quot;&gt;プロセス内のスレッド一覧を表示する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E7%89%B9%E5%AE%9A%E3%81%AE%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89%E3%81%AE%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B&quot;&gt;特定のスレッドのスタックトレースを取得する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%82%92%E7%B5%82%E4%BA%86%E3%81%97%E3%81%A6%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%81%8B%E3%82%89%E3%83%87%E3%82%BF%E3%83%83%E3%83%81%E3%81%99%E3%82%8B&quot;&gt;デバッグを終了して、プロセスからデタッチする&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;widbgとは&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#widbg%E3%81%A8%E3%81%AF&quot; aria-label=&quot;widbgとは permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;WiDbgとは&lt;/h2&gt;
-&lt;p&gt;Windows環境のデバッグやトラブルシューティングに使用するツールです。&lt;/p&gt;
-&lt;p&gt;参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/getting-started-with-windows-debugging&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Windows のデバッグの概要 - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;WinDbgは、主に以下の用途に利用されます。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Windowsメモリダンプやプロセスダンプの解析&lt;/li&gt;
-&lt;li&gt;カーネルモードのライブデバッグ&lt;/li&gt;
-&lt;li&gt;ユーザモードのライブデバッグ&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;MicrosoftのWindows開発チームも使用している公式のデバッガです。&lt;/p&gt;
-&lt;p&gt;VisualStudioデバッガとの違いとして、WinDbgはカーネルモードのデバッグやスレッドスタックの分析まで実現することができます。&lt;/p&gt;
-&lt;h2 id=&quot;windbgチュートリアル&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#windbg%E3%83%81%E3%83%A5%E3%83%BC%E3%83%88%E3%83%AA%E3%82%A2%E3%83%AB&quot; aria-label=&quot;windbgチュートリアル permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;WinDbgチュートリアル&lt;/h2&gt;
-&lt;p&gt;WinDbgのはじめの一歩として、&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/getting-started-with-windbg&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;公式ドキュメントのチュートリアル&lt;/a&gt;を実践していきます。&lt;/p&gt;
-&lt;p&gt;このチュートリアルでは、WinDbgを使用してユーザモードのプロセスにアタッチし、デバッグを行います。&lt;/p&gt;
-&lt;h3 id=&quot;今回使用する環境&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E4%BB%8A%E5%9B%9E%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E7%92%B0%E5%A2%83&quot; aria-label=&quot;今回使用する環境 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;今回使用する環境&lt;/h3&gt;
-&lt;p&gt;今回使用している環境は以下の環境です。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Windows10 20H2&lt;/li&gt;
-&lt;li&gt;WinDbg 10.0.22000.1 AMD64（管理者権限で起動）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;notepadexeの起動&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#notepadexe%E3%81%AE%E8%B5%B7%E5%8B%95&quot; aria-label=&quot;notepadexeの起動 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Notepad.exeの起動&lt;/h3&gt;
-&lt;p&gt;Windows環境でWinDbgを起動した後、[Ctrl+E]キーで[Open Executable File]を呼び出し、&lt;code class=&quot;language-text&quot;&gt;C:\Windows\System32\notepad.exe&lt;/code&gt;を選択します。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;image-20211002113631533.png&quot; alt=&quot;image-20211002113631533&quot;&gt;&lt;/p&gt;
-&lt;p&gt;実行ファイルを開くと、Commandウィンドウが起動しました。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;image-20211002113723502.png&quot; alt=&quot;image-20211002113723502&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;シンボルパスの設定と読み込み&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E3%83%91%E3%82%B9%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%81%A8%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF&quot; aria-label=&quot;シンボルパスの設定と読み込み permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;シンボルパスの設定と読み込み&lt;/h3&gt;
-&lt;p&gt;Commandウィンドウの下部にあるコンソールに、以下のコマンドを入力します。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sympath srv*&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;.sympath&lt;/code&gt;コマンドは、シンボルパスを設定するコマンドです。
-シンボルパスとは、デバッガがシンボルファイルを探す際の探索先を意味します。&lt;/p&gt;
-&lt;p&gt;シンボルファイルは、デバッガがコード モジュール (関数名、変数名など) に関する情報を取得するために必要です。&lt;/p&gt;
-&lt;p&gt;参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/-sympath--set-symbol-path-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;.sympath (シンボル パスの設定) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;シンボルパスの設定が完了したので、以下のコマンドを実行します。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;reload&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;.reload&lt;/code&gt;コマンドによって、シンボル情報を削除した後、再読み込みします。&lt;/p&gt;
-&lt;p&gt;参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/-reload--reload-module-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;.reload (モジュールの再読み込み) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;.reload&lt;/code&gt;コマンドを実行しても、特にレスポンスはない点に注意が必要です。
-以下の出力が得られたら次に進みます。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:000&gt; &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;reload
-Reloading current modules
-&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&quot;シンボル一覧の出力&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%B7%E3%83%B3%E3%83%9C%E3%83%AB%E4%B8%80%E8%A6%A7%E3%81%AE%E5%87%BA%E5%8A%9B&quot; aria-label=&quot;シンボル一覧の出力 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;シンボル一覧の出力&lt;/h3&gt;
-&lt;p&gt;上記の出力確認後に、&lt;code class=&quot;language-text&quot;&gt;x notepad!*&lt;/code&gt;コマンドを実行して&lt;code class=&quot;language-text&quot;&gt;Notepad.exe&lt;/code&gt;モジュールのシンボルを表示します。
-※ ここで出力が得られない場合は&lt;code class=&quot;language-text&quot;&gt;.reload&lt;/code&gt;コマンドを再実行します。&lt;/p&gt;
-&lt;p&gt;参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/x--examine-symbols-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;x notepad!*&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;出力結果は1500行近い数になりました。
-かなり多いですね。&lt;/p&gt;
-&lt;h3 id=&quot;ブレークポイントの設定&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%96%E3%83%AC%E3%83%BC%E3%82%AF%E3%83%9D%E3%82%A4%E3%83%B3%E3%83%88%E3%81%AE%E8%A8%AD%E5%AE%9A&quot; aria-label=&quot;ブレークポイントの設定 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;ブレークポイントの設定&lt;/h3&gt;
-&lt;p&gt;次に、上記の出力で確認したシンボル情報を用いて、wWinMain関数にブレークポイントを設定します。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;bu notepad!wWinMain&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;特に出力は返ってきませんが、&lt;code class=&quot;language-text&quot;&gt;bl&lt;/code&gt;コマンドでブレークポイントの一覧を参照できます。
-参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/bl--breakpoint-list-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;bl (ブレークポイントの一覧) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;これで、&lt;code class=&quot;language-text&quot;&gt;notepad!wWinMain&lt;/code&gt;にブレークポイントが設定されたことが確認できました。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:000&gt; bu notepad!wWinMain
-0:000&gt; bl
-     0 e Disable Clear  00007ff6`8402c0f8     0001 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;0001&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;  0:&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; notepad!wWinMain&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&quot;notepadexeを実行する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#notepadexe%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B&quot; aria-label=&quot;notepadexeを実行する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Notepad.exeを実行する&lt;/h3&gt;
-&lt;p&gt;ブレークポイントの設定が完了したので、&lt;code class=&quot;language-text&quot;&gt;g&lt;/code&gt;コマンドで起動しているアプリケーションを実行します。
-参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/g--go-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;g (実行) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;ブレークポイントで設定されたwWinMain関数の呼び出し時点で停止しました。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:000&gt; g
-ModLoad: 00007ff9`9cd70000 00007ff9`9cda0000   C:\WINDOWS\System32\IMM32&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;DLL
-Breakpoint 0 hit
-notepad!wWinMain:
-00007ff6`8402c0f8 488bc4          mov     rax&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;rsp&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&quot;プロセスに読み込まれているコードモジュールの一覧を表示する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%81%AB%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BE%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%B3%E3%83%BC%E3%83%89%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E4%B8%80%E8%A6%A7%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B&quot; aria-label=&quot;プロセスに読み込まれているコードモジュールの一覧を表示する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;プロセスに読み込まれているコードモジュールの一覧を表示する&lt;/h3&gt;
-&lt;p&gt;ブレークポイントでプロセスが停止した状態で&lt;code class=&quot;language-text&quot;&gt;lm&lt;/code&gt;コマンドを実行し、現在プロセスに読み込まれているコードモジュールを確認します。
-参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/lm--list-loaded-modules-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;lm (読み込まれたモジュールの一覧表示) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:000&gt; lm
-&lt;span class=&quot;token function&quot;&gt;start&lt;/span&gt;             &lt;span class=&quot;token keyword&quot;&gt;end&lt;/span&gt;                 module name
-00007ff6`84020000 00007ff6`8405a000   notepad    &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pdb symbols&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;          C:\Program Files &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x86&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;\Windows Kits\10\Debuggers\x64\sym\notepad&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;pdb\6539CE998C7CAFD73A8E13A54542E1121\notepad&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;pdb
-00007ff9`8ef30000 00007ff9`8f1ca000   COMCTL32   &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`982c0000 00007ff9`98350000   apphelp    &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9aa40000 00007ff9`9aadd000   msvcp_win   &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9ab90000 00007ff9`9ae59000   KERNELBASE   &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9aec0000 00007ff9`9afc0000   ucrtbase   &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9b010000 00007ff9`9b11b000   gdi32full   &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9b340000 00007ff9`9b362000   win32u     &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9bbc0000 00007ff9`9bcea000   RPCRT4     &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9bf20000 00007ff9`9c275000   combase    &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9c3c0000 00007ff9`9c46e000   shcore     &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9cc50000 00007ff9`9cd0e000   KERNEL32   &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9cd70000 00007ff9`9cda0000   IMM32      &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9cfd0000 00007ff9`9cffb000   GDI32      &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9d000000 00007ff9`9d1a1000   USER32     &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9d1b0000 00007ff9`9d24e000   msvcrt     &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;deferred&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;             
-00007ff9`9d290000 00007ff9`9d485000   ntdll      &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;pdb symbols&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;          C:\Program Files &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;x86&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;\Windows Kits\10\Debuggers\x64\sym\ntdll&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;pdb\E2BF5EA3ECAA1D5310F1E166306A0BCC1\ntdll&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;pdb&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&quot;スタックトレースを表示する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B&quot; aria-label=&quot;スタックトレースを表示する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;スタックトレースを表示する&lt;/h3&gt;
-&lt;p&gt;プロセスが停止した状態で&lt;code class=&quot;language-text&quot;&gt;k&lt;/code&gt;コマンドを実行して、スタックトレースを表示します。&lt;/p&gt;
-&lt;p&gt;今回は&lt;code class=&quot;language-text&quot;&gt;notepad!wWinMain&lt;/code&gt;で停止したタイミングでのスタックトレースを取得できました。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:000&gt; k
- &lt;span class=&quot;token comment&quot;&gt;# Child-SP          RetAddr               Call Site&lt;/span&gt;
-00 00000055`5f11f7b8 00007ff6`840459b6     notepad!wWinMain
-01 00000055`5f11f7c0 00007ff9`9cc67034     notepad!__scrt_common_main_seh+0x106
-02 00000055`5f11f800 00007ff9`9d2e2651     KERNEL32!BaseThreadInitThunk+0x14
-03 00000055`5f11f830 00000000`00000000     ntdll!RtlUserThreadStart+0x21&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&quot;notepadexeを再開する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#notepadexe%E3%82%92%E5%86%8D%E9%96%8B%E3%81%99%E3%82%8B&quot; aria-label=&quot;notepadexeを再開する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Notepad.exeを再開する&lt;/h3&gt;
-&lt;p&gt;もう一度&lt;code class=&quot;language-text&quot;&gt;g&lt;/code&gt;コマンドを実行すると、中断されていたプロセスが再開され、メモ帳アプリが起動しました。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;image-20211003210626408.png&quot; alt=&quot;image-20211003210626408&quot;&gt;&lt;/p&gt;
-&lt;p&gt;この状態では、デバッガはBusy状態となり、追加のコマンド入力を受け付けなくなります。&lt;/p&gt;
-&lt;p&gt;再びメモ帳プロセスを停止してデバッガを使用するために、Breakボタンか、[Ctrl+Break]キーを押します。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;image-20211003211015461.png&quot; alt=&quot;image-20211003211015461&quot;&gt;&lt;/p&gt;
-&lt;p&gt;これで再度メモ帳プロセスが停止され、デバッガ操作が可能になりました。&lt;/p&gt;
-&lt;h3 id=&quot;ファイル書き込み時にプロセスを停止する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF%E6%99%82%E3%81%AB%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%82%92%E5%81%9C%E6%AD%A2%E3%81%99%E3%82%8B&quot; aria-label=&quot;ファイル書き込み時にプロセスを停止する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;ファイル書き込み時にプロセスを停止する&lt;/h3&gt;
-&lt;p&gt;続いて、&lt;code class=&quot;language-text&quot;&gt;bu ntdll!ZwWriteFile&lt;/code&gt;を実行して、ファイル書き込み時にプロセスを中断するためのブレークポイントを設定します。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:002&gt; bu ntdll!ZwWriteFile
-0:002&gt; bl
-     0 e Disable Clear  00007ff6`8402c0f8     0001 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;0001&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;  0:&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; notepad!wWinMain
-     1 e Disable Clear  00007ff9`9d32ce60     0001 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;0001&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;  0:&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; ntdll!NtWriteFile&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;再び&lt;code class=&quot;language-text&quot;&gt;g&lt;/code&gt;コマンドを入力してプロセスを再開したのち、メモ帳に書き込み保存を実行しようとすると、プロセスが停止されます。&lt;/p&gt;
-&lt;p&gt;このタイミングでスタックトレースを表示すると、書き込み時のスタックトレースを取得することができます。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:011&gt; k
- &lt;span class=&quot;token comment&quot;&gt;# Child-SP          RetAddr               Call Site&lt;/span&gt;
-00 00000055`5f8fdb78 00007ff9`9bc1f6f4     ntdll!NtWriteFile
-01 00000055`5f8fdb80 00007ff9`9bc0c641     RPCRT4!UTIL_WriteFile+0x5c
-02 00000055`5f8fdbe0 00007ff9`9bbf5863     RPCRT4!NMP_SyncSend+0x81
-03 00000055`5f8fdc60 00007ff9`9bbf2a56     RPCRT4!OSF_CCONNECTION::TransSendReceive+0xf7
-04 00000055`5f8fdcd0 00007ff9`9bbf239b     RPCRT4!OSF_CCONNECTION::SendBindPacket+0x2ee
-05 00000055`5f8fdf20 00007ff9`9bbf3ed1     RPCRT4!OSF_CCONNECTION::ActuallyDoBinding+0xeb
-06 00000055`5f8fdfd0 00007ff9`9bbf3c0e     RPCRT4!OSF_CCONNECTION::OpenConnectionAndBind+0x225
-07 00000055`5f8fe080 00007ff9`9bbf7736     RPCRT4!OSF_CCALL::BindToServer+0xce
-08 00000055`5f8fe120 00007ff9`9bbf84d6     RPCRT4!OSF_BINDING_HANDLE::InitCCallWithAssociation+0x8a
-09 00000055`5f8fe180 00007ff9`9bbf75e7     RPCRT4!OSF_BINDING_HANDLE::AllocateCCall+0x256
-0a 00000055`5f8fe2e0 00007ff9`9bca00f5     RPCRT4!OSF_BINDING_HANDLE::NegotiateTransferSyntax+0x37
-0b 00000055`5f8fe330 00007ff9`9bca3840     RPCRT4!NdrpClientCall3+0x715
-0c 00000055`5f8fe6a0 00007ff9`99bc139e     RPCRT4!NdrClientCall3+0xf0
-0d 00000055`5f8fea30 00007ff9`775c1e00     wkscli!NetWkstaGetInfo+0x5e
-0e 00000055`5f8feae0 00007ff9`83c62df6     ntlanman!NPOpenEnum+0x50
-0f 00000055`5f8fec40 00007ff9`83c61b7f     MPR!MprOpenEnumConnect+0x176&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&quot;プロセス内のスレッド一覧を表示する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E5%86%85%E3%81%AE%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89%E4%B8%80%E8%A6%A7%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B&quot; aria-label=&quot;プロセス内のスレッド一覧を表示する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;プロセス内のスレッド一覧を表示する&lt;/h3&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;~&lt;/code&gt;コマンドを使って、プロセス内のスレッド一覧を取得できます。
-参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/---thread-status-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;~ (スレッドの状態) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;現在のメモ帳プロセスには、以下の14個のスレッドが存在するようです。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:011&gt; ~
-   0  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;7ac Suspend: 1 Teb: 00000055`5f35c000 Unfrozen
-   1  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;22f0 Suspend: 1 Teb: 00000055`5f36a000 Unfrozen
-   2  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;1500 Suspend: 1 Teb: 00000055`5f36e000 Unfrozen
-   3  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;198c Suspend: 1 Teb: 00000055`5f370000 Unfrozen
-   4  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;2094 Suspend: 1 Teb: 00000055`5f364000 Unfrozen
-   5  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;1d6c Suspend: 1 Teb: 00000055`5f372000 Unfrozen
-   6  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;1048 Suspend: 1 Teb: 00000055`5f368000 Unfrozen
-   7  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;1408 Suspend: 1 Teb: 00000055`5f374000 Unfrozen
-   8  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;30c Suspend: 1 Teb: 00000055`5f376000 Unfrozen
-   9  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;1b18 Suspend: 1 Teb: 00000055`5f378000 Unfrozen
-  10  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;af8 Suspend: 1 Teb: 00000055`5f37a000 Unfrozen
-&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt; 11  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;898 Suspend: 1 Teb: 00000055`5f37e000 Unfrozen
-  12  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;1720 Suspend: 1 Teb: 00000055`5f380000 Unfrozen
-  13  Id: de4&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;37c Suspend: 1 Teb: 00000055`5f382000 Unfrozen&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&quot;特定のスレッドのスタックトレースを取得する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E7%89%B9%E5%AE%9A%E3%81%AE%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89%E3%81%AE%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B9%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B&quot; aria-label=&quot;特定のスレッドのスタックトレースを取得する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;特定のスレッドのスタックトレースを取得する&lt;/h3&gt;
-&lt;p&gt;ここで、特定のスレッドのスタックトレースを取得するには、以下のコマンドを続けて使用します。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;~0s
-k&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;~0s&lt;/code&gt;コマンドは、スレッド番号0の設定を取得します。
-参考：&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/-s--set-current-thread-&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;~s (現在のスレッドの設定) - Windows drivers | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;出力は次のようになりました。&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;0:011&gt; ~0s
-win32u!NtGdiGetCharABCWidthsW+0x14:
-00007ff9`9b3465e4 c3              ret
-0:000&gt; k
- &lt;span class=&quot;token comment&quot;&gt;# Child-SP          RetAddr               Call Site&lt;/span&gt;
-00 00000055`5f117108 00007ff9`9b01a2ae     win32u!NtGdiGetCharABCWidthsW+0x14
-01 00000055`5f117110 00007ff9`9b01a211     gdi32full!LoadGlyphMetricsWithGetCharABCWidthsI+0x5e
-02 00000055`5f1174b0 00007ff9`9b019d60     gdi32full!LoadGlyphMetrics+0x99
-03 00000055`5f1174f0 00007ff9`8aa29016     gdi32full!CUspShapingFont::GetGlyphDefaultAdvanceWidths+0x150
-04 00000055`5f117550 00007ff9`9b020b65     TextShaping!ShapingGetGlyphPositions+0x516
-05 00000055`5f117750 00007ff9`9b0266e3     gdi32full!ShlPlaceOT+0x255
-06 00000055`5f117970 00007ff9`9b025d9b     gdi32full!RenderItemNoFallback+0x573
-07 00000055`5f117aa0 00007ff9`9b025c6b     gdi32full!RenderItemWithFallback+0xeb
-08 00000055`5f117af0 00007ff9`9b025a3f     gdi32full!RenderItem+0x3b
-09 00000055`5f117b40 00007ff9`9b027ac6     gdi32full!ScriptStringAnalyzeGlyphs+0x20f
-0a 00000055`5f117bf0 00007ff9`9b024ca2     gdi32full!ScriptStringAnalyse+0x626
-0b 00000055`5f117dc0 00007ff9`9b0246be     gdi32full!LpkCharsetDraw+0x5c2
-0c 00000055`5f117ff0 00007ff9`9d01f5f2     gdi32full!LpkDrawTextEx+0x5e
-0d 00000055`5f118060 00007ff9`9d01e9bf     USER32!DT_DrawStr+0xb6
-0e 00000055`5f118110 00007ff9`9d01eede     USER32!DT_GetLineBreak+0xf3
-0f 00000055`5f1181b0 00007ff9`9d01eb50     USER32!DrawTextExWorker+0x36e
-10 00000055`5f118300 00007ff9`6b8a6123     USER32!DrawTextW+0x40
-11 00000055`5f118370 00007ff9`6b89ac60     DUI70!DirectUI::Element::GetContentSize+0x463
-12 00000055`5f118450 00007ff9`6b8a7196     DUI70!DirectUI::Element::_UpdateDesiredSize+0x6a0
-&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; 以下略 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id=&quot;デバッグを終了してプロセスからデタッチする&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%82%92%E7%B5%82%E4%BA%86%E3%81%97%E3%81%A6%E3%83%97%E3%83%AD%E3%82%BB%E3%82%B9%E3%81%8B%E3%82%89%E3%83%87%E3%82%BF%E3%83%83%E3%83%81%E3%81%99%E3%82%8B&quot; aria-label=&quot;デバッグを終了してプロセスからデタッチする permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;デバッグを終了して、プロセスからデタッチする&lt;/h3&gt;
-&lt;p&gt;最後に&lt;code class=&quot;language-text&quot;&gt;qd&lt;/code&gt;コマンドを使用して、デバッグを終了してプロセスからデタッチします。&lt;/p&gt;
-&lt;p&gt;デバッグを終了すると、Commandウィンドウが終了し、停止されていたメモ帳の書き込み処理が再開されました。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;image-20211003212553671.png&quot; alt=&quot;image-20211003212553671&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
-&lt;p&gt;とりあえず&lt;a href=&quot;https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/getting-started-with-windbg&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;公式チュートリアル&lt;/a&gt;のユーザモードデバッグの手順について一通り実践してみました。&lt;/p&gt;
 &lt;p&gt;WinDbgを用いたWindowsのデバッグやダンプの解析方法について公開しているその他情報については、以下のページのリストをご覧ください。&lt;/p&gt;
 &lt;p&gt;参考：&lt;a href=&quot;/windows-windbg-001-index&quot;&gt;WinDbgを用いたデバッグとトラブルシューティングのテクニック&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[WinDbgを用いたデバッグとトラブルシューティングのテクニック]]></title><link>https://kashiwaba-yuki.com/windows-windbg-001-index</link><guid isPermaLink="false">https://kashiwaba-yuki.com/windows-windbg-001-index</guid><pubDate>Mon, 04 Oct 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;今回は、WinDbgを用いたWindowsのデバッグやダンプの解析方法について0から学べる情報を整理したいと思い、この記事を書き始めました。&lt;/p&gt;
 &lt;p&gt;私は、本業の中でしばしばメモリダンプやプロセスダンプを解析してトラブルシューティングをしなければならないことがあるのですが、各問題の原因特定のために有効な調査方法についてわかりやすい情報が非常に少ないと感じています。&lt;/p&gt;
