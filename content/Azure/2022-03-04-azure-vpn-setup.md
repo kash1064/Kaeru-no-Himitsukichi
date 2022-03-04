@@ -1,6 +1,6 @@
 ---
 title: 仮想ネットワークゲートウェイでAzureにVPN接続してクラウドプロキシっぽい環境を作ったメモ
-date: "2022-02-20"
+date: "2022-03-04"
 template: "post"
 draft: false
 slug: "azure-vpn-setup"
