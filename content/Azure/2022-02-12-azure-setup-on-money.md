@@ -152,7 +152,7 @@ from urllib import request, parse
 
 import azure.functions as func
 
-DISCORDWEBHOOK = "https://discord.com/api/webhooks/942244089682870272/LFwOIqSnh3CfnF3hDOESAMqqUZcrrsvEoEXVbgdrab-nB-VhSdGCJmAu_16_ejFJ4jw5"
+DISCORDWEBHOOK = "<Webhook URL>"
 data = {
     "content": "Azure Cost Alert"
 }
