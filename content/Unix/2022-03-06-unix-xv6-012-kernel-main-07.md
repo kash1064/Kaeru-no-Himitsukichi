@@ -10,7 +10,7 @@ tags:
   - ""
   - ""
 description: ""
-socialImage: "/media/cards/unix-xv6-012-kernel-main-07.png"
+socialImage: "/media/cards/no-image.png"
 ---
 
 [はじめてのOSコードリーディング ~UNIX V6で学ぶカーネルのしくみ](https://amzn.to/3q8TU3K)にインスパイアされて[xv6 OS](https://github.com/mit-pdos/xv6-public)を読んでます。

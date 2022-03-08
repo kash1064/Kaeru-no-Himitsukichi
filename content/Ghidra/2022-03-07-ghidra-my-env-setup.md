@@ -10,7 +10,7 @@ tags:
   - "Ghidra"
   - "備忘録"
 description: ""
-socialImage: "/media/cards/ghidra-my-env-setup.png"
+socialImage: "/media/cards/no-image.png"
 ---
 
 今回は

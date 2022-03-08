@@ -10,7 +10,7 @@ tags:
   - ""
   - ""
 description: ""
-socialImage: "/media/cards/ghidra-analyze-go-binary.png"
+socialImage: "/media/cards/no-image.png"
 ---
 
 今回は
