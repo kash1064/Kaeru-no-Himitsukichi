@@ -187,3 +187,19 @@ USB 3.1 Gen1でPCとSSDを接続して起動してみましたが、十分に速
 ![image-20220303235640818](../../static/media/2022-03-03-note-how-to-create-bootmedia-external-ssd/image-20220303235640818.png)
 
 今までツール任せにしていたブート構成を手動で作成してみたので結構勉強になりました。
+
+## 追記：USBPcapをインストールするとOSが起動しなくなる問題
+
+USB接続したSSDに`USBPcap`をインストールして再起動すると、OS起動時に「自動修復中」の表示になり起動しない問題が発生しました。
+
+残念ながら、外部接続したSSDからインストール時に作成された以下のフォルダとレジストリをすべて削除してみたものの、起動に失敗する問題は解消されませんでした。
+
+- %ProgramFiles%\USBPcap
+- C:\Windows\System32\drivers\USBPcap.sys
+- HKLM\System\CurrentControlSet\Services\USBPcap
+- HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\USBPcap
+
+確認した限りでは上記を削除すればUSBPcapのインストール前の状態に戻せそうな気がするのですが、いまいち原因がわかりませんね。
+
+システムファイルを書き換えてるとは考えにくいですが、現状この問題が発生した場合は起動SSDの再セットアップ以外に解消方法が見つかりませんでした。
+
