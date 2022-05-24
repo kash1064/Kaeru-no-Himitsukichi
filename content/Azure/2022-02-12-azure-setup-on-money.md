@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory の ID セキュリティスコアを確認してみる
+title: Azureを安心安全に使うためにコストアラート設定を実施したメモ
 date: "2022-02-12"
 template: "post"
 draft: false
