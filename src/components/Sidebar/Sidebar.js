@@ -20,7 +20,7 @@ const Sidebar = ({ isIndex }: Props) => {
     <div className={styles['sidebar']}>
       <div className={styles['sidebar__inner']}>
         <div className={styles['logo-image']}>
-          <img src={LOGO_IMG} className={styles['headerimage']} alt="logo"></img>
+          <img src={LOGO_IMG} className={styles['headerimage']} alt="logo" onclick="document.location='/';return false;"></img>
         </div>
         <Author author={author} isIndex={isIndex} />
         <Menu menu={menu} />
