@@ -97,7 +97,7 @@ int main(void) {
 
 上記ソースコードをコンパイルした`CreateCloseFile.exe`に着目してログを抽出すると、以下の操作を行っていることがわかります。
 
-![image-20220409163516984](../../static/media/2022-03-30-windows-windriver-003.md/image-20220409163516984.png)
+![image-20220409163516984](../../static/media/2022-03-30-windows-windriver-003/image-20220409163516984.png)
 
 `CreateFile`から`CloseFile`までの流れはソースコードで明示的に指定したものでしたが、`CloseFile`が呼び出された後に`IRP_MJ_CLOSE`という操作が行われていることがわかります。
 
@@ -107,7 +107,7 @@ int main(void) {
 
 今度は少し対象を広げてフィルタしてみます。
 
-![image-20220409164044350](../../static/media/2022-03-30-windows-windriver-003.md/image-20220409164044350.png)
+![image-20220409164044350](../../static/media/2022-03-30-windows-windriver-003/image-20220409164044350.png)
 
 `CreateCloseFile.exe`がファイルを開いて書き込む前に、Systemが何やら操作を行っているようです。
 
@@ -117,7 +117,7 @@ int main(void) {
 
 他には、`CreateFIle`イベントの詳細を見てみるとソースコードで`CreateFile`の引数として与えたパラメータが反映されていることがわかります。
 
-![image-20220409164558913](../../static/media/2022-03-30-windows-windriver-003.md/image-20220409164558913.png)
+![image-20220409164558913](../../static/media/2022-03-30-windows-windriver-003/image-20220409164558913.png)
 
 プロセスモニターログから`CreateFile`がどのような操作のために呼び出されたかを確認したい際には、この情報が参考になりそうです。
 
@@ -125,7 +125,7 @@ int main(void) {
 
 今回は「ABC」の3文字を書き込ませているので、`Length`が3になっていました。
 
-![image-20220409171140063](../../static/media/2022-03-30-windows-windriver-003.md/image-20220409171140063.png)
+![image-20220409171140063](../../static/media/2022-03-30-windows-windriver-003/image-20220409171140063.png)
 
 
 
