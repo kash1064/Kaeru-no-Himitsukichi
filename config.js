@@ -7,7 +7,7 @@ module.exports = {
   subtitle: '',
   copyright: 'All rights reserved 2022.',
   disqusShortname: '',
-  postsPerPage: 8,
+  postsPerPage: 12,
   googleAnalyticsId: 'UA-122086587-6',
   useKatex: false,
   menu: [
@@ -20,13 +20,21 @@ module.exports = {
       path: '/category/windows/'
     },
     {
-      label: 'Unix',
-      path: '/tag/unix/'
+      label: 'CTF',
+      path: '/category/ctf/'
     },
     {
       label: 'WinDbg',
       path: '/tag/win-dbg/'
-    }
+    },
+    {
+      label: 'Unix',
+      path: '/tag/unix/'
+    },
+    {
+      label: 'Notes',
+      path: '/category/notes/'
+    }    
     // {
     //   label: '競プロ',
     //   path: '/category/contest'
@@ -57,7 +65,7 @@ module.exports = {
     photo: '/avatar.png',
     bio: 'リバースエンジニアになりたい趣味プログラマ。WinDbgとYARAが好き。HackTheBox ProHacker / AtCoder 緑 / 情報処理安全確保支援士資格 Microsoft Japanに所属してます。発言はすべて個人の見解。',
     contacts: {
-      email: '',
+      email: 'https://docs.google.com/forms/d/e/1FAIpQLSf80TszA14sKaexn5LAhWgRZM6jEL_x0m2TmyL3N-JynGbN1Q/viewform',
       facebook: '',
       telegram: '',
       twitter: 'yuki_kashiwaba',
