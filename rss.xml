@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[かえるのひみつきち]]></title><description><![CDATA[かえるのひみつきち]]></description><link>https://kashiwaba-yuki.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 24 May 2022 13:16:12 GMT</lastBuildDate><item><title><![CDATA[PicoCTF 2022 Writeup]]></title><link>https://kashiwaba-yuki.com/ctf-picoctf-2022</link><guid isPermaLink="false">https://kashiwaba-yuki.com/ctf-picoctf-2022</guid><pubDate>Wed, 30 Mar 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://play.picoctf.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;picoCTF2022&lt;/a&gt;に参加していました。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[かえるのひみつきち]]></title><description><![CDATA[かえるのひみつきち]]></description><link>https://kashiwaba-yuki.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 24 May 2022 13:21:59 GMT</lastBuildDate><item><title><![CDATA[PicoCTF 2022 Writeup]]></title><link>https://kashiwaba-yuki.com/ctf-picoctf-2022</link><guid isPermaLink="false">https://kashiwaba-yuki.com/ctf-picoctf-2022</guid><pubDate>Wed, 30 Mar 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://play.picoctf.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;picoCTF2022&lt;/a&gt;に参加していました。&lt;/p&gt;
 &lt;p&gt;今回は普段解いてるRev以外にもForensicとPwn問にも挑戦してみました。&lt;/p&gt;
 &lt;p&gt;RevとForensicは全完できましたが、残念ながらPwnは2問残しました。&lt;/p&gt;
 &lt;p&gt;とはいえ、新しいテクニックも3つくらい習得できてかなり有意義でした。&lt;/p&gt;
@@ -16795,7 +16795,62 @@ FirstDriverSample!DriverEntry &lt;span class=&quot;token namespace&quot;&gt;[C:\
 &lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
 &lt;p&gt;カーネルモードデバッグの検証のために、カーネルドライバの開発を始めました。&lt;/p&gt;
 &lt;p&gt;WinDbg関連記事はこちらにまとめてあります。&lt;/p&gt;
-&lt;p&gt;参考：&lt;a href=&quot;/windows-windbg-001-index&quot;&gt;WinDbgを用いたデバッグとトラブルシューティングのテクニック&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[【CTF入門】ELFバイナリのリバースエンジニアリングに入門してみよう]]></title><link>https://kashiwaba-yuki.com/ctf-elf-training</link><guid isPermaLink="false">https://kashiwaba-yuki.com/ctf-elf-training</guid><pubDate>Sun, 12 Dec 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;CTFの初心者向けにELFバイナリの基本的な解析手法を解説します。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;/windows-windbg-001-index&quot;&gt;WinDbgを用いたデバッグとトラブルシューティングのテクニック&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[VisualStudioのキーバインド設定をVSCodeの設定と同じにしてストレスフリーになりたい]]></title><link>https://kashiwaba-yuki.com/note-visualstudio-keybind</link><guid isPermaLink="false">https://kashiwaba-yuki.com/note-visualstudio-keybind</guid><pubDate>Sun, 19 Dec 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;VisualStudioとVSCodeのそれぞれで開発を行うときに、キーバインドの差異にストレスを感じることがあります。&lt;/p&gt;
+&lt;p&gt;僕は大半の開発はVSCodeで行っているので、何とかしてVisualStudio側のキーバインドをVSCodeに合わせたいと思いました。&lt;/p&gt;
+&lt;h2 id=&quot;visualstudioのキーバインドを変更する方法&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#visualstudio%E3%81%AE%E3%82%AD%E3%83%BC%E3%83%90%E3%82%A4%E3%83%B3%E3%83%89%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95&quot; aria-label=&quot;visualstudioのキーバインドを変更する方法 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;VisualStudioのキーバインドを変更する方法&lt;/h2&gt;
+&lt;p&gt;まずは上部のナビゲーションバーから、[ツール]&gt;[オプション]を開きます。&lt;/p&gt;
+&lt;p&gt;次に左のタブから[環境]&gt;[キーボード]の設定を開きます。&lt;/p&gt;
+&lt;p&gt;ここで任意のショートカットキーを操作に割り当てすることができます。&lt;/p&gt;
+&lt;p&gt;VisualStudioでVSCodeの標準と同じキーバインドを利用する場合は、[次の追加キーボードマップスキームを適用]の設定で[Visual Studio Code]を選択します。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 779px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/6f940378ae704d7b68ba42bc3d1062cf/96e92/image-63.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 58.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsTAAALEwEAmpwYAAACd0lEQVQoz3VSy27TQBT193XZZelD6q+ABELs4AO6YQNSmzh9qA9UigRqmxQq1XESv1I/Yre24ziOHddOnMOdCQuQ6MhHdzQ65865Zyzs7e2BQRRF1Ot11Go1DlGs46AhYp/QoD3DfmNZG/UaryLxmW53dxeHh4dYWVmBAFrTPEdRlPh7pVkOw/FhP0Z4iFK4YQLdecQwLZEUC8R5hayoSFcgSRKu2d7ehmBZNno9BYOBC9f1MIwiBIGPX7KK48s2Ljs2moqHOzvmkN0EHW8C2UshWwHu7/vodDqIohE2NjYglGUJwzDoljHyfIqnpycMhyFUvQ9NUeG5LqbpBPPZ7I/3BX0LvovGE8TjMSaTCaqqWjbMaDRJkmE7LrmLEY3G3KliknPTREjk51ZC2qKcYT6fcyNray8gDKMEt7dtqJoJzwvhDHx4fojbiyZ23n3Cx/c17Hw4wOtaF6+OTbw5tfH2ywAvjx18brmYlwV/g9lsjvX1dQhVNaeRdWrm8ZGn0wwZETxZhnF2hv75V2hUu3cSxWCgf29y6EYflm3DpjdQVRVxHGNzcxMCs6trGhEMnkWWZUip2nTBz3Ybd4oCg3I0LRMq7XvdLjRNhUVx2NRQI21basP3/WWGLOybmxtouk7upkjTlDd1iCxTQyZ8oOZsAuaC/SKMk1NmbK+Tjr1yGIZLhyzMVqsFmUaMRiNOjuMxHMfhxC45YpWh1+tBIZcKVU3t0WQqDF3jZ0EQLB0u6BcIwyFvwkZmDVlltzNHz6HvhlCsB1heQKNbXLe1tQVBkiRcX19zl81m8x+ws/+hSTg6/47GyQXOvv3A6ekJrq6usLq6it//ZFH0hzpuBgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/6f940378ae704d7b68ba42bc3d1062cf/8ac56/image-63.webp 240w,
+/static/6f940378ae704d7b68ba42bc3d1062cf/d3be9/image-63.webp 480w,
+/static/6f940378ae704d7b68ba42bc3d1062cf/82ce4/image-63.webp 779w&quot;
+              sizes=&quot;(max-width: 779px) 100vw, 779px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/6f940378ae704d7b68ba42bc3d1062cf/8ff5a/image-63.png 240w,
+/static/6f940378ae704d7b68ba42bc3d1062cf/e85cb/image-63.png 480w,
+/static/6f940378ae704d7b68ba42bc3d1062cf/96e92/image-63.png 779w&quot;
+            sizes=&quot;(max-width: 779px) 100vw, 779px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/6f940378ae704d7b68ba42bc3d1062cf/96e92/image-63.png&quot;
+            alt=&quot;image-63.png&quot;
+            title=&quot;image-63.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://docs.microsoft.com/en-us/visualstudio/ide/identifying-and-customizing-keyboard-shortcuts-in-visual-studio?view=vs-2022&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Identify and customize keyboard shortcuts - Visual Studio (Windows) | Microsoft Docs&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;vscodeのキーバインドをvisualstudioの標準にする方法&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#vscode%E3%81%AE%E3%82%AD%E3%83%BC%E3%83%90%E3%82%A4%E3%83%B3%E3%83%89%E3%82%92visualstudio%E3%81%AE%E6%A8%99%E6%BA%96%E3%81%AB%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95&quot; aria-label=&quot;vscodeのキーバインドをvisualstudioの標準にする方法 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;VSCodeのキーバインドをVisualStudioの標準にする方法&lt;/h2&gt;
+&lt;p&gt;MS公式がメンテナンスしている以下の拡張機能をVSCodeにインストールすることで、VSCode側のキーバインドをVisualStudioに合わせることができます。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://github.com/microsoft/vscode-vs-keybindings&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Visual Studio Keymap for Visual Studio Code&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;他にも、AtomやSublimeTextなど、いくつかのエディタに対応したキーバインドを設定するための拡張機能があります。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://github.com/search?q=org%3Amicrosoft+keybindings&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Search · org:microsoft keybindings&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;これでVisualStudioでの開発もストレスフリーになりました。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[【CTF入門】ELFバイナリのリバースエンジニアリングに入門してみよう]]></title><link>https://kashiwaba-yuki.com/ctf-elf-training</link><guid isPermaLink="false">https://kashiwaba-yuki.com/ctf-elf-training</guid><pubDate>Sun, 12 Dec 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;CTFの初心者向けにELFバイナリの基本的な解析手法を解説します。&lt;/p&gt;
 &lt;p&gt;この記事は、私が個人的に開催する勉強会の資料として作成しました。&lt;/p&gt;
 &lt;!-- omit in toc --&gt;
 &lt;h2 id=&quot;もくじ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%82%E3%81%8F%E3%81%98&quot; aria-label=&quot;もくじ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;もくじ&lt;/h2&gt;
