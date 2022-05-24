@@ -65,7 +65,7 @@ module.exports = {
     photo: '/avatar.png',
     bio: 'リバースエンジニアになりたい趣味プログラマ。WinDbgとYARAが好き。HackTheBox ProHacker / AtCoder 緑 / 情報処理安全確保支援士資格 Microsoft Japanに所属してます。発言はすべて個人の見解。',
     contacts: {
-      email: 'https://docs.google.com/forms/d/e/1FAIpQLSf80TszA14sKaexn5LAhWgRZM6jEL_x0m2TmyL3N-JynGbN1Q/viewform',
+      email: '',
       facebook: '',
       telegram: '',
       twitter: 'yuki_kashiwaba',
