@@ -11,7 +11,7 @@ tags:
   - "Reversing"
   - "Training"
 description: ""
-socialImage: "/media/cards/no-image.png"
+socialImage: "/media/cards/ctf-elf-training.png"
 ---
 
 CTFの初心者向けにELFバイナリの基本的な解析手法を解説します。
