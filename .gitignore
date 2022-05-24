@@ -10,3 +10,6 @@ gatsby-starter-lumen.iml
 .bash_history
 .config/*
 id_rsa
+
+# My settings
+internal-content/
