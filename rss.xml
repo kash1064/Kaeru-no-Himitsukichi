@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[かえるのひみつきち]]></title><description><![CDATA[かえるのひみつきち]]></description><link>https://kashiwaba-yuki.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 24 May 2022 13:02:43 GMT</lastBuildDate><item><title><![CDATA[PicoCTF 2022 Writeup]]></title><link>https://kashiwaba-yuki.com/ctf-picoctf-2022</link><guid isPermaLink="false">https://kashiwaba-yuki.com/ctf-picoctf-2022</guid><pubDate>Wed, 30 Mar 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://play.picoctf.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;picoCTF2022&lt;/a&gt;に参加していました。&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[かえるのひみつきち]]></title><description><![CDATA[かえるのひみつきち]]></description><link>https://kashiwaba-yuki.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 24 May 2022 13:14:01 GMT</lastBuildDate><item><title><![CDATA[PicoCTF 2022 Writeup]]></title><link>https://kashiwaba-yuki.com/ctf-picoctf-2022</link><guid isPermaLink="false">https://kashiwaba-yuki.com/ctf-picoctf-2022</guid><pubDate>Wed, 30 Mar 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://play.picoctf.org/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;picoCTF2022&lt;/a&gt;に参加していました。&lt;/p&gt;
 &lt;p&gt;今回は普段解いてるRev以外にもForensicとPwn問にも挑戦してみました。&lt;/p&gt;
 &lt;p&gt;RevとForensicは全完できましたが、残念ながらPwnは2問残しました。&lt;/p&gt;
 &lt;p&gt;とはいえ、新しいテクニックも3つくらい習得できてかなり有意義でした。&lt;/p&gt;
@@ -13569,7 +13569,400 @@ entry &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class
 &lt;li&gt;&lt;a href=&quot;https://amzn.to/3qZSCY7&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;30日でできる! OS自作入門&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://amzn.to/3qXYsZX&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;ゼロからのOS自作入門&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://amzn.to/3JRUdI2&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;作って理解するOS x86系コンピュータを動かす理論と実装&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[GOT/PLTを経由したライブラリ関数呼び出しの流れを追う]]></title><description><![CDATA[GOTとPLTの概要についてまとめるとともに実際に検証してみた内容をまとめています。]]></description><link>https://kashiwaba-yuki.com/linux-got-plt</link><guid isPermaLink="false">https://kashiwaba-yuki.com/linux-got-plt</guid><pubDate>Thu, 06 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;今回は、GOTとPLTの概要についてまとめるとともに実際に検証を行っていきます。&lt;/p&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Windowsのバッテリレポートの確認方法とThinkPad X280でのバッテリ換装による延命]]></title><link>https://kashiwaba-yuki.com/note-changebattery-x280</link><guid isPermaLink="false">https://kashiwaba-yuki.com/note-changebattery-x280</guid><pubDate>Sat, 08 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;今回は、約4年ほど使用している&lt;a href=&quot;https://www.lenovo.com/jp/ja/notebooks/thinkpad/x-series/ThinkPad-X280/p/22TP2TX2800&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;ThinkPad X280&lt;/a&gt;のバッテリー交換を行ったので、その方法についてまとめておきます。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://www.lenovo.com/medias/lenovo-laptop-thinkpad-x280-feature-2.jpg?context=bWFzdGVyfHJvb3R8OTI2MTV8aW1hZ2UvanBnfGgwMS9oMjgvOTYxNzc1MTA0ODIyMi5qcGd8MTZjMjJjZDc1ZWY4YjQyODkwYTUzMDZlYTg3NDg5ZGQ2YjQyYTU2YWU5ZWJkZWIzNWRkMjQ5NjNjMWEzMzY3Yg&amp;#x26;w=1920&quot; alt=&quot;ThinkPad x280&quot;&gt;&lt;/p&gt;
+&lt;p&gt;実際の交換方法は、「内蔵バッテリの無効化→外す→付ける」という作業だけで、5分程度で完了します。&lt;/p&gt;
+&lt;p&gt;詳しくは記事の下の方に書きます。&lt;/p&gt;
+&lt;!-- omit in toc --&gt;
+&lt;h2 id=&quot;もくじ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%82%E3%81%8F%E3%81%98&quot; aria-label=&quot;もくじ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;もくじ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E3%81%AE%E9%99%90%E7%95%8C&quot;&gt;バッテリの限界&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#windows%E3%81%A7%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E3%81%AE%E5%AE%B9%E9%87%8F%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%99%E3%82%8B&quot;&gt;Windowsでバッテリの容量を確認する&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E3%81%AE%E6%83%85%E5%A0%B1%E3%81%A8%E6%9C%80%E5%A4%A7%E5%AE%B9%E9%87%8F%E3%82%92%E7%A2%BA%E8%AA%8D&quot;&gt;バッテリの情報と最大容量を確認&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E7%9B%B4%E8%BF%91%E3%81%AE%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E4%BD%BF%E7%94%A8%E7%8A%B6%E6%B3%81&quot;&gt;直近のバッテリ使用状況&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E3%81%AE%E4%BD%BF%E7%94%A8%E7%8A%B6%E6%B3%81&quot;&gt;バッテリの使用状況&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E3%81%AE%E5%8A%A3%E5%8C%96%E6%99%82%E6%9C%9F%E3%82%92%E7%89%B9%E5%AE%9A%E3%81%99%E3%82%8B&quot;&gt;バッテリの劣化時期を特定する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E9%A7%86%E5%8B%95%E6%99%82%E9%96%93%E3%81%AE%E4%BA%88%E6%B8%AC&quot;&gt;バッテリ駆動時間の予測&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E3%82%92%E4%BA%A4%E6%8F%9B%E3%81%99%E3%82%8B&quot;&gt;バッテリを交換する&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E4%BA%A4%E6%8F%9B%E3%81%AE%E6%89%8B%E9%A0%86&quot;&gt;バッテリ交換の手順&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E5%86%85%E8%94%B5%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E3%81%AE%E7%84%A1%E5%8A%B9%E5%8C%96&quot;&gt;内蔵バッテリの無効化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E8%83%8C%E9%9D%A2%E3%82%AB%E3%83%90%E3%83%BC%E3%81%AE%E5%8F%96%E3%82%8A%E5%A4%96%E3%81%97&quot;&gt;背面カバーの取り外し&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E3%81%AE%E5%8F%96%E3%82%8A%E5%A4%96%E3%81%97&quot;&gt;バッテリの取り外し&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E8%A8%AD%E7%BD%AE&quot;&gt;バッテリ設置&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E7%A2%BA%E8%AA%8D&quot;&gt;確認&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;バッテリの限界&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E3%81%AE%E9%99%90%E7%95%8C&quot; aria-label=&quot;バッテリの限界 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;バッテリの限界&lt;/h2&gt;
+&lt;p&gt;バッテリの交換方法について書く前に、交換に至った経緯について記録しておきます。&lt;/p&gt;
+&lt;p&gt;現在使っているX280は、&lt;code class=&quot;language-text&quot;&gt;Intel(R) Core(TM) i7-8550U CPU&lt;/code&gt;と&lt;code class=&quot;language-text&quot;&gt;RAM 16GB&lt;/code&gt;の構成で約10万円ほどで購入し、2022年1月8日時点でおよそ4年間使用してきました。&lt;/p&gt;
+&lt;p&gt;高い耐久性を持つ筐体は、外出時にはほぼ毎回持ち歩いていたにもかかわらずほとんど傷もなく、キーボードもマメに掃除していたおかげか非常に綺麗な状態のままでした。&lt;/p&gt;
+&lt;p&gt;スペックも購入当時に選択可能だった中では一番上のものを選んだおかげで、まだまだ現役で使える状態でした。&lt;/p&gt;
+&lt;p&gt;しかし、2021年の年末ごろから突然、外でPC作業をしていると、バッテリ残量が30%を切ったあたりから急激に減少し、15分程度で電源が切れてしまう事象が発生するようになりました。&lt;/p&gt;
+&lt;p&gt;そのため、電源に接続しない状態での稼働時間は2時間程度しかなく、少々不便さを感じていました。&lt;/p&gt;
+&lt;p&gt;実際のところ、外出時は以下のような30W以上の出力の充電器や、25W出力のモバイルバッテリ(25Wあれば、ThinkPad x280は低速ですが充電可能です)が手放せない状態でした。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://amzn.to/3F0m3OE&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Anker PowerPort III 2-Port 65W (USB PD 充電器 USB-C 2ポート)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://amzn.to/3q4D5qs&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Anker PowerCore 10000 PD Redux 25W（モバイルバッテリー 10000mAh 大容量 ）&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;windowsでバッテリの容量を確認する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#windows%E3%81%A7%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E3%81%AE%E5%AE%B9%E9%87%8F%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%99%E3%82%8B&quot; aria-label=&quot;windowsでバッテリの容量を確認する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Windowsでバッテリの容量を確認する&lt;/h2&gt;
+&lt;p&gt;Windowsを使用している場合、管理者権限でコマンドプロンプトを起動し、&lt;code class=&quot;language-text&quot;&gt;powercfg/batteryreport&lt;/code&gt;を実行することで、バッテリレポートが&lt;code class=&quot;language-text&quot;&gt;C:/WINDOWS/system32/battery-report.html&lt;/code&gt;に生成されます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;powershell&quot;&gt;&lt;pre class=&quot;language-powershell&quot;&gt;&lt;code class=&quot;language-powershell&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# 管理者権限でコマンドプロンプトを起動&lt;/span&gt;
+powercfg/batteryreport&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;このレポートには、以下のような情報が含まれます。&lt;/p&gt;
+&lt;h3 id=&quot;バッテリの情報と最大容量を確認&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E3%81%AE%E6%83%85%E5%A0%B1%E3%81%A8%E6%9C%80%E5%A4%A7%E5%AE%B9%E9%87%8F%E3%82%92%E7%A2%BA%E8%AA%8D&quot; aria-label=&quot;バッテリの情報と最大容量を確認 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;バッテリの情報と最大容量を確認&lt;/h3&gt;
+&lt;p&gt;まずは基本的な情報が確認できます。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 550px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/1e8f9f23a5e64f7898990e3dcb22509f/dd45a/image-9.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 119.16666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAYCAYAAAD6S912AAAACXBIWXMAAAsTAAALEwEAmpwYAAADH0lEQVQ4y4VVyW4TQRT0L0T2dM/mdRYvY49n8dgOIA4hCULAIRckhBBCSFwi5YDE9xf12h4zMbY5VLoz3V1vq/fcUust1OYaeplDb19Bz1Po8RS61+c6gV4soScz6CiGzgpzblsWtG0b2EdoWR8f0Hn6DevLd6gfj7B+PkG9/QB1c8/1PayvP2A9/oJ6+AT1+Rv0y9ewO+3zhNpxoPwulOdB+z601jtvghC2UvS0ByUeejzjXYF5LPeIfwjlj8dLnuvA5d51XehOB4qwbQ3X4TlXueMSDu8oGmqSNIlbg+EQ1XqNNVFVK5SrEsPRCN1ulxcVgjBClhdIl0vkeYb5PIEv0ZDkmNgQjkYBLxaYTqZI05TrBIsF1+kUltVBHI+RZTlSfst5XmQZijzHYDAwRi1LEZaBGGkFQUAPMvjMX6fdPhyIdYEQ5mWJNFuiLApDPqOxal1xnyGMIgTBCCNG5TAlrSFDLssV1lWF8ThGl8RtEtv7XInn1arCgA9inkeEOBGPx4iiENPZ1HyfMDLJf2swGGLFByW9WJG0IpLZzFgTwjErvkyX5rF4oZSFq6srE4mc1+E2Qg5xff2CeSlM0iWn8rgmTJKEhVphu12bOxJmxgL5vndaNj71JV72+z2ibyx1KBm911mPOpS0yJkUwRgMQyOhk4TysXa/KYO6C5ph1fva4LEGd8KWDwIhq9d6f6K1zgn6r4d1y4mQm+tevOdwltBmBZ27Ozj37+CwOPbtLZybN7A3G7iea4ojcmjiHJkh9FwPPUk4ky9JNyvhy34PEX238b9zpiCHouygToYmRRAhF+wSEa/9v5BlOMhgEFnIBaceT3sIYRjHO8FPk4vhHoaDEOZs+IoClq5oysfiPmCHhNSekF+qsCHc9XKJJdUvXsT05hmheMhuCjnGjvV3OmSOoe12gw29FDLPe15FIZcejuMI0lX+fqqfDVkIJcwZB4J4OZ/PWcneIZdCKFGk/LFaJAvMOH20ukA4ZB8nydwMV6mkDFYZpmKonovS68kswYSzUfr4ooeiQfFqsVgYiHCFpJmr2tvjLjlF/AdvoI0QCUZNiQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/1e8f9f23a5e64f7898990e3dcb22509f/8ac56/image-9.webp 240w,
+/static/1e8f9f23a5e64f7898990e3dcb22509f/d3be9/image-9.webp 480w,
+/static/1e8f9f23a5e64f7898990e3dcb22509f/12b65/image-9.webp 550w&quot;
+              sizes=&quot;(max-width: 550px) 100vw, 550px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/1e8f9f23a5e64f7898990e3dcb22509f/8ff5a/image-9.png 240w,
+/static/1e8f9f23a5e64f7898990e3dcb22509f/e85cb/image-9.png 480w,
+/static/1e8f9f23a5e64f7898990e3dcb22509f/dd45a/image-9.png 550w&quot;
+            sizes=&quot;(max-width: 550px) 100vw, 550px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/1e8f9f23a5e64f7898990e3dcb22509f/dd45a/image-9.png&quot;
+            alt=&quot;image-9.png&quot;
+            title=&quot;image-9.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;バッテリの劣化具合を確認したいときは、[DESIGN CAPACITY]と[FULL CHARGE CAPACITY]を確認します。&lt;/p&gt;
+&lt;p&gt;[DESIGN CAPACITY]はバッテリの理論的な最大容量であり、[FULL CHARGE CAPACITY]は実際に充電したときの最大容量です。&lt;/p&gt;
+&lt;p&gt;画像はバッテリ交換後のものであるため、[DESIGN CAPACITY]と[FULL CHARGE CAPACITY]の値は同じですが、バッテリが劣化している場合は、[FULL CHARGE CAPACITY]の値が小さくなります。&lt;/p&gt;
+&lt;p&gt;実際に交換前のバッテリの[FULL CHARGE CAPACITY]は[DESIGN CAPACITY]の30%くらいまで減少していました。&lt;/p&gt;
+&lt;h3 id=&quot;直近のバッテリ使用状況&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E7%9B%B4%E8%BF%91%E3%81%AE%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E4%BD%BF%E7%94%A8%E7%8A%B6%E6%B3%81&quot; aria-label=&quot;直近のバッテリ使用状況 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;直近のバッテリ使用状況&lt;/h3&gt;
+&lt;p&gt;続いて、過去3日間のバッテリの使用状況を確認できます。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 772px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/077b5e651ad6d8169e78901472f8d6d4/940c5/image-10.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 45.416666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAYAAAAywQxIAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB6ElEQVQozz2SWW7bQBBEdYXE5r5TXIY7aVIiJdqSYgNyEuQv9z/LS4sJ8jHorVBTUz07s+sxmxZrnLCrCts0sR0HU6Ku6xiG8T9/nEf+6Gna31rTNPR/mEd/F0chKs8IfE+aBo5j47pCaOgEgb/VhuRxHG31I7csi/0+3npJssfzXCHXNtJd10+czhe6bmJeVvK8EkBMECac16v0R1wvom1HlKoJo4zjvFLV/YY9zq+srzfKspOXeexUVtOUI209sS5Xiqwl8FL2oeJlWKjLgVDqJCqIgow8bTiMZ0I/xXcTKjUwvZyoiwHH9tmVMugCxSREv673LSa6j7JjbuPKXPRbvVQjTZAzJDX30zcKmWdmyCxiPo4XjnmHrzvsvGcP74tPYqWsw0rhF4RaSKzHjMVEHdUEzyFVWJPaotBVHKuZ2NgT6WLFvmMqD9QydzVXnhwW0my38/3yKQQVwZNPHTe8jeLPcCIxY/q0R3mKzMm2i1MrIZKLD0L2Nl1EeS+EonAWRe9hx03O78M7t6Bleoq5+A2f6sg9m1iMlO/lsmFOluKH5Ishy3lOuOcHfjZnPkJZkiZLiTWb9KtNIX5ch5lOPE1F+ossYVateNNSiV+P2MlSCjPgkNYoIyAT3JjIpgXX+/L1NIs/y6IFZx6T9NkAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/077b5e651ad6d8169e78901472f8d6d4/8ac56/image-10.webp 240w,
+/static/077b5e651ad6d8169e78901472f8d6d4/d3be9/image-10.webp 480w,
+/static/077b5e651ad6d8169e78901472f8d6d4/ca172/image-10.webp 772w&quot;
+              sizes=&quot;(max-width: 772px) 100vw, 772px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/077b5e651ad6d8169e78901472f8d6d4/8ff5a/image-10.png 240w,
+/static/077b5e651ad6d8169e78901472f8d6d4/e85cb/image-10.png 480w,
+/static/077b5e651ad6d8169e78901472f8d6d4/940c5/image-10.png 772w&quot;
+            sizes=&quot;(max-width: 772px) 100vw, 772px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/077b5e651ad6d8169e78901472f8d6d4/940c5/image-10.png&quot;
+            alt=&quot;image-10.png&quot;
+            title=&quot;image-10.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 872px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/02955bdeef8a03c5fc2458d16b12937b/65654/image-11.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 69.58333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB1ElEQVQ4y6VS7W7bMAz0OxSNZH3Lju0kThzHaZu0QzEMxd7/ka6kbCXFsGHA9oMQRYnHO5JFeZoghwFyOkOGgFIKSCkhhPgnK0yI8ATk4nI6B2sttNYw2synmc+/mVIKhQ4VNDlswfvboyWQxngo8j3Fb0UongtwcbYc5z+FqZqUzIFIDLPvjEVrqYDRqRB/zmDZGMwvJPj9DrhcIslPiWTOMmBIiWFpRWaRwRmMLcf5T2FiPUvgRB8W/38kL4CZSQZPgHaW438j+c+AdUPBWUZFk3Z2njKftQtzKzi+TP+rcSEmkeXeJS+T5eZnn1cmaEeSFfzSv1/XZAayaUPuDGltsgxmYsxdWjRukcwsXCr2VfIM6G9rlgBL3kFrIEsJ6SPKWKFUZRoM95J9RbIUbYOiGDMuydLguOfdDopYcoyxims/4cfpFc/tgClusRUB3crj0o2Yqh3aR4de1fj5/I6X5pDuWxkxug4Xyrm2R4y+S3leGBRH3eKp3OD75gUf/RXjao3jY41v9Yir3yefYx+HN7yFAYeHSPEDLq7HnvwntcV7e8arH1CtSPJauFR1CBtM6x6d8MkGqrq3DVpiuyFGZ2KX7oLvIVmXzohTvUv/ndD4BLvtfA7bihuDAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/02955bdeef8a03c5fc2458d16b12937b/8ac56/image-11.webp 240w,
+/static/02955bdeef8a03c5fc2458d16b12937b/d3be9/image-11.webp 480w,
+/static/02955bdeef8a03c5fc2458d16b12937b/a8a2c/image-11.webp 872w&quot;
+              sizes=&quot;(max-width: 872px) 100vw, 872px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/02955bdeef8a03c5fc2458d16b12937b/8ff5a/image-11.png 240w,
+/static/02955bdeef8a03c5fc2458d16b12937b/e85cb/image-11.png 480w,
+/static/02955bdeef8a03c5fc2458d16b12937b/65654/image-11.png 872w&quot;
+            sizes=&quot;(max-width: 872px) 100vw, 872px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/02955bdeef8a03c5fc2458d16b12937b/65654/image-11.png&quot;
+            alt=&quot;image-11.png&quot;
+            title=&quot;image-11.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;1/6の記録がバッテリ交換前のログですが、14:29にほぼフル充電だった状態から、約1時間30分程度で一気に35%まで残量が減っていたことがわかります。&lt;/p&gt;
+&lt;h3 id=&quot;バッテリの使用状況&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E3%81%AE%E4%BD%BF%E7%94%A8%E7%8A%B6%E6%B3%81&quot; aria-label=&quot;バッテリの使用状況 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;バッテリの使用状況&lt;/h3&gt;
+&lt;p&gt;さらに、もう少し長期間のバッテリの使用状況も確認することができます。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 907px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/e12f34b6719ec20f5760560ede7ae28b/142fb/image-12.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 69.16666666666667%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAABx0lEQVQ4y3VU25KqMBDkJ1TAG4iChLvIpVSs8pT//0t9prPEYnfZh6kMmUmnp2eCZZ/PcC413LKCezjAtW24rgvHcbBarbQtFgssl0ttZm+5+vLNvjFrt9tht9/DFgBnNAJut1uEYYgoClEUBY7HIzzP+1y22WwQHANkefaJ8YyV5zn6rkeapijLEnEcS2CD+npFfblI4h5JkkAppVcepH9/POD7vlx41vs0Alu8fXgM6Psez+cTVwHyfQ9nkSKKIg2wlwp4mD7tdAqhEoWDSMSYJ/mMa4ZkdrvdNBBByZJJaZohEyMAk3nYAPCiXIhwfxqjfFYs9Jum1UBN04ASMFBJoxq5xLDjAa6MKZXoyw1rE9eASZLifr9rDYMg+AhM/zT6U0B+02feLEMyer1eyLJMbzCBrMqqEtbFbMlsStO284BkNgyDZshkE+ikpFYkmJasAVmydJS6G9bfNZQx4diwq4YNQYqiRDU26KeGcazQjgxnNeS4cI4MQ66XusZV7CcgvznwlGiq6UTDAu/3W3fXADKJo8FX8rsp3wF/lczAv7EpU0COk1LxH01J0HXdPCDfJA+t1+vPW54z84ZptvxA+GOYi/8HzrmOKBEpip4AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/e12f34b6719ec20f5760560ede7ae28b/8ac56/image-12.webp 240w,
+/static/e12f34b6719ec20f5760560ede7ae28b/d3be9/image-12.webp 480w,
+/static/e12f34b6719ec20f5760560ede7ae28b/468b0/image-12.webp 907w&quot;
+              sizes=&quot;(max-width: 907px) 100vw, 907px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/e12f34b6719ec20f5760560ede7ae28b/8ff5a/image-12.png 240w,
+/static/e12f34b6719ec20f5760560ede7ae28b/e85cb/image-12.png 480w,
+/static/e12f34b6719ec20f5760560ede7ae28b/142fb/image-12.png 907w&quot;
+            sizes=&quot;(max-width: 907px) 100vw, 907px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/e12f34b6719ec20f5760560ede7ae28b/142fb/image-12.png&quot;
+            alt=&quot;image-12.png&quot;
+            title=&quot;image-12.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;[BATTERY DURATION]は、バッテリで稼働していた時間、[AC DURATION]は電源に接続して稼働していた時間を示しています。&lt;/p&gt;
+&lt;h3 id=&quot;バッテリの劣化時期を特定する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E3%81%AE%E5%8A%A3%E5%8C%96%E6%99%82%E6%9C%9F%E3%82%92%E7%89%B9%E5%AE%9A%E3%81%99%E3%82%8B&quot; aria-label=&quot;バッテリの劣化時期を特定する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;バッテリの劣化時期を特定する&lt;/h3&gt;
+&lt;p&gt;次に、バッテリ容量の変化も確認することができます。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 558px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/958f784155f879cc815271b55452c0a3/42a8d/image-13.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 107.5%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWCAYAAADAQbwGAAAACXBIWXMAAAsTAAALEwEAmpwYAAADIElEQVQ4y4WVaZKbMBCFfYfEgzfwhsEs9mADAmzASaZy/yN13muWYpKpyo8uyUJ6/fUiebb4+C3Wx4dYaSpW+xLrxy+xqkqsphXr9VMWYSDLtzdZLJeyWCz+a7P18Sj2yRPH82QbBGJ7vjink9hHF3NPNvu9rNdr2Ww2Ytu2WJYlb3DAcT6f63wYuTbzcSj0fVly4/fvsG9iYcMc8xU8et5JTnAQhaGOIcY9nNi2I2EUiou18/ksHsYlopg9Hk95Pmu53W4SXy6SZZlcr1dJkkQ835MAIZdlKXXTyLNt9LvruirOtbqGta3u3zqOzLg5y3II3uV+T6Vpaox3yfJcjseDhkmRNM0kLwul4dp2t5M0z+CskrwoxEeUTMvs+XwqAUUo2sIb51w/n32Ed5AC38vHQwpYHMeyg9gRuec693E9iiJxSFhAnd5Jl6Z3qXpxOnHdIzZtsZ5KZowSBiicA8JdT8jzJCS5EjKHRVEqOkNr6lpyhGsKowVRQhwYCaOO8EDCqidEm42EFX4UppA7KBMUpkWiKch1CpKQ+Szx20AgDEI9uEOlc1Bzn0E0JFdCFQShgejtftPwru/vOp5OrrYI50MeSbLbbuVwOCCKQiqSQ4PtNBKa3Kjo5RJrBRnSFoc4UpA51bARXhRG2h77kbBLBcl5dhQ0+BjH0ShCGwWRCqaFguFXgtBgyJ0g1BluiQ9J8t4lHOHQeIhjjj7VwmnIsdIPIWtRcXYMmdUlIccrborTe6dwZ3vJkEPSmEmuhqJoscoJ4YNJBWGXw4uKsWlpw9yg39hGDPnvxiZh+bmxy670hk3be+/pGBqN1c8pqrkKx8bWdiq7tpk09gPXrdHk8lGYEg55fEdR6PQrQj4snwiZA+32vm2+IozhiBGYvpojoekaPi8mhGV/wbUoE8JppdnodDg8AsPVy4v+pvDqhQPhKAjC+DPhQHmh4Eg4qXIv2D0O/dWr8Ri8Xi+8gy2er+SfHNIS3BRW84F7zk4Ycsjc8YGtoBH3MDPGzt4644EkDZ/x1Wo1Gn/vIOr7Zwn6cIc9Hs4wpwHO8yz/pP4Ab/mVj7aJtk4AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/958f784155f879cc815271b55452c0a3/8ac56/image-13.webp 240w,
+/static/958f784155f879cc815271b55452c0a3/d3be9/image-13.webp 480w,
+/static/958f784155f879cc815271b55452c0a3/1c397/image-13.webp 558w&quot;
+              sizes=&quot;(max-width: 558px) 100vw, 558px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/958f784155f879cc815271b55452c0a3/8ff5a/image-13.png 240w,
+/static/958f784155f879cc815271b55452c0a3/e85cb/image-13.png 480w,
+/static/958f784155f879cc815271b55452c0a3/42a8d/image-13.png 558w&quot;
+            sizes=&quot;(max-width: 558px) 100vw, 558px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/958f784155f879cc815271b55452c0a3/42a8d/image-13.png&quot;
+            alt=&quot;image-13.png&quot;
+            title=&quot;image-13.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;上記の画像だと、バッテリの劣化を感じるようになった2021年の年末ごろから、急激に[FULL CHARGE CAPACITY]が減少していることがわかります。&lt;/p&gt;
+&lt;p&gt;理由は不明ですが、寿命でしょうか。&lt;/p&gt;
+&lt;h3 id=&quot;バッテリ駆動時間の予測&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E9%A7%86%E5%8B%95%E6%99%82%E9%96%93%E3%81%AE%E4%BA%88%E6%B8%AC&quot; aria-label=&quot;バッテリ駆動時間の予測 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;バッテリ駆動時間の予測&lt;/h3&gt;
+&lt;p&gt;最後に、バッテリ稼働時間の予測が出力されます。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 890px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/f726f08a94253052bac3a6c0ea2f655a/4ef49/image-14.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 76.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB1ElEQVQ4y3VU6XqCQAzkKVQOOZRLzl28UEtb3/+h0sxq6Na2P/IlkGQysxtw3KYlt67JbxryOPbY+0FAnudRwB7m+z4tFgtjy+XS+NVqRev12uRRK3knT1PKt1sKXJdCbgw46XKcphnlecE+pWEYqCgKKsvSgGBgw4OzLKOu66jvlcmj1umVov3hSEppOrCv6orCMOT4wIW9AdjyQDTD4iiiqqpoHEeKOE6SxAAht9lsyFEMCCAAoKjrO1OIIlgcx8bQCEMsA+RZcuhzAHS7vdH1eqWPj0/Sg34wPIK1MkWYDBD46MnwfD7PQHgPA7ij9cDMLobh6XSitm0N4JFjnB1iuymyJP8JCIAjsynLwjSLhFepaLAl2jnJG0AcPBjWvDpSBBZgB8k2Q8nhts9PhtIzA+73e5qmd2p5DfBCZI2Xi2EOQJEkOQy/3+8zyA/JAljtdhZgbA5da/0v4DRNM+sfgA/JI+1Yhi0Ze9nz0opkezUgGZf2epYGEOeElRGGkrT38PVSEMse/roUnBPOo2EZsvnwuP0dD5F39qXkeU5Kq7/XRhYX0uRn8Mv87xjfOcx7fvOv5mQsC4sKS5LNvH8N/3lqi7VYGD6+bfwUkAMReIm/AGIkrBR/hFzIAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/f726f08a94253052bac3a6c0ea2f655a/8ac56/image-14.webp 240w,
+/static/f726f08a94253052bac3a6c0ea2f655a/d3be9/image-14.webp 480w,
+/static/f726f08a94253052bac3a6c0ea2f655a/8d1ba/image-14.webp 890w&quot;
+              sizes=&quot;(max-width: 890px) 100vw, 890px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/f726f08a94253052bac3a6c0ea2f655a/8ff5a/image-14.png 240w,
+/static/f726f08a94253052bac3a6c0ea2f655a/e85cb/image-14.png 480w,
+/static/f726f08a94253052bac3a6c0ea2f655a/4ef49/image-14.png 890w&quot;
+            sizes=&quot;(max-width: 890px) 100vw, 890px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/f726f08a94253052bac3a6c0ea2f655a/4ef49/image-14.png&quot;
+            alt=&quot;image-14.png&quot;
+            title=&quot;image-14.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;大体90分から2時間程度の予測になっており、体感とも一致しています。&lt;/p&gt;
+&lt;h2 id=&quot;バッテリを交換する&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E3%82%92%E4%BA%A4%E6%8F%9B%E3%81%99%E3%82%8B&quot; aria-label=&quot;バッテリを交換する permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;バッテリを交換する&lt;/h2&gt;
+&lt;p&gt;というわけで、理由は不明ながらThinkPadのバッテリがかなり劣化していることがわかったので、交換を行いました。&lt;/p&gt;
+&lt;p&gt;交換品のバッテリは残念ながら純正のものが手に入らなかったため、Amazonで互換品を購入しました。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://amzn.to/32TiQDF&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;【NOTEPARTS】レノボ ThinkPad A285 X280 用 バッテリー 01AV470 01AV471 01AV472対応&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;購入時の価格は7,980円でした。&lt;/p&gt;
+&lt;p&gt;品質は正直使ってみないとわかりませんが、購入日から1年間の品質保証とPSEマークがついていたのでさすがに発火とかはないかと思ってます。&lt;/p&gt;
+&lt;h3 id=&quot;バッテリ交換の手順&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E4%BA%A4%E6%8F%9B%E3%81%AE%E6%89%8B%E9%A0%86&quot; aria-label=&quot;バッテリ交換の手順 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;バッテリ交換の手順&lt;/h3&gt;
+&lt;p&gt;ThinkPad x280のバッテリ交換の手順は非常に簡単です。&lt;/p&gt;
+&lt;p&gt;大体5分程度で完了しました。&lt;/p&gt;
+&lt;p&gt;大まかな流れとしては以下の流れで実施します。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;内蔵バッテリの無効化&lt;/li&gt;
+&lt;li&gt;背面カバーの取り外し&lt;/li&gt;
+&lt;li&gt;バッテリの取り外し&lt;/li&gt;
+&lt;li&gt;バッテリ設置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;それぞれの手順は、Lenovo公式が出してる動画を見れば完璧にわかります。&lt;/p&gt;
+&lt;p&gt;何なら簡単すぎて動画見なくてもわかります。&lt;/p&gt;
+&lt;p&gt;参考：&lt;a href=&quot;https://support.lenovo.com/jp/ja/solutions/ht510682-removal-and-replacement-videos-thinkpad-x280-20ke-20kf&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;取り付け、取り外し動画 - ThinkPad X280 (20KE, 20KF) - Lenovo Support JP&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;内蔵バッテリの無効化&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E5%86%85%E8%94%B5%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E3%81%AE%E7%84%A1%E5%8A%B9%E5%8C%96&quot; aria-label=&quot;内蔵バッテリの無効化 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;内蔵バッテリの無効化&lt;/h3&gt;
+&lt;p&gt;まずは内蔵バッテリを無効化します。&lt;/p&gt;
+&lt;p&gt;これは、ThinkPadのパーツを取り外すときは必ず行います。&lt;/p&gt;
+&lt;p&gt;うっかりやり忘れても即故障とはならないですが(実体験)必ず無効化するようにしましょう。&lt;/p&gt;
+&lt;p&gt;手順は簡単で、BIOSをF1ボタンで起動したら、[Config]&gt;[Power]に進み、内蔵バッテリの無効化を選択するだけです。&lt;/p&gt;
+&lt;p&gt;これで自動的にPCの電源が切れ、パーツを取り外せるようになります。&lt;/p&gt;
+&lt;p&gt;詳細は前述した動画の[内蔵バッテリーの無効化]の項をみてください。&lt;/p&gt;
+&lt;h3 id=&quot;背面カバーの取り外し&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E8%83%8C%E9%9D%A2%E3%82%AB%E3%83%90%E3%83%BC%E3%81%AE%E5%8F%96%E3%82%8A%E5%A4%96%E3%81%97&quot; aria-label=&quot;背面カバーの取り外し permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;背面カバーの取り外し&lt;/h3&gt;
+&lt;p&gt;割愛します。&lt;/p&gt;
+&lt;p&gt;ネジを外せばOKです。&lt;/p&gt;
+&lt;p&gt;他のモデルのThinkPadだと、背面を外す際にツメを外すための道具が必要な場合があるのですが、X280は特に道具は不要で、簡単に取り外しができます。&lt;/p&gt;
+&lt;h3 id=&quot;バッテリの取り外し&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E3%81%AE%E5%8F%96%E3%82%8A%E5%A4%96%E3%81%97&quot; aria-label=&quot;バッテリの取り外し permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;バッテリの取り外し&lt;/h3&gt;
+&lt;p&gt;ネジを外して、バッテリを「上」に向かって引き上げます。&lt;/p&gt;
+&lt;p&gt;動画の[内蔵バッテリー の取り外し]を見ると一発でわかります。&lt;/p&gt;
+&lt;p&gt;取り外し後はこんな感じになります。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 450px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/da6fd6f1f0a1ce38e927fc4d689509e5/20e5d/IMG_0008.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 133.33333333333331%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAbABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAQCAwUB/8QAFgEBAQEAAAAAAAAAAAAAAAAAAgED/9oADAMBAAIQAxAAAAG6K/DdIpM2lHRSZfKgL//EABwQAAICAwEBAAAAAAAAAAAAAAECABEDISMEIv/aAAgBAQABBQJi06QGZSTkCtSG0roj0cagIup6DtD8f//EABURAQEAAAAAAAAAAAAAAAAAAAEg/9oACAEDAQE/AWP/xAAWEQEBAQAAAAAAAAAAAAAAAAABEDH/2gAIAQIBAT8BMhP/xAAcEAACAgIDAAAAAAAAAAAAAAAAARARAhITITL/2gAIAQEABj8CWrPUaobydCOQqzqKEf/EABwQAAMAAwEBAQAAAAAAAAAAAAABESExQWFxUf/aAAgBAQABPyGhIdZ6TAyF7qwSgk3ssfDFmbT+CeJni6KSarg+i/BsYT4O2cP/2gAMAwEAAgADAAAAEOTgDf/EABcRAQEBAQAAAAAAAAAAAAAAAAEAEDH/2gAIAQMBAT8Q6xEi/8QAFxEBAQEBAAAAAAAAAAAAAAAAAQAhMf/aAAgBAgEBPxCmQ4z2/8QAHhABAAMBAAIDAQAAAAAAAAAAAQARITFBUZGhscH/2gAIAQEAAT8QqnuqPrIr6DTTr9QBosiLEKL33AsEACAfnsbV0eIJDpZQayoqSDhAryiLOqfTv9i8AIsoZRFOqAbO1cfk/9k=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/da6fd6f1f0a1ce38e927fc4d689509e5/8ac56/IMG_0008.webp 240w,
+/static/da6fd6f1f0a1ce38e927fc4d689509e5/8626f/IMG_0008.webp 450w&quot;
+              sizes=&quot;(max-width: 450px) 100vw, 450px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/da6fd6f1f0a1ce38e927fc4d689509e5/09b79/IMG_0008.jpg 240w,
+/static/da6fd6f1f0a1ce38e927fc4d689509e5/20e5d/IMG_0008.jpg 450w&quot;
+            sizes=&quot;(max-width: 450px) 100vw, 450px&quot;
+            type=&quot;image/jpeg&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/da6fd6f1f0a1ce38e927fc4d689509e5/20e5d/IMG_0008.jpg&quot;
+            alt=&quot;IMG_0008.jpg&quot;
+            title=&quot;IMG_0008.jpg&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&quot;バッテリ設置&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%83%90%E3%83%83%E3%83%86%E3%83%AA%E8%A8%AD%E7%BD%AE&quot; aria-label=&quot;バッテリ設置 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;バッテリ設置&lt;/h3&gt;
+&lt;p&gt;取り外しの逆をやります。&lt;/p&gt;
+&lt;p&gt;純正のよりはめ込みが若干緩くなってしまったので少々不安がありましたが、特に問題はなさそうでした。&lt;/p&gt;
+&lt;h3 id=&quot;確認&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E7%A2%BA%E8%AA%8D&quot; aria-label=&quot;確認 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;確認&lt;/h3&gt;
+&lt;p&gt;最後に電源を投入し、バッテリレポートからバッテリの状態を確認したら完了です。&lt;/p&gt;
+&lt;p&gt;これでThinkPad x280が延命できました。&lt;/p&gt;
+&lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;4年ほど使ってきたX280のバッテリを換装して延命しました。&lt;/p&gt;
+&lt;p&gt;これからもまだまだ現役で使えそうです。&lt;/p&gt;
+&lt;p&gt;(最近ThinkPad X1 nano gen2が気になってるけど・・・）&lt;/p&gt;</content:encoded></item><item><title><![CDATA[GOT/PLTを経由したライブラリ関数呼び出しの流れを追う]]></title><description><![CDATA[GOTとPLTの概要についてまとめるとともに実際に検証してみた内容をまとめています。]]></description><link>https://kashiwaba-yuki.com/linux-got-plt</link><guid isPermaLink="false">https://kashiwaba-yuki.com/linux-got-plt</guid><pubDate>Thu, 06 Jan 2022 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;今回は、GOTとPLTの概要についてまとめるとともに実際に検証を行っていきます。&lt;/p&gt;
 &lt;p&gt;この記事を書き始めたきっかけとしては、位置独立コード(PIC)について調べていく中でGOTがよくわからなくなってしまったことです。&lt;/p&gt;
 &lt;!-- omit in toc --&gt;
 &lt;h2 id=&quot;もくじ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%82%E3%81%8F%E3%81%98&quot; aria-label=&quot;もくじ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;もくじ&lt;/h2&gt;
@@ -14979,7 +15372,123 @@ eax=0055d810&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&quot;参考書籍&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E5%8F%82%E8%80%83%E6%9B%B8%E7%B1%8D&quot; aria-label=&quot;参考書籍 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;参考書籍&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://amzn.to/3zi4Pew&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;暗号技術 実践活用ガイド&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[C言語で実装したBase64プログラムをWinDbgのTime Travel Debuggingで解析してみる]]></title><link>https://kashiwaba-yuki.com/windows-windbg-009-base64</link><guid isPermaLink="false">https://kashiwaba-yuki.com/windows-windbg-009-base64</guid><pubDate>Thu, 30 Dec 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;今回は独自実装したBase64モジュールをGhidraでデコンパイルした後にWinDbgで処理を追っていきたいと思います。&lt;/p&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[2021年の振り返りと2022年の抱負をざっくり書く]]></title><link>https://kashiwaba-yuki.com/reports-20211231</link><guid isPermaLink="false">https://kashiwaba-yuki.com/reports-20211231</guid><pubDate>Fri, 31 Dec 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;今日で2021年も終わりということで、下半期の活動を雑に振り返りつつ来年の抱負を書いていこうと思います。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;/reports-20210531&quot;&gt;上半期の振り返り&lt;/a&gt;はこちら(なぜか5/31に書いたやつ)。&lt;/p&gt;
+&lt;!-- omit in toc --&gt;
+&lt;h2 id=&quot;もくじ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%82%E3%81%8F%E3%81%98&quot; aria-label=&quot;もくじ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;もくじ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;#2021%E5%B9%B4%E3%81%AE%E7%9B%AE%E6%A8%99&quot;&gt;2021年の目標&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#%E9%81%94%E6%88%90%E3%81%97%E3%81%9F%E3%81%93%E3%81%A8&quot;&gt;達成したこと&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E9%81%94%E6%88%90%E3%81%97%E3%81%A6%E3%81%84%E3%81%AA%E3%81%84%E3%81%93%E3%81%A8&quot;&gt;達成していないこと&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%82%84%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%84%E3%81%93%E3%81%A8&quot;&gt;やってないこと&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#2022%E5%B9%B4%E3%81%AE%E6%8A%B1%E8%B2%A0&quot;&gt;2022年の抱負&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;2021年の目標&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2021%E5%B9%B4%E3%81%AE%E7%9B%AE%E6%A8%99&quot; aria-label=&quot;2021年の目標 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2021年の目標&lt;/h2&gt;
+&lt;p&gt;振り返りですが、2021年1月1日に自分の中で設定していた今年の目標はこんな感じでした。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;・自作ラズパイOSの開発
+・CTFのReversing問解けるようになる
+・AtCoder 水色になる
+・HackTheBox ProHacker
+・ブログまじめに更新する
+・技術同人誌書く
+・OSS コミット
+・CISSP / PenTest+ 取得
+・Azure 上位資格取得
+・Rust と C をもうちょっと書けるようになる&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;5/31の振り返り時点で特に注力したいと思っていたことはこちら。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;・AtCoder 水色になる
+・Rev/Crypto/Pwnを解けるようになる
+・TOEIC受ける
+・バグハンティング&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;改めて見てみると全然やってないですね！&lt;/p&gt;
+&lt;h3 id=&quot;達成したこと&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E9%81%94%E6%88%90%E3%81%97%E3%81%9F%E3%81%93%E3%81%A8&quot; aria-label=&quot;達成したこと permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;達成したこと&lt;/h3&gt;
+&lt;p&gt;以下の目標については上半期の時点で達成していました。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;・HackTheBox ProHacker
+・ブログまじめに更新する
+・技術同人誌書く
+・OSS コミット&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;アップデートとしては、技術書典で頒布していたYARA本をインプレスR&amp;#x26;D技術の泉シリーズから、
+「&lt;a style=&quot;color: #66c5a2;&quot; href=&quot;https://amzn.to/3wm3i5D&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;やわらかYARA入門&lt;/a&gt;」として11/5に出版しました。&lt;/p&gt;
+&lt;p&gt;Amazon等々で購入できます。&lt;/p&gt;
+&lt;p&gt;OSSのコミットはYARA本書いてからは全然やっていないので、2022年はまた何かのリポジトリに継続してコントリビューションしていきたいですね。&lt;/p&gt;
+&lt;p&gt;あとは、水色の目標達成には至りませんでしたが、10/2にAtCoderで入緑しました。&lt;/p&gt;
+&lt;p&gt;入緑以降はCTFばっかりやっててコンテスト出ていないので実質引退した感じになってます。&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 500px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/2d42358731e6dbba1f7a0f963074268c/0b533/image-72.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 68.33333333333333%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAARlAAAEZQAGA43XUAAACd0lEQVQ4y2WTWW/aQBSF8/fz0qf2rVWlSt0QOyRqlWZpAtQkMQZj7FmAKGWJDdQhEWGxE07HM4YusfTpXJ9772FsmZ15MMdsNYPW08AmDPPlHGN/DP/ehztxZb0Ml1g9rbB8XEpkLbxFuNjyEDxgvV5jJ3wKEbFb2kWO5hBdU3+K2f0M7sCFd+Nh7I5lfeff4XZyi5E7kroO19hcwWOgAr17D8QjuP51je64CzZi6Ew6UqlLJcQlcG4cqZIbIn3mMfARl95wOpTBO9bQQsL6jIyTQcpOIWOnkRZEGnmKv2tFykkh6STFbErsJ6D3dBXYcm0kSRp5XkSW5ZHjBeRYDFdkNzVTdZ4VcUhOcMbK+NY+RoplURsYKrB9ZaKiZ1E19qDVCkKLz9AM5W/6F419GOcHMC+OoJVzyO6/AunEJ3S7LdDvabTLRfBSXlCI9f86j05lD+w0g+bBJzQO3qOUfInz4lvYhwkMaXxC98qGfZoCrRRAxK+Rcv45pZzs61/e4eTjC5Rzb6B//YDmUUL4RThnGfRpTQUO2xaIMJhoULEcLW4pF6THtT1Yx0lo+dfSZz+KksiP7lVgfMJB7yeI1QC1m6AtU2kMdyxw0oLdrEOvVoRngQnvz4yad8R+v3cdP7LrwSEUvN0GZVzAQKj4BgVm00K90cDF5SWsli29qP8vXO73BwMV6LkuLMuCaTaENmEYBnRdR61WQ71eR9M0Yds2eLRMiIKKj5soKKVwHBv9fj9+h8MhqtWqDN0MdDodtMWJOedbjXwmQiOietPb3G8Dp9MpfN9HGIZYrcSffrmUGgQB5vP51ptMJlgsFs9moloS+cEjfgN4v9mqZeoJnAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;picture&gt;
+          &lt;source
+              srcset=&quot;/static/2d42358731e6dbba1f7a0f963074268c/8ac56/image-72.webp 240w,
+/static/2d42358731e6dbba1f7a0f963074268c/d3be9/image-72.webp 480w,
+/static/2d42358731e6dbba1f7a0f963074268c/b0a15/image-72.webp 500w&quot;
+              sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+              type=&quot;image/webp&quot;
+            /&gt;
+          &lt;source
+            srcset=&quot;/static/2d42358731e6dbba1f7a0f963074268c/8ff5a/image-72.png 240w,
+/static/2d42358731e6dbba1f7a0f963074268c/e85cb/image-72.png 480w,
+/static/2d42358731e6dbba1f7a0f963074268c/0b533/image-72.png 500w&quot;
+            sizes=&quot;(max-width: 500px) 100vw, 500px&quot;
+            type=&quot;image/png&quot;
+          /&gt;
+          &lt;img
+            class=&quot;gatsby-resp-image-image&quot;
+            src=&quot;/static/2d42358731e6dbba1f7a0f963074268c/0b533/image-72.png&quot;
+            alt=&quot;image-72.png&quot;
+            title=&quot;image-72.png&quot;
+            loading=&quot;lazy&quot;
+            style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+          /&gt;
+        &lt;/picture&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;競プロをやってたことは基本的なアルゴリズムやデータ構造を学ぶ上で結構役に立ちました。&lt;/p&gt;
+&lt;p&gt;あとは某コンテストにCTFの問題提供をしたり、AWSのSAAを取得したり、WinDbgの検証記事を書いたり毎週コンテストに参加してWriteupを書いたりと精力的に活動してました。&lt;/p&gt;
+&lt;h3 id=&quot;達成していないこと&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E9%81%94%E6%88%90%E3%81%97%E3%81%A6%E3%81%84%E3%81%AA%E3%81%84%E3%81%93%E3%81%A8&quot; aria-label=&quot;達成していないこと permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;達成していないこと&lt;/h3&gt;
+&lt;p&gt;Rev問については初心者向けのCTFなら安定して全完できるくらいにはなりました。&lt;/p&gt;
+&lt;p&gt;ただ、SECCONは0完でしたし、野良CTFなどでも高難度の問題は解けないことが多いので今後も精進していこうと思います。&lt;/p&gt;
+&lt;p&gt;来年の主な目標はリバースエンジニアリングになりそうです。&lt;/p&gt;
+&lt;h3 id=&quot;やってないこと&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%84%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%84%E3%81%93%E3%81%A8&quot; aria-label=&quot;やってないこと permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;やってないこと&lt;/h3&gt;
+&lt;p&gt;TOEICとバグハンティングについてはモチベ不足でそもそも取り組んでませんでした。&lt;/p&gt;
+&lt;p&gt;英語の技術書なども今年はぼちぼち読んでるのですが、1ページ読むのに大変に時間がかかるので、2022年こそはちゃんと英語の勉強もしようと思ってます。&lt;/p&gt;
+&lt;p&gt;バグハンティングは、CTFやリバースエンジニアリングやるついでに面白そうなネタがあれば取り組んでみようと考えています。&lt;/p&gt;
+&lt;p&gt;あとCISSPも過去問をちょろっとやってただけで全然進めてないです。&lt;/p&gt;
+&lt;p&gt;ちょうど最近同僚がCISSP取得して焦ってるので2022年は頑張って取ろうかと思ってます。&lt;/p&gt;
+&lt;h2 id=&quot;2022年の抱負&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2022%E5%B9%B4%E3%81%AE%E6%8A%B1%E8%B2%A0&quot; aria-label=&quot;2022年の抱負 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2022年の抱負&lt;/h2&gt;
+&lt;p&gt;2022年は新しい仕事をすることになりそうなので、それによってがっつり方向転換しそうですが、以下のことを目標にしようと考えてます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;・SECCON本戦レベルのRev問を解けるようになる
+・WinDbgもしくはリバースエンジニアリング関連で技術書を書く
+・Windowsプログラミング&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;カーネルドライバ/WinAPI&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+・CISSP/TOEICスコア800点の取得
+・Pwn/Cryptoの勉強
+・OSS開発/コントリビューション&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;1つ1つが結構重いので目標としては少ないですが、これらを達成できるように頑張っていこうと思います。&lt;/p&gt;
+&lt;p&gt;リバースエンジニアリングについては最近停滞感があるので誰か強い師匠（的な存在）を探してみようかなと思ってます。&lt;/p&gt;
+&lt;p&gt;OSS活動はYARAのコントリビューションを続けたり、Ghidraの拡張機能の自作などに手を出してみたいなと考えています。&lt;/p&gt;
+&lt;p&gt;また、CTFは2021年の10月ごろに作った精進用チームの&lt;a href=&quot;https://ctftime.org/team/168239&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;0neP@dding&lt;/a&gt;で毎週適当なコンテストに参加してWriteupを書くという活動をしてるので、2022年も継続していく予定です。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://ctftime.org/team/168239&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;0neP@dding&lt;/a&gt;は現在メインメンバー2人とゲストメンバー1人で活動していて、特にPwnとCrypto担当募集してるので興味あればご連絡ください笑&lt;/p&gt;
+&lt;p&gt;あとは目標としては挙げてないですが、ハニーポット運用やマルウェア解析、バグハンティングなどにも強い関心があるので引き続き取り組んでいきたいと思ってます。&lt;/p&gt;
+&lt;h2 id=&quot;まとめ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%81%BE%E3%81%A8%E3%82%81&quot; aria-label=&quot;まとめ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;かなりざっくりですが2021年の振り返りと2022年の抱負を書きました。&lt;/p&gt;
+&lt;p&gt;2022年は結構生活面で大きな変化があり忙しくなりそうではありますが、引き続き精進を続けていきたいと思います。&lt;/p&gt;
+&lt;p&gt;IT技術者になって4年目の年になるので、そろそろ社会的貢献度の大きい活動などもやっていきたい所存…。&lt;/p&gt;</content:encoded></item><item><title><![CDATA[C言語で実装したBase64プログラムをWinDbgのTime Travel Debuggingで解析してみる]]></title><link>https://kashiwaba-yuki.com/windows-windbg-009-base64</link><guid isPermaLink="false">https://kashiwaba-yuki.com/windows-windbg-009-base64</guid><pubDate>Thu, 30 Dec 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;今回は独自実装したBase64モジュールをGhidraでデコンパイルした後にWinDbgで処理を追っていきたいと思います。&lt;/p&gt;
 &lt;!-- omit in toc --&gt;
 &lt;h2 id=&quot;もくじ&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E3%82%82%E3%81%8F%E3%81%98&quot; aria-label=&quot;もくじ permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;もくじ&lt;/h2&gt;
 &lt;ul&gt;
@@ -22407,4 +22916,105 @@ Watchウィンドウの詳細については以下のドキュメントを参照
 &lt;li&gt;&lt;a href=&quot;http://windbg.info/download/doc/pdf/WinDbg_A_to_Z_color_JP.pdf&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;WinDbg. From A to Z!&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://windbg.info/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Welcome to WinDbg.info&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://amzn.to/3KTG0e9&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;Windowsカーネルドライバプログラミング&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item></channel></rss>
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[【2021年1月-5月】振り返りと今後の目標について]]></title><link>https://kashiwaba-yuki.com/reports-20210531</link><guid isPermaLink="false">https://kashiwaba-yuki.com/reports-20210531</guid><pubDate>Mon, 31 May 2021 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;今日で2021年も半分が終わったということで、今年の取り組みを振り返りつつ後半戦に向けて目標を見直そうと思い、振り返り記事を書き始めました。&lt;/p&gt;
+&lt;h2 id=&quot;2021年当初の目標&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2021%E5%B9%B4%E5%BD%93%E5%88%9D%E3%81%AE%E7%9B%AE%E6%A8%99&quot; aria-label=&quot;2021年当初の目標 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2021年当初の目標&lt;/h2&gt;
+&lt;p&gt;さて、いきなりですが、2021年1月1日に自分の中で設定していた今年の目標はこんな感じでした。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;・自作ラズパイOSの開発
+・CTF の Reversing 問解けるようになる
+・AtCoder 水色になる
+・HackTheBox ProHacker
+・ブログまじめに更新する
+・技術同人誌書く
+・OSS コミット
+・CISSP / PenTest+ 取得
+・Azure 上位資格取得
+・Rust と C をもうちょっと書けるようになる&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;達成したこと&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E9%81%94%E6%88%90%E3%81%97%E3%81%9F%E3%81%93%E3%81%A8&quot; aria-label=&quot;達成したこと permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;達成したこと&lt;/h3&gt;
+&lt;p&gt;この目標のうち、いくつか達成することができました。&lt;/p&gt;
+&lt;p&gt;まずは、「HackTheBox ProHacker」に無事到達しました。&lt;/p&gt;
+&lt;p&gt;他には「CTF の Reversing 問解けるようになる」については、目標が明確じゃないので難しいですが、WaniCTFやSeccon for Begginerなどの初心者向けCTFのRev問は全完できたので、達成としていいかなと思います。&lt;/p&gt;
+&lt;p&gt;あとは「OSSコミット」についても達成しました。&lt;/p&gt;
+&lt;p&gt;オープンソースのYARAリポジトリに何度かプルリクを送って、無事マージしてもらうことができました。&lt;/p&gt;
+&lt;h3 id=&quot;取り組み中のこと&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E5%8F%96%E3%82%8A%E7%B5%84%E3%81%BF%E4%B8%AD%E3%81%AE%E3%81%93%E3%81%A8&quot; aria-label=&quot;取り組み中のこと permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;取り組み中のこと&lt;/h3&gt;
+&lt;p&gt;次に取り組み中のことです。&lt;/p&gt;
+&lt;p&gt;「技術同人誌書く」については、7月の技術書典11に出展することになったので、鋭意執筆中です。&lt;/p&gt;
+&lt;p&gt;校正とかレビューとかはこれからですが、とりあえず100ページ弱のボリュームで書いているものがあるので、頒布にはこじつけられそうです。&lt;/p&gt;
+&lt;p&gt;また「ブログまじめに更新する」についても、月に数記事くらいのペースで書いているので、順調といってもいいかなと思います。&lt;/p&gt;
+&lt;p&gt;「AtCoder 水色になる」については、コンテストには参加しています。&lt;/p&gt;
+&lt;p&gt;5月には初めて水パフォも出すことができました。&lt;/p&gt;
+&lt;p&gt;ただ、未だ緑にも届いていない状態なので、道のりは長そうです。&lt;/p&gt;
+&lt;p&gt;「Rust と C をもうちょっと書けるようになる」については、Rustの本を読んだり、CTFや競プロでたまにCやC++を書いているので、取り組み中としておきます。&lt;/p&gt;
+&lt;p&gt;Rustは正直今は触らなくていいかなという気がしているので、しばらくはC++をメインに触っていこうと思ってます。&lt;/p&gt;
+&lt;h3 id=&quot;何もやってないこと&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E4%BD%95%E3%82%82%E3%82%84%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%84%E3%81%93%E3%81%A8&quot; aria-label=&quot;何もやってないこと permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;何もやってないこと&lt;/h3&gt;
+&lt;p&gt;現時点では取り組んでいないことについても書いておきます。&lt;/p&gt;
+&lt;p&gt;「自作ラズパイOSの開発」とありますが、何もやってないです。&lt;/p&gt;
+&lt;p&gt;最近忙しくてみかんOS本とか組込みOS本とかを積んでしまっているので、年内にちゃんと消化したいです。&lt;/p&gt;
+&lt;p&gt;「CISSP / PenTest+ 取得」と「Azure 上位資格取得」についてもなんもやってないです。&lt;/p&gt;
+&lt;p&gt;資格勉強を全くやる気にならないのはなぜなんでしょう…。&lt;/p&gt;
+&lt;p&gt;今後の課題です。&lt;/p&gt;
+&lt;h3 id=&quot;新しく始めたことこれからやろうと思っていること&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E6%96%B0%E3%81%97%E3%81%8F%E5%A7%8B%E3%82%81%E3%81%9F%E3%81%93%E3%81%A8%E3%81%93%E3%82%8C%E3%81%8B%E3%82%89%E3%82%84%E3%82%8D%E3%81%86%E3%81%A8%E6%80%9D%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E3%81%93%E3%81%A8&quot; aria-label=&quot;新しく始めたことこれからやろうと思っていること permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;新しく始めたこと/これからやろうと思っていること&lt;/h3&gt;
+&lt;p&gt;目標としては上げていないものの、新しく始めたことや、これから始めようと思っていることもあります。&lt;/p&gt;
+&lt;p&gt;まず、今年新しく始めたこととしては、「WEBアプリケーション開発」です。&lt;/p&gt;
+&lt;p&gt;僕はプログラマではないのでこれまでは基本的に趣味のコードしか書いてこなかったのですが、今年はプロボノとしてサービス開発をしているNPOにジョインさせていただいたことで、たまにチーム開発みたいなこともするようになりました。&lt;/p&gt;
+&lt;p&gt;次に始めたことは「英語の勉強」です。&lt;/p&gt;
+&lt;p&gt;とはいえ、最近はサボり気味です。&lt;/p&gt;
+&lt;p&gt;色々将来を考えたときに、ビジネスコミュニケーションくらいはできないとなー、と思いつつ、いまいちモチベが湧かないので焦りだけがあります。&lt;/p&gt;
+&lt;p&gt;あとは今後始めて見ようかなと思っているのが、「CTF作問」と「動画配信」です。&lt;/p&gt;
+&lt;p&gt;「CTF作問」は、完全に自分の勉強用にやろうかと思ってます。作った問題とかを適当なサーバに配置して常設CTFっぽくしたら楽しいかなと思ってます。&lt;/p&gt;
+&lt;p&gt;「動画配信」は、VRモデリングとかに少し興味があるので、適当なアバターを作ってラフに動画配信をしてみようかなと思ってます。kurenaifさんリスペクト。&lt;/p&gt;
+&lt;h2 id=&quot;月ごとに取り組んだこと&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%E6%9C%88%E3%81%94%E3%81%A8%E3%81%AB%E5%8F%96%E3%82%8A%E7%B5%84%E3%82%93%E3%81%A0%E3%81%93%E3%81%A8&quot; aria-label=&quot;月ごとに取り組んだこと permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;月ごとに取り組んだこと&lt;/h2&gt;
+&lt;p&gt;さて、この半年間にやったことを雑に思い出しましたので記録しておきます。&lt;/p&gt;
+&lt;h3 id=&quot;1月&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1%E6%9C%88&quot; aria-label=&quot;1月 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1月&lt;/h3&gt;
+&lt;p&gt;年初は結構自作OSに取り組んでました。&lt;/p&gt;
+&lt;p&gt;青い自作OS本の2周目が終わって、結構理解が深まったかなと思います。&lt;/p&gt;
+&lt;p&gt;あとはAtCoderで茶色になったのも1月でした。&lt;/p&gt;
+&lt;p&gt;この時は緑パフォ連発で機運が高まっていたので、「色変もすぐだ！」なんて思ってましたが、半年たってもまだ茶色にいます。頑張れ。&lt;/p&gt;
+&lt;p&gt;1月の後半は、螺旋本の解き直しもやってました。&lt;/p&gt;
+&lt;p&gt;一通りやり通したものの、まだ基礎が弱い感じなので要復習です。&lt;/p&gt;
+&lt;h3 id=&quot;2月&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2%E6%9C%88&quot; aria-label=&quot;2月 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2月&lt;/h3&gt;
+&lt;p&gt;2月は競プロメインでやってました。&lt;/p&gt;
+&lt;p&gt;VRアバターを試しに作ってみたりもしてました。&lt;/p&gt;
+&lt;p&gt;2月の後半は競プロのペースを落として、HackTheBoxを再開しました。&lt;/p&gt;
+&lt;p&gt;というのも、アクティブなMediumレベルが解けるようになって、ProHackcerが見えてきたからだったと思います。&lt;/p&gt;
+&lt;h3 id=&quot;3月&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#3%E6%9C%88&quot; aria-label=&quot;3月 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;3月&lt;/h3&gt;
+&lt;p&gt;2月から引き続き、競プロとHackTheBoxをメインでやってました。&lt;/p&gt;
+&lt;p&gt;ProHackerに到達したのもこのころ。&lt;/p&gt;
+&lt;p&gt;自作OSも3月はまだコツコツやっていたので、はりぼてOSの復習や改造をしたりもしてました。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/kash1064/haribote_linux&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;WSL2 の Dokcer コンテナでビルドするはりぼて OS&lt;/a&gt;とかも公開しました。&lt;/p&gt;
+&lt;h3 id=&quot;4月&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#4%E6%9C%88&quot; aria-label=&quot;4月 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;4月&lt;/h3&gt;
+&lt;p&gt;4月はpicoCTF2021に参加しました。&lt;/p&gt;
+&lt;p&gt;このころからCTFモチベがぶちあがってきたように思います。&lt;/p&gt;
+&lt;p&gt;picoCTFではARMのアセンブリ問題が勉強になったのでWriteUpも書きました。&lt;/p&gt;
+&lt;p&gt;あとは、脆弱性の調査と検証とかを丁寧にやり始めたのもこの時期です。&lt;/p&gt;
+&lt;p&gt;4月は、HeartBleedとBlueについて書きました。&lt;/p&gt;
+&lt;p&gt;Windowsのカーネルデバッグまじで大変だった…。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://qiita.com/kash1064/items/9b1daf8cdba5893440a5&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;HackTheBox「Valentine」で学ぶ Heartbleed 脆弱性 - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://qiita.com/kash1064/items/7639dbff17bc4a0d9f4f&quot; target=&quot;_blank&quot; rel=&quot;nofollow noopener noreferrer&quot;&gt;HackTheBox「Blue」で学ぶ EternalBlue 脆弱性 - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;4月は、picoCTF以外にも、angstromCTFやhackpacCTF、heroCTFなどにも参加しました。&lt;/p&gt;
+&lt;p&gt;結構たくさん出ましたね。&lt;/p&gt;
+&lt;p&gt;Rev問を主にやってますが、全完できたCTFもあり、ちょっとずつレベルが上がっている実感があります。&lt;/p&gt;
+&lt;h3 id=&quot;5月&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#5%E6%9C%88&quot; aria-label=&quot;5月 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;5月&lt;/h3&gt;
+&lt;p&gt;技術書典に思い切って申し込んでみたので、5月の半分くらいは執筆活動にリソースを割いていました。&lt;/p&gt;
+&lt;p&gt;5月は、WaniCTFやSeccon for Begginerにでましたが、どちらもRev問全完できたのでとても達成感がありました。&lt;/p&gt;
+&lt;p&gt;dctfとpwn2winにも参加しましたが、pwn2winはRev問解かせる気ない感じ（トップクラスのチームがいるのにSolverほぼ0）だったので早々にリタイアしました。&lt;/p&gt;
+&lt;p&gt;競プロに関しては、5月の頭にABC0完で-100レートをやらかして心が折れたのと、執筆活動とプロボノとCTFが忙しかったので3週間ほどサボっていました。&lt;/p&gt;
+&lt;p&gt;月末のコンテストでは、灰Diff早解きゲームでベストスコアである水パフォを初めて出すことができました。&lt;/p&gt;
+&lt;h2 id=&quot;2021年後半に向けて&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2021%E5%B9%B4%E5%BE%8C%E5%8D%8A%E3%81%AB%E5%90%91%E3%81%91%E3%81%A6&quot; aria-label=&quot;2021年後半に向けて permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2021年後半に向けて&lt;/h2&gt;
+&lt;p&gt;2021年も相変わらずやりたいことがとっ散らかって、色々なことに手を出していました。&lt;/p&gt;
+&lt;p&gt;curiosity-drivenは今に始まったことではないので、今後もその時楽しいことに打ち込んでいければいいかなとは思ってます。&lt;/p&gt;
+&lt;p&gt;とはいえ、せっかくの振り返りなので目標の見直しはしていきたいと思います。&lt;/p&gt;
+&lt;p&gt;2021年後半は、特に次のことに注力していきたいなと思ってます。&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;・AtCoder 水色になる
+・Rev/Crypto/Pwnを解けるようになる
+・TOEIC受ける
+・バグハンティング&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;競プロはもはや意地と悔しさだけで続けていて、なかなか伸び悩んでいるので、年内に水色はハードルが高いかもしれませんが、何とか頑張っていきたいと思っています。&lt;/p&gt;
+&lt;p&gt;CTFについては、これまではRev中心にやってきたものの、Cryptoやpwnにも手を出していきたいと思っています。&lt;/p&gt;
+&lt;p&gt;特にCryptoについては、数学や競プロの勉強にもなるらしいので、積極的に取り組んでいきたいです。&lt;/p&gt;
+&lt;p&gt;TOEICは、実は一度も本試験を受けたことがないので、とりあえず受験はしてみようと思っています。&lt;/p&gt;
+&lt;p&gt;勉強は…。やらねば。&lt;/p&gt;
+&lt;p&gt;バグハンティングは、今年の後半新たにチャレンジしていこうと思っています。&lt;/p&gt;
+&lt;p&gt;いきなり報奨金は難しいかもしれないですが、とりあえずCVEは取っていきたいですね。&lt;/p&gt;
+&lt;p&gt;というわけで、今年も残り半分になってしまいましたが、引き続き頑張っていこうと思います。&lt;/p&gt;</content:encoded></item></channel></rss>
