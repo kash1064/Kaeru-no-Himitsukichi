@@ -16,7 +16,10 @@
 <url> <loc>https://kashiwaba-yuki.com/ctf-dvctf-2022</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/ctf-picoctf-2022</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/flutter-setup-mac-and-windows</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://kashiwaba-yuki.com/hackthebox-parrot-setup</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/ghidra-my-env-setup</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://kashiwaba-yuki.com/hackthebox-parrot-timeout</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://kashiwaba-yuki.com/hackthebox-linux-validation</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/hackthebox-windows-netmon</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/hackthebox-linux-bugbountyhunter</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/honeypot-setup-on-azure</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -89,6 +92,7 @@
 <url> <loc>https://kashiwaba-yuki.com/tag/misc</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/os</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/os/page/1</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://kashiwaba-yuki.com/tag/parrot-os</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/pwn</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/rdp</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/reports</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -132,4 +136,5 @@
 <url> <loc>https://kashiwaba-yuki.com/page/2</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/page/3</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/page/4</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://kashiwaba-yuki.com/page/5</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 </urlset>
