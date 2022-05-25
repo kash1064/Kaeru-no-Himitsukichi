@@ -5,7 +5,7 @@ module.exports = {
   pathPrefix: '/',
   title: 'かえるのひみつきち',
   subtitle: '',
-  copyright: 'All rights reserved 2022.',
+  copyright: '© 2022 かえるのひみつきち',
   disqusShortname: '',
   postsPerPage: 12,
   googleAnalyticsId: 'UA-122086587-6',
@@ -30,6 +30,10 @@ module.exports = {
     {
       label: 'Unix',
       path: '/tag/unix/'
+    },
+    {
+      label: 'Azure',
+      path: '/tag/azure/'
     },
     {
       label: 'Notes',
