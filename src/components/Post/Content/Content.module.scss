@@ -73,7 +73,7 @@
 
     & h2 {
       position: relative;
-      padding: 1.5rem 2rem;
+      padding: 1rem 1.5rem;
       color: #fff;
       border-radius: 10px;
       background: #0c0000;
@@ -82,7 +82,7 @@
     & h2:after {
       position: absolute;
       bottom: -9px;
-      left: 1em;
+      left: 1rem;
       width: 0;
       height: 0;
       content: '';
