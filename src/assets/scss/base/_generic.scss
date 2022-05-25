@@ -41,6 +41,9 @@ h2 {
   @include line-height(1.5);
   @include margin-top(2);
   @include margin-bottom(.5);
+
+  padding: 1rem;
+  border-left: 4px solid #0c0000;
 }
 
 h3 {
@@ -48,6 +51,9 @@ h3 {
   @include line-height(1);
   @include margin-top(2);
   @include margin-bottom(.5);
+
+  border-bottom: 3px dotted #0c0000;
+  padding: 1rem 0
 }
 
 h4 {
