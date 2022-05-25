@@ -20,12 +20,16 @@ module.exports = {
       path: '/category/windows/'
     },
     {
+      label: 'WinDbg',
+      path: '/tag/win-dbg/'
+    },
+    {
       label: 'CTF',
       path: '/category/ctf/'
     },
     {
-      label: 'WinDbg',
-      path: '/tag/win-dbg/'
+      label: 'HackTheBox',
+      path: '/category/hack-the-box/'
     },
     {
       label: 'Unix',
