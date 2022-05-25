@@ -65,6 +65,16 @@
         @include margin-bottom(0.5)
       }
     }
+
+    & h2 {
+        padding: 1rem;
+        border-left: 4px solid #0c0000;
+    }
+
+    & h3 {
+        border-bottom: 3px dotted #0c0000;
+        padding: 1rem 0
+    }
   }
 
 }
