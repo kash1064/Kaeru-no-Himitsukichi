@@ -1,5 +1,5 @@
 ---
-title: [Easy / Linux] BugbountyHunter Writeup(HackTheBox)
+title: 【Easy/Linux】BugbountyHunter Writeup(HackTheBox)
 date: "2021-11-25"
 template: "post"
 draft: false
@@ -11,7 +11,6 @@ tags:
   - "EasyBox"
 description: "HackTheBoxのリタイアマシン「BountyHunter」のWriteUpです。"
 socialImage: "/media/cards/no-image.png"
-
 ---
 
 「Hack The Box」という、ペネトレーションテストの学習プラットフォームを利用してセキュリティについて学んでいます。
