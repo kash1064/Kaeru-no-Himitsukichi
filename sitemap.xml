@@ -5,6 +5,8 @@
 <url> <loc>https://kashiwaba-yuki.com/azure-setup-on-security</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/azure-setup-on-money</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/azure-vpn-setup</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://kashiwaba-yuki.com/ctf-killer-queen-2021</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://kashiwaba-yuki.com/ctf-wanictf-autum-2021</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/ctf-k3rn3lctf-2021</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/ctf-n1ctf-2021</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/ctf-rumblectf-2021</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -18,8 +20,8 @@
 <url> <loc>https://kashiwaba-yuki.com/hackthebox-windows-netmon</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/hackthebox-linux-bugbountyhunter</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/honeypot-setup-on-azure</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://kashiwaba-yuki.com/linux-trouble-ubuntu-rdp</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/honeypot-tpot-modules</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://kashiwaba-yuki.com/linux-trouble-ubuntu-rdp</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/linux-got-plt</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/linux-memory-protect-gdt-ldt</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/malware-flarevm-setup</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -91,7 +93,6 @@
 <url> <loc>https://kashiwaba-yuki.com/tag/rdp</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/reports</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/rev</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://kashiwaba-yuki.com/tag/reversinf</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/reversing</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/reversing/page/1</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/security</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
