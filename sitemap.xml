@@ -17,6 +17,8 @@
 <url> <loc>https://kashiwaba-yuki.com/linux-trouble-ubuntu-rdp</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/linux-got-plt</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/linux-memory-protect-gdt-ldt</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://kashiwaba-yuki.com/malware-flarevm-setup</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://kashiwaba-yuki.com/malware-flarevm-loadpmlerror</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/note-visualstudio-keybind</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/note-changebattery-x280</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/note-change-ipv6</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -27,8 +29,8 @@
 <url> <loc>https://kashiwaba-yuki.com/reports-20211231</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/unix-xv6-001-bootstrap</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/unix-xv6-002-load-kernel</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://kashiwaba-yuki.com/unix-xv6-004-kernel-main-01</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/unix-xv6-003-setup-kernel-debug</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://kashiwaba-yuki.com/unix-xv6-004-kernel-main-01</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/unix-xv6-005-kernel-main-02</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/unix-xv6-006-kernel-main-03</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/unix-xv6-007-kernel-main-04</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -61,6 +63,7 @@
 <url> <loc>https://kashiwaba-yuki.com/tag/c-c</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/ctf</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/elf</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://kashiwaba-yuki.com/tag/flare-vm</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/flutter</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/forensic</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/gatsby</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -73,6 +76,7 @@
 <url> <loc>https://kashiwaba-yuki.com/tag/keybind</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/linux</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/mac-os</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://kashiwaba-yuki.com/tag/malware</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/misc</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/os</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/os/page/1</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -98,12 +102,14 @@
 <url> <loc>https://kashiwaba-yuki.com/tag/xv-6</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/トラブルシューティング</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/備忘録</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://kashiwaba-yuki.com/tag/備忘録/page/1</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/category/azure</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/category/ctf</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/category/flutter</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/category/ghidra</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/category/honey-pot</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/category/linux</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://kashiwaba-yuki.com/category/malware</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/category/note</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/category/notes</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/category/reports</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
