@@ -406,6 +406,16 @@ if (node.internal.type === 'MarkdownRemark') {
 
 これでデプロイ時に生成されるURLからディレクトリ名を削除することができます。
 
+### シンタックスハイライトの設定を変更する
+
+今回使用したテーマのシンタックスハイライトはPrism.jsを利用しています。
+
+そのため、シンタックスハイライトをカスタマイズしたい場合は以下のページからCSSを生成して`static\css\prismjs\theme.min.css`と置き換えてあげる必要があります。
+
+参考：[Download ▲ Prism](https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript)
+
+
+
 ## Typoraの設定をする
 
 僕が愛用しているTyporaというマークダウンエディタの非常に便利な機能の1つに、画像をコピペすると自動的に任意のローカルフォルダに保存してくれる機能があります。
