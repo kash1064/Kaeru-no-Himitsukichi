@@ -10,8 +10,7 @@ tags:
   - "Reversing"
   - "Angr"
 description: "今回は、ReversingのVeriyHard問題「licence」を通して、複雑な処理をシンボリック実行で解析してくれるツール「angr」の使い方について学ぶことができたので、振り返りもかねて「angr」の使い方についてまとめていきます。"
-socialImage: "/media/social_images/no-image.png"
-
+socialImage: "/media/cards/ctf-elf-training.png"
 ---
 
 ## はじめに

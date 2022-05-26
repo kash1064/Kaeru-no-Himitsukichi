@@ -9,7 +9,7 @@ tags:
   - "CTF"
   - "Web"
 description: "TSG LIVE! 6 CTFのWEB問、Truth about Piがとても勉強になったのでWriteUpを兼ねて学んだことをまとめていこうと思います。"
-socialImage: "/media/social_images/no-image.jpg"
+socialImage: "/media/cards/ctf-elf-training.png"
 ---
 
 ## はじめに
