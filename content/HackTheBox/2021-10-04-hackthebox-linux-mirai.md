@@ -3,7 +3,7 @@ title: 【Easy/Linux】Mirai(HackTheBox)
 date: "2021-10-04"
 template: "post"
 draft: false
-slug: "hackthebox-parrot-setup"
+slug: "hackthebox-linux-mirai"
 category: "HackTheBox"
 tags:
   - "HackTheBox"

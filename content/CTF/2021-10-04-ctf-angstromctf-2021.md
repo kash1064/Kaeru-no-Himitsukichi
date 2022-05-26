@@ -48,7 +48,7 @@ socialImage: "/media/cards/no-image.png"
 
 問題文の意味はよくわかりませんが、ダウンロードした実行ファイルを起動すると、下記のような問題文が表示され、入力を要求されます。
 
-```
+``` bash
 $./infinity_gauntlet 
 
 Welcome to the infinity gauntlet!
@@ -61,7 +61,7 @@ Wrong!
 
 出題される問題は次の7パターンがあります。
 
-```
+``` bash
 // foo関数
 foo(?, %u) = %u
 foo(%u, ?) = %u
@@ -95,14 +95,14 @@ bar(%u, %u, %u) = ?
 
 まず、与えられた実行ファイルをローカルで動かそうとすると、次のようなエラーが返ってきます。
 
-```
+``` bash
 $./infinity_gauntlet 
 Couldn't find a flag file.
 ```
 
 Ghidraでデコンパイルしてみると、どうやら実行時に同一ディレクトリ内のflag.txtを読み込んでいることが分かります。
 
-```c
+``` c
 local_40 = *(long *)(in_FS_OFFSET + 0x28);
 setvbuf(stdout,(char *)0x0,2,0);
 __stream = fopen("flag.txt","r");
@@ -194,7 +194,7 @@ D = B * (C + 1) + A
 
 自動化スクリプトを作成して問題を解いてみました。
 
-```
+``` bash
 === ROUND 44 ===
 bar(1160, ?, 58) = 124529
 2091
