@@ -324,8 +324,6 @@ win32u!NtGdiGetCharABCWidthsW+0x14:
 
 デバッグを終了すると、Commandウィンドウが終了し、停止されていたメモ帳の書き込み処理が再開されました。
 
-![image-20211003212553671](image-20211003212553671.png)
-
 ## まとめ
 
 とりあえず[公式チュートリアル](https://docs.microsoft.com/ja-jp/windows-hardware/drivers/debugger/getting-started-with-windbg)のユーザモードデバッグの手順について一通り実践してみました。
