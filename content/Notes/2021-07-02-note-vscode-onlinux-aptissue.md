@@ -10,7 +10,7 @@ tags:
   - "VSCode"
   - "備忘録"
 description: "Linux環境で`apt update`コマンドを実行するとVSCodeが`code`コマンドで呼び出せなくなる問題についてのトラシューを行ったので原因と解消法について記録しておきます。"
-socialImage: "/media/social_images/no-image.png"
+socialImage: "/media/cards/no-image.png"
 ---
 
 <!-- omit in toc -->
