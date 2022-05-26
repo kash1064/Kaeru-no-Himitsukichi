@@ -27,6 +27,7 @@
 <url> <loc>https://kashiwaba-yuki.com/docker-tabo-compleate</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/flutter-setup-mac-and-windows</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/ghidra-my-env-setup</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://kashiwaba-yuki.com/kali-faild-launch</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/hackthebox-linux-mirai</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/hackthebox-linux-valentine</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/hackthebox-parrot-setup</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -67,8 +68,8 @@
 <url> <loc>https://kashiwaba-yuki.com/unix-xv6-007-kernel-main-04</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/unix-xv6-008-kernel-main-05</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/unix-xv6-009-kernel-main-06</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://kashiwaba-yuki.com/unix-xv6-011-kernel-main-08</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/unix-xv6-010-kernel-main-07</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://kashiwaba-yuki.com/unix-xv6-011-kernel-main-08</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/windows-windbg-001-index</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/windows-windbg-002-tutorial</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/windows-windbg-003-ui</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -116,6 +117,7 @@
 <url> <loc>https://kashiwaba-yuki.com/tag/hack-the-box</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/honey-pot</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/job</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://kashiwaba-yuki.com/tag/kali</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/kernel</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/kernel/page/1</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/kernel/page/2</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
