@@ -9,7 +9,7 @@ tags:
   - "Kali"
   - "Notes"
 description: "”Failed to launch preferred application for category”と表示されてターミナルが起動しない問題の解消法についてまとめます。"
-socialImage: "/media/social_images/no-image.png"
+socialImage: "/media/cards/no-image.png"
 ---
 
 **Kali Linuxをアップデートしたら、「Ctrl+Alt+t」コマンドでターミナルを起動する際に、次のエラーが表示されるようになりました。**
