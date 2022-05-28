@@ -46,6 +46,7 @@
 <url> <loc>https://kashiwaba-yuki.com/linux-memory-protect-gdt-ldt</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/malware-flarevm-setup</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/malware-flarevm-loadpmlerror</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://kashiwaba-yuki.com/note-delete-file-by-makefile</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/note-how-to-troubleshoot-01</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/note-raspi4-connects-wifi</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/note-wordpress-quoteblock-design</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -135,6 +136,7 @@
 <url> <loc>https://kashiwaba-yuki.com/tag/keybind</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/linux</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/mac-os</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://kashiwaba-yuki.com/tag/makefile</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/malware</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/misc</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/tag/network</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -198,6 +200,7 @@
 <url> <loc>https://kashiwaba-yuki.com/category/malware</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/category/note</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/category/notes</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://kashiwaba-yuki.com/category/notes/page/1</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/category/poem</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/category/power-shell</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://kashiwaba-yuki.com/category/python</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
