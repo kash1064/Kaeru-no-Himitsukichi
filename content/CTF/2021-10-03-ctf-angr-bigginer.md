@@ -13,8 +13,6 @@ description: "今回は、ReversingのVeriyHard問題「licence」を通して�
 socialImage: "/media/cards/ctf-elf-training.png"
 ---
 
-## はじめに
-
 先日開催されました[WaniCTF'21-spring](https://wanictf.org/)に参加してました。
 
 今回はソロ参加だったこともあり、久しぶりにReversing以外の問題も解きました。

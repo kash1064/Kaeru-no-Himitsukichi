@@ -21,7 +21,8 @@ socialImage: "/media/cards/hackthebox-linux-networked.png"
 
 今回は、HackTheBoxのリタイアマシン「Networked」のWriteUpです。
 
-### 記事について
+<!-- omit in toc -->
+## 本記事について
 
 **本記事の内容は社会秩序に反する行為を推奨することを目的としたものではございません。**
 

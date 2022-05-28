@@ -22,7 +22,8 @@ socialImage: "/media/cards/no-image.png"
 
 ![image-10.png](../../static/media/2021-11-24-hackthebox-windows-netmon/image-10.png)
 
-### 記事について
+<!-- omit in toc -->
+## 本記事について
 
 **本記事の内容は社会秩序に反する行為を推奨することを目的としたものではございません。**
 

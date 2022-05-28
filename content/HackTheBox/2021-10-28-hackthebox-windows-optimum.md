@@ -22,7 +22,8 @@ socialImage: "/media/cards/no-image.png"
 
 ![image-70.png](../../static/media/2021-10-28-hackthebox-windows-optimum/image-70.png)
 
-### 記事について
+<!-- omit in toc -->
+## 本記事について
 
 **本記事の内容は社会秩序に反する行為を推奨することを目的としたものではございません。**
 

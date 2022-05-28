@@ -22,7 +22,8 @@ socialImage: "/media/cards/no-image.png"
 
 ![image-11.png](../../static/media/2021-11-25-hackthebox-linux-bugbountyhunter/image-11.png)
 
-### 記事について
+<!-- omit in toc -->
+## 本記事について
 
 **本記事の内容は社会秩序に反する行為を推奨することを目的としたものではございません。**
 
@@ -31,7 +32,6 @@ socialImage: "/media/cards/no-image.png"
 またすべての発言は所属団体ではなく個人に帰属します。
 
 <!-- omit in toc -->
-
 ## もくじ
 - [XXE(XML外部実体参照)](#xxexml外部実体参照)
   - [DTD](#dtd)
