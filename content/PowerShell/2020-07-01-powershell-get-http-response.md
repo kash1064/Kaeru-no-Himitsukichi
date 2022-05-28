@@ -12,10 +12,6 @@ description: "PowerShellから.NET Frameworkのオブジェクトを参照する
 socialImage: "/media/cards/no-image.png"
 ---
 
-## はじめに
-
-今回は、PowerShellから.NET Frameworkのオブジェクトを参照する方法についてまとめます。
-
 ## PowerShellと.NET Framework 
 
 PowerShellは、OSSで開発が進んでおり、Windows、Linux、MacOSで動作するパワフルなシェルであり、オブジェクト指向言語として設計されたスクリプト言語です。
