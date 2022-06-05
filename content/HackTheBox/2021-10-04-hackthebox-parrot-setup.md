@@ -78,6 +78,7 @@ socialImage: "/media/cards/no-image.png"
   - [Gobuster/Feroxbuster](#gobusterferoxbuster)
   - [CrackMapExec](#crackmapexec)
   - [Evil-WinRM](#evil-winrm)
+  - [Windows-Exploit-Suggester](#windows-exploit-suggester)
   - [BurpSuite](#burpsuite)
   - [SourceTrail](#sourcetrail)
   - [YARA](#yara)
@@ -285,6 +286,7 @@ alias run_php='docker run --net host --rm -it -v $PWD:/root php bash'
 alias rsactftool='docker run --rm -it -v $PWD:/data kashiwabayuki/rsactftool:1.0'
 alias crackmapexec='docker run --net host --rm -it -v $PWD:/usr/src/crackmapexec kashiwabayuki/crackmapexec:1.0'
 alias evil-winrm='docker run --rm -it -v $PWD:/data kashiwabayuki/evil-winrm:1.0'
+alias windows-exploit-suggester='docker run --rm -it -v $PWD:/exploit-suggester kashiwabayuki/windows-exploit-suggester:1.0'
 alias pince='cd /home/parrot/Tools/PINCE && sh PINCE.sh'
 ```
 
@@ -762,6 +764,23 @@ docker pull kashiwabayuki/evil-winrm:1.0
 
 ``` bash
 alias evil-winrm='docker run --rm -it -v $PWD:/data kashiwabayuki/evil-winrm:1.0'
+```
+
+### Windows-Exploit-Suggester
+[Windows-Exploit-Suggester.](https://github.com/AonCyberLabs/Windows-Exploit-Suggester)はWindowsの脆弱性を探索するのに便利なツールです。
+
+以下のリポジトリを参考に作成したコンテナイメージを使います。
+
+参考：[gr33nm0nk2802/Windows-Exploit-Suggester](https://github.com/gr33nm0nk2802/Windows-Exploit-Suggester)
+
+``` bash
+kashiwabayuki/windows-exploit-suggester:1.0
+```
+
+エイリアスも設定しておきます。
+
+``` bash
+alias windows-exploit-suggester='docker run --rm -it -v $PWD:/exploit-suggester kashiwabayuki/windows-exploit-suggester:1.0'
 ```
 
 ### BurpSuite
