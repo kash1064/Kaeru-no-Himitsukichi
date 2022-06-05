@@ -31,3 +31,7 @@ socialImage: "/media/cards/no-image.png"
 <!-- omit in toc -->
 
 ## もくじ
+
+
+
+## Reconnaissance(TA0043)
