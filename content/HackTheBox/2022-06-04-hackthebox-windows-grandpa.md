@@ -10,7 +10,7 @@ tags:
   - "Windows"
   - "EasyBox"
 description: "HackTheBoxのリタイアマシン「Grandpa」のWriteUpです。"
-socialImage: "/media/cards/no-image.png"
+socialImage: "/media/cards/hackthebox-windows-grandpa.png"
 
 ---
 
