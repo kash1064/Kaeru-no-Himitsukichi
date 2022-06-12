@@ -478,7 +478,8 @@ evil-winrm -i targethost.htb　-u Administrator -H 'NTLM hash'
 ### Windowsエクスプロイトの特定
 
 ``` bash
-# windows-exploit-suggesterにsysteminfoを与えて探索(Python2/python-xlsが必要)
+# windows-exploit-suggesterにsysteminfoを与えて探索(Python2/xlrd==1.1.0が必要)
+pip install xlrd==1.1.0
 python windows-exploit-suggester.py --update
 python windows-exploit-suggester.py --database 2022-06-05-mssb.xls --systeminfo systeminfo.txt
 ```
@@ -576,9 +577,7 @@ misc::cmd
 
 ## 特権取得(Linux)
 
-
-
-
+(工事中)
 
 ## pwnのTips
 

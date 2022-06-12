@@ -425,6 +425,7 @@ code[class*=language-],pre[class*=language-]{color:#ccc;background:0 0;font-fami
 
 # 追記
 p > code[class*=language-text]{background:#F9F9F9 !important; color: #2d2d2d !important;}
+li > code[class*=language-text]{background:#F9F9F9 !important; color: #2d2d2d !important;}
 ```
 
 最後の1行については、本文埋め込みの整形済みテキストの背景色と文字色を定義しています。
