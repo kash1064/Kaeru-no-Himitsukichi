@@ -21,8 +21,10 @@ socialImage: "/media/cards/no-image.png"
 またすべての発言は所属団体ではなく個人に帰属します。
 
 <!-- omit in toc -->
+
 ## もくじ
 
+- [もくじ](#もくじ)
 - [使用頻度の高いコマンドまとめ](#使用頻度の高いコマンドまとめ)
   - [攻略開始時(ポートスキャン)](#攻略開始時ポートスキャン)
   - [Webスキャン](#webスキャン)
@@ -65,6 +67,7 @@ socialImage: "/media/cards/no-image.png"
   - [実行時引数 / 標準入出力](#実行時引数--標準入出力)
   - [GDBをPythonで操作する](#gdbをpythonで操作する)
 - [angrのサンプル](#angrのサンプル)
+  - [Hashcatサンプル](#hashcatサンプル)
 
 
 ## 使用頻度の高いコマンドまとめ
@@ -891,4 +894,16 @@ if len(simgr.found) > 0:
 ```
 
 参考：[angrによるシンボリック実行でRev問を解いてみたまとめ【WaniCTF2021】 - かえるのひみつきち](ctf-angr-bigginer)
+
+### Hashcatサンプル
+
+``` bash
+# 辞書攻撃(bcrypt $2*$, Blowfish (Unix))
+hashcat -a 0 -m 3200 ./hash.txt /usr/share/wordlists/rockyou.txt
+
+# マスクありブルートフォース(PKZIP (Uncompressed))
+hashcat -m 17210 -a 3 ./hash.txt -1 ?l?u -2 012 -3 0123 -4 0123456789 ?1?1?1?s2021?2?4?3?4?s 
+```
+
+
 
