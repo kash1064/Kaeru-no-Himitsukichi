@@ -279,6 +279,8 @@ alias tarbz2='tar -jxvf'
 alias targz='tar -zxvf'
 alias tarxz='tar -Jxvf'
 
+alias run_ftp_on_downloads='python3 /home/kali/Hacking/Tools/localftp.py'
+
 alias run_python2='docker run --net host --rm -it -v $PWD:/app python2 bash'
 alias run_wine='docker run --rm -it --user ubuntu -v $PWD:/usr/app wine32 bash'
 alias run_php='docker run --net host --rm -it -v $PWD:/root php bash'
@@ -286,7 +288,9 @@ alias run_php='docker run --net host --rm -it -v $PWD:/root php bash'
 alias rsactftool='docker run --rm -it -v $PWD:/data kashiwabayuki/rsactftool:1.0'
 alias crackmapexec='docker run --net host --rm -it -v $PWD:/usr/src/crackmapexec kashiwabayuki/crackmapexec:1.0'
 alias evil-winrm='docker run --rm -it -v $PWD:/data kashiwabayuki/evil-winrm:1.0'
+alias pwndocker="docker run --rm -it -v $PWD:/ctf/work --cap-add=SYS_PTRACE -it kashiwabayuki/pwndocker:1.0"
 alias windows-exploit-suggester='docker run --rm -it -v $PWD:/exploit-suggester kashiwabayuki/windows-exploit-suggester:1.0'
+alias hackthebox='sudo openvpn ~/kash1064.ovpn > /dev/null 2>&1 &'
 alias pince='cd /home/parrot/Tools/PINCE && sh PINCE.sh'
 ```
 
