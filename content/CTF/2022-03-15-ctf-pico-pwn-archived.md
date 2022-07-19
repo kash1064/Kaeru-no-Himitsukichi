@@ -124,7 +124,87 @@ print(hex(leakaddr))
 
 ![image-20220719191646337](../static/media/2022-03-15-ctf-pico-pwn-archived/image-20220719191646337.png)
 
-最終的なSolverはこちら。
+これでsystemと`/bin/sh`のアドレスが特定できたのでシェルを取得できる！・・・と思ったものの、以下のスタック構造だと上手くエクスプロイトできませんでした。
+
+``` bash
+| rop_rdi_ret
+| str_bin_sh
+| system_addr
+```
+
+原因の調査のため、gdbで解析してみます。
+
+エクスプロイトを行ったタイミングでは、以下のように想定通りのスタック構造が完成しているようでした。
+
+![image-20220719220030363](../../static/media/2022-03-15-ctf-pico-pwn-archived/image-20220719220030363.png)
+
+system関数の引数として`/bin/sh`が受け渡されているところまでは終えたのですが、どこで問題が発生しているかいまいちわかりませんでした。
+
+そこで、system関数のコードを読んでみることにしました。(バージョンはglibc-2.35)
+
+system関数は`__libc_system`を呼び出し、受けとった文字列を`do_system`に渡すことでコマンドをシェル実行させているようです。
+
+``` c
+int __libc_system (const char *line)
+{
+  if (line == NULL)
+    /* Check that we have a command processor available.  It might
+       not be available after a chroot(), for example.  */
+    return do_system ("exit 0") == 0;
+
+  return do_system (line);
+}
+```
+
+do_system関数は結構長いのですが以下のようなコートでした。(長いのでがっつり中略してます)
+
+``` c
+/* Execute LINE as a shell command, returning its status.  */
+static int
+do_system (const char *line)
+{
+  int status = -1;
+  int ret;
+  pid_t pid;
+  struct sigaction sa;
+******
+  ret = __posix_spawn (&pid, SHELL_PATH, 0, &spawn_attr,
+		       (char *const[]){ (char *) SHELL_NAME,
+					(char *) "-c",
+					(char *) line, NULL },
+		       __environ);
+  __posix_spawnattr_destroy (&spawn_attr);
+******
+  if (ret != 0)
+    __set_errno (ret);
+
+  return status;
+}
+```
+
+新しい子プロセスを作成する`__posix_spawn`でシェルを起動し、-cオプションの引数としてsystem関数に与えた文字列を実行しているようです。
+
+参考：[posix_spawn(3) - Linux manual page](https://man7.org/linux/man-pages/man3/posix_spawn.3.html)
+
+さて、ここでもう一度gdbを見てみると、system関数を呼び出した後の以下の箇所でSIGSEGVが発生していることがわかりました。
+
+![image-20220719223252617](../../static/media/2022-03-15-ctf-pico-pwn-archived/image-20220719223252617.png)
+
+`layout asm`コマンドでアセンブリを見てみると、`do_system`関数内の以下の箇所のようです。
+
+![image-20220719224418978](../../static/media/2022-03-15-ctf-pico-pwn-archived/image-20220719224418978.png)
+
+ここで例外が発生している命令は`movaps`ですが、これは16バイト境界でアラインメントされたfloat型のデータを扱うmov命令で、データがアラインメントされていない場合に例外処理を発生させます。
+
+つまり、以下の時点で`rsp+0x40`のスタックアドレスが16バイトでアラインメントされていない(=末尾が0ではない)状態であることがエラーの原因のようです。
+
+![image-20220719232502247](../../static/media/2022-03-15-ctf-pico-pwn-archived/image-20220719232502247.png)
+
+ここで、rspのアドレスは`0x7ffe7859a228`にあるので、あと8バイト分調整すればアラインメントがうまくいきそうです。
+
+というわけで、エクスプロイトに影響を与えない8バイト分のスタックとして、ret命令を追加します。
+
+最終的なSolverはこちらになりました。
 
 ``` python
 from pwn import *
@@ -178,11 +258,11 @@ p.sendline(payload)
 p.interactive()
 ```
 
+実際、上記のSolverを実行するとスタックが16バイト境界でアラインメントされたことがわかります。
 
+![image-20220719233336842](../../static/media/2022-03-15-ctf-pico-pwn-archived/image-20220719233336842.png)
 
-
-
-
+罠でしたね。。
 
 
 

