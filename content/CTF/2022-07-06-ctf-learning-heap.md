@@ -6,6 +6,7 @@ draft: false
 slug: "ctf-learning-heap"
 category: "CTF"
 tags:
+  - "CTF"
   - "Pwn"
   - "Heap"
 description: "とりあえずglibcのmalloc関数について学んでいくことにします。"

