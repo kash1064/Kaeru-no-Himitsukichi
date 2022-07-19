@@ -298,6 +298,16 @@ MyPasswords.kdbx: Keepass password database 2.x KDBX
 
 参考：[Can You Crack a KeePass Database if You Forgot Your Password? - Davis Tech Media](https://davistechmedia.com/can-you-crack-a-keepass-database-if-you-forgot-your-password/)
 
+以下のコマンドで解読を試してみましたが、恐ろしく時間がかかりました。
+
+``` bash
+$ keepass2john MyPasswords.kdbx > dbhash.txt
+# DBNAME:$keepass$....
+$ sed -i 's/^.*://g' dbhash.txt # DBNAMEの削除
+
+$ hashcat -a 0 -m 13400 dbhash.txt /usr/share/wordlists/rockyou.txt
+```
+
 
 
 

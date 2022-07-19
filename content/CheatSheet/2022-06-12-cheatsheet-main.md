@@ -58,7 +58,12 @@ socialImage: "/media/cards/no-image.png"
 - [内部探索(Linux)](#内部探索linux)
   - [便利コマンド](#便利コマンド)
   - [linpeasのTips](#linpeasのtips)
+  - [端末のディレクトリ探索](#端末のディレクトリ探索)
 - [特権取得(Linux)](#特権取得linux)
+- [パスワードの解読](#パスワードの解読)
+  - [Hashcatサンプル](#hashcatサンプル)
+  - [Hashcat オプションTips](#hashcat-オプションtips)
+  - [KeePass database](#keepass-database)
 - [pwnのTips](#pwnのtips)
   - [プロセスにバイトコードを送り込む](#プロセスにバイトコードを送り込む)
   - [Return to PLT/Return to libc](#return-to-pltreturn-to-libc)
@@ -80,7 +85,6 @@ socialImage: "/media/cards/no-image.png"
   - [GDBでプロセスにアタッチ(ワンライナー)](#gdbでプロセスにアタッチワンライナー)
   - [pedaの機能を使う](#pedaの機能を使う)
 - [angrのサンプル](#angrのサンプル)
-  - [Hashcatサンプル](#hashcatサンプル)
 
 ## 使用頻度の高いコマンドまとめ
 
@@ -625,6 +629,9 @@ scp user@targethost.htb:/home/user/user.txt ./
 
 # ssh
 echo "<pub key>" > ~/.ssh/authorized_keys
+
+# sedによるreplace
+sed -i 's/<置き換え元の正規表現>/<置き換え後の文字列>/g' Filename.txt
 ```
 
 ### linpeasのTips
@@ -673,11 +680,51 @@ $ less -r linpeas.txt
 - Finding *password* or *credential* files in **
 ```
 
+### 端末のディレクトリ探索
+
+``` bash
+$ ls -la / -R tee dirlist.txt
+$ less -r dirlist.txt
+```
+
 
 
 ## 特権取得(Linux)
 
 (工事中)
+
+## パスワードの解読
+
+### Hashcatサンプル
+
+``` bash
+# 辞書攻撃(bcrypt $2*$, Blowfish (Unix))
+hashcat -a 0 -m 3200 ./hash.txt /usr/share/wordlists/rockyou.txt
+
+# マスクありブルートフォース(PKZIP (Uncompressed))
+hashcat -m 17210 -a 3 ./hash.txt -1 ?l?u -2 012 -3 0123 -4 0123456789 ?1?1?1?s2021?2?4?3?4?s
+```
+
+### Hashcat オプションTips
+
+``` bash
+# Workloadを3か4にする(4はかなり端末リソースを食う)
+-w 3
+
+# Attack Mode
+-a 
+===+======
+0 | Straight
+3 | Brute-force
+```
+
+### KeePass database
+
+``` bash
+$ keepass2john MyPasswords.kdbx > dbhash.txt # DBNAME:$keepass$....
+$ sed -i 's/^.*://g' dbhash.txt # DBNAMEの削除
+$ hashcat -a 0 -m 13400 -w 4 dbhash.txt /usr/share/wordlists/rockyou.txt
+```
 
 ## pwnのTips
 
@@ -1204,16 +1251,4 @@ if len(simgr.found) > 0:
 ```
 
 参考：[angrによるシンボリック実行でRev問を解いてみたまとめ【WaniCTF2021】 - かえるのひみつきち](ctf-angr-bigginer)
-
-### Hashcatサンプル
-
-``` bash
-# 辞書攻撃(bcrypt $2*$, Blowfish (Unix))
-hashcat -a 0 -m 3200 ./hash.txt /usr/share/wordlists/rockyou.txt
-
-# マスクありブルートフォース(PKZIP (Uncompressed))
-hashcat -m 17210 -a 3 ./hash.txt -1 ?l?u -2 012 -3 0123 -4 0123456789 ?1?1?1?s2021?2?4?3?4?s 
-```
-
-
 
