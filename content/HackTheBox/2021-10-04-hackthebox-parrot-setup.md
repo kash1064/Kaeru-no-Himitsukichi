@@ -94,6 +94,7 @@ socialImage: "/media/cards/no-image.png"
   - [PINCE](#pince)
   - [wabt](#wabt)
   - [ImHex](#imhex)
+  - [KeePassX](#keepassx)
 - [Docker環境を構築する](#docker環境を構築する)
 - [Ghidraのデバッガブランチをビルドする](#ghidraのデバッガブランチをビルドする)
 - [セットアップが終わったら・・・](#セットアップが終わったら)
@@ -994,6 +995,14 @@ make -j
 参考：[GitHub - WerWolv/ImHex:  A Hex Editor for Reverse Engineers, Programmers and people who value their retinas when working at 3 AM.](https://github.com/WerWolv/ImHex)
 
 参考情報：[ImHex：午前3時にがんばる人のためのバイナリエディタ - setodaNote](https://soji256.hatenablog.jp/entry/2021/01/25/070000)
+
+### KeePassX
+
+KDBXファイルを開くときなどに使います。
+
+``` bash
+sudo apt install keepassx -y
+```
 
 ## Docker環境を構築する
 

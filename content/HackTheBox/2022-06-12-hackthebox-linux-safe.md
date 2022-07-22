@@ -2,7 +2,7 @@
 title: 【Easy/Linux】Safe Writeup(HackTheBox)
 date: "2022-06-12"
 template: "post"
-draft: true
+draft: false
 slug: "hackthebox-linux-safe"
 category: "HackTheBox"
 tags:
@@ -36,6 +36,7 @@ socialImage: "/media/cards/no-image.png"
 - [探索](#探索)
   - [BOFを悪用してシェルを取得する](#bofを悪用してシェルを取得する)
 - [内部探索](#内部探索)
+- [まとめ](#まとめ)
 
 ## 探索
 
@@ -307,6 +308,74 @@ $ sed -i 's/^.*://g' dbhash.txt # DBNAMEの削除
 
 $ hashcat -a 0 -m 13400 dbhash.txt /usr/share/wordlists/rockyou.txt
 ```
+
+最終的に12時間くらいかかったものの、rockyouの中にはヒットするパスワードは存在しなかったようです。
+
+``` bash
+$ john --wordlist=/usr/share/wordlists/rockyou.txt dbhash.txt
+$ hashcat -m 13400 dbhash.txt -a 3 -1 ?l?d ?1?1?1?1?1?1?1?1?1?1 --increment
+```
+
+いろいろ調べてみたところ、どうやらこのままでは解析ができないようでした。
+
+試しにKDBXを開けるKeePassXを使ってみたところ、KDBXの他にKeyFileというファイルが必要なようでした。
+
+![image-20220722231645914](../../static/media/2022-06-12-hackthebox-linux-safe/image-20220722231645914.png)
+
+これ何？って感じだったのですが、どうやらKeePassのドキュメントを見ると、パスワードのみでKDBXを作成する方法と、パスワードとKeyファイルを組み合わせて作る方法の2つがあるようです。
+
+Keyファイルを設定することで、KDBXを開くときにパスワードとKeyファイルにより2要素認証を実現しているんですね。
+
+参考：[Master Key - KeePass](https://keepass.info/help/base/keys.html)
+
+というわけで、思わせぶりにおいてある画像ファイルたちをKeyファイルと仮定してハッシュを解析します。
+
+ここで、keepass2johnでKeyファイルを使ってハッシュを生成するには以下のようにすればよさそうでした。
+
+``` bash
+$ scp user@targethost.htb:/home/user/IMG* ./
+
+# keepass2johnでKeyファイルを使用
+$ keepass2john MyPasswords.kdbx > dbhash.txt && ls | grep .JPG | while read f; do keepass2john -k $f MyPasswords.kdbx >> dbhash.txt ; done
+```
+
+参考：[hashcat - Produce a Hash from Keepass with Keyfile - Stack Overflow](https://stackoverflow.com/questions/45788336/produce-a-hash-from-keepass-with-keyfile)
+
+これで生成されたハッシュを使って今度はjohnで解析します。
+
+``` bash
+$ john dbhash.txt /usr/share/wordlists/rockyou.txt
+```
+
+出てきたパスワードと適当なIMGファイルを組み合わせるとrootのパスワードが取得できました。
+
+![image-20220723003851638](../../static/media/2022-06-12-hackthebox-linux-safe/image-20220723003851638.png)
+
+これでrootフラグが取得できました。
+
+疲れた。。
+
+## まとめ
+
+BoF問でした。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
