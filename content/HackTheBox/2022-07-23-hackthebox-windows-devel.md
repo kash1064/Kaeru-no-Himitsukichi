@@ -1,5 +1,5 @@
 ---
-title:【Easy/Windows】Devel Writeup(HackTheBox)
+title: 【Easy/Windows】Devel Writeup(HackTheBox)
 date: "2022-07-23"
 template: "post"
 draft: false
