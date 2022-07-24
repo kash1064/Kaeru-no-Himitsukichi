@@ -1,9 +1,9 @@
 ---
-title:  【Easy/Windows】DevelWriteup(HackTheBox)
+title:【Easy/Windows】Devel Writeup(HackTheBox)
 date: "2022-07-23"
 template: "post"
 draft: false
-slug: "hackthebox-devel"
+slug: "hackthebox-windows-devel"
 category: "HackTheBox"
 tags:
   - "HackTheBox"
@@ -21,6 +21,7 @@ socialImage: "/media/cards/no-image.png"
 
 今回は、HackTheBoxのリタイアマシン「Devel」のWriteUpです。
 
+<!-- omit in toc -->
 ## 本記事について
 
 **本記事の内容は社会秩序に反する行為を推奨することを目的としたものではございません。**
@@ -30,10 +31,7 @@ socialImage: "/media/cards/no-image.png"
 またすべての発言は所属団体ではなく個人に帰属します。
 
 <!-- omit in toc -->
-
 ## もくじ
-- [本記事について](#本記事について)
-- [もくじ](#もくじ)
 - [探索](#探索)
 - [内部探索](#内部探索)
 - [権限昇格](#権限昇格)

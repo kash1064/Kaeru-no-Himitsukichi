@@ -21,10 +21,8 @@ socialImage: "/media/cards/no-image.png"
 またすべての発言は所属団体ではなく個人に帰属します。
 
 <!-- omit in toc -->
-
 ## もくじ
 
-- [もくじ](#もくじ)
 - [使用頻度の高いコマンドまとめ](#使用頻度の高いコマンドまとめ)
   - [攻略開始時(ポートスキャン)](#攻略開始時ポートスキャン)
   - [ネットワーク探索のポイント](#ネットワーク探索のポイント)
@@ -520,13 +518,23 @@ evil-winrm -i targethost.htb　-u Administrator -H 'NTLM hash'
 
 ### 内部探索のポイント
 
-- `[Environment]::Is64BitProcess`で現在稼働しているプロセスのbit数を取得する
+- **シェルを取ったらとりあえず`[Environment]::Is64BitProcess`などで現在稼働しているプロセスのbit数を取得する**
+
+  - もし32bitのセッションからシェルを呼び出した場合、64bitOSに対するエクスプロイトが動作しない場合がある
+
+  - 回避のためには、以下のフルパスを指定してしてシェルを呼び出す
+
+    32bit Session の場合： `C:\Windows\sysNative\WindowsPowerShell\v1.0\powershell.exe`
+
+    64bit Session の場合：`C:\WIndows\System32`
+
 - 認証情報の探索
   - 設定情報が記載されたconfigファイル
   - 認証情報が格納されたデータベースのダンプ
   - 認証情報が平文で書き込まれているアクセスログ
   - 過去の認証情報が記録されたバックアップファイルやシャドウコピー
   - 隠しフォルダ(FTPのdirコマンドでは隠しフォルダは表示されない)
+
 - 資格情報のキャプチャ
   - [プリンタデバイスとのLDAP通信のキャプチャ](https://medium.com/@nickvangilder/exploiting-multifunction-printers-during-a-penetration-test-engagement-28d3840d8856)
 
@@ -557,8 +565,9 @@ dir "C:\Users"
 ``` bash
 # windows-exploit-suggesterにsysteminfoを与えて探索(Python2/xlrd==1.1.0が必要)
 pip install xlrd==1.1.0
+rm ./*.xls
 python windows-exploit-suggester.py --update
-python windows-exploit-suggester.py --database 2022-06-05-mssb.xls --systeminfo systeminfo.txt
+ls ./*.xls | (read d; python windows-exploit-suggester.py --systeminfo systeminfo.txt --database $d)
 ```
 
 ### Windowsユーザ情報、セキュリティ特権の探索

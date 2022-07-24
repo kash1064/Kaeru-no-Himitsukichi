@@ -1,26 +1,26 @@
 ---
-title: 
-date: "2022-06-01"
+title: 【Easy/Windows】Granny Writeup(HackTheBox)
+date: "2022-07-24"
 template: "post"
 draft: true
-slug: ""
+slug: "hackthebox-windows-granny."
 category: "HackTheBox"
 tags:
   - "HackTheBox"
-  - "Linux"
+  - "Windows"
   - "EasyBox"
-description: "HackTheBoxのリタイアマシン「」のWriteUpです。"
+description: "HackTheBoxのリタイアマシン「Granny」のWriteUpです。"
 socialImage: "/media/cards/no-image.png"
+
 ---
 
 「Hack The Box」という、ペネトレーションテストの学習プラットフォームを利用してセキュリティについて学んでいます。
 「Hack The Box」のランクは、本記事執筆時点でProHackerです。
 
-<img src="http://www.hackthebox.eu/badge/image/327080" alt="Hack The Box">
+<img src="../../static/media/2022-07-24-hackthebox-windows-granny/327080.png" alt="Hack The Box">
 
-今回は、HackTheBoxのリタイアマシン「」のWriteUpです。
+今回は、HackTheBoxのリタイアマシン「Granny」のWriteUpです。
 
-<!-- omit in toc -->
 ## 本記事について
 
 **本記事の内容は社会秩序に反する行為を推奨することを目的としたものではございません。**
@@ -30,8 +30,17 @@ socialImage: "/media/cards/no-image.png"
 またすべての発言は所属団体ではなく個人に帰属します。
 
 <!-- omit in toc -->
+
 ## もくじ
 
 
 
+
+
 ## 探索
+
+``` bash
+```
+
+
+

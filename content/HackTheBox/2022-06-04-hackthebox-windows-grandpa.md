@@ -21,6 +21,7 @@ socialImage: "/media/cards/hackthebox-windows-grandpa.png"
 
 今回は、HackTheBoxのリタイアマシン「Grandpa」のWriteUpです。
 
+<!-- omit in toc -->
 ## 本記事について
 
 **本記事の内容は社会秩序に反する行為を推奨することを目的としたものではございません。**
@@ -31,7 +32,6 @@ socialImage: "/media/cards/hackthebox-windows-grandpa.png"
 
 <!-- omit in toc -->
 ## もくじ
-- [本記事について](#本記事について)
 - [探索](#探索)
   - [ポートスキャン](#ポートスキャン)
   - [WevDAVのスキャン](#wevdavのスキャン)

@@ -21,6 +21,7 @@ socialImage: "/media/cards/no-image.png"
 
 今回は、HackTheBoxのリタイアマシン「Safe」のWriteUpです。
 
+<!-- omit in toc -->
 ## 本記事について
 
 **本記事の内容は社会秩序に反する行為を推奨することを目的としたものではございません。**
@@ -32,7 +33,6 @@ socialImage: "/media/cards/no-image.png"
 <!-- omit in toc -->
 ## もくじ
 
-- [本記事について](#本記事について)
 - [探索](#探索)
   - [BOFを悪用してシェルを取得する](#bofを悪用してシェルを取得する)
 - [内部探索](#内部探索)
