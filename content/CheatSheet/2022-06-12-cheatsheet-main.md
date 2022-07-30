@@ -31,6 +31,7 @@ socialImage: "/media/cards/no-image.png"
   - [攻撃ファイル転送](#攻撃ファイル転送)
   - [リバースシェル](#リバースシェル)
   - [ペイロードの生成](#ペイロードの生成)
+  - [SSH](#ssh)
 - [スキャンツールまとめ](#スキャンツールまとめ)
   - [ポートスキャン](#ポートスキャン)
   - [データベースのスキャン](#データベースのスキャン)
@@ -42,6 +43,7 @@ socialImage: "/media/cards/no-image.png"
   - [SQL injection](#sql-injection)
   - [XSS](#xss)
   - [XML External Entity(XML外部実体参照)](#xml-external-entityxml外部実体参照)
+  - [WebDavの悪用](#webdavの悪用)
 - [その他のエクスプロイト](#その他のエクスプロイト)
   - [SMB、Active Directoryを悪用したリモートアクセス](#smbactive-directoryを悪用したリモートアクセス)
 - [内部探索(Windows)](#内部探索windows)
@@ -84,6 +86,7 @@ socialImage: "/media/cards/no-image.png"
   - [GDBをPythonで操作する](#gdbをpythonで操作する)
   - [GDBでプロセスにアタッチ(ワンライナー)](#gdbでプロセスにアタッチワンライナー)
   - [pedaの機能を使う](#pedaの機能を使う)
+- [gccのTips](#gccのtips)
 - [angrのサンプル](#angrのサンプル)
 
 ## 使用頻度の高いコマンドまとめ
@@ -917,12 +920,14 @@ string.ascii_uppercase + string.ascii_lowercase + "0123456789"
   - リークさせたアドレスと[libc database search](https://libc.blukat.me/)を使って、libcのベースアドレスを特定する
   - ベースアドレスとの相対位置から`/bin/sh`のアドレスを特定し、以下のようなスタック構成でシェルを取得できる
 
-  |   スタック   |
-  | :----------: |
-  |     ret      |
-  | pop rdi; ret |
-  |  `/bin/sh`   |
-  |   system()   |
+
+|   スタック   |
+| :----------: |
+|     ret      |
+| pop rdi; ret |
+|  `/bin/sh`   |
+|   system()   |
+
 
 - systemのアドレスを使用してもシェルが取れない場合は、アラインメントでセグメント違反が出ていないかを確認してみる
 
@@ -966,11 +971,13 @@ rop = ROP(elf)
 
 - ROPに使える機械語の対応
 
+
 | x86_64 | pop rdi; | 0x5f |
 | :----: | :------: | :--: |
 |        |          |      |
 |        |          |      |
 |        |          |      |
+
 
 - ROP Chainの構築
 
